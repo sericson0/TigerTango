@@ -12,7 +12,8 @@ This guide discusses how to to get set for DJing tango music with virtual DJ. It
 
 You can find a video tutorial of TigerTango here https://youtu.be/k9lrT9ofaWw
 
-!!!CHECK TigerTango is currently in its first version. I have tried my best to make it a tool that will be valuable to Tango DJs and DJs of other social dances, but the only way to know what will be most useful is to have people try it and give feedback. If you run into any issues, or if there were any functionality you wish were updated or added, please reach out to me at sericson0@gmail.com. You can also post an issue on https://github.com/sericson0/TigerTango/issues
+> [!NOTE]
+>  TigerTango is currently in its first version. I have tried my best to make it a tool that will be valuable to Tango DJs and DJs of other social dances, but the only way to know what will be most useful is to have people try it and give feedback. If you run into any issues, or if there were any functionality you wish were updated or added, please reach out to me at sericson0@gmail.com. You can also post an issue on https://github.com/sericson0/TigerTango/issues
 
  I would love to hear from you!
 ## Intalling Virtual DJ
@@ -144,12 +145,14 @@ TigerTango uses two decks so you can prepare the next **track** while one is pla
    1. when turned on it first checks to make sure the deck is not playing to the main speakers. Then it turns the volume of the deck off, sets to play through headphones, and starts the track.
    2. When durned on it resets volume to 100% and resets track to starting.
 
-!!! If you want the deck volumne other than full, then remenmber to change it after toggling off prelisten.
+> [!IMPORTANT]
+> If you want the deck volumne other than full, then remenmber to change it after toggling off prelisten.
 7. **Controls** TigerTango has implemented four playback controls:
    1. **Play/Pause** Starts or stops the current track.
    2. **Fade** Fades out current track. At end of fade it resets the deck volume to 100%.
 
-!!!NOTE if you want the deck volumne other than full, then remenmber to change it after the fade completes.
+> [!IMPORTANT]
+> If you want the deck volumne other than full, then remenmber to change it after the fade completes.
    3. **AUTO** Toggles on or off automix. The automix will start with whichever deck you select auto on.
    4. **AutoFade** Fades out deck, starts song on other deck, and loads next song in playlist onto current deck. If you have a cortina that you want to fade out and then start the next tanda, you can do this with AutoFade.
 
@@ -205,11 +208,10 @@ This section walks through how you could use TigerTango for DJing.
 *  Once performances are over you can restart **AUTO** to continue the night
 
 > [!WARNING]
->  The automix can be finicky at times in VirtualDJ. Make sure to click Auto on the track that you want to play from.
+>  The automix can be finicky at times in VirtualDJ. Check the song on the other deck to make sure the song you want to play next is lined up
 
-!!!NOTE check the song on the other deck to make sure the song you want to play next is lined up
-
-!!!CHECK When adding the next song in automix, it tends to work best to add to the next in line in the staging area instead of directly to the deck.
+> [!Note]
+> CHECK When adding the next song in automix, it tends to work best to add to the next in line in the staging area instead of directly to the deck.
 
 
 ## Providing Feedback
@@ -217,4 +219,5 @@ Please consider this version of TigerTango as an initial stable release. I have 
 
 If you run into any issues, or have any thoughts, suggestions, or requests for improvements, I would love to hear from you. I would also love to hear if you find this tool useful.
 
-!!!CHECK You can reach me at sericson0@gmail.com or can post to the Virtual DJ forum https://virtualdj.com/forums/264357/addons/TigerTango.html
+> [!NOTE]
+>  You can reach me at sericson0@gmail.com or can post to the Virtual DJ forum https://virtualdj.com/forums/264357/addons/TigerTango.html
