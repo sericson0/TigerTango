@@ -34,6 +34,8 @@ You can load a stable version directly from Virtual DJ, or can install the devel
 * Loading from Virtual DJ is simpler but may not have the latest updates (It takes a while to get updates through their review process)
 * Loading the development version from GitHub allows for the latest features and updates.
 
+You can find a list of the changes in the [ChangeLog](ChangeLog.md)
+
 ### Loading TigerTango from VirtualDJ
 1. Open VirtualDJ and select settings (the gear icon in the upper right)
 2.  Select the Interface tab (looks like a computer monitor)

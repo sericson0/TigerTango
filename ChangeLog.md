@@ -1,0 +1,2 @@
+# Development Version Changes not in VirtualDJ Version
+* Implemented safety check to autofade so it will not autofade non-playing deck (this can cause an issue because autofade will load the next track when done, messing up the order)
