@@ -63,6 +63,29 @@ To load the development version:
 
 ![alt text](<docs/Installing Development Branch-1.png>)
 
+## Initializing Changes Made by TigerTango and Recommended Settings
+TigerTango makes a number of changes to settings when opened. This helps reduce the chance for errors and improves functionality. The following are changed on setup:
+
+* **autoBPMMatch**, **autoKey**, **autoGain**, and **autoPitchLock** are turned to off. These functions are used to beat match between songs (something we definitely do not want to do for tango)
+* **touchWheelBackspin** and **vinylMode** are turned off. This helps prevent the track from scratching if you accidentally touch it with your mouse.
+* **fader_start** for each deck set to off. This ensures the fade buttons work properly (Currently only in development version)
+* **pflOnSelect** to off and pfl for each deck to off. This helps make the custom prelisten button work correctly
+* **EqMode** set to "Disabled". This makes the faders work as normal frequency band faders.
+
+Additional recommended options for the automix:
+* automixMode No Mix
+* automix AutoRemovePlayued No
+* automixDualDeck Yes
+* autoMixBeatMatchOnFade No
+* automixDoubleClick nothing
+* automixTempoMode normal tempo
+
+If you are using the version on VirtualDJ (non development version) then you will want to check to make sure that **fader_start** is turned off as well. This is the default, but can get switched if you try out other skins.
+
+If you are DJing for a show and want to turn background notifications off then consider setting
+* Make button to toggle exclusiveAudioAcess
+(Considering making a button for this)
+
 ## Installing Plugins
 
 Tango DJs and Club DJs are opposites: *Club DJs play high quality recordings of low quality music while tango DJs play low quality recordings of high quality music* ;-) Jokes aside, what club DJs do is mix and modify parts of songs to enhance the energy and flow in the room, whereas when tango DJs modify a song it is primarily to remove artifacts such as hiss or add lost frequencies such as bass frequencies to bring out to enhance the sound quality of the recording. This is why different tools are required.
