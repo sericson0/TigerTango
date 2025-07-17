@@ -21,6 +21,22 @@
   </button>
 </window>
 
+<window name="documentation" width="180" height="90" posx="right" posy="top" shown="false" color="#424346">
+
+  <textzone x="0" y="0" width="170" height="50"
+            text="TigerTango Documentation at\nhttps://github.com/sericson0/TigerTango"
+            font="Arial" size="12"
+            multiline="yes" align="center"/>
+  <button x="55" y="55" width="70" height="20" action="show_window 'documentation' off">
+    <text     color="#FFFFFF" align="center" text="Close Window" size="12"/>
+    <off      color="#777777" color2="#666666" radius="3"/>
+    <over     color="#136b87" color2="#555555"/>
+    <selected color="#444444" color2="#333333"/>
+  </button>
+</window>
+
+
+
 <!-- Windows -->
 
 <window name="BrowserWindow" posx="100" posy="100" width="600" height="500" shown="false" color="#424346">
@@ -629,11 +645,11 @@
 			<selected shape="circle" color="green" border_size="3" border="bordercolor3"/>
 		</define>
 		<define class="settingsbutton">
-			<size width="20" height="120"/>
+			<size width="110" height="20"/>
 			<off shape="square" color="dark" border_size="1" border="bordercolor3"/>
 			<over shape="square" color="buttonover" border_size="1" border="bordercolor3"/>
 			<selected shape="square" color="buttonon2" border_size="1" border="bordercolor3"/>
-			<icon dy="+1" sysicon="arrowright" width="16" height="16" color="textoff2" colorover="textover" colordown="texton"/>
+			<icon dy="+1" sysicon="arrowdown" width="16" height="16" color="textoff2" colorover="textover" colordown="texton"/>
 			<!-- <icon x="117" y="328" width="11" height="11"/> -->
 		</define>
 		<define class="pitchreset_button" placeholders="sysicon=arrowright">
@@ -968,38 +984,38 @@
 			</button>
 			<group x="[WIDTH]">
 				<button x="-30" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
-					<size width="30-1" height="30-2"/>
+					<size width="30-1" height="25-2"/>
 					<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 					<icon sysicon="chevrondown" width="16" height="16" color="textdarker" colorover="textover" colordown="texton"/>
 				</button>
 				<button x="-30" y="+1" action="[ACTION2]" visibility="[ACTION1]">
-					<size width="30-1" height="30-2"/>
+					<size width="30-1" height="25-2"/>
 					<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 					<icon sysicon="chevrondown" width="16" height="16" color="texton" colorover="textover" colordown="texton"/>
 				</button>
-				<line color="bordercolor" x="-30" y="+0" width="1" height="30" novisibility="[ACTION1]"/>
-				<line color="darker" x="-30" y="+0" width="1" height="30" visibility="[ACTION1]"/>
+				<line color="bordercolor" x="-30" y="+0" width="1" height="25" novisibility="[ACTION1]"/>
+				<line color="darker" x="-30" y="+0" width="1" height="25" visibility="[ACTION1]"/>
 			</group>
 		</define>
 		<define class="masterfxdrop" placeholders="action1,action2,textaction">
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
-				<size width="150" height="30"/>
+				<size width="150" height="25"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
 				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="150-30" fontsize="16" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
 			<button x="+150-30" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
-				<size width="30-1" height="30-2"/>
+				<size width="30-1" height="25-2"/>
 				<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 				<icon sysicon="chevrondown" width="16" height="16" color="textdarker" colorover="textover" colordown="texton"/>
 			</button>
 			<button x="+150-30" y="+1" action="[ACTION2]" visibility="[ACTION1]">
-				<size width="30-1" height="30-2"/>
+				<size width="30-1" height="25-2"/>
 				<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 				<icon sysicon="chevrondown" width="16" height="16" color="texton" colorover="textover" colordown="texton"/>
 			</button>
-			<line color="bordercolor" x="+150-30" y="+0" width="1" height="30" novisibility="[ACTION1]"/>
-			<line color="darker" x="+150-30" y="+0" width="1" height="30" visibility="[ACTION1]"/>
+			<line color="bordercolor" x="+150-30" y="+0" width="1" height="25" novisibility="[ACTION1]"/>
+			<line color="darker" x="+150-30" y="+0" width="1" height="25" visibility="[ACTION1]"/>
 		</define>
 		<define class="turntable">
 			<!-- background -->
@@ -1198,9 +1214,9 @@
 			</define>
 		   <define class="songpos" colorPlayed="darker" colorBass="colorbass" colorMed="colormed" colorHigh="colorhigh" placeholders="width">
 				<pos x="+1" y="+1"/>
-				<size width="[WIDTH]" height="60-2"/>
+				<size width="[WIDTH]" height="70-2"/>
 				<wave>
-					<size height="60-2"/>
+					<size height="70-2"/>
 					<pos y="+0"/>
 				</wave>
 				<cues dy="0" shade="0.2">
@@ -1208,7 +1224,7 @@
 					<clipmask x="139" y="263"/>
 				</cues>
 				<loops dy="0">
-					<size width="9" height="60-2"/>
+					<size width="9" height="70-2"/>
 					<clipmask x="149" y="263"/>
 				</loops>
 			</define>
@@ -1335,21 +1351,22 @@
 		<!-- Custom logo -->
 	<visual>
 		<off x="1070" y="267"/>
-		<pos x="110" y="0"/>
+		<pos x="100" y="0"/>
 		<size width="350" height="120"/>
 	</visual>
 	<button action="settings">
-		<pos x="1910-40-165" y="8"/>
-		<size width="55" height="50"/>
+		<pos x="1910-40-165+40" y="8"/>
+		<size width="50" height="50"/>
 		<off border_size="1" border="bordercolor" color="topmenu"/>
 		<over border_size="1" border="bordercolor" color="background2"/>
 		<selected border_size="1" border="bordercolor" color="background2"/>
 		<icon sysicon="settings" color="textoff3" colorselected="texton" colorover="texton" width="27" height="27"/>
 	</button>
-	<group name="login" x="500" y="8">
+
+	<group name="login" x="420" y="8">
 		<visual>
 			<pos x="+0" y="+0"/>
-			<size width="180" height="50"/>
+			<size width="150" height="50"/>
 			<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
 		</visual>
 		<visual>
@@ -1359,26 +1376,35 @@
 		</visual>
 		<button action="connect">
 			<pos x="+26" y="+10"/>
-			<size width="175" height="27"/>
-			<text width="175-26-5" fontsize="14" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
+			<size width="150" height="27"/>
+			<text width="150-26-5" fontsize="14" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
 		</button>
 	</group>
 
-		<group name="topbar_status" x="1200" y="8">
-			<!-- <visual visibility="is_battery">
-				<size width="560-60-15" height="50"/>
-				<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
-			</visual> -->
+	<button action="show_window 'documentation'" query="show_window 'documentation'">
+		<pos x="580" y="8"/>
+		<size width="50" height="50"/>
+		<off border_size="1" border="bordercolor" color="topmenu"/>
+		<over border_size="1" border="bordercolor" color="background2"/>
+		<selected border_size="1" border="bordercolor" color="background2"/>
+		<text text="?" align="center" fontsize="22" weight="bold" color="textoff3" colorselected="texton" colorover="texton"/>
+		<tootltip> Docuementation can be found at https://github.com/sericson0/TigerTango</tootltip>
+	</button>
+
+
+		<group name="topbar_status" x="1250+18" y="8">
+
 			<visual>
-				<size width="560-60-15" height="50"/>
-				<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
+				<pos x="+25" y="+0"/>
+				<size width="560-60-15-40" height="50"/>
+				<off shape="square" color="topmenu" radius="1" border_size="1" border="bordercolor2"/>
 			</visual>
-			<group name="mastervu" x="+10" y="+0">
-				<textzone>
+			<group name="mastervu" x="-15" y="+0">
+				<!-- <textzone>
 					<pos x="+0" y="+20"/>
 					<size width="75" height="20"/>
 					<text fontsize="14" color="textdarker" align="left" text="MASTER" localize="true"/>
-				</textzone>
+				</textzone> -->
 				<visual source="get_vu_meter_left 'master'" type="linear" orientation="horizontal">
 					<pos x="+65" y="+18"/>
 					<size width="100" height="8"/>
@@ -1399,8 +1425,8 @@
 					<on x="1627" y="0"/>
 				</visual>
 			</group>
-			<line name="divider" color="dark"  x="+200" y="+4" width="2" height="50-8"/>
-				<panel name="cpu" x="+180+30" y="+0" width="50" height="50" childtooltip="true">
+			<line name="divider" color="dark"  x="+200-20" y="+4" width="2" height="50-8"/>
+				<panel name="cpu" x="+180+30-10" y="+0" width="50" height="50" childtooltip="true">
 					<textzone>
 						<pos x="+0" y="+20"/>
 						<size width="30" height="13"/>
@@ -1414,7 +1440,7 @@
 					</visual>
 				</panel>
 			<!-- <line name="divider" color="dark"  x="+160+50" y="+4" width="1" height="27-8"/> -->
-				<panel name="battery" x="+200+10+80" y="+0" width="50" height="50" visibility="is_battery" childtooltip="true">
+				<panel name="battery" x="+200+10+80-15-5" y="+0" width="50" height="50" visibility="is_battery" childtooltip="true">
 					<visual source="get_battery & param_smaller 20% ? blink : off">
 						<pos x="+0" y="+20"/>
 						<size width="30" height="20"/>
@@ -1429,7 +1455,7 @@
 					</visual>
 				</panel>
 			<!-- <line name="divider" color="dark"  x="+300+50+25" y="+4" width="2" height="50-8"/> -->
-			<group name="clock" x="+300+50" y="+0">
+			<group name="clock" x="+300+50-10-5" y="+0">
 				<textzone>
 					<pos x="+0" y="+0"/>
 					<size width="120" height="50"/>
@@ -1447,15 +1473,22 @@
 
 </group>
 <group name="mixer" x="764" y="-25" width="1920-764-764" height="500">
-<line x="+0" y="+0" height="390" width="2" color="dark" highlight="" shadow="highlight" />
-<line x="+392-2" y="+0" height="390" width="2" color="dark" highlight="" shadow="highlight" />
-<panel name="mastermixer" group="mixer">
-		<group name="mastervol" x="+15-3" y="+32">
 			<visual>
+		<pos x="-123" y="+32"/>
+		<size width="640" height="195"/>
+		<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
+	</visual>
+<line x="+0" y="+42" height="180" width="3" color="dark" highlight="" shadow="highlight" />
+<line x="+205" y="+42" height="180" width="3" color="dark" highlight="" shadow="highlight" />
+<line x="+308" y="+42" height="180" width="3" color="dark" highlight="" shadow="highlight" />
+<line x="+428" y="+42" height="180" width="3" color="dark" highlight="" shadow="highlight" />
+<panel name="mastermixer" group="mixer">
+		<group name="mastervol" x="+15-3+170+25" y="+32">
+			<!-- <visual>
 				<pos x="+2" y="+1"/>
 				<size width="100" height="200"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
-			</visual>
+				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
+			</visual> -->
 			<textzone x ="-45" y="+10">
 				<size width="194" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="MASTER VOL"/>
@@ -1474,52 +1507,52 @@
 			</visual>
 		</group>
 
-		<group name="hp" x="+130-3" y="+32">
-			<visual>
+		<group name="hp" x="+130-3+160+15+10" y="+32">
+			<!-- <visual>
 				<pos x="+2" y="+1"/>
-				<size width="135" height="200"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
-			</visual>
-			<panel class="headphone_fader" x = "+15" y="+30">
+				<size width="110" height="200"/>
+				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
+			</visual> -->
+			<panel class="headphone_fader" x = "+8" y="+30">
 			</panel>
-			<panel class="headphone_mix_fader" x="+80" y="+30">
+			<panel class="headphone_mix_fader" x="+60" y="+30">
 				<!-- <slider action="headphone_mix" dblclick="headphone_mix 100%" rightclick="headphone_mix 100% ? headphone_mix 0% : headphone_mix 100%" disabled="not get_hasheadphones"/> -->
 				<textzone><text localize="true" text="MIX"/></textzone>
 			</panel>
 			<button>
-				<pos x="+55" y="+1"/>
+				<pos x="+45" y="+1"/>
 				<size width="30" height="30"/>
 				<icon sysicon="headphones" width="30" height="30" color="textdark"/>
 			</button>
-				<textzone x ="-57" y="+10">
+				<textzone x ="-65" y="+10">
 				<size width="194" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="VOL"/>
 			</textzone>
-				<textzone x ="+7" y="+10">
+				<textzone x ="-10" y="+10">
 				<size width="194" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="MIX"/>
 			</textzone>
 		</group>
 
-		<group name="mic" x="+280-3" y="+32">
-			<visual>
-				<pos x="+2" y="+1"/>
-				<size width="100" height="200"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
-			</visual>
+		<group name="mic" x="+280-3+140" y="+32">
+			<!-- <visual>
+				<pos x="+12" y="+1"/>
+				<size width="85" height="200"/>
+				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
+			</visual> -->
 			<button>
-				<pos x="+35" y="+5"/>
+				<pos x="+40" y="+5"/>
 				<size width="30" height="30"/>
 				<icon sysicon="sampler_mic" width="30" height="30" color="textdark"/>
 			</button>
-			<panel class="knobmaster" x="+50" y="+40">
+			<panel class="knobmaster" x="+45" y="+40">
 				<slider action="mic_volume" dblclick="mic_volume 100%" rightclick="mic_volume 100% ? mic_volume 0% : mic_volume 100%" disabled="not get_hasmic" />
 				<textzone><text localize="true" text="MIC VOL"/></textzone>
 			</panel>
-			<button class="button_master" x="+50" y="+40+75" width="44" height="27" action="mic" text="ON" localize="true"/>
-			<button class="button_master" x="+50" y="+40+75+35" width="44" height="27" action="sampler_rec 'mic'" text="REC" localize="true"/>
+			<button class="button_master" x="+45" y="+40+75" width="44" height="27" action="mic" text="ON" localize="true"/>
+			<button class="button_master" x="+45" y="+40+75+35" width="44" height="27" action="sampler_rec 'mic'" text="REC" localize="true"/>
 			<visual source="get_vu_meter 'mic'" type="linear" granularity="6" orientation="vertical" direction="up">
-				<pos x="+15" y="+45"/>
+				<pos x="+25" y="+45"/>
 				<size width="13" height="130"/>
 			  <off x="1613" y="0" condition="var_not_equal '@$colorscheme' 2"/>
 			  <off x="1520" y="0" condition="var_equal '@$colorscheme' 2"/>
@@ -1527,69 +1560,78 @@
 			</visual>
 		</group>
 
-		<group name="masterfx" x="-117" y="+32+10+200">
-			<visual>
-				<pos x="-10" y="+0"/>
-				<size width="435" height="135"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
-			</visual>
+		<group name="masterfx" x="-115+125+1" y="+33">
+			<!-- <visual>
+				<pos x="-8" y="+0"/>
+				<size width="327-125-2" height="200"/>
+				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
+			</visual> -->
 			<textzone x="+0" y="+8">
-				<size width="440" height="14"/>
+				<size width="327-125-2" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="MASTER EFFECTS" localize="true"/>
 			</textzone>
 			<!-- Effects 1 -->
-			<panel class="masterfxdrop"  x="+0-2" y="+35" action1="deck master effect_active 1" action2="deck master effect_select 1" textaction="deck master get_effect_name 1 &amp; param_uppercase"/>
-			<button class="button_main" x="+160-2" y="+30" width="40" height="40" action="deck master effect_show_gui 1" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<panel class="masterfxdrop"  x="+0-2" y="+35-2" action1="deck master effect_active 1" action2="deck master effect_select 1" textaction="deck master get_effect_name 1 &amp; param_uppercase"/>
+			<button class="button_main" x="+160-2-5" y="+35-2" width="32" height="25" action="deck master effect_show_gui 1" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 			 	<tooltip>Open Effects GUI</tooltip>
 			</button>
 
 			<!-- Effects 2 -->
-			<panel class="masterfxdrop"  x="+0-2" y="+35+50+7" action1="deck master effect_active 2" action2="deck master effect_select 2" textaction="deck master get_effect_name 2 &amp; param_uppercase"/>
-			<button class="button_main" x="+160-2" y="+30+50+7" width="40" height="40" action="deck master effect_show_gui 2" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<panel class="masterfxdrop"  x="+0-2" y="+35+40-11" action1="deck master effect_active 2" action2="deck master effect_select 2" textaction="deck master get_effect_name 2 &amp; param_uppercase"/>
+			<button class="button_main" x="+160-2-5" y="+35+40-11" width="32" height="25" action="deck master effect_show_gui 2" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
-			<line x="+205" y="+30" height="100" width="3" color="dark" highlight="" shadow="shadow"/>
+			<!-- <line x="+200" y="+30" height="150" width="3" color="dark" highlight="" shadow="shadow"/> -->
 
 			<!-- Effects 3 -->
-			<panel class="masterfxdrop"  x="+210+4" y="+35" action1="deck master effect_active 3" action2="deck master effect_select 3" textaction="deck master get_effect_name 3 &amp; param_uppercase"/>
-			<button class="button_main" x="+370+4" y="+30" width="40" height="40" action="deck master effect_show_gui 3" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<panel class="masterfxdrop"  x="+0-2" y="+35+40+40-20" action1="deck master effect_active 3" action2="deck master effect_select 3" textaction="deck master get_effect_name 3 &amp; param_uppercase"/>
+			<button class="button_main" x="+160-2-5" y="+35+40+40-20" width="32" height="25" action="deck master effect_show_gui 3" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
 			<!-- Effects 4 -->
-			<panel class="masterfxdrop"  x="+210+4" y="+35+50+7" action1="deck master effect_active 4" action2="deck master effect_select 4" textaction="deck master get_effect_name 4 &amp; param_uppercase"/>
-			<button class="button_main" x="+370+4" y="+30+50+7" width="40" height="40" action="deck master effect_show_gui 4" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<panel class="masterfxdrop"  x="+0-2" y="+35+40+40+40-28" action1="deck master effect_active 4" action2="deck master effect_select 4" textaction="deck master get_effect_name 4 &amp; param_uppercase"/>
+			<button class="button_main" x="+160-2-5" y="+35+40+40+40-1-28" width="32" height="25" action="deck master effect_show_gui 4" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+				<tooltip>Open Effects GUI</tooltip>
+			</button>
+			<!-- Effects 5 -->
+			<panel class="masterfxdrop"  x="+0-2" y="+35+40+40+40+35-32" action1="deck master effect_active 5" action2="deck master effect_select 5" textaction="deck master get_effect_name 5 &amp; param_uppercase"/>
+			<button class="button_main" x="+160-2-5" y="+35+40+40+40+35-1-32" width="32" height="25" action="deck master effect_show_gui 5" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
 		</group>
 
 	</panel>
-	<group name="video" x="+10+70+20+10" y="-3">
+
+	<group name="video" x="-205">
 		<visual>
-			<pos x="+223" y="+245"/>
-			<size width="190" height="137"/>
-			<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
+			<pos x="+83" y="+33"/>
+			<size width="0" height="200"/>
+			<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
 		</visual>
-		<panel name="videomixer" group="mixer" x = "+205" y="+275">
-		<line x="+18" y="-30" height="3" width="150" color="dark" highlight="" shadow="shadow"/>
+		<textzone x="+83" y="+33+8">
+			<size width="120" height="14"/>
+			<text fontsize="14" align="center" color="textdarker" text="VIDEO " localize="true"/>
+		</textzone>
 
+		<panel name="videomixer" group="mixer" x = "+53" y="+87">
 
-		<group name="videomaster" x="+27" y="-20">
+		<group name="videomaster" x="+35" y="-20">
 			<visual>
 				<pos x="+0" y="+0"/>
-				<size width="140" height="85"/>
+				<size width="110" height="85"/>
 				<off shape="square" color="display" border_size="1" border="bordercolor"/>
 			</visual>
 			<visual>
-				<pos x="+169-120" y="+5"/>
+				<pos x="+169-120-15" y="+5"/>
 				<size width="41" height="41"/>
 				<off x="236" y="327" />
 			</visual>
 			<textzone x="+0" y="+169-120">
-				<size width="140" height="14"/>
-				<text fontsize="14" align="center" color="textdarker" text="MASTER VIDEO" localize="true" important="true"/>
+				<size width="110" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="VIDEO" localize="true" important="true"/>
 			</textzone>
 			<textzone x="+0" y="+65">
-				<size width="140" height="16"/>
+				<size width="110" height="16"/>
 				<text fontsize="12" align="center" color="textdarker" text="Click to activate" localize="true" important="true"/>
 			</textzone>
 			<video x="+1" y="+1" source="master">
@@ -1602,14 +1644,14 @@
 
 
 		<group name="videomix" x="+0" y="+0" visibility="has_video_mix">
-			<panel class="vfxdrop" width="+135" x="+30" y="+70" action1="video_transition" rightclick="video_transition 500ms" action2="video_transition_select" textaction="get_videotrans_name &amp; param_uppercase"/>
-			<panel class="settingsbutton" width="+135" x="+30" y="+40" action1="deck master video_fx" action2="deck master video_fx_select" textaction="deck master get_videofx_name &amp; param_uppercase"/>
-			<button class="settingsbutton" x="+170" y="-20" action="video_output" query="false"/>
+			<panel class="vfxdrop" width="+110" x="+35" y="+73" action1="video_transition" rightclick="video_transition 500ms" action2="video_transition_select" textaction="get_videotrans_name &amp; param_uppercase"/>
+			<panel class="settingsbutton" width="+135" x="+30" y="+40" action1="deck master video_" action2="deck master video__select" textaction="deck master get_video_name &amp; param_uppercase"/>
+			<button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/>
 		</group>
 		<group name="videosimple" x="+0" y="+0" visibility="not has_video_mix">
-			<panel class="vfxdrop" width="+135" x="+30" y="+70"  action1="video_source" action2="video_source_select" textaction="get_text '%videosource' &amp; param_uppercase"/>
-			<!-- <panel class="vfxdrop" width="+135" x="+30" y="+40"  action1="deck master video_fx" action2="deck master video_fx_select 'no_sources'" textaction="deck master get_videofx_name &amp; param_uppercase"/> -->
-			<button class="settingsbutton" x="+175" y="-20" action="video_output" query="false"/>
+			<panel class="vfxdrop" width="+110" x="+35" y="+73"  action1="video_source" action2="video_source_select" textaction="get_text '%videosource' &amp; param_uppercase"/>
+			<!-- <panel class="vdrop" width="+135" x="+30" y="+40"  action1="deck master video_" action2="deck master video__select 'no_sources'" textaction="deck master get_video_name &amp; param_uppercase"/> -->
+			<button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/>
 		</group>
 	</panel>
 	</group>
@@ -1618,80 +1660,73 @@
 
 <!-- DECK DEFINE -->
 
-<define class="deckinfo" x="+10" y="+10" placeholders="*areawidth,textalign,left" classdeck="left">
-	<button action="select">
-		<pos x="+0" y="+0"/>
-		<size width="23" height="100"/>
-		<up color="darker"/>
-		<over color="buttonover" border="bordercolor" border_size="1"/>
-		<selected color="textdeck" border="bordercolor" border_size="1"/>
-		<text fontsize="20" color="textdark" colorover="textover" colorselected="texton" align="center" action="get_deck_letter"/>
-	</button>
+<define class="deckinfo" x="-13" y="+10" placeholders="*areawidth,textalign,left" classdeck="left">
+
 	<group name="deckinfo_main" x="[LEFT]">
 		<visual name="deckinfo_background">
 			<pos x="+0" y="+0" />
-			<size width="718" height="100"/>
+			<size width="625" height="110"/>
 			<off color="display" shape="square" border_size="1" border="bordercolor"/>
 		</visual>
-		<group name="title_area" x="+0" y="+0" width="718-170" height="40">
+		<group name="title_area" x="+5" y="+0" width="625-140" height="40">
 			<textzone group="horizontal" visibility="not loaded">
 				<pos x="+5" y="+0"/>
-				<size width="721-[AREAWIDTH]-10" height="32"/>
+				<size width="625-[AREAWIDTH]-10+20" height="32"/>
 				<text fontsize="20" color="textdark" weight="" action="get_title" important="true"/>
 			</textzone>
 			<textzone group="horizontal" scroll="no" click="scroll" visibility="loaded">
 				<pos x="+5" y="+0"/>
-				<size width="718-[AREAWIDTH]-10" height="32"/>
+				<size width="625-[AREAWIDTH]-10+20" height="32"/>
 				<text fontsize="20" color="title" weight="bold" action="get_title_before_remix" important="true"/>
-				<text fontsize="20" color="remix" weight="" action="get_remix_after_title" important="true"/>
+				<!-- <text fontsize="20" color="remix" weight="" action="get_remix_after_title" important="true"/> -->
 				<text fontsize="20" color="textdark" action="get_artist_title_separator" important="true"/>
 				<text fontsize="20" color="artist" weight="" action="get_artist_before_feat" important="true"/>
 				<text fontsize="20" color="feat" weight="" action="get_featuring_after_artist" important="true"/>
 			</textzone>
-			<line x="+0" y="+32" width="721-[AREAWIDTH]" height="1" color="deckinfolines"/>
+			<line x="+0" y="+32" width="625-[AREAWIDTH]+20" height="1" color="deckinfolines"/>
 		</group>
-		<group name="songpos_area" x="+0" y="+32+1" width="718-170" height="40">
-			<songpos class="songpos" width="718-[AREAWIDTH]-2"/>
+		<group name="songpos_area" x="+0" y="+32+1" width="625-140" height="40">
+			<songpos class="songpos" width="625-[AREAWIDTH]-2+20"/>
 		</group>
-		<group name="bpm_area" x="+1+718-[AREAWIDTH]" y="+0" width="160" height="60">
-			<line x="+0" y="+0" width="1" height="60" color="deckinfolines"/>
+		<group name="bpm_area" x="+1+625+25-[AREAWIDTH]" y="+0" width="140" height="60">
+			<line x="+0" y="+0" width="1" height="110" color="deckinfolines"/>
 			<button query="get_bpm">
-				<pos x="+[AREAWIDTH]-85-10-25" y="+0" width="85+10+25" height="32"/>
+				<pos x="+[AREAWIDTH]-85-10-25-20+5" y="+0" width="85+10+25" height="32"/>
 			</button>
 			<textzone action="edit_bpm" tooltip="">
-				<pos x="+[AREAWIDTH]-85-10" y="+0"/>
+				<pos x="+[AREAWIDTH]-85-30+5" y="+0"/>
 				<size width="85" height="32"/>
-				<text fontsize="24" color="textdeck" weight="bold" align="right" format="%Pbpmex"/>
+				<text fontsize="24" color="textdeck" weight="bold" align="left" format="%Pbpmex"/>
 			</textzone>
 			<textzone action="edit_bpm" tooltip="" visibility="loaded">
-				<pos x="+[AREAWIDTH]-85-10-40" y="+10"/>
+				<pos x="+[AREAWIDTH]-85-10-40-30+5" y="+10"/>
 				<size width="40" height="32-18"/>
-				<text fontsize="18" color="textdarker" colorover="textover" weight="bold" align="right" text="BPM" localize="true"/>
+				<text fontsize="18" color="textdarker" colorover="textover" weight="bold" align="left" text="BPM" localize="true"/>
 			</textzone>
 		</group>
-		<group name="time_area" x="+1+718-[AREAWIDTH]" y="+32" width="160" height="28">
-		  <line x="+0" y="+0" width="[AREAWIDTH]-1" height="1" color="deckinfolines"/>
+		<group name="time_area" x="+1+625-[AREAWIDTH]+25" y="+32" width="140" height="38">
+		  <line x="+0" y="+0" width="[AREAWIDTH]-20" height="1" color="deckinfolines"/>
 			<button visibility="display_time 'remain'">
-				<pos x="+4" y="+15"/>
+				<pos x="+4" y="+20"/>
 				<size width="16" height="28"/>
 				<icon width="20" height="20" color="textdark" align="left" sysicon="arrowright" important="true"/>
 			</button>
 			<button visibility="display_time 'elapsed'">
-				<pos x="+2" y="+15"/>
+				<pos x="+2" y="+20"/>
 				<size width="16" height="28"/>
-				<icon width="16" height="16" color="textdark" align="left" sysicon="arrowleft" important="true"/>
+				<icon width="20" height="20" color="textdark" align="left" sysicon="arrowleft" important="true"/>
 			</button>
 			<textzone>
-				<pos x="+16+4" y="+15"/>
+				<pos x="+16+4" y="+20"/>
 				<size width="80" height="28"/>
 				<text fontsize="24" color="textoff3" align="left" weight="bold" action="get_time" important="true"/>
 			</textzone>
 		  <button action="display_time 'elapsed,remain'" query="display_time">
 		  	<pos x="+0" y="+1" width="+16+4+65" height="28"/>
 		  </button>
-			<group name="keydisplay" x="+[AREAWIDTH]-37-45">
+			<group name="keydisplay" x="+[AREAWIDTH]-37-45-15">
 				<textzone action="setting 'keyDisplay'">
-					<pos x="+0" y="+15"/>
+					<pos x="+0" y="+20"/>
 					<size width="65" height="28"/>
 					<text fontsize="24" color="textdeck" weight="bold" align="right" action="get_key" important="true"/>
 				</textzone>
@@ -1701,45 +1736,37 @@
 </define>
 
 
-<define class="deckinfo" x="+10" y="+10" placeholders="*areawidth,textalign,left" classdeck="right">
-	<button action="select">
-		<pos x="+743-23" y="+0"/>
-		<size width="23" height="100"/>
-		<up color="darker"/>
-		<over color="buttonover" border="bordercolor" border_size="1"/>
-		<selected color="textdeck" border="bordercolor" border_size="1"/>
-		<text fontsize="20" color="textdark" colorover="textover" colorselected="texton" align="center" action="get_deck_letter"/>
-	</button>
+<define class="deckinfo" x="+130" y="+10" placeholders="*areawidth,textalign,left" classdeck="right">
 	<group name="deckinfo_main" x="[LEFT]">
 		<visual name="deckinfo_background">
 			<pos x="+0" y="+0" />
-			<size width="718" height="100"/>
+			<size width="625" height="110"/>
 			<off color="display" shape="square" border_size="1" border="bordercolor"/>
 		</visual>
-		<group name="title_area" x="+[AREAWIDTH]" y="+0" width="718-170" height="40">
+		<group name="title_area" x="+[AREAWIDTH]-15" y="+0" width="625-150" height="40">
 			<textzone group="horizontal" align="right" visibility="not loaded">
 				<pos x="+5" y="+0"/>
-				<size width="721-[AREAWIDTH]-10" height="40"/>
+				<size width="625-[AREAWIDTH]-10" height="40"/>
 				<text fontsize="20" color="textdark" weight="" action="get_title" important="true"/>
 			</textzone>
 			<textzone group="horizontal" scroll="no" click="scroll" align="right" visibility="loaded">
 				<pos x="+5" y="+0"/>
-				<size width="718-[AREAWIDTH]-10" height="32"/>
+				<size width="625-[AREAWIDTH]-10" height="32"/>
 				<text fontsize="20" color="title" weight="bold" action="get_title_before_remix" important="true"/>
 				<text fontsize="20" color="remix" weight="" action="get_remix_after_title" important="true"/>
 				<text fontsize="20" color="textdark" action="get_artist_title_separator" important="true"/>
 				<text fontsize="20" color="artist" weight="" action="get_artist_before_feat" important="true"/>
 				<text fontsize="20" color="feat" weight="" action="get_featuring_after_artist" important="true"/>
 			</textzone>
-			<line x="+0" y="+32" width="718-[AREAWIDTH]" height="1" color="deckinfolines"/>
+			<line x="+0" y="+32" width="625-[AREAWIDTH]" height="1" color="deckinfolines"/>
 		</group>
-		<group name="songpos_area" x="+[AREAWIDTH]" y="+32+1" width="718-170" height="25">
-			<songpos class="songpos" width="718-[AREAWIDTH]-2"/>
+		<group name="songpos_area" x="+[AREAWIDTH]-10" y="+32+1" width="625-120" height="25">
+			<songpos class="songpos" width="625-[AREAWIDTH]-2"/>
 		</group>
-		<group name="bpm_area" x="+8" y="+0" width="160" height="60">
-			<line x="+[AREAWIDTH]" y="+0" width="1" height="60" color="deckinfolines"/>
+		<group name="bpm_area" x="+8" y="+0" width="100" height="60">
+			<line x="+[AREAWIDTH]-20" y="+0" width="1" height="110" color="deckinfolines"/>
 			<button query="get_bpm">
-				<pos x="+0" y="+0" width="85+10+25" height="32"/>
+				<pos x="+0" y="+0" width="100" height="32"/>
 			</button>
 			<textzone action="edit_bpm" tooltip="">
 				<pos x="+0" y="+5"/>
@@ -1747,26 +1774,26 @@
 				<text fontsize="24" color="textdeck" weight="bold" align="left" format="%Pbpmex"/>
 			</textzone>
 			<textzone action="edit_bpm" tooltip="" visibility="loaded">
-				<pos x="+85+10" y="+10"/>
+				<pos x="+85" y="+10"/>
 				<size width="45" height="32-10"/>
 				<text fontsize="20" color="textdarker" colorover="textover" weight="bold" align="right" text="BPM" localize="true"/>
 			</textzone>
 		</group>
-		<group name="time_area" x="+0" y="+32" width="160" height="28">
+		<group name="time_area" x="-5" y="+32" width="140" height="38">
 		  	<line x="+0" y="+0" width="[AREAWIDTH]" height="1" color="deckinfolines"/>
 		  	<group name="decktimers" x="+[AREAWIDTH]-65-16-4">
 				<button visibility="display_time 'remain'">
-					<pos x="+65+4" y="+1"/>
+					<pos x="-15" y="+20"/>
 					<size width="16" height="28"/>
-					<icon width="16" height="16" color="textdark" align="left" sysicon="arrowright" important="true"/>
+					<icon width="20" height="20" color="textdark" align="left" sysicon="arrowright" important="true"/>
 				</button>
 				<button visibility="display_time 'elapsed'">
-					<pos x="+65+2" y="+15"/>
+					<pos x="-15" y="+20"/>
 					<size width="16" height="28"/>
 					<icon width="20" height="20" color="textdark" align="left" sysicon="arrowleft" important="true"/>
 				</button>
 				<textzone>
-					<pos x="-15" y="+15"/>
+					<pos x="-10" y="+20"/>
 					<size width="80" height="28"/>
 					<text fontsize="24" color="textoff3" align="right" weight="bold" action="get_time" important="true"/>
 				</textzone>
@@ -1847,9 +1874,9 @@
 
 
 		<group name="fx" x="+15" y="+125">
-			<panel class="titler" x="+0" y="+3" text="FX" localize="true"/>
+			<panel class="titler" x="+0" y="+3" text="" localize="true"/>
 			<panel class="fxdrop"  x="+0" y="+34" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
-			<button class="button_main" x="+160+7" y="+30" width="40" height="40" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<button class="button_main" x="+160+7" y="+33" width="32" height="32" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
 			<panel class="fx_fader" x="+160+17+42" y="+32-8" visibility="effect_active" textsize="10">
@@ -2033,9 +2060,9 @@
 
 
 		<group name="fx" x="+764-85-85-85-85-20" y="+125">
-			<panel class="titler" x="+15" y="+3" text="FX" localize="true"/>
-			<panel class="fxdrop"  x="+25" y="+35" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
-			<button class="button_main" x="+160+17+20" y="+30" width="40" height="40" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<panel class="titler" x="+15" y="+3" text="" localize="true"/>
+			<panel class="fxdrop"  x="+25" y="+34" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
+			<button class="button_main" x="+160+17+20" y="+33" width="32" height="32" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
 
@@ -2146,32 +2173,23 @@
 			</button> -->
 		</group>
 	</group>
-	<!-- <button class="button_main"
-	sysicon="automix"
-	action="automix ? automix off : automix on"
-	selected="automix"
-	oncolor="#00BFFF"
-	offcolor="buttonoff1"
-	overcolor="buttonover1"
-	>
-	<size width="60" height="40"/>
-	<pos x="+10+94+90" y="+455"/>
-		</button> -->
 
 	</deck>
 </panel>
 
-<group name="automix_panel" x="635" y="360">
+
+<group name="automix_panel" x="635" y="215">
 	<visual>
-		<pos x="+0" y="+0"/>
-		<size width="650" height="265"/>
-		<off shape="square" color="mixerbackground" border_size="1" border="bordercolor"/>
+		<pos x="+0" y="-5"/>
+		<size width="655" height="420"/>
+		<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
 	</visual>
+
 	<filelist source="automix">
-		<size width="640" height="255"/>
+		<size width="645" height="410"/>
+	<pos x="+5	" y="+0"/>
 		<colors>
-			<lists
-				background="#202020"
+        <lists background="#202020"
 				stripes    ="#2A2A2A"
 				selected   ="#555555"
 				focus      ="#7A7A7A"
@@ -2179,10 +2197,10 @@
 				automix    ="#4080C4"
 			/>
 			</colors>
-		<pos x="+5" y="+5"/>
-	</filelist>
 
+</filelist>
 </group>
+
 				<!-- automix    ="#4080C4" -->
 <line name="browser_top"  x="10" y="1080-500+50" width="1920-20" height="1" color="bordercolor" />
 <!-- <browser class="browser">
