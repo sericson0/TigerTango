@@ -2036,18 +2036,43 @@ set $showWave1 1
 			</button>
 			<!-- Effects 7 -->
 			<panel class="masterfxdrop"  x="+8" y="+28+24" action1="deck master effect_active 7" action2="deck master effect_select 7" textaction="deck master get_effect_name 7 &amp; param_uppercase"/>
-			<button class="button_main" x="+160-2-5+10" y="+28+25" width="32" height="25" action="deck master effect_show_gui 7" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<button class="button_main" x="+160-2-5+8" y="+28+25" width="32" height="25" action="deck master effect_show_gui 7" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
-			<button class="button_main" text="RECORD"
-			textsize="14" x="+200" y="+23" height="25" width="100"
-				action="record_config">
-				<tooltip>Configure recording options</tooltip>=""
+			<button class="button_main" text="⚠️" query="not setting 'automixDoubleCLick' 'nothing'"
+			textsize="14" x="+200" y="+23" height="25" width="35"
+				action="setting 'automixDoubleCLick' 'nothing'">
+				<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings.</tooltip>
+			</button>
+			<button class="button_main" text="⚠️" query="not automix_dualdeck"
+			textsize="14" x="+200+40" y="+23" height="25" width="35"
+				action="automix_dualdeck on">
+				<tooltip>Automix is not set to recommended dual deck. Click to change settings.</tooltip>
+			</button>
+			<button class="button_main" text="⚠️" query="not setting 'automixMode' 'no mix'"
+			textsize="14" x="+200+80" y="+23" height="25" width="35"
+				action="setting 'automixMode' 'no mix' ">
+				<tooltip>Automix is not set to recommended 'no mix' option. Click to change settings.</tooltip>
 			</button>
 			<button class="button_main" text="⚠️" query="not crossfader_disable"
-				textsize="14" x="+200" y="+53" height="25" width="100"
+			textsize="14" x="+200" y="+53" height="25" width="35"
 				action="crossfader_disable">
-				<tooltip>Signifies Crossfader is enabled (Can cause issues). Click to turn off.</tooltip>
+				<tooltip>Crossfader is enabled which can cause issues. Click to turn off.</tooltip>
+			</button>
+			<button class="button_main" text="⚠️" query="deck 1 fader_start ? true : deck 2 fader_start"
+			textsize="14" x="+200+40" y="+53" height="25" width="35"
+				action="deck 1 fader_start off & deck 2 fader_start off">
+				<tooltip>Fader Start is turned on. Causes issues with fade buttons. Click to turn off.</tooltip>
+			</button>
+			<button class="button_main" text="⚠️" query="auto_pitch_lock ? true : auto_match_key ? true : auto_pitch_lock"
+			textsize="14" x="+200+80" y="+53" height="25" width="35"
+				action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off">
+				<tooltip>An automatch setting is turned on which will affect on-deck songs. Click to turn off.</tooltip>
+			</button>
+		<button class="button_main" text="REC 🔴"
+			textsize="14" x="20" y="50" height="25" width="75"
+				action="record_config">
+				<tooltip>Configure recording options</tooltip>=""
 			</button>
 		</group>
 
@@ -2378,7 +2403,7 @@ set $showWave1 1
 <oninit action="setting_setdefault vinylMode off"/>
 <oninit action="setting_setdefault 'pflOnSelect' off"/>
 <oninit action="setting 'smartPlay' off & setting_setdefault smartPlay off"/>
-<oninit action="crossfader_disable 'off'"/>
+<oninit action="crossfader_disable"/>
 <oninit action="deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off'" />
 <oninit action="deck 1 'pfl' 'off' & deck 2 'pfl' 'off'"/>
 <oninit action="setting_setdefault 'automixMode' 'no mix'"/>
