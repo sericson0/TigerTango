@@ -15,8 +15,8 @@
 
   <button x="100" y="105" width="200" height="40" action="show_window 'single_output_warning' off">
 		<text color="#FFFFFF" align="center" text="Close Window" size="32"/>
-    <off      color="#136b87" color2="#555555" radius="6"/>
-    <over     color="#777777" color2="#666666"/>
+    <off      color="#777777" color2="#666666" radius="6"/>
+    <over     color="#136b87" color2="#555555"/>
     <selected color="#444444" color2="#333333"/>
   </button>
 </window>
@@ -121,26 +121,89 @@
 	</button>
 </window>
 
-<window name="AutomixWindow" posx="100" posy="100" width="500" height="700" shown="false" color="#424346">
-	<textzone x="+0" y="+6">
-		<size width="500" height="18"/>
-		<text fontsize="14" align="center" color="#a7a7a7" text="Staging (Automix) Panel" localize="true"/>
+set $showWave1 1
+<window name="Waveform" posx="100" posy="100" width="600" height="280" shown="false" color="#424346">
+	<textzone x="+0" y="+6" group="horizontal" align="center" scroll="no" click="scroll">
+		<size width="500" height="25"/>
+	<text fontsize="20" align="center" color="#a7a7a7" weight="bold" important="true"
+		action="deck 1 play ? deck 1 get_title:
+		deck 2 play ? deck 2 get_title :
+		(var_equal '$showWave1' 1 ? deck 1 get_title: deck 2 get_title)" localize="true"/>
+	<text fontsize="20" color="#a7a7a7" action="get_artist_title_separator" important="true" />
+	<text fontsize="20" align="center" color="#a7a7a7" important="true"
+				action="deck 1 play ? deck 1 get_artist_before_feat:
+						deck 2 play ? deck 2 get_artist_before_feat :
+						(var_equal '$showWave1' 1 ? deck 1 get_artist_before_feat: deck 2 get_artist_before_feat)" localize="true"/>
 	</textzone>
+		<panel name="line_waveform_top" class="horisontal_innershadow" x="0" y="44-1" width="600" height="1"></panel>
+		<panel name="line_waveform_bottom" class="horisontal_innerhighlight" x="0" y="44+137-1" width="600" height="1"></panel>
 
-    <filelist source="automix">
-        <pos  x="5"  y="27"/>
-        <size width="500-10" height="700-30"/>
-	</filelist>
-	<button action="show_window 'AutomixWindow' off">
+		<panel x="+0" y="+40">
+			<square posx="0" posy="2005" width="600" height="240" radius="1" border="2" border_color="#121314" color="#121314"/>
+		</panel>
+		<panel name="Wave1" visibility="deck 1 play ? true: deck 2 play ? false : (var_equal '$showWave1' 1 ? true: false)">
+			<scratchwave deck="left" orientation="horizontal" color="scratch1" color2="scratch2">
+				<pos x="0" y="+45+10"/>
+				<size width="600" height="200"/>
+				<grid size="1" mainsize="4" height="8" pos="-10" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-11" shapemirrored="up"/>
+				<gridlines width="1" color="gridlines" transparency="0.5"/>
+				<overlay>
+					<pos x="300" y="-10"/>
+					<size width="1" height="120" />
+					<background color="needle" shape="square" />
+				</overlay>
+			</scratchwave>
+		</panel>
+		<panel name="Wave2" visibility="deck 2 play ? true: deck 1 play ? false : (var_equal '$showWave1' 0 ? true: false)">
+			<scratchwave deck="right" orientation="horizontal" color="scratch1" color2="scratch2">
+				<pos x="0" y="+45+10"/>
+				<size width="600" height="200"/>
+				<grid size="1" mainsize="4" height="8" pos="-10" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-11" shapemirrored="up"/>
+				<gridlines width="1" color="gridlines" transparency="0.5"/>
+				<overlay>
+					<pos x="300" y="-10"/>
+					<size width="1" height="120" />
+					<background color="needle" shape="square" />
+				</overlay>
+			</scratchwave>
+		</panel>
+		<visual visibility="0.8">
+			<pos x="+10+1" y="+45+35+80"/>
+			<size width="26-2" height="173-70"/>
+			<off shape="square" color="darker" border_size="1" border="graydarker"/>
+		</visual>
+		<line color="#D3D3D3">
+		<pos x="300" y="250"/>
+		<size width="1" height="50"/>
+		</line>
+		<line color="#D3D3D3">
+		<pos x="300" y="30"/>
+		<size width="1" height="10"/>
+		</line>
+		<slider action="zoom &amp; zoom_scratch" rightclick="temporary" dblclick="reset" orientation="vertical">
+			<pos x="+10+2" y="+45+35+80"/>
+			<size width="26-4" height="173-70"/>
+			<fader width="26-4" height="8" color="gray"/>
+		</slider>
+	<button action="show_window 'Waveform' off">
 		<tooltip> Close  </tooltip>
 		<!-- Position: 5 px from top, 5 px from right.
 			The +420 is the initial window width you set earlier.
 			If you change that width, adjust the 420-5 part too. -->
-		<pos  x="+500-25" y="+3"/>
+		<pos  x="+600-25" y="+3"/>
 		<size width="20" height="20"/>
 		<!-- Drawn vector button (no extra PNG needed) -->
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
 		<over color="#db333f"/>
+	</button>
+		<button action="var_equal '$showWave1' 0 ? set '$showWave1' 1 : set '$showWave1' 0" query="var_equal '$showWave1' 1" >
+		<tooltip> Toggle static view between decks</tooltip>
+		<pos  x="+600-120" y="+5"/>
+		<size width="80" height="20"/>
+		<off color="#db333f" radius="2" />
+		<on  color="#157794" radius="2" />
+		<!-- Drawn vector button (no extra PNG needed) -->
+		<text text="TOGGLE DECK" color="textoff3" colorover="white" width="75" height="22" align="center"/>
 	</button>
 </window>
 
@@ -264,6 +327,13 @@
 		<define color="browser_iconbuttonselected" value="#4d4e52"/>
 		<define color="browser_iconbuttonactive" value="#2e6b76"/>
 
+		<!-- waveforms -->
+		<define color="waveform_active1" value="#157794"/>
+		<define color="waveform_passive1" value="#0f566c"/>
+		<define color="waveform_active2" value="#b63039"/>
+		<define color="waveform_passive2" value="#8f2b31"/>
+
+		<define color="gridlines" value="#7d7d7d"/>
 		<define color="colorbass" value="#0e4551" deck="left"/>
 		<define color="colormed" value="#0f5869" deck="left"/>
 		<define color="colorhigh" value="#07708a" deck="left"/>
@@ -2145,10 +2215,10 @@
 			<tooltip>Toggle Sideview Window</tooltip>
 			</button>
 
-			<button class="button_main" text="STAGE" x="+0+5" y="+55" textsize = "12"
-			action="show_window 'AutomixWindow'" query="show_window 'AutomixWindow'">
+			<button class="button_main" text="WAVEFORM" x="+0+5" y="+55" textsize = "12"
+			action="show_window 'Waveform'" query="show_window 'Waveform'">
 			<size width="80" height="25"/>
-			<tooltip>Toggle Automix Window</tooltip>
+			<tooltip>Toggle Waveform Viewer</tooltip>
 			</button>
 
 
