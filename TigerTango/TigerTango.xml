@@ -15,8 +15,8 @@
 
   <button x="100" y="105" width="200" height="40" action="show_window 'single_output_warning' off">
 		<text color="#FFFFFF" align="center" text="Close Window" size="32"/>
-    <off      color="#136b87" color2="#555555" radius="6"/>
-    <over     color="#777777" color2="#666666"/>
+    <off      color="#777777" color2="#666666" radius="6"/>
+    <over     color="#136b87" color2="#555555"/>
     <selected color="#444444" color2="#333333"/>
   </button>
 </window>
@@ -121,26 +121,89 @@
 	</button>
 </window>
 
-<window name="AutomixWindow" posx="100" posy="100" width="500" height="700" shown="false" color="#424346">
-	<textzone x="+0" y="+6">
-		<size width="500" height="18"/>
-		<text fontsize="14" align="center" color="#a7a7a7" text="Staging (Automix) Panel" localize="true"/>
+set $showWave1 1
+<window name="Waveform" posx="100" posy="100" width="600" height="280" shown="false" color="#424346">
+	<textzone x="+0" y="+6" group="horizontal" align="center" scroll="no" click="scroll">
+		<size width="500" height="25"/>
+	<text fontsize="20" align="center" color="#a7a7a7" weight="bold" important="true"
+		action="deck 1 play ? deck 1 get_title:
+		deck 2 play ? deck 2 get_title :
+		(var_equal '$showWave1' 1 ? deck 1 get_title: deck 2 get_title)" localize="true"/>
+	<text fontsize="20" color="#a7a7a7" action="get_artist_title_separator" important="true" />
+	<text fontsize="20" align="center" color="#a7a7a7" important="true"
+				action="deck 1 play ? deck 1 get_artist_before_feat:
+						deck 2 play ? deck 2 get_artist_before_feat :
+						(var_equal '$showWave1' 1 ? deck 1 get_artist_before_feat: deck 2 get_artist_before_feat)" localize="true"/>
 	</textzone>
+		<panel name="line_waveform_top" class="horisontal_innershadow" x="0" y="44-1" width="600" height="1"></panel>
+		<panel name="line_waveform_bottom" class="horisontal_innerhighlight" x="0" y="44+137-1" width="600" height="1"></panel>
 
-    <filelist source="automix">
-        <pos  x="5"  y="27"/>
-        <size width="500-10" height="700-30"/>
-	</filelist>
-	<button action="show_window 'AutomixWindow' off">
+		<panel x="+0" y="+40">
+			<square posx="0" posy="2005" width="600" height="240" radius="1" border="2" border_color="#121314" color="#121314"/>
+		</panel>
+		<panel name="Wave1" visibility="deck 1 play ? true: deck 2 play ? false : (var_equal '$showWave1' 1 ? true: false)">
+			<scratchwave deck="left" orientation="horizontal" color="scratch1" color2="scratch2">
+				<pos x="0" y="+45+10"/>
+				<size width="600" height="200"/>
+				<grid size="1" mainsize="4" height="8" pos="-10" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-11" shapemirrored="up"/>
+				<gridlines width="1" color="gridlines" transparency="0.5"/>
+				<overlay>
+					<pos x="300" y="-10"/>
+					<size width="1" height="120" />
+					<background color="needle" shape="square" />
+				</overlay>
+			</scratchwave>
+		</panel>
+		<panel name="Wave2" visibility="deck 2 play ? true: deck 1 play ? false : (var_equal '$showWave1' 0 ? true: false)">
+			<scratchwave deck="right" orientation="horizontal" color="scratch1" color2="scratch2">
+				<pos x="0" y="+45+10"/>
+				<size width="600" height="200"/>
+				<grid size="1" mainsize="4" height="8" pos="-10" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-11" shapemirrored="up"/>
+				<gridlines width="1" color="gridlines" transparency="0.5"/>
+				<overlay>
+					<pos x="300" y="-10"/>
+					<size width="1" height="120" />
+					<background color="needle" shape="square" />
+				</overlay>
+			</scratchwave>
+		</panel>
+		<visual visibility="0.8">
+			<pos x="+10+1" y="+45+35+80"/>
+			<size width="26-2" height="173-70"/>
+			<off shape="square" color="darker" border_size="1" border="graydarker"/>
+		</visual>
+		<line color="#D3D3D3">
+		<pos x="300" y="250"/>
+		<size width="1" height="50"/>
+		</line>
+		<line color="#D3D3D3">
+		<pos x="300" y="30"/>
+		<size width="1" height="10"/>
+		</line>
+		<slider action="zoom &amp; zoom_scratch" rightclick="temporary" dblclick="reset" orientation="vertical">
+			<pos x="+10+2" y="+45+35+80"/>
+			<size width="26-4" height="173-70"/>
+			<fader width="26-4" height="8" color="gray"/>
+		</slider>
+	<button action="show_window 'Waveform' off">
 		<tooltip> Close  </tooltip>
 		<!-- Position: 5 px from top, 5 px from right.
 			The +420 is the initial window width you set earlier.
 			If you change that width, adjust the 420-5 part too. -->
-		<pos  x="+500-25" y="+3"/>
+		<pos  x="+600-25" y="+3"/>
 		<size width="20" height="20"/>
 		<!-- Drawn vector button (no extra PNG needed) -->
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
 		<over color="#db333f"/>
+	</button>
+		<button action="var_equal '$showWave1' 0 ? set '$showWave1' 1 : set '$showWave1' 0" query="var_equal '$showWave1' 1" >
+		<tooltip> Toggle static view between decks</tooltip>
+		<pos  x="+600-120" y="+5"/>
+		<size width="85" height="20"/>
+		<off color="#db333f" radius="2" />
+		<on  color="#157794" radius="2" />
+		<!-- Drawn vector button (no extra PNG needed) -->
+		<text text="TOGGLE DECK" color="textoff3" colorover="white" width="75" height="22" align="center"/>
 	</button>
 </window>
 
@@ -264,6 +327,13 @@
 		<define color="browser_iconbuttonselected" value="#4d4e52"/>
 		<define color="browser_iconbuttonactive" value="#2e6b76"/>
 
+		<!-- waveforms -->
+		<define color="waveform_active1" value="#157794"/>
+		<define color="waveform_passive1" value="#0f566c"/>
+		<define color="waveform_active2" value="#b63039"/>
+		<define color="waveform_passive2" value="#8f2b31"/>
+
+		<define color="gridlines" value="#7d7d7d"/>
 		<define color="colorbass" value="#0e4551" deck="left"/>
 		<define color="colormed" value="#0f5869" deck="left"/>
 		<define color="colorhigh" value="#07708a" deck="left"/>
@@ -1473,7 +1543,7 @@
 
 </group>
 <group name="mixer" x="764" y="-25" width="1920-764-764" height="500">
-			<visual>
+	<visual>
 		<pos x="-123" y="+32"/>
 		<size width="640" height="195"/>
 		<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
@@ -1912,11 +1982,11 @@
 
 
 			<button class="button_main" text="FADE" width="80" height="40" x="+33+30" y="+0" textsize = "20"
-			action="repeat_start levelSweep 10ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
+			action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
 			<tooltip>FADE out song</tooltip>
 			</button>
 
-			<button class="button_main" text="AUTO" width="64" height="40" x="-30" y="+60" textsize = "18"
+			<button class="button_main" text="AUTO" width="64" height="40" x="-30" y="+60-5" textsize = "18"
 					action="deck master automix ? deck master automix off :
 							deck 2 play ? deck 2 select & automix_load & automix on :
 							deck 1 select & automix_load & automix on"
@@ -1926,71 +1996,59 @@
 
 			<!-- <button class="button_main" text="Start Stop" width="64" height="40" x="+440+33+75" y="+401+60" textsize = "20"
 			action="deck 1 stop & deck 2 select & deck 2 play"/> -->
-			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+33+20" y="+60" textsize = "18" tooltip="Fade current song and play song on other deck"
-			action="deck 1 play ? repeat_start levelSweep 10ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
-			stop & repeat_start WaitTimer 100ms 1 & level 100% & deck 2 select & deck 2  play &
+			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+33+20" y="+60-5" textsize = "18" tooltip="Fade current song and play song on other deck"
+			action="deck 1 play ? repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
+			deck 1 stop & repeat_start WaitTimer 100ms 1 & deck 1 level 100% & deck 2 select & deck 2  play &
 			automix on & deck 1 load automix_song 1:
 			nothing">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
-		</group>
-		<group name="window_button_positions" x="+25" y="+462">
+			<button class="button_main"
+					x="-20" y="+107" width="150" height="35"
+					text="ADD TRACKS" textsize="16"
+					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
+			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+			</button>
+			<group visibility="var '$addMsg' 1" x="-20" y="+107">
 			<visual>
-				<pos x="-11" y="+3"/>
+				<pos  x="+0" y="+0"/>
+				<size width="150" height="35"/>
+				<off color="#555555" radius="6"/>
+			</visual>
+			<textzone x="+0" y="+0" width="150" height="35" text="TRACKS ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			</group>
+		</group>
+
+		<group name="toolbox" x="+15" y="+465">
+			<visual>
+				<pos x="+0" y="+0"/>
 				<size width="325" height="82"/>
 				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
 			</visual>
-			<textzone x="-10" y="+10">
+			<textzone x="-10" y="+7">
 				<size width="330" height="10"/>
-				<text fontsize="14" align="center" color="textdarker" text="WINDOW PANELS" localize="true"/>
+				<text fontsize="14" align="center" color="textdarker" text="TOOLBOX" localize="true"/>
 			</textzone>
-
-			<button class="button_main" text="BROWSER" x="+0+5" y="+27" textsize = "12" action="show_window 'BrowserWindow'" query="show_window 'BrowserWindow'">
-				<size width="80" height="25"/>
-			<tooltip>Toggle Browser Window</tooltip>
+			<!-- Effects 6 -->
+			<panel class="masterdrop"  x="+8" y="+24" action1="deck master effect_active 6" action2="deck master effect_select 6" textaction="deck master get_effect_name 6 &amp; param_uppercase"/>
+			<button class="button_main" x="+160-2-5+8" y="+24" width="32" height="25" action="deck master effect_show_gui 6" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+				<tooltip>Open Effects GUI</tooltip>
 			</button>
-
-			<button class="button_main" text="SEARCH" x="+105+5" y="+27" textsize = "12"
-			action="show_window 'SearchWindow'" query="show_window 'SearchWindow'">
-			<size width="80" height="25"/>
-			<tooltip>Toggle Search Window</tooltip>
+			<!-- Effects 7 -->
+			<panel class="masterdrop"  x="+8" y="+28+24" action1="deck master effect_active 7" action2="deck master effect_select 7" textaction="deck master get_effect_name 7 &amp; param_uppercase"/>
+			<button class="button_main" x="+160-2-5+10" y="+28+25" width="32" height="25" action="deck master effect_show_gui 7" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+				<tooltip>Open Effects GUI</tooltip>
 			</button>
-
-			<button class="button_main" text="SIDEVIEW" x="+210+5" y="+27" textsize = "12" width="80" height="30"
-			action="show_window 'SideviewWindow'" query="show_window 'SideviewWindow'">
-			<size width="80" height="25"/>
-			<tooltip>Toggle Sideview Window</tooltip>
+			<button class="button_main" text="RECORD"
+			textsize="14" x="+200" y="+23" height="25" width="100"
+				action="record_config">
+				<tooltip>Configure recording options</tooltip>=""
 			</button>
-
-			<button class="button_main" text="STAGE" x="+0+5" y="+55" textsize = "12"
-			action="show_window 'AutomixWindow'" query="show_window 'AutomixWindow'">
-			<size width="80" height="25"/>
-			<tooltip>Toggle Automix Window</tooltip>
-			</button>
-
-
-
-			<button class="button_main" text="SIDELIST" x="+105+5" y="+55" textsize = "12"
-					action="show_window 'SidelistWindow'" query="show_window 'SidelistWindow'">
-			<size width="80" height="25"/>
-			<tooltip>Toggle Sidelist Window</tooltip>
-			</button>
-
-			<button class="button_main" text="INFO" x="+210+5" y="+55" textsize = "12" width="80" height="25"
-					action="show_window 'BrowserInfoWindow'" query="show_window 'BrowserInfoWindow'">
-			<!-- <size width="80" height="30"/> -->
-			<tooltip>Toggle Browser Info Window</tooltip>
-			</button>
-
-
-
-			<!-- <button class="button_main" text="BROWSER" width="120" height="40" x="+0" y="+0" textsize = "16"
-			action="sideview 'automix' & show_window 'SideviewWindow'" query="show_window 'SideviewWIndow'">
-			<tooltip>Toggle Browser Automix</tooltip>
-			</button> -->
 		</group>
 
-
+				 <!-- &
+						browser_scroll 'bottom' & browsed_song 'title' 'updatename2.mp3'" -->
+<!-- goto_last_folder & browser_move -1 -->
 <!-- query="deck 1 play && deck 1 level & param_equal 0%" -->
 <!-- deck 1 level & param_greater 0% ? nothing : pause & goto_start & level 100% -->
 
@@ -2096,11 +2154,11 @@
 								deck 1 level 0 ? deck 2 play_pause:
 								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
 				<button class="button_main" text="FADE" width="80" height="40" x="+150" y="+0" textsize="20"
-				action="repeat_start levelSweep 10ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
+				action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
 				<tooltip>Fade out song</tooltip>
 			</button>
 
-			<button class="button_main" text="AUTO" width="64" height="40" x="+50" y="+60" textsize = "18"
+			<button class="button_main" text="AUTO" width="64" height="40" x="+50" y="+60-5" textsize = "18"
 				action="deck master automix ? deck master automix off :
 							deck 1 play ? deck 1 select & automix_load & automix on :
 							deck 2 select & automix_load & automix on"
@@ -2109,13 +2167,28 @@
 			</button>
 
 
-			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+140" y="+60" textsize = "18"
-			action="deck 2 play? repeat_start levelSweep 10ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
-			stop & repeat_start WaitTimer 100ms 1 & level 100% & deck 1 select & deck 1  play &
+			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+140" y="+60-5" textsize = "18"
+			action="deck 2 play? repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
+			deck 2 stop & repeat_start WaitTimer 100ms 1 & deck 2 level 100% & deck 1 select &  deck 1 play &
 			automix on & deck 2 load automix_song 1:
 			nothing">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
-		</button>
+			</button>
+
+			<button class="button_main"
+					x="+70" y="+107" width="150" height="35"
+					text="ADD TRACKS" textsize="16"
+					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
+			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+			</button>
+			<group visibility="var '$addMsg' 1" x="+70" y="+107">
+			<visual>
+				<pos  x="+0" y="+0"/>
+				<size width="150" height="35"/>
+				<off color="#555555" radius="6"/>
+			</visual>
+			<textzone x="+0" y="+0" width="150" height="35" text="TRACKS ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			</group>
 
 		<group name="window_button_positions" x="+310" y="+61">
 			<visual>
@@ -2145,10 +2218,10 @@
 			<tooltip>Toggle Sideview Window</tooltip>
 			</button>
 
-			<button class="button_main" text="STAGE" x="+0+5" y="+55" textsize = "12"
-			action="show_window 'AutomixWindow'" query="show_window 'AutomixWindow'">
+			<button class="button_main" text="WAVEFORM" x="+0+5" y="+55" textsize = "12"
+			action="show_window 'Waveform'" query="show_window 'Waveform'">
 			<size width="80" height="25"/>
-			<tooltip>Toggle Automix Window</tooltip>
+			<tooltip>Toggle Waveform Viewer</tooltip>
 			</button>
 
 
@@ -2188,15 +2261,15 @@
 	<filelist source="automix">
 		<size width="645" height="410"/>
 	<pos x="+5	" y="+0"/>
-		<colors>
+    <colors>
         <lists background="#202020"
-				stripes    ="#2A2A2A"
-				selected   ="#555555"
-				focus      ="#7A7A7A"
+               stripes    ="#2A2A2A"
+               selected   ="#555555"
+               focus      ="#7A7A7A"
 				playing   ="#4080C4"
 				automix    ="#4080C4"
 			/>
-			</colors>
+    </colors>
 
 </filelist>
 </group>
