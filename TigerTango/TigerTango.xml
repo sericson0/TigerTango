@@ -2044,6 +2044,11 @@ set $showWave1 1
 				action="record_config">
 				<tooltip>Configure recording options</tooltip>=""
 			</button>
+			<button class="button_main" text="⚠️" query="not crossfader_disable"
+				textsize="14" x="+200" y="+53" height="25" width="100"
+				action="crossfader_disable">
+				<tooltip>Signifies Crossfader is enabled (Can cause issues). Click to turn off.</tooltip>
+			</button>
 		</group>
 
 				 <!-- &
@@ -2363,16 +2368,25 @@ set $showWave1 1
 <oninit action="setting_setdefault coverflow 'smart'"/>
 <oninit action="setting_setdefault browserPadding 50%"/>
 <oninit action="setting_setdefault EqMode 'Diabled'"/>
-<oninit action="setting_setdefault autoBPMMatch 'off'"/>
+<oninit action="setting_setdefault autoBPMMatch 'no'"/>
 <oninit action="setting_setdefault autoKey off"/>
+<oninit action="setting_setdefault smartPlay off"/>
 <oninit action="setting_setdefault autoPitchLock off"/>
-<oninit action="setting_setdefault autoGain off"/>
+<oninit action="setting_setdefault autoGain 'no'"/>
 <oninit action="deck all effect_3slots_layout off"/>
-<oninit action="setting_setdefault touchWheelBackspin off"/>
+<oninit action="setting_setdefault 'touchWheelBackspin' off"/>
 <oninit action="setting_setdefault vinylMode off"/>
-<oninit action="setting_setdefault pflOnSelect off"/>
+<oninit action="setting_setdefault 'pflOnSelect' off"/>
 <oninit action="setting 'smartPlay' off & setting_setdefault smartPlay off"/>
-<oninit action="setting 'crossfaderDisable' yes & setting_setdefault crossfaderDisable yes"/>
-<oninit action="deck 1 fader_start off & deck 2 fader_start off" />
-<oninit action="deck 1 pfl off & deck 2 pfl off"/>
+<oninit action="crossfader_disable 'off'"/>
+<oninit action="deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off'" />
+<oninit action="deck 1 'pfl' 'off' & deck 2 'pfl' 'off'"/>
+<oninit action="setting_setdefault 'automixMode' 'no mix'"/>
+<oninit action="setting_setdefault 'automixDualDeck' 'yes'"/>
+<oninit action="setting_setdefault automixTempoMode 'yes'"/>
+<oninit action="setting_setdefault automixDoubleCLick 'nothing'"/>
+<oninit action="setting_setdefault masterTempo 'no'"/>
+<oninit action="setting_setdefault cpuMeter 'system'"/>
+<oninit action="setting_setdefault equalizerLowFrequency 150"/>
+<oninit action="setting_setdefault equalizerHighFrequency 7500"/>
 </skin>
