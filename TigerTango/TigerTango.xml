@@ -2413,4 +2413,6 @@ set $showWave1 1
 <oninit action="setting_setdefault masterTempo 'no'"/>
 <oninit action="setting_setdefault cpuMeter 'system'"/>
 <oninit action="setting_setdefault equalizerLowFrequency 150"/>
+<oninit action="setting_setdefault equalizerMidFrequency 1000"/>
+<oninit action="setting_setdefault equalizerHighFrequency 8500"/>
 </skin>
