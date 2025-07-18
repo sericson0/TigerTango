@@ -1981,12 +1981,12 @@ set $showWave1 1
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
-			<button class="button_main" text="FADE" width="80" height="40" x="+33+30" y="+0" textsize = "20"
+			<button class="button_main" text="FADE" width="80" height="40" x="+33+40" y="+0" textsize = "16"
 			action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
 			<tooltip>FADE out song</tooltip>
 			</button>
 
-			<button class="button_main" text="AUTO" width="64" height="40" x="-30" y="+60-5" textsize = "18"
+			<button class="button_main" text="AUTO" width="64" height="40" x="-30" y="+60-5" textsize = "16"
 					action="deck master automix ? deck master automix off :
 							deck 2 play ? deck 2 select & automix_load & automix on :
 							deck 1 select & automix_load & automix on"
@@ -1996,7 +1996,7 @@ set $showWave1 1
 
 			<!-- <button class="button_main" text="Start Stop" width="64" height="40" x="+440+33+75" y="+401+60" textsize = "20"
 			action="deck 1 stop & deck 2 select & deck 2 play"/> -->
-			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+33+20" y="+60-5" textsize = "18" tooltip="Fade current song and play song on other deck"
+			<button class="button_main" text="AUTO FADE" width="110" height="40" x="+33+25" y="+60-5" textsize = "16" tooltip="Fade current song and play song on other deck"
 			action="deck 1 play ? repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
 			deck 1 stop & repeat_start WaitTimer 100ms 1 & deck 1 level 100% & deck 2 select & deck 2  play &
 			automix on & deck 1 load automix_song 1:
@@ -2004,8 +2004,8 @@ set $showWave1 1
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
 			<button class="button_main"
-					x="-20" y="+107" width="150" height="35"
-					text="ADD TRACKS" textsize="16"
+					x="-15" y="+107" width="150" height="35"
+					text="ADD TRACKS" textsize="14"
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
 			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
 			</button>
@@ -2019,14 +2019,14 @@ set $showWave1 1
 			</group>
 		</group>
 
-		<group name="toolbox" x="+15" y="+465">
+		<group name="toolbox" x="+15" y="+463">
 			<visual>
 				<pos x="+0" y="+0"/>
-				<size width="325" height="82"/>
+				<size width="325" height="84"/>
 				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
 			</visual>
-			<textzone x="-10" y="+7">
-				<size width="330" height="10"/>
+			<textzone x="-10" y="+5">
+				<size width="330" height="15"/>
 				<text fontsize="14" align="center" color="textdarker" text="TOOLBOX" localize="true"/>
 			</textzone>
 			<!-- Effects 6 -->
@@ -2183,12 +2183,12 @@ set $showWave1 1
 						        deck 2 level 0 ? deck 2 play_pause:
 								deck 1 level 0 ? deck 2 play_pause:
 								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
-				<button class="button_main" text="FADE" width="80" height="40" x="+150" y="+0" textsize="20"
+				<button class="button_main" text="FADE" width="80" height="40" x="+155" y="+0" textsize="16"
 				action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
 				<tooltip>Fade out song</tooltip>
 			</button>
 
-			<button class="button_main" text="AUTO" width="64" height="40" x="+50" y="+60-5" textsize = "18"
+			<button class="button_main" text="AUTO" width="64" height="40" x="+50" y="+60-5" textsize = "16"
 				action="deck master automix ? deck master automix off :
 							deck 1 play ? deck 1 select & automix_load & automix on :
 							deck 2 select & automix_load & automix on"
@@ -2197,7 +2197,7 @@ set $showWave1 1
 			</button>
 
 
-			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+140" y="+60-5" textsize = "18"
+			<button class="button_main" text="AUTO FADE" width="110" height="40" x="+145" y="+60-5" textsize = "16"
 			action="deck 2 play? repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
 			deck 2 stop & repeat_start WaitTimer 100ms 1 & deck 2 level 100% & deck 1 select &  deck 1 play &
 			automix on & deck 2 load automix_song 1:
@@ -2206,8 +2206,8 @@ set $showWave1 1
 			</button>
 
 			<button class="button_main"
-					x="+70" y="+107" width="150" height="35"
-					text="ADD TRACKS" textsize="16"
+					x="+75" y="+107" width="150" height="35"
+					text="ADD TRACKS" textsize="14"
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
 			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
 			</button>
@@ -2222,47 +2222,47 @@ set $showWave1 1
 
 		<group name="window_button_positions" x="+310" y="+61">
 			<visual>
-				<pos x="-11" y="+3"/>
-				<size width="325" height="82"/>
+				<pos x="-11" y="+1"/>
+				<size width="325" height="84"/>
 				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
 			</visual>
-			<textzone x="-10" y="+10">
-				<size width="330" height="10"/>
+			<textzone x="-10" y="+8">
+				<size width="330" height="15"/>
 				<text fontsize="14" align="center" color="textdarker" text="WINDOW PANELS" localize="true"/>
 			</textzone>
 
-			<button class="button_main" text="BROWSER" x="+0+5" y="+27" textsize = "12" action="show_window 'BrowserWindow'" query="show_window 'BrowserWindow'">
-				<size width="80" height="25"/>
+			<button class="button_main" text="BROWSER" x="+0+5" y="+27" textsize = "10" action="show_window 'BrowserWindow'" query="show_window 'BrowserWindow'">
+				<size width="90" height="25"/>
 			<tooltip>Toggle Browser Window</tooltip>
 			</button>
 
-			<button class="button_main" text="SEARCH" x="+105+5" y="+27" textsize = "12"
+			<button class="button_main" text="SEARCH" x="+105+5" y="+27" textsize = "10"
 			action="show_window 'SearchWindow'" query="show_window 'SearchWindow'">
-			<size width="80" height="25"/>
+			<size width="90" height="25"/>
 			<tooltip>Toggle Search Window</tooltip>
 			</button>
 
-			<button class="button_main" text="SIDEVIEW" x="+210+5" y="+27" textsize = "12" width="80" height="30"
+			<button class="button_main" text="SIDEVIEW" x="+210+5" y="+27" textsize = "10" width="80" height="30"
 			action="show_window 'SideviewWindow'" query="show_window 'SideviewWindow'">
-			<size width="80" height="25"/>
+			<size width="90" height="25"/>
 			<tooltip>Toggle Sideview Window</tooltip>
 			</button>
 
-			<button class="button_main" text="WAVEFORM" x="+0+5" y="+55" textsize = "12"
+			<button class="button_main" text="WAVEFORM" x="+0+5" y="+55" textsize = "10"
 			action="show_window 'Waveform'" query="show_window 'Waveform'">
-			<size width="80" height="25"/>
+			<size width="90" height="25"/>
 			<tooltip>Toggle Waveform Viewer</tooltip>
 			</button>
 
 
 
-			<button class="button_main" text="SIDELIST" x="+105+5" y="+55" textsize = "12"
+			<button class="button_main" text="SIDELIST" x="+105+5" y="+55" textsize = "10"
 					action="show_window 'SidelistWindow'" query="show_window 'SidelistWindow'">
-			<size width="80" height="25"/>
+			<size width="90" height="25"/>
 			<tooltip>Toggle Sidelist Window</tooltip>
 			</button>
 
-			<button class="button_main" text="INFO" x="+210+5" y="+55" textsize = "12" width="80" height="25"
+			<button class="button_main" text="INFO" x="+210+5" y="+55" textsize = "10" width="90" height="25"
 					action="show_window 'BrowserInfoWindow'" query="show_window 'BrowserInfoWindow'">
 			<!-- <size width="80" height="30"/> -->
 			<tooltip>Toggle Browser Info Window</tooltip>
