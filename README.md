@@ -105,8 +105,11 @@ Here I show how to install *TDR NOVA*, a powerful and free parametric EQ by Toky
 3) Accept the license agreement and click through next on each popup.
 4) Close and restart Virtual DJ
 
-* Tokyo Dawn has some additional nice free and paid plugins. * https://analogobsession.com/ also has a number of free analog emulations that are worth checking out
+* Tokyo Dawn has some additional nice free and paid plugins.
+* https://analogobsession.com/ hvas a number of free analog emulations that are worth checking out
 * Voxengo has a free 16 band graphic equalizer https://www.voxengo.com/product/marvelgeq/
+* Toneboosters has a free audio spectrogram for those interested in visualizing the music https://www.toneboosters.com/tb_spectrogram_v1.html
+
 * You can also connect any VST3 plugin into Virtual DJ.
 
 ## Using TigerTango
@@ -132,16 +135,17 @@ For Virtual DJ to work correctly, you need to configure your audio to play how y
 
 ![alt text](<docs/TangoTiger Breakdown.png>)
 
-(Note that some of the layout look has changed in the development version, but the functionality is the same.)
+(Note that this documentation gives the github layout. The version on the Virtual DJ website has some differences.)
 
-TangoTiger is separated into 6 main components.
+TangoTiger is separated into 7 main components.
 1. **Browser** Set up playlists and can search for songs in your library.
 2. **Staging Area** Prepare your tandas.
    Note: The staging area is an always viewable automix panel, which allows you to use the side view in the File explorer panel to pull up playlists. This is one of the additions of TigerTango to help with tango DJing.
-3. **Decks 1 and 2** Where songs will play from. TigerTango is set up to switch between decks when in auto mode.
-4. **Master** Includes master effects (plugins) and your master fader. Also includes information on headphone volume and mic volume (when one is plugged in).
+3. **Decks 1 and 2** Where songs will play from. TigerTango is set up to play in dualdeck mode.
+4. **Master** Includes master effects (plugins) and your master fader. Also includes information on headphone volume and mic volume when these are plugged in.
 5. **Info** Access settings and information such as time, master VU metering, and battery life.
-6. **Panels** Opens movable windows of parts of the browser window.
+6. **Toolbox** Includes additional plugin spaces and warninig indicators that denote settings that could cause issues with TigerTango.
+7. **Panels** Opens movable resiable windows.
 
 #### Browser
 You can find detailed documentation on the browser section in the virtual DJ user manual [here](https://virtualdj.com/manuals/virtualdj/interface/browser.html) (https://virtualdj.com/manuals/virtualdj/interface/browser.html)
@@ -153,12 +157,18 @@ Main notes are:
 * You can add folder shortcuts and build playlists in the sideview planel (middle right)
 * You can access and update song information, including editing and adding tags and metadata, in the File Info panel on the right.
 
+> [!WARNING]
+> When making playlist files in virtual DJ, you will want to right click and select 'Keep Order'. This will ensure that the playlist order will not be accitentally changed.
+
 ### Staging Area
 The staging area is an always-available automix panel. Here you can build your tandas and cortinas.
 
 You can read more about how automix works [here](https://virtualdj.com/manuals/virtualdj/interface/browser/sideview/automix.html)
 
-You can also read about importing playlists into Virtual DJ, such as from ITunes or traktor [here](https://virtualdj.com/manuals/virtualdj/interface/database/playlists/index.html)
+You can also read about importing playlists into Virtual DJ, such as from ITunes or traktor [here](https://virtualdj.com/manuals/virtualdj/interface/database/playlists/index.html).
+
+> [!NOTE]
+> When Automix is on, a blue line will show on the currently playing song (sometimes takes 1 song for it to show up). This gives an indicator of where you are in your playlist.
 
 ### Decks
 
@@ -166,20 +176,45 @@ You can also read about importing playlists into Virtual DJ, such as from ITunes
 
 TigerTango uses two decks so you can prepare the next **track** while one is playing. Each deck has the same sections, with the following properties:
 
-1. **Track Info** Gives information such as track name, key, and time remaining in song. You can skip ahead or back by moving the line on the waveform.
-2. **Effects** You can add effects such as EQing to a deck here.
-   1. The dropdown allows you to select the effect.
+1. **Track Info** Gives information including:
+   * track name and artist name
+   * Beats per minute (not always accurate on tango songs)
+   * Key
+   * Time elapsed / timeremaining in song.
+   * Song waveform.
+
+   You can skip ahead or back by moving the line on the waveform.
+2. **Effects** You can add effects plugins such as EQing to a deck here. Plugin sections work as following:
+   1. Click the chevron to open a dropdown which allows you to select the effect.
    2. Clicking on the plus button opens up the effect graphical interface.
-   3. Click the effect button not on the dropdown chevron to toggle the effect. The effect button will light up when active.
+   3. Click the effect button not on the dropdown chevron (where the effects name is located) to toggle the effect. The effect button will light up when active.
 3. **Dropzone** Add a track to the deck by dragging and dropping it here. The turntable will spin when a deck is playing. TangoTiger should automatically change settings to turn off scratching, but this is something you may want to test before playing to the public :-)
-4. **EQ and Pitch** You can adjust the Low, Mid, and High of a track along with adjusting the playback pitch by moving the sliders here.
-5. Adjust the deck volume here. If a deck is playing but no sound is coming out, it may be because the deck volumne is down.
-6. The prelisten button allows you to listen to a song ahead of time in headphones. It implements the following logic:
-   1. when turned on it first checks to make sure the deck is not playing to the main speakers. Then it turns the volume of the deck off, sets to play through headphones, and starts the track.
-   2. When durned on it resets volume to 100% and resets track to starting.
+4. **EQ and Pitch** You can adjust the Low, Mid, and High of a track along with adjusting the playback pitch by moving the sliders here. THe sliders provides a bell curve eq. TigerTango defaults to the following frequency bands:
+   *  Low at 150 Hz - for changing bass frequencies
+   *  Mid at 1 kHz - for changing song "presence"
+   *  High at 8.5 kHz - for reducing song hiss.
+
+Move the slider up to boost a frequency, and move the slider down to cut the frequency
+> [!NOTE]
+> The three band equalizers are for quick adjustments. Installing a parametric eq plugin will give greater control over removing hiss and adjusting sound.
+
+Some tango music has been transferred at an incorrect pitch. If you happen to notice that a track is incorrect durnig prelistening, you can adjust the pitch using the pitch slider. Sliding up with REDUCE the pitch and sliding down witll INCREASE the pitch. The pitch slider is given as a failsafe for bad transfers. The much better approach is to DJ using high quality transfers which have the correct pitch to start with
+
+5. **Volume Slider**. Slider can be used to adjust or balance deck volume.
+
+> [!NOTE]
+> TigerTango adjusts the deck volume when fading or prelistening. After prefading or pre-listing the deck volume is reset to 100%. It is recommended to primarily adjust sound volume through the master fader and only use deck faders to ocassionally balance volume between songs.
 
 > [!IMPORTANT]
-> If you want the deck volumne other than full, then remenmber to change it after toggling off prelisten.
+> If a deck is playing but no sound is coming out, it may be because the deck volumne is down.
+
+
+6. **Pre-listen**. The pre-listen button allows you to listen to a song ahead of time in headphones. It implements the following logic:
+   * When turned on it first checks to make sure the deck is not playing to the main speakers. Then it turns the volume of the deck off, sets to play through headphones, and starts the track.
+   * When durned on it resets volume to 100% and resets track to starting.
+
+> [!IMPORTANT]
+> If you want the deck volume other than full, or start the song at a point other than the beginning, then remenmber to change to the desired setting after toggling off pre-listen.
 7. **Controls** TigerTango has implemented four playback controls:
    1. **Play/Pause** Starts or stops the current track.
    2. **Fade** Fades out current track. At end of fade it resets the deck volume to 100%.
@@ -191,33 +226,43 @@ TigerTango uses two decks so you can prepare the next **track** while one is pla
 
 > [!NOTE] The Development verion has also implemented an 'ADD TRACKS' button. If you select a set of tracks and click this button, it will add them to the bottom of the automix list.
 
+TigerTango has also implemented an **ADD TRACKS** button. If you select songs and then click the ADD TRACKS button, it will add these songs to the bottom of the automix playlist. A "TRACKS ADDED" text will briefly be displayed when the tracks are added.
+
 ### Master
 
 The Master section Has four components:
-1. **Master Effects** This is where you can add plugins such as compressors, limiters, saturation, or EQ. TigerTango has four master effects slots.
-   1. Click the dropdown to select the effect
-   2. Press the plus to toggle the effect's graphic interface
-   3. Click the effects button to toggle on or off the effect (when on the effect button will change color)
+1. **Master Effects** There are 5 effects slots where you can add plugins such as compressors, limiters, saturation, or EQ. (The toolbox has 2 additional plugin spots). Virtual DJ can integrate with any VST-based plugin. You can add VST plugins by placing them in the Virtual DJ vstFxFolder path (search vstFxFolder in the Virtual DJ options).
+
+To use a plugin, follow these steps:
+   * Click the dropdown chevron to select the effect
+   * Press the plus to toggle the effect's graphic interface
+   * Click the effects button to toggle on or off the effect (when on the effect button will change color)
 2. **Master Video** Here you can add video effects such as projecting the song album art or title to an external monitor
 3. **Master Volume** This fader changes the sound going to the speakers.
 4. **Headphone Volume** When audio is set up for both speakers and headphones, then you can change the headphone volume here. The Mix slider determines what percent of the main mix comes through headphones. If you want to just head the headphone song, then turn mix volume to zero.
-5. **Mic Volumne** If you have a mic connected to your interface, then you can selet the mic volume here.
+5. **Mic Volume** If you have a mic connected to your interface, then you can selet the mic volume here.
 
 ### Info Section
 The Info section presents the following:
 
-1. A VU meter for the master fader along with a clipping indicator. **!!!IF THE CLIPPING INDICATOR IS LIGHTING UP, TURN DOWN THE MASTER FADER!!!**
+1. A VU meter for the master fader along with a clipping indicator.
+
+> [!IMPORTANT]
+> **IF THE CLIPPING INDICATOR IS LIGHTING UP, TURN DOWN THE MASTER FADER!!!**
 2. A CPU usage indicator. **If the CPU is high, then make sure to turn off other programs or reduce the number of plugins used**
 3. Battery level if the computer is not plugged into a power source. **If you see a battery symbol, this means your computer is not plugged in**
 4. Current time
-5. Settings menu (gear icon)
+5. Settings menu (gear icon). Click to open the Virtual DJ settings option.
+
+### Toolbox
+The Toolbox section has two additional plugin areas. In addition, the toolbox includes several warning icons. Some Virtual DJ settings can cause TigerTango to not work as expected. If a warning icon lights up this means that a setting is not as recommended. Click on a lighted warning light to change the setting to what is recommended for TigerTango.
 
 ### Panels
-The following panels are options
+Click on a panel to open an adjustable panel window. The following panels are options
 * **BROWSER** Opens a movable and expandable browser panel. Most useful for prework if you want to use multiple monitors.
 * **SEARCH** Opens an expandable search panel. Best suited for prework
 * **SIDEVIEW** Opens an expandable sideview panel
-* **STAGE** Opens an expandable automix panel for staging songs. Can be helpful if you have a large playlist. Currently you cannot add songs from the movable staging panel but you move from the staging panel to a track.
+* **WAVEFORM** Opens an expandable window to show the song waveform.
 * **SIDELIST** Opens an expandable sidelist panel. Can be useful if you have preset possible tandas that you would like to pull from
 * **INFO** Opens and expandable info panel. Useful for metadata work.
 > [!IMPORANT]
