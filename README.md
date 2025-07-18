@@ -31,10 +31,11 @@ While Virtual DJ is a powerful tool, it is primarily designed for club DJs to mi
 This is where TigerTango comes in. It provides an interface that has removed what is not needed and added features that are useful for DJing tango.
 
 You can load a stable version directly from Virtual DJ, or can install the development version from Github https://github.com/sericson0/TigerTango
-* Loading from Virtual DJ is simpler but may not have the latest updates (It takes a while to get updates through their review process)
-* Loading the development version from GitHub allows for the latest features and updates.
 
-You can find a list of the changes in the [ChangeLog](ChangeLog.md)
+> [!IMPORTANT]
+> Because of the additional safety features added to the development version, we currently recommend you follow the steps for downloading from GitHub.
+
+You can find a list of the changes between the version on VirtualDJ and the version on GitHub in the [ChangeLog](ChangeLog.md)
 
 ### Loading TigerTango from VirtualDJ
 1. Open VirtualDJ and select settings (the gear icon in the upper right)
@@ -51,15 +52,18 @@ You should be all set! (See screen shots for step by step)
 ![alt text](<docs/Clicking Install.png>)
 ![alt text](docs/LoadingTheSkin.png)
 
-### Loading the Development Version of TigerTango
+### Loading from GitHub
 
 To load the development version:
 1. Go to https://github.com/sericson0/TigerTango
 2. Click Code (see image below)
 3. Click Download ZIP (see image below)
 4. Open the downloaded zipfile (TigerTango-main.zip)
-5. Open the zipfile and the TigerTango-main folder (There should be a TigerTango folder inside)
-6. Move this folder into where VirtualDJ saves skins. On Windows this is likely C:\Users\<USERNAME>\AppData\Local\VirtualDJ\Skins.
+5. Open the zipfile and the TigerTango-main folder (There should be a TigerTango folder inside). I.e., you need the folder labeled TigerTango that has a .xml file and several images inside.
+6. Move this folder into where VirtualDJ saves skins (See note below). On Windows this is likely C:\Users\<USERNAME>\AppData\Local\VirtualDJ\Skins.
+
+> [!NOTE]
+> You can get the path to the virtual DJ skins by going to settings in Virtual DJ, moving to the interface tab, and clicing 'Edit This Skin' in the bottom right. **Go one up from this folder!!! This is where you want to place the TigerTango folder you downloaded.**
 
 ![alt text](<docs/Installing Development Branch-1.png>)
 
@@ -82,9 +86,11 @@ Additional recommended options for the automix:
 
 If you are using the version on VirtualDJ (non development version) then you will want to check to make sure that **fader_start** is turned off as well. This is the default, but can get switched if you try out other skins.
 
-If you are DJing for a show and want to turn background notifications off then consider setting
-* Make button to toggle exclusiveAudioAcess
-(Considering making a button for this)
+If you are DJing for a show and want to turn background notifications off then consider setting **exclusiveAudioAcess**
+
+> [NOTE!]
+> the GitHub version has implemented severa safety checks in the area labeled TOOLBOX. If you see one of the warning lights come on, it means a setting is incorrect. Clicking a warning light will update this setting to the one recommended by TigerTango
+
 
 ## Installing Plugins
 
@@ -125,6 +131,8 @@ For Virtual DJ to work correctly, you need to configure your audio to play how y
 ### Layout
 
 ![alt text](<docs/TangoTiger Breakdown.png>)
+
+(Note that some of the layout look has changed in the development version, but the functionality is the same.)
 
 TangoTiger is separated into 6 main components.
 1. **Browser** Set up playlists and can search for songs in your library.
@@ -181,6 +189,8 @@ TigerTango uses two decks so you can prepare the next **track** while one is pla
    3. **AUTO** Toggles on or off automix. The automix will start with whichever deck you select auto on.
    4. **AutoFade** Fades out deck, starts song on other deck, and loads next song in playlist onto current deck. If you have a cortina that you want to fade out and then start the next tanda, you can do this with AutoFade.
 
+> [!NOTE] The Development verion has also implemented an 'ADD TRACKS' button. If you select a set of tracks and click this button, it will add them to the bottom of the automix list.
+
 ### Master
 
 The Master section Has four components:
@@ -210,6 +220,10 @@ The following panels are options
 * **STAGE** Opens an expandable automix panel for staging songs. Can be helpful if you have a large playlist. Currently you cannot add songs from the movable staging panel but you move from the staging panel to a track.
 * **SIDELIST** Opens an expandable sidelist panel. Can be useful if you have preset possible tandas that you would like to pull from
 * **INFO** Opens and expandable info panel. Useful for metadata work.
+> [!IMPORANT]
+> The GitHub version has replaced the panels on the left with a toolbox area. This has two additiona plugin spaces (come after the top plugins in order) and includes the setting warning indicators. In the top left is also a small record button which can be used to record short blank tracks to add silence or use as dummy spacers to separate tandas.
+
+Note: In the GitHub version, the STAGE panel has been replaced with a waveform viewer window.
 
 ## Example Workflow
 This section walks through how you could use TigerTango for DJing.
