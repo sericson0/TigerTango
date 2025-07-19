@@ -122,16 +122,18 @@
 </window>
 
 set $showWave1 1
+set $cycleWave1 0
 <window name="Waveform" posx="100" posy="100" width="600" height="280" shown="false" color="#424346">
 	<textzone x="+0" y="+6" group="horizontal" align="center" scroll="no" click="scroll">
 		<size width="500" height="25"/>
 	<text fontsize="20" align="center" color="#a7a7a7" weight="bold" important="true"
-		action="deck 1 play ? deck 1 get_title:
-		deck 2 play ? deck 2 get_title :
-		(var_equal '$showWave1' 1 ? deck 1 get_title: deck 2 get_title)" localize="true"/>
+		action="var_equal '$cycleWave' 0 ? (var_equal '$showWave1' 1 ? deck 1 get_title: deck 2 get_title) :
+			deck 1 play ? deck 1 get_title: deck 2 play ? deck 2 get_title :
+				(var_equal '$showWave1' 1 ? deck 1 get_title: deck 2 get_title)" localize="true"/>
 	<text fontsize="20" color="#a7a7a7" action="get_artist_title_separator" important="true" />
 	<text fontsize="20" align="center" color="#a7a7a7" important="true"
-				action="deck 1 play ? deck 1 get_artist_before_feat:
+				action="var_equal '$cycleWave' 0 ? (var_equal '$showWave1' 1 ? deck 1 get_artist_before_feat: deck 2 get_artist_before_feat):
+					deck 1 play ? deck 1 get_artist_before_feat:
 						deck 2 play ? deck 2 get_artist_before_feat :
 						(var_equal '$showWave1' 1 ? deck 1 get_artist_before_feat: deck 2 get_artist_before_feat)" localize="true"/>
 	</textzone>
@@ -141,7 +143,8 @@ set $showWave1 1
 		<panel x="+0" y="+40">
 			<square posx="0" posy="2005" width="600" height="240" radius="1" border="2" border_color="#121314" color="#121314"/>
 		</panel>
-		<panel name="Wave1" visibility="deck 1 play ? true: deck 2 play ? false : (var_equal '$showWave1' 1 ? true: false)">
+		<panel name="Wave1" visibility="var_equal '$cycleWave' 0 ? (var_equal '$showWave1' 1 ? true : false) :
+				deck 1 play ? true: deck 2 play ? false : (var_equal '$showWave1' 1 ? true: false)">
 			<scratchwave deck="left" orientation="horizontal" color="scratch1" color2="scratch2">
 				<pos x="0" y="+45+10"/>
 				<size width="600" height="200"/>
@@ -154,7 +157,8 @@ set $showWave1 1
 				</overlay>
 			</scratchwave>
 		</panel>
-		<panel name="Wave2" visibility="deck 2 play ? true: deck 1 play ? false : (var_equal '$showWave1' 0 ? true: false)">
+		<panel name="Wave2" visibility="var_equal '$cycleWave' 0 ? (var_equal '$showWave1' 0 ? true : false) :
+				deck 2 play ? true: deck 1 play ? false : (var_equal '$showWave1' 0 ? true: false)">
 			<scratchwave deck="right" orientation="horizontal" color="scratch1" color2="scratch2">
 				<pos x="0" y="+45+10"/>
 				<size width="600" height="200"/>
@@ -196,14 +200,22 @@ set $showWave1 1
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
 		<over color="#db333f"/>
 	</button>
-		<button action="var_equal '$showWave1' 0 ? set '$showWave1' 1 : set '$showWave1' 0" query="var_equal '$showWave1' 1" >
-		<tooltip> Toggle static view between decks</tooltip>
-		<pos  x="+600-120" y="+5"/>
-		<size width="85" height="20"/>
+	<button action="var_equal '$showWave1' 0 ? set '$showWave1' 1 : set '$showWave1' 0" query="var_equal '$showWave1' 1" >
+		<tooltip> Toggle deck waveform to display</tooltip>
+		<pos  x="+600-130" y="+10"/>
+		<size width="60" height="20"/>
 		<off color="#db333f" radius="2" />
 		<on  color="#157794" radius="2" />
 		<!-- Drawn vector button (no extra PNG needed) -->
-		<text text="TOGGLE DECK" color="textoff3" colorover="white" width="75" height="22" align="center"/>
+		<text text="DECK" color="textoff3" colorover="white" width="75" height="22" align="center"/>
+	</button>
+		<button action="var_equal '$cycleWave' 0 ? set '$cycleWave' 1 : set '$cycleWave' 0" query="var_equal '$cycleWave' 1" >
+		<tooltip> Auto display waveform of currently playing deck</tooltip>
+		<pos  x="+600-120+60" y="+10"/>
+		<size width="30" height="20"/>
+		<off color="#2b2c2f" radius="3" />
+		<on color="#3A7576" color2="#324949" radius="3" />
+		<text text="🔁" color="#A6A6A6" colorover="white" width="75" height="25" align="center"/>
 	</button>
 </window>
 
