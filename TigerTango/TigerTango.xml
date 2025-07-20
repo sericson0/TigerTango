@@ -441,6 +441,15 @@ set $cycleWave1 0
 		<define color="buttonover1" value="#502b2f" deck="right"/>
 		<define color="buttonover2" value="#522e32" deck="right"/>
 
+		<!--hotcues-->
+		<define color="cue1on" value="#FF0000"/>
+		<define color="cue2on" value="#FF7F00"/>
+		<define color="cue3on" value="#00FFF"/>
+		<define color="cue4on" value="#FFF000"/>
+		<define color="cue5on" value="#00FF00"/>
+		<define color="cue6on" value="#FF00FF"/>
+		<define color="cueoff" value="#000000"/>
+
 		<!-- master and video -->
 		<define color="colorvideo1" value="#3a7677" />
 		<define color="colorvideo2" value="#324747"  />
