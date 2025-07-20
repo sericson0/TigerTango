@@ -6,6 +6,11 @@
 
 set '$fadeIndicator2' 0
 set '$fadeIndicator1' 0
+
+<!-- cue toggle var -->
+<define>
+	<skin_var name="$cue_toggle" value="false" />
+</define>
 <!-- #1e1e20 -->
 <!-- Note that you cannot play from two decks at the same timeCheck if playing from othe deck  -->
 <window name="single_output_warning" width="400" height="160" posx="960" posy="center" shown="false" color="#424346">
