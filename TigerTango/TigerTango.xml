@@ -2488,38 +2488,38 @@ set $cycleWave1 0
 				</textzone>
 				<!-- Hotcue 1 -->
 				<button class="button_hotcue1" text="CUE 1" x="+0+5" y="+27" textsize = "10"
-						leftclick="deck 1 hot_cue 1" rightclick="deck 1 delete_cue 1" query="deck 1 hot_cue 1">
+						leftclick="deck 1 hot_cue 1" rightclick="deck 2 delete_cue 1" query="deck 2 hot_cue 1">
 					<size width="90" height="25"/>
 					<tooltip>Hotcue 1</tooltip>
 				</button>
 				<!-- Hotcue 2 -->
 				<button class="button_hotcue2" text="CUE 2" x="+105+5" y="+27" textsize = "10"
-						leftclick="deck 1 hot_cue 2" rightclick="deck 1 delete_cue 2" query="deck 1 hot_cue 2" >
+						leftclick="deck 2 hot_cue 2" rightclick="deck 2 delete_cue 2" query="deck 2 hot_cue 2" >
 					<size width="90" height="25"/>
 					<off color="cue1" />
 					<tooltip>Hotcue 2</tooltip>
 				</button>
 				<!-- Hotcue 3 -->
 				<button class="button_hotcue3" text="CUE 3" x="+210+5" y="+27" textsize = "10"
-						leftclick="deck 1 hot_cue 3" rightclick="deck 1 delete_cue 3" query="deck 1 hot_cue 3">
+						leftclick="deck 2 hot_cue 3" rightclick="deck 2 delete_cue 3" query="deck 2 hot_cue 3">
 					<size width="90" height="25"/>
 					<tooltip>Hotcue 3</tooltip>
 				</button>
 				<!-- Hotcue 4 -->
 				<button class="button_hotcue4" text="CUE 4" x="+0+5" y="+55" textsize = "10"
-						leftclick="deck 1 hot_cue 4" rightclick="deck 1 delete_cue 4" query="deck 1 hot_cue 4">
+						leftclick="deck 2 hot_cue 4" rightclick="deck 2 delete_cue 4" query="deck 2 hot_cue 4">
 					<size width="90" height="25"/>
 					<tooltip>Hotcue 4</tooltip>
 				</button>
 				<!-- Hotcue 5 -->
 				<button class="button_hotcue5" text="CUE 5" x="+105+5" y="+55" textsize = "10"
-						leftclick="deck 1 hot_cue 5" rightclick="deck 1 delete_cue 5" query="deck 1 hot_cue 5">
+						leftclick="deck 2 hot_cue 5" rightclick="deck 2 delete_cue 5" query="deck 2 hot_cue 5">
 					<size width="90" height="25"/>
 					<tooltip>Hotcue 5</tooltip>
 				</button>
 				<!-- Hotcue 6 -->
 				<button class="button_hotcue6" text="CUE 6" x="+210+5" y="+55" textsize = "10"
-						leftclick="deck 1 hot_cue 6" rightclick="deck 1 delete_cue 6" query="deck 1 hot_cue 6">
+						leftclick="deck 2 hot_cue 6" rightclick="deck 2 delete_cue 6" query="deck 2 hot_cue 6">
 					<size width="90" height="25"/>
 					<tooltip>Hotcue 6</tooltip>
 				</button>
