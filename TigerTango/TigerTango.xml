@@ -2488,7 +2488,7 @@ set $cycleWave1 0
 				</textzone>
 				<!-- Hotcue 1 -->
 				<button class="button_hotcue1" text="CUE 1" x="+0+5" y="+27" textsize = "10"
-						leftclick="deck 1 hot_cue 1" rightclick="deck 2 delete_cue 1" query="deck 2 hot_cue 1">
+						leftclick="deck 2 hot_cue 1" rightclick="deck 2 delete_cue 1" query="deck 2 hot_cue 1">
 					<size width="90" height="25"/>
 					<tooltip>Hotcue 1</tooltip>
 				</button>
