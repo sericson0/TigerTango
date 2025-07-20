@@ -4,6 +4,8 @@
 <background x="1817" y="0" width="100" height="100" repeat="true"/>
 <customicons file="icons_daylight.png" nb="64" nbx="16" condition="var_equal '@$colorscheme' 2"/>
 
+set '$fadeIndicator2' 0
+set '$fadeIndicator1' 0
 <!-- #1e1e20 -->
 <!-- Note that you cannot play from two decks at the same timeCheck if playing from othe deck  -->
 <window name="single_output_warning" width="400" height="160" posx="960" posy="center" shown="false" color="#424346">
@@ -14,6 +16,21 @@
             color="#EA7233" align="center"/>
 
   <button x="100" y="105" width="200" height="40" action="show_window 'single_output_warning' off">
+		<text color="#FFFFFF" align="center" text="Close Window" size="32"/>
+    <off      color="#777777" color2="#666666" radius="6"/>
+    <over     color="#136b87" color2="#555555"/>
+    <selected color="#444444" color2="#333333"/>
+  </button>
+</window>
+
+<window name="single_deck_automix_warning" width="400" height="160" posx="960" posy="center" shown="false" color="#424346">
+
+  <textzone x="15" y="-10" width="360" height="120"
+            text="The AUTO FADE button unfortunately only works in dual deck mode." font="Arial" size="32"
+			multiline="yes"
+            color="#EA7233" align="center"/>
+
+  <button x="100" y="105" width="200" height="40" action="show_window 'single_deck_automix_warning' off">
 		<text color="#FFFFFF" align="center" text="Close Window" size="32"/>
     <off      color="#777777" color2="#666666" radius="6"/>
     <over     color="#136b87" color2="#555555"/>
@@ -2006,15 +2023,31 @@ set $cycleWave1 0
 				<tooltip>AUTO PLAYBACK\nToggle auto playback (Automix).\n Next song will be loaded on other deck and automatically cued.</tooltip>
 			</button>
 
-			<!-- <button class="button_main" text="Start Stop" width="64" height="40" x="+440+33+75" y="+401+60" textsize = "20"
-			action="deck 1 stop & deck 2 select & deck 2 play"/> -->
+			<!-- Button implements the following logic (in a super annoying way ;-)
+			 	0. Give single deck automix warning window if not in dualdeck mode (button only works in dual deck)
+			 	1. Checks if deck 1 is playing (if not then don't auto fade)
+				2. Gets current automix mode
+				3. Sets automis mode to 'no mix' (required for button to work)
+				4. Fades song, changes to deck 2, and starts playing on that deck
+				5. Loads next song in automix list and waits .3 seconds (wait seems to help automix logic work correctly)
+				6. Change automix mode back to original settings (only implemented no mix, skip silence, and full songs)
+			-->
 			<button class="button_main" text="AUTO FADE" width="110" height="40" x="+33+25" y="+60-5" textsize = "16" tooltip="Fade current song and play song on other deck"
-			action="deck 1 play ? repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
-			deck 1 stop & repeat_start WaitTimer 100ms 1 & deck 1 level 100% & deck 2 select & deck 2  play &
-			automix on & deck 1 load automix_song 1:
-			nothing">
+			action="not automix_dualdeck ? show_window 'single_deck_automix_warning':
+				deck 1 play ?
+				set '$fadeIndicator1' 1 &
+			(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
+			(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+				setting 'automixMode' 'no mix' &
+			repeat_start 'levelSweep' 20ms 101 & level -1% & level 0 ? repeat_stop 'levelSweep' &
+			deck 1 stop & repeat_start 'WaitTimer' 100ms 1 & deck 1 level 100% & deck 2 select & deck 2 play &
+			automix on & deck 1 load automix_song 1 & repeat_start 'WaitToSwitch' 300ms 1 &
+			set '$fadeIndicator1' 0 &
+			var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing: nothing"
+			query="var_equal '$fadeIndicator1' 1">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
+
 			<button class="button_main"
 					x="-15" y="+107" width="150" height="35"
 					text="ADD TRACKS" textsize="14"
@@ -2046,45 +2079,61 @@ set $cycleWave1 0
 			<button class="button_main" x="+160-2-5+8" y="+24" width="32" height="25" action="deck master effect_show_gui 6" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
-			<!-- Effects 7 -->
+			<!-- Effects 7
 			<panel class="masterfxdrop"  x="+8" y="+28+24" action1="deck master effect_active 7" action2="deck master effect_select 7" textaction="deck master get_effect_name 7 &amp; param_uppercase"/>
 			<button class="button_main" x="+160-2-5+8" y="+28+25" width="32" height="25" action="deck master effect_show_gui 7" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
+			</button> -->
+			<button class="button_main" text="REC 🔴"
+			textsize="14" x="+8" y="+28+24" height="25" width="80"
+				action="record_config">
+				<tooltip>Configure recording options</tooltip>=""
 			</button>
-			<button class="button_main" text="⚠️" query="not setting 'automixDoubleCLick' 'nothing'"
+
+			$set 'autoDblClickInd' 1
+			<button class="button_main" text="⚠️" query="(var_equal '$autoDblClickInd' 0) ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
 			textsize="14" x="+200" y="+23" height="25" width="35"
-				action="setting 'automixDoubleCLick' 'nothing'">
-				<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings.</tooltip>
+				action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$autoDblClickInd'">
+				<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
 			</button>
-			<button class="button_main" text="⚠️" query="not automix_dualdeck"
+			$set '$dualDeckInd' 1
+			<button class="button_main" text="⚠️" query="(var_equal '$dualDeckInd' 0) ? false : 'not automix_dualdeck"
 			textsize="14" x="+200+40" y="+23" height="25" width="35"
-				action="automix_dualdeck on">
-				<tooltip>Automix is not set to recommended dual deck. Click to change settings.</tooltip>
+				action="automix_dualdeck on" rightclick="toggle '$dualDeckInd'">
+				<tooltip>Single deck automix is not compatible with the autofade button. Click to change to dual deck. Right click to toggle warning light.</tooltip>
 			</button>
-			<button class="button_main" text="⚠️" query="not setting 'automixMode' 'no mix'"
+			<button class="button_main" text="⚠️" query="setting 'automixMode' 'no mix' ? false :
+														  setting 'automixMode' 'skip silence' ? false:
+														  setting 'automixMode' 'full songs' ? false: true"
 			textsize="14" x="+200+80" y="+23" height="25" width="35"
-				action="setting 'automixMode' 'no mix' ">
-				<tooltip>Automix is not set to recommended 'no mix' option. Click to change settings.</tooltip>
+				action="setting 'automixMode' 'no mix'" rightclick="setting 'automixMode' 'skip silence'">
+				<tooltip>Setting Automix to 'Smart' or 'Remove Intro/Outro' will clip tracks. Click to change settings to 'Back-to-Back' (use song ending silence). Right click to change settings to 'Skip Silence'
+				</tooltip>
+			</button>
+			<button class="button_main" text="⚠️" query="not setting 'autoMixTempoMode' 'normal tempo'"
+			textsize="14" x="+120" y="+53" height="25" width="35"
+				action="setting 'autoMixTempoMode' 'normal tempo'">
+				<tooltip>Automix 'autoMixTempoMode' setting is not set to 'normal tempo'. This could affect song pitch. Click to change setting</tooltip>
+			</button>
+			<button class="button_main" text="⚠️" query="setting 'fadeLength'"
+			textsize="14" x="+160" y="+53" height="25" width="35"
+				action="setting 'fadeLength' 0 & setting 'fadeLength' -3" rightclick="setting 'fadeLength' 0">
+				<tooltip>Automix 'fadeLength' setting is above 0, meaning the end of tracks could be cut. Click to set to -3 (a 3 second gap between songs). Right click to set to 0.</tooltip>
 			</button>
 			<button class="button_main" text="⚠️" query="not crossfader_disable"
 			textsize="14" x="+200" y="+53" height="25" width="35"
 				action="crossfader_disable">
-				<tooltip>Crossfader is enabled which can cause issues. Click to turn off.</tooltip>
+				<tooltip>Crossfader is enabled which can cause TigerTango to not output sound. Click to disable Crossfader.</tooltip>
 			</button>
 			<button class="button_main" text="⚠️" query="deck 1 fader_start ? true : deck 2 fader_start"
 			textsize="14" x="+200+40" y="+53" height="25" width="35"
 				action="deck 1 fader_start off & deck 2 fader_start off">
-				<tooltip>Fader Start is turned on. Causes issues with fade buttons. Click to turn off.</tooltip>
+				<tooltip>Fader Start is turned on. This will conflict with the fade and volume controls. Click to turn off Fader Start.</tooltip>
 			</button>
-			<button class="button_main" text="⚠️" query="auto_pitch_lock ? true : auto_match_key ? true : auto_pitch_lock"
+			<button class="button_main" text="⚠️" query="auto_pitch_lock ? true : auto_match_key ? true : auto_pitch_lock ? true : not setting 'autoBPMMatch' 'no'"
 			textsize="14" x="+200+80" y="+53" height="25" width="35"
-				action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off">
-				<tooltip>An automatch setting is turned on which will affect on-deck songs. Click to turn off.</tooltip>
-			</button>
-		<button class="button_main" text="REC 🔴"
-			textsize="14" x="20" y="50" height="25" width="75"
-				action="record_config">
-				<tooltip>Configure recording options</tooltip>=""
+				action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off & setting 'autoBPMMatch' 'no'">
+				<tooltip>Auto match BPM, key, or pitch is turned on. This will affect sound quality. Click to turn these settings off.</tooltip>
 			</button>
 		</group>
 
@@ -2208,12 +2257,19 @@ set $cycleWave1 0
 				<tooltip>AUTO PLAYBACK\nToggle auto playback (Automix).\n Next song will be loaded on other deck and automatically cued.</tooltip>
 			</button>
 
-
 			<button class="button_main" text="AUTO FADE" width="110" height="40" x="+145" y="+60-5" textsize = "16"
-			action="deck 2 play? repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep &
-			deck 2 stop & repeat_start WaitTimer 100ms 1 & deck 2 level 100% & deck 1 select &  deck 1 play &
-			automix on & deck 2 load automix_song 1:
-			nothing">
+			action="not automix_dualdeck ? show_window 'single_deck_automix_warning':
+			deck 2 play?
+				set '$fadeIndicator2' 1 &
+				(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
+				(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+				setting 'automixMode' 'no mix' &
+			repeat_start 'levelSweep' 20ms 101 & level -1% & level 0 ? repeat_stop 'levelSweep' &
+			deck 2 stop & repeat_start 'WaitTimer' 100ms 1 & deck 2 level 100% & deck 1 select &  deck 1 play &
+			automix on & deck 2 load automix_song 1 & repeat_start 'WaitToSwitch' 300ms 1 &
+			set '$fadeIndicator2' 0 &
+			var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing
+			: nothing" query="var_equal '$fadeIndicator2' 1">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
 
@@ -2418,10 +2474,10 @@ set $cycleWave1 0
 <oninit action="crossfader_disable"/>
 <oninit action="deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off'" />
 <oninit action="deck 1 'pfl' 'off' & deck 2 'pfl' 'off'"/>
-<oninit action="setting_setdefault 'automixMode' 'no mix'"/>
 <oninit action="setting_setdefault 'automixDualDeck' 'yes'"/>
-<oninit action="setting_setdefault automixTempoMode 'yes'"/>
-<oninit action="setting_setdefault automixDoubleCLick 'nothing'"/>
+<oninit action="setting_setdefault 'fadeLength' '-3'"/>
+<oninit action="setting_setdefault 'automixTempoMode' 'normal tempo'"/>
+<oninit action="setting_setdefault 'automixDoubleClick' 'nothing'"/>
 <oninit action="setting_setdefault masterTempo 'no'"/>
 <oninit action="setting_setdefault cpuMeter 'system'"/>
 <oninit action="setting_setdefault equalizerLowFrequency 150"/>
