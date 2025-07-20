@@ -720,6 +720,60 @@ set $cycleWave1 0
 			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
 			<tooltip text="[TOOLTIP]" localize="true"/>
 		</define>
+		<define class="button_hotcue1" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=cueoff,oncolor=cue1on,tooltip">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="[OFFCOLOR]" color2="cueoff" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<selected color="[ONCOLOR]" color2="cue1on" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<tooltip text="[TOOLTIP]" localize="true"/>
+		</define>
+		<define class="button_hotcue2" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=cueoff,oncolor=cue2on,tooltip">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="[OFFCOLOR]" color2="cueoff" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<selected color="[ONCOLOR]" color2="cue2on" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<tooltip text="[TOOLTIP]" localize="true"/>
+		</define>
+		<define class="button_hotcue3" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=cueoff,oncolor=cue3on,tooltip">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="[OFFCOLOR]" color2="cueoff" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<selected color="[ONCOLOR]" color2="cue3on" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<tooltip text="[TOOLTIP]" localize="true"/>
+		</define>
+		<define class="button_hotcue4" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=cueoff,oncolor=cue4on,tooltip">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="[OFFCOLOR]" color2="cueoff" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<selected color="[ONCOLOR]" color2="cue4on" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<tooltip text="[TOOLTIP]" localize="true"/>
+		</define>
+		<define class="button_hotcue5" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=cueoff,oncolor=cue5on,tooltip">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="[OFFCOLOR]" color2="cueoff" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<selected color="[ONCOLOR]" color2="cue5on" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<tooltip text="[TOOLTIP]" localize="true"/>
+		</define>
+		<define class="button_hotcue6" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=cueoff,oncolor=cue6on,tooltip">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="[OFFCOLOR]" color2="cueoff" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<selected color="[ONCOLOR]" color2="cue6on" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
+			<tooltip text="[TOOLTIP]" localize="true"/>
+		</define>
 		<define class="mixerpanel" placeholders="text">
 			<size width="97" height="32"/>
 			<text fontsize="12" color="textdark" colorover="textover" colorselected="textoff2" background="background2" align="center" text="[TEXT]" localize="true"/>
