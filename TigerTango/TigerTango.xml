@@ -2476,7 +2476,7 @@ set $cycleWave1 0
 			</button> -->
 		</group>
 
-			<group name="hotcue_toolbox_deck2"  x="+15" y="+463" visibility="var_equal '$cue_toggle' true ? true : false">
+			<group name="hotcue_toolbox_deck2"  x="+310" y="+61" visibility="var_equal '$cue_toggle' true ? true : false">
 				<visual>
 					<pos x="+0" y="+0"/>
 					<size width="325" height="84"/>
