@@ -9,3 +9,4 @@
 * Added Button to show where documentation is located
 * Replaced Stage window panel with waveform display
 * Increased fade duration
+* Added HC button to switch from toolbox/window panels to hotcues panels
