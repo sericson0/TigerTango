@@ -167,6 +167,10 @@ set $cycleWave1 0
 				<size width="600" height="200"/>
 				<grid size="1" mainsize="4" height="8" pos="-10" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-11" shapemirrored="up"/>
 				<gridlines width="1" color="gridlines" transparency="0.5"/>
+				<cue y="-10" height="66">
+					<mask x="169" y="262" width="11" height="66+20"/>
+				<text dx="+10" dy="-2" weight="bold" fontsize="12" color="deckcolor"/>
+				</cue>
 				<overlay>
 					<pos x="300" y="-10"/>
 					<size width="1" height="120" />
@@ -181,6 +185,10 @@ set $cycleWave1 0
 				<size width="600" height="200"/>
 				<grid size="1" mainsize="4" height="8" pos="-10" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-11" shapemirrored="up"/>
 				<gridlines width="1" color="gridlines" transparency="0.5"/>
+				<cue y="-10" height="66">
+					<mask x="169" y="262" width="11" height="66+20"/>
+				<text dx="+10" dy="-2" weight="bold" fontsize="12" color="deckcolor"/>
+				</cue>
 				<overlay>
 					<pos x="300" y="-10"/>
 					<size width="1" height="120" />
@@ -531,6 +539,14 @@ set $cycleWave1 0
 		<define color="buttonover1" value="#d4b5b7" deck="right"/>
 		<define color="buttonover2" value="#b68f91" deck="right"/>
 
+		<define color="cue1on" value="#FF0000"/>
+		<define color="cue2on" value="#FF7F00"/>
+		<define color="cue3on" value="#00FFF"/>
+		<define color="cue4on" value="#FFF000"/>
+		<define color="cue5on" value="#00FF00"/>
+		<define color="cue6on" value="#FF00FF"/>
+		<define color="cueoff" value="#000000"/>
+
 		<!-- browser -->
 		<define color="browserback" value="#ebebeb"/>
 		<define color="browserstripe" value="#f9f9f9"/>
@@ -714,6 +730,15 @@ set $cycleWave1 0
 			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
 			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
 			<tooltip text="[TOOLTIP]" localize="true"/>
+		</define>
+		<define class="button_main_radial" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=11">
+			<size width="[WIDTH]" height="[HEIGHT]"/>
+			<off color="padsoff1" color2="padsoff2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<over color="buttonover1" color2="buttonover2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<down color="padson1" color2="padson2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<selected color="padson1" color2="padson2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" color="textoff2" colorover="textover" colorselected="texton" colordown="texton" align="center" weight="" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<icon sysicon="[SYSICON]" color="textoff" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
 		</define>
 		<define class="mixerpanel" placeholders="text">
 			<size width="97" height="32"/>
@@ -1914,7 +1939,7 @@ set $cycleWave1 0
 
 <panel name="deckleft" x="+0" y="80" width="764" height="389">
 	<deck deck="left">
-		<line x="+35+85+85+85+85+10-30" y="+150" height="280" width="3" color="dark" highlight="" shadow="highlight" />
+		<line x="+35+85+85+85+85+10-30" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight" />
 		<dropzone>
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
@@ -2003,29 +2028,46 @@ set $cycleWave1 0
 		</group>
 
 
-		<group name="play_button_positions" x="+440" y="+401">
+		<group name="play_button_positions" x="+375-5" y="+401">
 <!-- ? deck 1 volume & deck 2 volume ?  -->
-			<button  visibility="play_mode 'numark'" class="button_main" textcolor="textdark" textsize="14" x="+440+5-20" y="+331-40" width="24" height="24" action="stop_button" sysicon="stop" iconsize="22"/>
+			<!-- <button  visibility="play_mode 'numark'" class="button_main" textcolor="textdark" textsize="14" x="+440+5-20" y="+331-40" width="24" height="24" action="stop_button" sysicon="stop" iconsize="22"/> -->
 			<!-- <button class="button_main" x="-30" y="+0" width="64" height="40" sysicon="play_button" iconsize="40" action="play_button"/> --> -->
-			<button class="button_main" x="-30" y="+0" width="64" height="40" sysicon="play_button" iconsize="40"
+			<button class="button_main" x="+0" y="+0" width="64" height="40" action="cue_button" textsize="16" textaction="cue_button" rightclick="stop"/>
+
+			<button class="button_main" x="+80" y="+0" width="64" height="40" sysicon="play_button" iconsize="40"
 					action="deck 1 play ? play_pause:
 							deck 1 level 0 ? deck 1 play_pause:
 							deck 2 level 0 ? deck 1 play_pause:
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
-			<button class="button_main" text="FADE" width="80" height="40" x="+33+40" y="+0" textsize = "16"
+			<button class="button_main" text="FADE" width="80" height="40" x="+33+40+85" y="+0" textsize = "16"
 			action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
 			<tooltip>FADE out song</tooltip>
 			</button>
-
-			<button class="button_main" text="AUTO" width="64" height="40" x="-30" y="+60-5" textsize = "16"
+			<!-- _________ROW 2 ______________ -->
+			<button class="button_main"
+					x="+0" y="+55" width="64" height="40"
+					text="ADD" textsize="16"
+					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
+			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+			</button>
+			<group visibility="var '$addMsg' 1" x="+0" y="+55">
+			<visual>
+				<pos  x="+0" y="+0"/>
+				<size width="64" height="40"/>
+				<off color="#555555" radius="6"/>
+			</visual>
+			<textzone x="+0" y="+0" width="64" height="40" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			</group>
+			<button class="button_main" text="AUTO" width="64" height="40" x="+80" y="+55" textsize = "16"
 					action="deck master automix ? deck master automix off :
 							deck 2 play ? deck 2 automix_load & automix on :
 							deck 1 automix_load & automix on"
 							query="deck master automix">
 				<tooltip>AUTO PLAYBACK\nToggle auto playback (Automix).\n Next song will be loaded on other deck and automatically cued.</tooltip>
 			</button>
+
 
 			<!-- Button implements the following logic (in a super annoying way ;-)
 			 	0. Give single deck automix warning window if not in dualdeck mode (button only works in dual deck)
@@ -2036,7 +2078,7 @@ set $cycleWave1 0
 				5. Loads next song in automix list and waits .3 seconds (wait seems to help automix logic work correctly)
 				6. Change automix mode back to original settings (only implemented no mix, skip silence, and full songs)
 			-->
-			<button class="button_main" text="AUTO FADE" width="110" height="40" x="+33+25" y="+60-5" textsize = "16" tooltip="Fade current song and play song on other deck"
+			<button class="button_main" text="AUTO FADE" width="95" height="40" x="+160-5" y="+55" textsize = "14"
 			action="not automix_dualdeck ? show_window 'single_deck_automix_warning':
 				deck 1 play ?
 				set '$fadeIndicator1' 1 &
@@ -2051,21 +2093,12 @@ set $cycleWave1 0
 			query="var_equal '$fadeIndicator1' 1">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
+			<!-- _________ROW 3 ______________ -->
+			 <!-- Add 3 cue slots -->
+			<button class="button_main_radial" x="+0" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 1" rightclick="delete_cue 1" textaction="hot_cue 1 ? cue_name 1 : ''"/>
+			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 2" rightclick="delete_cue 2" textaction="hot_cue 2 ? cue_name 2 : ''"/>
+			<button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 3" rightclick="delete_cue 3" textaction="hot_cue 3 ? cue_name 3 : ''"/>
 
-			<button class="button_main"
-					x="-15" y="+107" width="150" height="35"
-					text="ADD TRACKS" textsize="14"
-					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
-			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
-			</button>
-			<group visibility="var '$addMsg' 1" x="-20" y="+107">
-			<visual>
-				<pos  x="+0" y="+0"/>
-				<size width="150" height="35"/>
-				<off color="#555555" radius="6"/>
-			</visual>
-			<textzone x="+0" y="+0" width="150" height="35" text="TRACKS ADDED" size="16" color="#50C878" align="center" weight="bold"/>
-			</group>
 		</group>
 
 		<group name="toolbox" x="+15" y="+463">
@@ -2156,7 +2189,7 @@ set $cycleWave1 0
 </panel>
 <panel name="deckright" x="1920-764" y="80" width="764" height="389">
 	<deck deck="right">
-		<line x="+764-35-85-85-85-85-35+5+30+25" y="+150" height="280" width="3" color="dark" highlight="" shadow="highlight"/>
+		<line x="+764-35-85-85-85-85-35+5+30+25" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight"/>
 		<dropzone>
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
@@ -2247,21 +2280,37 @@ set $cycleWave1 0
 			<line x="+200" y="+90" height="3" width="140" color="dark" highlight="" shadow="highlight" />
 		</group>
 
-		<group name="play_button_pos" x="+130" y="+401">
+		<group name="play_button_pos" x="+150" y="+401">
+				<button class="button_main" x="+0" y="+0" width="64" height="40" action="cue_button" textsize="16" textaction="cue_button" rightclick="stop"/>
 
 				<!-- <button  visibility="play_mode 'numark'" class="button_main" textcolor="textdark" textsize="14" x="+10+94+4-20" y="+331-40" width="24" height="24" action="stop_button" sysicon="stop" iconsize="22"/>
 				<button class="button_main" x="+50" y="+0" width="64" height="40" sysicon="play_button" iconsize="40" action="play_button"/> -->
-				<button class="button_main" x="+50" y="+0" width="64" height="40" sysicon="play_button" iconsize="40"
+				<button class="button_main" x="+80" y="+0" width="64" height="40" sysicon="play_button" iconsize="40"
 						action="deck 2 play ? play_pause:
 						        deck 2 level 0 ? deck 2 play_pause:
 								deck 1 level 0 ? deck 2 play_pause:
 								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
-				<button class="button_main" text="FADE" width="80" height="40" x="+155" y="+0" textsize="16"
+
+				<button class="button_main" text="FADE" width="80" height="40" x="+33+40+85" y="+0" textsize="16"
 				action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
 				<tooltip>Fade out song</tooltip>
 			</button>
-
-			<button class="button_main" text="AUTO" width="64" height="40" x="+50" y="+60-5" textsize = "16"
+				<!-- _________ROW 2 ______________ -->
+				<button class="button_main"
+						x="+0" y="+55" width="64" height="40"
+						text="ADD" textsize="16"
+						action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
+				<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+				</button>
+			<group visibility="var '$addMsg' 1" x="+0" y="+55">
+			<visual>
+				<pos  x="+0" y="+0"/>
+				<size width="64" height="40"/>
+				<off color="#555555" radius="6"/>
+			</visual>
+			<textzone x="+0" y="+0" width="64" height="40" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			</group>
+			<button class="button_main" text="AUTO" width="64" height="40" x="+80" y="+55" textsize = "16"
 				action="deck master automix ? deck master automix off :
 							deck 1 play ? deck 1 automix_load & automix on :
 							deck 2 automix_load & automix on"
@@ -2269,7 +2318,7 @@ set $cycleWave1 0
 				<tooltip>AUTO PLAYBACK\nToggle auto playback (Automix).\n Next song will be loaded on other deck and automatically cued.</tooltip>
 			</button>
 
-			<button class="button_main" text="AUTO FADE" width="110" height="40" x="+145" y="+60-5" textsize = "16"
+			<button class="button_main" text="AUTO FADE" width="95" height="40" x="+155" y="+55" textsize = "14"
 			action="not automix_dualdeck ? show_window 'single_deck_automix_warning':
 			deck 2 play?
 				set '$fadeIndicator2' 1 &
@@ -2284,21 +2333,13 @@ set $cycleWave1 0
 			: nothing" query="var_equal '$fadeIndicator2' 1">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
+			<!-- _________ROW 3 ______________ -->
+			<!-- Add 3 cue slots -->
+			<button class="button_main_radial" x="+0" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 1" rightclick="delete_cue 1" textaction="hot_cue 1 ? cue_name 1 : ''"/>
+			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 2" rightclick="delete_cue 2" textaction="hot_cue 2 ? cue_name 2 : ''"/>
+			<button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 3" rightclick="delete_cue 3" textaction="hot_cue 3 ? cue_name 3 : ''"/>
 
-			<button class="button_main"
-					x="+75" y="+107" width="150" height="35"
-					text="ADD TRACKS" textsize="14"
-					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
-			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
-			</button>
-			<group visibility="var '$addMsg' 1" x="+70" y="+107">
-			<visual>
-				<pos  x="+0" y="+0"/>
-				<size width="150" height="35"/>
-				<off color="#555555" radius="6"/>
-			</visual>
-			<textzone x="+0" y="+0" width="150" height="35" text="TRACKS ADDED" size="16" color="#50C878" align="center" weight="bold"/>
-			</group>
+
 
 		<group name="window_button_positions" x="+310" y="+61">
 			<visual>
@@ -2485,6 +2526,7 @@ set $cycleWave1 0
 <oninit action="setting 'smartPlay' off & setting_setdefault smartPlay off"/>
 <oninit action="crossfader_disable"/>
 <oninit action="deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off'" />
+<oninit action="setting_setdefault 'automixMode' 'no mix'"/>
 <oninit action="setting_setdefault 'automixDualDeck' 'yes'"/>
 <oninit action="setting_setdefault 'fadeLength' '-3'"/>
 <oninit action="setting_setdefault 'automixTempoMode' 'normal tempo'"/>
