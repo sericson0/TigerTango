@@ -84,6 +84,8 @@ Additional recommended options for the automix:
 * automixDoubleClick nothing
 * automixTempoMode normal tempo
 
+TigerTango has implemented 2 Cue buttons to help with staring Cortinas or songs from points other than the beginning, and for allowing the ability to loop portions of the song. We recommend changing the setting **autoSortCue** to yes. This will order cue positions chornologically.
+
 If you are using the version on VirtualDJ (non development version) then you will want to check to make sure that **fader_start** is turned off as well. This is the default, but can get switched if you try out other skins.
 
 If you are DJing for a show and want to turn background notifications off then consider setting **exclusiveAudioAcess**
@@ -226,7 +228,14 @@ Some tango music has been transferred at an incorrect pitch. If you happen to no
 
 > [!NOTE] The Development verion has also implemented an 'ADD TRACKS' button. If you select a set of tracks and click this button, it will add them to the bottom of the automix list.
 
-TigerTango has also implemented an **ADD TRACKS** button. If you select songs and then click the ADD TRACKS button, it will add these songs to the bottom of the automix playlist. A "TRACKS ADDED" text will briefly be displayed when the tracks are added.
+TigerTango has also implemented an **ADD** button. If you select songs and then click the ADD TRACKS button, it will add these songs to the bottom of the automix playlist. An "ADDED" text will briefly be displayed when the tracks are added.
+
+8. **Cues**
+Tiger Tango has implemented a Cue button and two hot cues. These can be used to start cortinas part of the way through the song, and can be used to loop sections of a song.
+* Select a point in a track and left click a hotkey button to set its hotkey at that location.
+* Click on the hotkey again to start the song from that point
+* Right click to remove a hotkey
+* Right click the cue button to toggle between cue points. You can customize what the left click button does.
 
 ### Master
 
@@ -255,7 +264,19 @@ The Info section presents the following:
 5. Settings menu (gear icon). Click to open the Virtual DJ settings option.
 
 ### Toolbox
-The Toolbox section has two additional plugin areas. In addition, the toolbox includes several warning icons. Some Virtual DJ settings can cause TigerTango to not work as expected. If a warning icon lights up this means that a setting is not as recommended. Click on a lighted warning light to change the setting to what is recommended for TigerTango.
+The Toolbox section has an additional plugin areas. It also has a button which opens the recording editor. This can be useful for creating snippets of songs or for quickly recording silence to pad songs or to be used as dummy markers for tanda breaks.
+
+The toolbox also includes several warning icons. Some Virtual DJ settings can cause TigerTango to not work as expected. If a warning icon lights up this means that a setting is not as recommended. Click on a lighted warning light to change the setting to what is recommended for TigerTango. The following warnings are implemented:
+
+* Warning if soundcard is throwing error. Click to open audio settings
+* Check if Automix double click is set to nothing. Click to change to suggested setting, right click to supress warning
+* Double deck automix check. (Automix button only works with double deck) Click to change to double deck. Right click to supress warning.
+* Automix setting check. Some automix options will fade songs before their completion. Click to set to back-to-back. Right click to set to skip silence at start and end of songs.
+* Automix tempo check. Incorrect setting could cause tempo changes when switching between songs.
+* Automix fade length check. Setting the automix fade length as a positive number will clip the end of the song when using some automix types. Setting to negative number will give a gap between songs (ideal for tango). Click to set to -3 (3 second gap). Right click to set to 0.
+* Crossfader check. TigerTango is designed to work with the crossfader disabled. If enabled can cause songs to not play.
+* Fader Start check. If fader start is on, then will cause issues with fade and auto fade buttons. Click to disable
+* Auto settings check. Checks that Auto match key, pitch, and tempo are turned off.
 
 ### Panels
 Click on a panel to open an adjustable panel window. The following panels are options
