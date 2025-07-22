@@ -539,14 +539,6 @@ set $cycleWave1 0
 		<define color="buttonover1" value="#d4b5b7" deck="right"/>
 		<define color="buttonover2" value="#b68f91" deck="right"/>
 
-		<define color="cue1on" value="#FF0000"/>
-		<define color="cue2on" value="#FF7F00"/>
-		<define color="cue3on" value="#00FFF"/>
-		<define color="cue4on" value="#FFF000"/>
-		<define color="cue5on" value="#00FF00"/>
-		<define color="cue6on" value="#FF00FF"/>
-		<define color="cueoff" value="#000000"/>
-
 		<!-- browser -->
 		<define color="browserback" value="#ebebeb"/>
 		<define color="browserstripe" value="#f9f9f9"/>
@@ -2526,7 +2518,6 @@ set $cycleWave1 0
 <oninit action="setting 'smartPlay' off & setting_setdefault smartPlay off"/>
 <oninit action="crossfader_disable"/>
 <oninit action="deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off'" />
-<oninit action="setting_setdefault 'automixMode' 'no mix'"/>
 <oninit action="setting_setdefault 'automixDualDeck' 'yes'"/>
 <oninit action="setting_setdefault 'fadeLength' '-3'"/>
 <oninit action="setting_setdefault 'automixTempoMode' 'normal tempo'"/>
