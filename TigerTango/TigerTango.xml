@@ -1949,12 +1949,32 @@ set $cycleWave1 0
 				<textzone action="eq_mode +1" visibility="not eq_kill_low"><text action="low_label"/></textzone>
 				<textzone action="eq_mode +1" visibility="eq_kill_low"><text action="low_label"/></textzone>
 			</panel>
+			<button>
+				<pos x="+15" y="+180+1"/>
+				<size width="52" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 1 eq_low & param_multiply 100 & param_cast 'integer'`%" important="true"/>
+			</button>
 			<panel class="eq_fader_mid" x="+64+10" y="+0">
 				<textzone action="eq_mode +1" visibility="not eq_kill_mid"><text action="mid_label"/></textzone>
 				<textzone action="eq_mode +1" visibility="eq_kill_mid"><text action="mid_label"/></textzone>
 			</panel>
+			<button>
+				<pos x="+64+10" y="+180+1"/>
+				<size width="52" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 1 eq_mid & param_multiply 100 & param_cast 'integer'`%" important="true"/>
+			</button>
+
 			<panel class="eq_fader_high" x="+64+64+5" y="+0">
 			</panel>
+			<button>
+				<pos x="+64+64+5" y="+180+1"/>
+				<size width="52" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 1 eq_high & param_multiply 100 & param_cast 'integer'`%" important="true"/>
+			</button>
+
 
 		<group name="pitch" x="+64+64+64+64+5-45" y="+0">
 			<textzone x = "+0" y="-25" width="52" height="20" textsize="20">
@@ -2233,14 +2253,34 @@ set $cycleWave1 0
 				<textzone action="eq_mode +1" visibility="not eq_kill_low"><text action="low_label"/></textzone>
 				<textzone action="eq_mode +1" visibility="eq_kill_low"><text action="low_label"/></textzone>
 			</panel>
+			<button>
+				<pos x="+64+64+10+50" y="+180+1"/>
+				<size width="52" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 2 eq_low & param_multiply 100 & param_cast 'integer'`%" important="true"/>
+			</button>
+
 			<panel class="eq_fader_mid" x="+64+64+64+10+25+20" y="+0">
 				<textzone action="eq_mode +1" visibility="not eq_kill_mid"><text action="mid_label"/></textzone>
 				<textzone action="eq_mode +1" visibility="eq_kill_mid"><text action="mid_label"/></textzone>
 			</panel>
+			<button>
+				<pos x="+64+64+64+10+25+20" y="+180+1"/>
+				<size width="52" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 2 eq_mid & param_multiply 100 & param_cast 'integer'`%" important="true"/>
+			</button>
+
 			<panel class="eq_fader_high" x="+64+64+64+64+10+40" y="+0">
 				<!-- <textzone action="eq_mode +1" visibility="not eq_kill_high"><text action="high_label"/></textzone> -->
 				<!-- <textzone action="eq_mode +1" visibility="eq_kill_high"><text action="high_label"/></textzone> -->
 			</panel>
+			<button>
+				<pos x="+64+64+64+64+10+40" y="+180+1"/>
+				<size width="52" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 2 eq_high & param_multiply 100 & param_cast 'integer'`%" important="true"/>
+			</button>
 
 		</group>
 
