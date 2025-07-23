@@ -23,21 +23,6 @@ set '$fadeIndicator1' 0
   </button>
 </window>
 
-<window name="single_deck_automix_warning" width="400" height="160" posx="960" posy="center" shown="false" color="#424346">
-
-  <textzone x="15" y="-10" width="360" height="120"
-            text="The AUTO FADE button unfortunately only works in dual deck mode." font="Arial" size="32"
-			multiline="yes"
-            color="#EA7233" align="center"/>
-
-  <button x="100" y="105" width="200" height="40" action="show_window 'single_deck_automix_warning' off">
-		<text color="#FFFFFF" align="center" text="Close Window" size="32"/>
-    <off      color="#777777" color2="#666666" radius="6"/>
-    <over     color="#136b87" color2="#555555"/>
-    <selected color="#444444" color2="#333333"/>
-  </button>
-</window>
-
 <window name="documentation" width="180" height="90" posx="right" posy="top" shown="false" color="#424346">
 
   <textzone x="0" y="0" width="170" height="50"
@@ -2089,18 +2074,27 @@ set $cycleWave1 0
 				5. Loads next song in automix list and waits .3 seconds (wait seems to help automix logic work correctly)
 				6. Change automix mode back to original settings (only implemented no mix, skip silence, and full songs)
 			-->
+				<!--  show_window 'single_deck_automix_warning': -->
+
+
 			<button class="button_main" text="AUTO FADE" width="145" height="40" x="+80" y="+55" textsize = "16"
-			action="not automix_dualdeck ? show_window 'single_deck_automix_warning':
-				deck 1 play ?
+			action="
+				deck 1 play ? (
 				set '$fadeIndicator1' 1 &
-			(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
-			(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
-				setting 'automixMode' 'no mix' &
-			repeat_start 'levelSweep' 20ms 101 & level -1% & level 0 ? repeat_stop 'levelSweep' &
-			deck 1 stop & repeat_start 'WaitTimer' 100ms 1 & deck 1 level 100% & deck 2 play &
-			automix on & deck 1 load automix_song 1 & repeat_start 'WaitToSwitch' 300ms 1 &
-			set '$fadeIndicator1' 0 &
-			var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing: nothing"
+					not automix_dualdeck ?
+						(repeat_start 'levelSweep' 20ms 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
+					repeat_start 'WaitTimer' 1500ms 1 & automix_skip & deck 1 level 100% & set '$fadeIndicator1' 0):
+					     (
+						(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
+						(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+						 setting 'automixMode' 'no mix' &
+					repeat_start 'levelSweep' 20ms 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
+					repeat_start 'WaitTimer' 1300ms 1 & deck 1 stop & repeat_start 'WaitTimer' 200ms 1 & deck 1 level 100% & deck 2 play &
+					automix on & deck 1 load automix_song 1 & repeat_start 'WaitToSwitch' 300ms 1 &
+					set '$fadeIndicator1' 0 &
+					var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing
+						)
+					): nothing"
 			query="var_equal '$fadeIndicator1' 1">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
@@ -2139,10 +2133,13 @@ set $cycleWave1 0
 				<tooltip>Configure recording options</tooltip>=""
 			</button>
 			<!-- checks if soundcard is configured correctly -->
-			<button class="button_main" text="⚠️" query="not has_system_volume" action="config 'audio'"
-			textsize="14" x="+200+80" y="+23" height="25" width="35">
-				<tooltip>Sound Card is not configured correctly</tooltip>
+<!-- setting 'automixDualDeck' ? 'D' :  -->
+			<button class="button_main" textaction="automix_dualdeck ? get_text 'D' : get_text 'S'" query="setting 'automixSkipLength'"
+			textsize="14" x="+200+80" y="+23" height="25" width="35"
+				action="automix_dualdeck ? automix_dualdeck off : automix_dualdeck on" rightclick="setting 'automixSkipLength' 0">
+				<tooltip>Click to toggle between 'Single' and 'Dual Deck' automix mode. Light indicates 'automixSkipLength' not set to recommended 0. Right click to change setting.</tooltip>
 			</button>
+			<!-- "" -->
 			<!-- ___________ Row 2 of warnings _________________  -->
 			$set 'autoDblClickInd' 1
 			<button class="button_main" text="⚠️" query="(var_equal '$autoDblClickInd' 0) ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
@@ -2150,11 +2147,10 @@ set $cycleWave1 0
 				action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$autoDblClickInd'">
 				<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
 			</button>
-			$set '$dualDeckInd' 1
-			<button class="button_main" text="⚠️" query="(var_equal '$dualDeckInd' 0) ? false : 'not automix_dualdeck"
-			textsize="14" x="+40+6" y="+53" height="25" width="35"
-				action="automix_dualdeck on" rightclick="toggle '$dualDeckInd'">
-				<tooltip>Single deck automix is not compatible with the autofade button. Click to change to dual deck. Right click to toggle warning light.</tooltip>
+
+			<button class="button_main" text="⚠️" query="not has_system_volume" action="config 'audio'"
+			textsize="14" x="+40+6" y="+53" height="25" width="35">
+				<tooltip>Sound Card is not configured correctly</tooltip>
 			</button>
 			<button class="button_main" text="⚠️" query="setting 'automixMode' 'no mix' ? false :
 														  setting 'automixMode' 'skip silence' ? false:
@@ -2350,18 +2346,25 @@ set $cycleWave1 0
 			</button>
 
 			<button class="button_main" text="AUTO FADE" width="145" height="40" x="+80" y="+55" textsize = "16"
-			action="not automix_dualdeck ? show_window 'single_deck_automix_warning':
-			deck 2 play?
+			action="
+			deck 2 play ? (
 				set '$fadeIndicator2' 1 &
-				(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
-				(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
-				setting 'automixMode' 'no mix' &
-			repeat_start 'levelSweep' 20ms 101 & level -1% & level 0 ? repeat_stop 'levelSweep' &
-			deck 2 stop & repeat_start 'WaitTimer' 100ms 1 & deck 2 level 100% & deck 1 play &
-			automix on & deck 2 load automix_song 1 & repeat_start 'WaitToSwitch' 300ms 1 &
-			set '$fadeIndicator2' 0 &
-			var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing
-			: nothing" query="var_equal '$fadeIndicator2' 1">
+
+				not automix_dualdeck ?
+					(repeat_start 'levelSweep' 20ms 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
+					 repeat_start 'WaitTimer' 1500ms 1 & automix_skip & deck 2 level 100% & set '$fadeIndicator2' 0):
+					(
+					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
+					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+					setting 'automixMode' 'no mix' &
+					repeat_start 'levelSweep' 20ms 101 & level -1% & level 0 ? repeat_stop 'levelSweep' &
+					repeat_start 'WaitTimer' 1300ms 1 & deck 2 stop & repeat_start 'WaitTimer' 200ms 1 &
+					deck 2 level 100% & deck 1 play &
+					automix on & deck 2 load automix_song 1 & repeat_start 'WaitToSwitch' 300ms 1 &
+					set '$fadeIndicator2' 0 &
+					var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing
+				)
+			) : nothing" query="var_equal '$fadeIndicator2' 1">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
 			<!-- _________ROW 3 ______________ -->
