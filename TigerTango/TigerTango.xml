@@ -2100,9 +2100,48 @@ set $cycleWave1 0
 			</button>
 			<!-- _________ROW 3 ______________ -->
 			 <!-- Add 3 cue slots -->
-			<button class="button_main" x="+0" y="+55+50" width="64" height="30" action="cue_button" textsize="16" textaction="cue_button" rightclick="stop"/>
-			 <button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 1" rightclick="delete_cue 1" textaction="hot_cue 1 ? cue_name 1 : ''"/>
-			<button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 2" rightclick="delete_cue 2" textaction="hot_cue 2 ? cue_name 2 : ''"/>
+			 <button class="button_main_radial" x="+0" y="+55+50" width="64" height="30" textsize="14"
+			 action="not deck 1 hot_cue 1 ? deck 1 hot_cue 1 :
+			 not deck 2 play ? deck 1 hot_cue 1 :
+			 deck 2 level 0% ? deck 1 hot_cue 1 :
+			 deck 1 level 0% ? deck 1 hot_cue 1 : nothing"
+			 rightclick="deck 1 delete_cue 1"
+			 textaction="deck 1 hot_cue 1 ? cue_name 1 : ''"
+			 query="not deck 1 hot_cue 1 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
+			 <tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
+			</button>
+			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14"
+			action="not deck 1 hot_cue 2 ? deck 1 hot_cue 2 :
+			not deck 2 play ? deck 1 hot_cue 2 :
+			deck 2 level 0% ? deck 1 hot_cue 2 :
+			deck 1 level 0% ? deck 1 hot_cue 2 : nothing"
+			rightclick="deck 1 delete_cue 1"
+			textaction="deck 1 hot_cue 2 ? cue_name 2 : ''"
+			query="not deck 1 hot_cue 2 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
+			<tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
+		</button>
+		<!-- Loop button logic is as follows:
+			1. Check if both hot cues are set (if not then do nogthing)
+			2. Save settings of if autoSortCues or not (sortOrder),  playing or not (playCheck) and position (set_cue 9)
+			3. Stop deck, turn off autoSortCues and turn off loopAutoMove
+			4. Go to Cue 1 and set loop in. Go to Cue 2 and set loop out
+			5. Return to original position (cue 9) and remove cue
+			6. Reset parameters to before
+		-->
+		<button class="button_main" x="+80+80" y="+55+50" width="64" height="30"
+				action="
+				not deck 1 hot_cue 1 ? nothing : not deck 1 hot_cue 2 ? nothing :
+				(setting 'autoSortCues' 0 ? set 'sortOrder' 0 : set 'sortOrder' 1 ) &
+						setting 'loopAutoMove' 0 & setting 'autoSortCues' 0 &
+				(deck 1 play ? set 'playCheck' 1 : set 'playCheck' 0 ) & deck 1 set_cue 9 & deck 1 stop &
+				deck 1 goto_cue 1 & loop_in & deck 1 goto_cue 2 & loop_out &
+				& deck 1 goto_cue 9 & deck 1 delete_cue 9 &
+				(var_equal 'playCheck' 1 ? deck 1 play : nothing ) &
+				var_equal 'sortOrder' 1 ? setting 'autoSortCues' 1 : nothing"
+					textsize="14" textaction="loop ? get_text 'LOOP' : deck 1 hot_cue 1 ? deck 1 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
+					rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 1 loop">
+			<tooltip>Set loop between hot cues (only active when both hot cues are set). Click again or right click to disable.</tooltip>
+			</button>
 			<!-- <button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 3" rightclick="delete_cue 3" textaction="hot_cue 3 ? cue_name 3 : ''"/> -->
 
 		</group>
@@ -2369,11 +2408,40 @@ set $cycleWave1 0
 			</button>
 			<!-- _________ROW 3 ______________ -->
 			<!-- Add 2 cue slots -->
-			 <button class="button_main" x="+0" y="+55+50" width="64" height="30" action="cue_button" textsize="16" textaction="cue_button" rightclick="stop"/>
-			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 1" rightclick="delete_cue 1" textaction="hot_cue 1 ? cue_name 1 : ''"/>
-			<button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 2" rightclick="delete_cue 2" textaction="hot_cue 2 ? cue_name 2 : ''"/>
-
-
+			<button class="button_main_radial" x="+0" y="+55+50" width="64" height="30" textsize="14"
+			 	action="not deck 2 hot_cue 1 ? deck 2 hot_cue 1 :
+							not deck 1 play ? deck 2 hot_cue 1 :
+								deck 1 level 0% ? deck 2 hot_cue 1 :
+									deck 2 level 0% ? deck 2 hot_cue 1 : nothing"
+				rightclick="deck 2 delete_cue 1"
+				textaction="deck 2 hot_cue 1 ? cue_name 1 : ''"
+				query="not deck 2 hot_cue 1 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
+			<tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
+			</button>
+			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14"
+			 	action="not deck 2 hot_cue 2 ? deck 2 hot_cue 2 :
+							not deck 1 play ? deck 2 hot_cue 2 :
+								deck 1 level 0% ? deck 2 hot_cue 2 :
+									deck 2 level 0% ? deck 2 hot_cue 2 : nothing"
+				rightclick="deck 2 delete_cue 1"
+				textaction="deck 2 hot_cue 2 ? cue_name 2 : ''"
+				query="not deck 2 hot_cue 2 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
+			<tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
+			</button>
+			 <button class="button_main" x="+80+80" y="+55+50" width="64" height="30"
+					 action="
+					 not deck 2 hot_cue 1 ? nothing : not deck 2 hot_cue 2 ? nothing :
+					 (setting 'autoSortCues' 0 ? set 'sortOrder' 0 : set 'sortOrder' 1 ) &
+								setting 'loopAutoMove' 0 & setting 'autoSortCues' 0 &
+					 (deck 2 play ? set 'playCheck' 1 : set 'playCheck' 0 ) & deck 2 set_cue 9 & deck 2 stop &
+					 deck 2 goto_cue 1 & loop_in & deck 2 goto_cue 2 & loop_out &
+					 & deck 2 goto_cue 9 & deck 2 delete_cue 9 &
+					 (var_equal 'playCheck' 1 ? deck 2 play : nothing ) &
+					 var_equal 'sortOrder' 1 ? setting 'autoSortCues' 1 : nothing"
+						 textsize="14" textaction="loop ? get_text 'LOOP' : deck 2 hot_cue 1 ? deck 2 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
+						 rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 2 loop">
+			<tooltip>Set loop between hot cues (only active when both hot cues are set). Click again or right click to disable.</tooltip>
+			</button>
 
 		<group name="window_button_positions" x="+310" y="+61">
 			<visual>
