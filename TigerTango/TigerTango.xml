@@ -1818,18 +1818,18 @@ set $cycleWave1 0
 				<icon width="20" height="20" color="textdark" align="left" sysicon="arrowleft" important="true"/>
 			</button>
 			<textzone>
-				<pos x="+16+4" y="+20"/>
+				<pos x="+16+8" y="+20"/>
 				<size width="80" height="28"/>
-				<text fontsize="24" color="textoff3" align="left" weight="bold" action="get_time" important="true"/>
+				<text fontsize="22" color="textoff3" align="left" weight="bold" action="get_time" important="true"/>
 			</textzone>
 		  <button action="display_time 'elapsed,remain'" query="display_time">
-		  	<pos x="+0" y="+1" width="+16+4+65" height="28"/>
+		  	<pos x="+5" y="+1" width="+16+4+65" height="28"/>
 		  </button>
 			<group name="keydisplay" x="+[AREAWIDTH]-37-45-15">
 				<textzone action="setting 'keyDisplay'">
 					<pos x="+0" y="+20"/>
 					<size width="65" height="28"/>
-					<text fontsize="24" color="textdeck" weight="bold" align="right" action="get_key" important="true"/>
+					<text fontsize="22" color="textdeck" weight="bold" align="right" action="get_key" important="true"/>
 				</textzone>
 			</group>
 		</group>
@@ -1884,19 +1884,19 @@ set $cycleWave1 0
 		  	<line x="+0" y="+0" width="[AREAWIDTH]" height="1" color="deckinfolines"/>
 		  	<group name="decktimers" x="+[AREAWIDTH]-65-16-4">
 				<button visibility="display_time 'remain'">
-					<pos x="-15" y="+20"/>
+					<pos x="-12" y="+20"/>
 					<size width="16" height="28"/>
 					<icon width="20" height="20" color="textdark" align="left" sysicon="arrowright" important="true"/>
 				</button>
 				<button visibility="display_time 'elapsed'">
-					<pos x="-15" y="+20"/>
+					<pos x="-12" y="+20"/>
 					<size width="16" height="28"/>
 					<icon width="20" height="20" color="textdark" align="left" sysicon="arrowleft" important="true"/>
 				</button>
 				<textzone>
 					<pos x="-10" y="+20"/>
 					<size width="80" height="28"/>
-					<text fontsize="24" color="textoff3" align="right" weight="bold" action="get_time" important="true"/>
+					<text fontsize="22" color="textoff3" align="right" weight="bold" action="get_time" important="true"/>
 				</textzone>
 			  <button action="display_time 'elapsed,remain'" query="display_time">
 			  	<pos x="+0" y="+1" width="+16+4+65" height="28"/>
@@ -1904,9 +1904,9 @@ set $cycleWave1 0
 			</group>
 			<group name="keydisplay" x="+15">
 				<textzone action="setting 'keyDisplay'">
-					<pos x="+0" y="+15"/>
+					<pos x="+0" y="+20"/>
 					<size width="65" height="28"/>
-					<text fontsize="24" color="textdeck" weight="bold" align="left" action="get_key" important="true"/>
+					<text fontsize="22" color="textdeck" weight="bold" align="left" action="get_key" important="true"/>
 				</textzone>
 			</group>
 		</group>
@@ -2082,7 +2082,7 @@ set $cycleWave1 0
 				deck 1 play ? (
 				set '$fadeIndicator1' 1 &
 					not automix_dualdeck ?
-						(repeat_start 'levelSweep' 20ms 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
+						(automix on & repeat_start 'levelSweep' 20ms 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
 					repeat_start 'WaitTimer' 1500ms 1 & automix_skip & deck 1 level 100% & set '$fadeIndicator1' 0):
 					     (
 						(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
@@ -2390,7 +2390,7 @@ set $cycleWave1 0
 				set '$fadeIndicator2' 1 &
 
 				not automix_dualdeck ?
-					(repeat_start 'levelSweep' 20ms 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
+					(automix on & repeat_start 'levelSweep' 20ms 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
 					 repeat_start 'WaitTimer' 1500ms 1 & automix_skip & deck 2 level 100% & set '$fadeIndicator2' 0):
 					(
 					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
