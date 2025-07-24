@@ -2173,14 +2173,14 @@ set $cycleWave1 0
 			</button>
 			<!-- checks if soundcard is configured correctly -->
 <!-- setting 'automixDualDeck' ? 'D' :  -->
-			<button class="button_main" textaction="automix_dualdeck ? get_text 'D' : get_text 'S'" query="setting 'automixSkipLength'"
+			<button class="button_main" textaction="automix_dualdeck ? get_text 'D' : get_text 'S'" query="false"
 			textsize="14" x="+200+80" y="+23" height="25" width="35"
-				action="automix_dualdeck ? automix_dualdeck off : automix_dualdeck on" rightclick="setting 'automixSkipLength' 0">
-				<tooltip>Click to toggle between 'Single' and 'Dual Deck' automix mode. Light indicates 'automixSkipLength' not set to recommended 0. Right click to change setting.</tooltip>
+				action="automix_dualdeck ? automix_dualdeck off : automix_dualdeck on">
+				<tooltip>Click to toggle between 'Single' and 'Dual Deck' automix mode. </tooltip>
 			</button>
 			<!-- "" -->
 			<!-- ___________ Row 2 of warnings _________________  -->
-			$set 'autoDblClickInd' 1
+			set '$autoDblClickInd' 1
 			<button class="button_main" text="⚠️" query="(var_equal '$autoDblClickInd' 0) ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
 			textsize="14" x="+7" y="+53" height="25" width="35"
 				action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$autoDblClickInd'">
@@ -2199,10 +2199,10 @@ set $cycleWave1 0
 				<tooltip>Setting Automix to 'Smart' or 'Remove Intro/Outro' will clip tracks. Click to change settings to 'Back-to-Back' (use song ending silence). Right click to change settings to 'Skip Silence'
 				</tooltip>
 			</button>
-			<button class="button_main" text="⚠️" query="not setting 'autoMixTempoMode' 'normal tempo'"
+			<button class="button_main" text="⚠️" query="not setting 'autoMixTempoMode' 'normal tempo' ? true: setting 'automixSkipLength' ? true : setting 'automixMaxLength'"
 			textsize="14" x="+120+4" y="+53" height="25" width="35"
-				action="setting 'autoMixTempoMode' 'normal tempo'">
-				<tooltip>Automix 'autoMixTempoMode' setting is not set to 'normal tempo'. This could affect song pitch. Click to change setting</tooltip>
+				action="setting 'autoMixTempoMode' 'normal tempo' & setting 'automixSkipLength' 0 & setting 'automixMaxLength' 0">
+				<tooltip>Automix settings not configured properly. Can cause errors. Click to set 'autoMixTempoMode' to 'normal tempo' and 'automixSkipLength' to 0.</tooltip>
 			</button>
 			<button class="button_main" text="⚠️" query="setting 'fadeLength'"
 			textsize="14" x="+160+3" y="+53" height="25" width="35"
@@ -2226,11 +2226,6 @@ set $cycleWave1 0
 			</button>
 		</group>
 
-				 <!-- &
-						browser_scroll 'bottom' & browsed_song 'title' 'updatename2.mp3'" -->
-<!-- goto_last_folder & browser_move -1 -->
-<!-- query="deck 1 play && deck 1 level & param_equal 0%" -->
-<!-- deck 1 level & param_greater 0% ? nothing : pause & goto_start & level 100% -->
 
 </deck>
 </panel>
