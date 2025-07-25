@@ -68,31 +68,13 @@ To load the development version:
 ![alt text](<docs/Installing Development Branch-1.png>)
 
 ## Initializing Changes Made by TigerTango and Recommended Settings
-TigerTango makes a number of changes to settings when opened. This helps reduce the chance for errors and improves functionality. The following are changed on setup:
+TigerTango makes a number of changes to settings when opened. This helps reduce the chance for errors and improves functionality.
+>[!IMPORTANT]
+>TigerTango has implemented several safety checks in the area labeled TOOLBOX. If you see one of the warning lights come on, it means a setting is incorrect. Clicking a warning light will update this setting to the one recommended by TigerTango
 
-* **autoBPMMatch**, **autoKey**, **autoGain**, and **autoPitchLock** are turned to off. These functions are used to beat match between songs (something we definitely do not want to do for tango)
-* **touchWheelBackspin** and **vinylMode** are turned off. This helps prevent the track from scratching if you accidentally touch it with your mouse.
-* **fader_start** for each deck set to off. This ensures the fade buttons work properly (Currently only in development version)
-* **pflOnSelect** to off and pfl for each deck to off. This helps make the custom prelisten button work correctly
-* **EqMode** set to "Disabled". This makes the faders work as normal frequency band faders.
-
-Additional recommended options for the automix:
-* automixMode No Mix
-* automix AutoRemovePlayued No
-* automixDualDeck Yes
-* autoMixBeatMatchOnFade No
-* automixDoubleClick nothing
-* automixTempoMode normal tempo
-
-TigerTango has implemented 2 Cue buttons to help with staring Cortinas or songs from points other than the beginning, and for allowing the ability to loop portions of the song. We recommend changing the setting **autoSortCue** to yes. This will order cue positions chornologically.
-
-If you are using the version on VirtualDJ (non development version) then you will want to check to make sure that **fader_start** is turned off as well. This is the default, but can get switched if you try out other skins.
+TigerTango has implemented 2 Cue buttons to help with staring Cortinas or songs from points other than the beginning. TigerTango has also implemented a LOOP button which adds a loop between the two cue positions. We recommend you change the setting **autoSortCue**, which orders cue positions chornologically. This will ensure the loop button works as intended.
 
 If you are DJing for a show and want to turn background notifications off then consider setting **exclusiveAudioAcess**
-
-> [NOTE!]
-> the GitHub version has implemented severa safety checks in the area labeled TOOLBOX. If you see one of the warning lights come on, it means a setting is incorrect. Clicking a warning light will update this setting to the one recommended by TigerTango
-
 
 ## Installing Plugins
 
@@ -103,9 +85,10 @@ Enhancing the sound quality of older recordings can be done with EQing. While th
 Here I show how to install *TDR NOVA*, a powerful and free parametric EQ by Tokyo Dawn Records.
 
 1) Go to https://www.tokyodawn.net/tdr-nova/ and select the correct installer for your computer
-2) Run the installer on your computer (If on Windows, you need to open the downloaded zip file)
+2) Run the installer on your computer
 3) Accept the license agreement and click through next on each popup.
-4) Close and restart Virtual DJ
+4) Open Virtual DJ options, search **vstFxFolder**, and set to where your VST3 files save to. On Windows this is "C:\Program Files\Common Files\VST3"
+5) Close and restart Virtual DJ
 
 * Tokyo Dawn has some additional nice free and paid plugins.
 * https://analogobsession.com/ hvas a number of free analog emulations that are worth checking out
@@ -220,22 +203,14 @@ Some tango music has been transferred at an incorrect pitch. If you happen to no
 7. **Controls** TigerTango has implemented four playback controls:
    1. **Play/Pause** Starts or stops the current track.
    2. **Fade** Fades out current track. At end of fade it resets the deck volume to 100%.
-
-> [!IMPORTANT]
-> If you want the deck volumne other than full, then remenmber to change it after the fade completes.
-   3. **AUTO** Toggles on or off automix. The automix will start with whichever deck you select auto on.
-   4. **AutoFade** Fades out deck, starts song on other deck, and loads next song in playlist onto current deck. If you have a cortina that you want to fade out and then start the next tanda, you can do this with AutoFade.
-
-> [!NOTE] The Development verion has also implemented an 'ADD TRACKS' button. If you select a set of tracks and click this button, it will add them to the bottom of the automix list.
-
-TigerTango has also implemented an **ADD** button. If you select songs and then click the ADD TRACKS button, it will add these songs to the bottom of the automix playlist. An "ADDED" text will briefly be displayed when the tracks are added.
-
-8. **Cues**
-Tiger Tango has implemented a Cue button and two hot cues. These can be used to start cortinas part of the way through the song, and can be used to loop sections of a song.
-* Select a point in a track and left click a hotkey button to set its hotkey at that location.
-* Click on the hotkey again to start the song from that point
-* Right click to remove a hotkey
-* Right click the cue button to toggle between cue points. You can customize what the left click button does.
+   3. **ADD** If you select a set of tracks and click this button, it will add them to the bottom of the automix list.
+   4. **AUTO** Toggles on or off automix. The automix will start with whichever deck you select auto on.
+   5. **AutoFade** Fades out deck, starts song on other deck, and loads next song in playlist onto current deck. If you have a cortina that you want to fade out and then start the next tanda, you can do this with AutoFade.
+   6. TigerTango has implemented two hot cues. These can be used to start cortinas part of the way through the song.
+   * Click on a hot cue to set it wherever the song position is.
+   * Click it again to start song from hotcue position.
+   * Right click to remove hotkey.
+   1. TigerTango has implemented a LOOP button. When both hot cues are added, then clicking LOOP will add a loop between these two positions. Once the song enters the loop it will repeat until you click or right click the loop button.
 
 ### Master
 
@@ -264,8 +239,12 @@ The Info section presents the following:
 5. Settings menu (gear icon). Click to open the Virtual DJ settings option.
 
 ### Toolbox
-The Toolbox section has an additional plugin areas. It also has a button which opens the recording editor. This can be useful for creating snippets of songs or for quickly recording silence to pad songs or to be used as dummy markers for tanda breaks.
+The Toolbox section contains an array of tools and checks.
 
+* One additional plugin areas (Comes after the end of the 5 main plugins).
+* Record button which opens the recording editor. This can be useful for creating snippets of songs or for quickly recording silence to pad songs or to be used as dummy markers for tanda breaks.
+* Button to toggle between single deck and dual deck automix. Displays **S** in single deck and **D** for dual deck.
+*
 The toolbox also includes several warning icons. Some Virtual DJ settings can cause TigerTango to not work as expected. If a warning icon lights up this means that a setting is not as recommended. Click on a lighted warning light to change the setting to what is recommended for TigerTango. The following warnings are implemented:
 
 * Warning if soundcard is throwing error. Click to open audio settings
@@ -297,20 +276,23 @@ This section walks through how you could use TigerTango for DJing.
 ### Prework
 * You can create subfolders, such as most liked songs by artist, period, and singer in the browser panel
 * You can attach shortcuts to folders and playlists which can be seen in the side view. For example, you could have shortcuts to cortinas, vals tandas, milonga tandas, modern orchestras, and alternative tandas
-* You can use the sidelist to start planning tandas and potential flow
+* You can use the sidelist to start planning tandas and potential flow.
+* Create dummy tanda breaks or silence inserts using the record button.
+
+> [!NOTE]
+> Setting **Automix Type** to "None (back-to-back)" will leave however much song silence is at the beginning and end of each song. Setting to "Fade (remove silence)" will add a gap of have whatever the negative of the setting 'automixFadeLength' is set to. Recommend using -3 seconds to add a  3 second gap.
 
 #### During the night
 * Drag your first tandas into the staging area and click AUTO to begin playing. This will loop through the playlist one song at a time.
 
-> [!WARNING]
-> Make sure your Automix Type is set to "None (back-to-back)". If you want Automix to remove songs from the list once played then toggle "Auto remove played".
 
-* Use the **Prelisten** button on the non-active deck to listen to the up upcoming song.
+
+* Use the **Prelisten** button on the non-active deck to listen to the up upcoming song. ()
 * Use the deck effect and master effects areas. to do any needed EQing or addition of other effects.
 * You can preset effects and then toggle them on or off as needed.
 * The **AUTO FADE** button can be used to fade out a cortina and allow the automix to continue as desired.
 * For performances, Turn off the Automix and load one deck at a time into the player. This will ensure that the next sond does not start playing before the performers are ready.
-*  Once performances are over you can restart **AUTO** to continue the night
+*  Once performances are over you can restart **AUTO** to continue the night.
 
 > [!WARNING]
 >  The automix can be finicky at times in VirtualDJ. Check the song on the other deck to make sure the song you want to play next is lined up
@@ -325,4 +307,4 @@ Please consider this version of TigerTango as an initial stable release. I have 
 If you run into any issues, or have any thoughts, suggestions, or requests for improvements, I would love to hear from you. I would also love to hear if you find this tool useful.
 
 > [!NOTE]
->  You can reach me at sericson0@gmail.com or can post to the Virtual DJ forum https://virtualdj.com/forums/264357/addons/TigerTango.html
+>  You can reach me at sericson0@gmail.com or can post on github at https://github.com/sericson0/TigerTango
