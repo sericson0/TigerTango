@@ -1220,18 +1220,18 @@ set $cycleWave1 0
 				<size width="2" height="2"/>
 				<off color="#dadee0" shape="circle" radius="1"/>
 			</visual>
-			<scratch>
+			<!-- <scratch>
 				<pos x="+19" y="+26"/>
 				<size width="184" height="184"/>
 				<mousecircle width="184" height="184"/>
-			</scratch>
-			<button action="vinyl_mode">
+			</scratch> -->
+			<!-- <button action="vinyl_mode">
 				<pos x="+22" y="+8"/>
 				<size width="22" height="23"/>
 				<off x="23" y="264"/>
 				<over x="50" y="264"/>
 				<on x="50" y="264"/>
-			</button>
+			</button> -->
 		</define>
 		<define class="jogwheel">
 				<group x="+5" y="+12">
@@ -1306,11 +1306,11 @@ set $cycleWave1 0
 		                    <off color="knobfill" border="darker" border_size="10" shape="circle"/>
 		                </visual>
 					</panel>
-					<scratch>
+					<!-- <scratch>
 						<pos x="+0" y="+0"/>
 						<size width="212" height="212"/>
 						<mousecircle width="212" height="212"/>
-					</scratch>
+					</scratch> -->
 				</group>
 			</define>
 		   <define class="songpos" colorPlayed="darker" colorBass="colorbass" colorMed="colormed" colorHigh="colorhigh" placeholders="width">
