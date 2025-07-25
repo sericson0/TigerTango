@@ -2083,7 +2083,7 @@ set $cycleWave1 0
 				set '$fadeIndicator1' 1 &
 					not automix_dualdeck ?
 						(automix on & repeat_start 'levelSweep' 20ms 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
-					repeat_start 'WaitTimer' 1400ms 1 & automix_skip & repeat_start 'WaitTimer' 100ms 1 & deck 1 level 100% & set '$fadeIndicator1' 0):
+					repeat_start 'WaitTimer' 1450ms 1 & automix_skip & repeat_start 'WaitTimer' 50ms 1 & deck 1 level 100% & set '$fadeIndicator1' 0):
 					     (
 						(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
 						(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
@@ -2386,7 +2386,7 @@ set $cycleWave1 0
 
 				not automix_dualdeck ?
 					(automix on & repeat_start 'levelSweep' 20ms 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
-					 repeat_start 'WaitTimer' 1400ms 1 & automix_skip & repeat_start 'WaitTimer' 100ms 1 & deck 2 level 100% & set '$fadeIndicator2' 0):
+					 repeat_start 'WaitTimer' 1450ms 1 & automix_skip & repeat_start 'WaitTimer' 50ms 1 & deck 2 level 100% & set '$fadeIndicator2' 0):
 					(
 					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
 					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
