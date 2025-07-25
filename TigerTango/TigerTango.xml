@@ -2610,27 +2610,24 @@ set $cycleWave1 0
 <oninit action="setting_setdefault skinWaveformType 'shapes'"/>
 <oninit action="setting_setdefault coverflow 'smart'"/>
 <oninit action="setting_setdefault browserPadding 50%"/>
-<oninit action="setting_setdefault EqMode 'Diabled'"/>
-<oninit action="setting_setdefault autoBPMMatch 'no'"/>
-<oninit action="setting_setdefault autoKey off"/>
-<oninit action="setting_setdefault smartPlay off"/>
-<oninit action="setting_setdefault autoPitchLock off"/>
-<oninit action="setting_setdefault autoGain 'no'"/>
 <oninit action="deck all effect_3slots_layout off"/>
-<oninit action="setting_setdefault 'touchWheelBackspin' off"/>
-<oninit action="setting_setdefault vinylMode off"/>
-<oninit action="setting_setdefault 'pflOnSelect' off"/>
 <oninit action="setting 'smartPlay' off & setting_setdefault smartPlay off"/>
-<oninit action="crossfader_disable"/>
-<oninit action="deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off'" />
-<oninit action="setting_setdefault 'automixMode' 'no mix'"/>
-<oninit action="setting_setdefault 'automixDualDeck' 'yes'"/>
-<oninit action="setting_setdefault 'fadeLength' '-3'"/>
-<oninit action="setting_setdefault 'automixTempoMode' 'normal tempo'"/>
-<oninit action="setting_setdefault 'automixDoubleClick' 'nothing'"/>
-<oninit action="setting_setdefault masterTempo 'no'"/>
-<oninit action="setting_setdefault cpuMeter 'system'"/>
-<oninit action="setting_setdefault equalizerLowFrequency 150"/>
-<oninit action="setting_setdefault equalizerMidFrequency 1000"/>
-<oninit action="setting_setdefault equalizerHighFrequency 8500"/>
+<oninit action="repeat_start 'WaitTimer' 300ms 1 &
+			crossfader_disable on &
+			deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off' &
+			setting_setdefault 'fadeLength' '-3' &
+			setting_setdefault 'automixDoubleClick' 'nothing' &
+			setting_setdefault EqMode 'Diabled' &
+			setting_setdefault autoBPMMatch 'no' &
+			setting_setdefault autoKey off &
+			setting_setdefault smartPlay off &
+			setting_setdefault autoPitchLock off &
+			setting_setdefault 'automixTempoMode' 'normal tempo' &
+			setting_setdefault 'pflOnSelect' off &
+			setting_setdefault equalizerLowFrequency 150 &
+			setting_setdefault equalizerMidFrequency 1000 &
+			setting_setdefault equalizerHighFrequency 8500 &
+			setting_setdefault cpuMeter 'system' &
+			setting_setdefault masterTempo 'no'
+					"/>
 </skin>
