@@ -2175,7 +2175,7 @@ set $cycleWave1 0
 <!-- setting 'automixDualDeck' ? 'D' :  -->
 			<button class="button_main" textaction="automix_dualdeck ? get_text 'D' : get_text 'S'" query="false"
 			textsize="14" x="+200+80" y="+23" height="25" width="35"
-				action="automix_dualdeck ? automix_dualdeck off : (automix_dualdeck on & deck 1 play ? deck 2 load_next : deck 1 load_next)">
+				action="automix_dualdeck ? automix_dualdeck off : (automix_dualdeck on & deck 1 play ? deck 2 load automix_song 1 : deck 1 load automix_song 1)">
 				<tooltip>Click to toggle between 'Single' and 'Dual Deck' automix mode. </tooltip>
 			</button>
 			<!-- "" -->
