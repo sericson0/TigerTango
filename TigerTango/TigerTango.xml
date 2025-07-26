@@ -2058,8 +2058,14 @@ set $cycleWave1 0
 
 			<button class="button_main" text="AUTO" width="64" height="40" x="+0" y="+55" textsize = "16"
 					action="deck master automix ? deck master automix off :
-							deck 2 play ? deck 2 automix_load & automix on :
-							deck 1 automix_load & automix on"
+							automix_dualdeck ? (
+								deck 2 play ?
+									deck 1 unload & deck 2 automix_load & automix on :
+									deck 1 automix_load & deck 2 unload & deck 1 play & automix on ): (
+								deck 2 play ?
+									deck 2 automix_load & automix on :
+									deck 1 automix_load & deck 1 play & automix on)
+								 "
 							query="deck master automix">
 				<tooltip>AUTO PLAYBACK\nToggle auto playback (Automix).\n Next song will be loaded on other deck and automatically cued.</tooltip>
 			</button>
@@ -2373,9 +2379,15 @@ set $cycleWave1 0
 
 			<button class="button_main" text="AUTO" width="64" height="40" x="+0" y="+55" textsize = "16"
 				action="deck master automix ? deck master automix off :
-							deck 1 play ? deck 1 automix_load & automix on :
-							deck 2 automix_load & automix on"
+						automix_dualdeck ? (
+							deck 1 play ?
+								deck 1 unload & deck 2 automix_load & automix on :
+								deck 2 automix_load & deck 1 unload & deck 2 play & automix on) : (
+							deck 1 play ?
+								deck 1 automix_load & automix on :
+								deck 1 automix_load & deck 1 play & automix on)"
 							query="deck master automix">
+
 				<tooltip>AUTO PLAYBACK\nToggle auto playback (Automix).\n Next song will be loaded on other deck and automatically cued.</tooltip>
 			</button>
 
