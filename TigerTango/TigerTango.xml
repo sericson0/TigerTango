@@ -1974,28 +1974,31 @@ set $cycleWave1 0
 			</button>
 			<button class="pitchreset_button" x="-18" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
 		</group>
+			<group name="volume_and_headphones" x="+64+64+64+64+64-28">
 
-			<textzone x="+64+64+64+64+64-40" y="-25" width="52" height="20" textsize="20">
-				<text text="VOL" color = "textdark" align = "center"/>
-			</textzone>
-			<panel class="volume_fader" x="+64+64+64+64+64+5-40" y="+0"/>
+				<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+					<text text="VOL" color = "textdark" align = "center"/>
+				</textzone>
+				<panel class="volume_fader" x="+0" y="+0"/>
 
-			<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+64+64+64+64+64+5-40" y="+140-3"
+				<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
 				action="deck 1 play ?
-							deck 1 level 0% ?
+				deck 1 level 0% ?
 								deck 1 stop & deck 1 goto_start & repeat_start WaitTimer 100ms 1 & deck 1 level 100% :
-							nothing :
-						deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
-					query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
-				<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
-				</tooltip>
-			</button>
+								nothing :
+								deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
+								query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
+								<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
+								</tooltip>
+							</button>
 
-			<button class="button_main" width="46" height="25" x="+64+64+64+64+64+5-40" y="+140-1+43" radius="5"
-				action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
-				<tooltip>Toggle Deck 1 headphones. Headphones will come through deck when turned on.</tooltip>
-			</button>
-		</group>
+							<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
+							action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
+							<tooltip>Toggle Deck 1 headphones. Headphones will come through deck when turned on.</tooltip>
+						</button>
+			</group>
+
+			</group>
 
 
 		<group name="fx" x="+15" y="+125">
@@ -2113,7 +2116,7 @@ set $cycleWave1 0
 			 deck 1 level 0% ? deck 1 hot_cue 1 : nothing"
 			 rightclick="deck 1 delete_cue 1"
 			 textaction="deck 1 hot_cue 1 ? cue_name 1 : ''"
-			 query="not deck 1 hot_cue 1 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
+			 query="not deck 1 loaded ? false : not deck 1 hot_cue 1 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
 			 <tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
 			</button>
 			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14"
@@ -2123,7 +2126,7 @@ set $cycleWave1 0
 			deck 1 level 0% ? deck 1 hot_cue 2 : nothing"
 			rightclick="deck 1 delete_cue 1"
 			textaction="deck 1 hot_cue 2 ? cue_name 2 : ''"
-			query="not deck 1 hot_cue 2 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
+			query="not deck 1 loaded ? false : not deck 1 hot_cue 2 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
 			<tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
 		</button>
 		<!-- Loop button logic is as follows:
@@ -2159,7 +2162,7 @@ set $cycleWave1 0
 				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
 			</visual>
 			<textzone x="-10" y="+5">
-				<size width="330" height="15"/>
+				<size width="325" height="15"/>
 				<text fontsize="14" align="center" color="textdarker" text="TOOLBOX" localize="true"/>
 			</textzone>
 			<!-- Effects 6 -->
@@ -2250,25 +2253,27 @@ set $cycleWave1 0
 
 		<group name="eq" x="+764-85-85-85-85-30" y="+250">
 
-			<textzone x="+40" y="-25" width="52" height="20" textsize="20">
-				<text text="VOL" color = "textdark" align = "center"/>
-			</textzone>
-			<panel class="volume_fader" x="+40" y="+0"/>
-			<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+40" y="+140-3"
+			<group name="volume_and_headphones" x="+35">
+
+				<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+					<text text="VOL" color = "textdark" align = "center"/>
+				</textzone>
+				<panel class="volume_fader" x="+0" y="+0"/>
+				<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
 				action="deck 2 play ?
-							deck 2 level 0% ?
-								deck 2 stop & deck 2 goto_start & repeat_start WaitTimer 100ms 2 & deck 2 level 100% :
-							nothing :
-						deck 2 level 0% & deck 2 pfl on & deck 1 pfl off & deck 2 play"
-					query="deck 2 level & param_equal 0% && deck 2 play && deck 2 pfl on">
+				deck 2 level 0% ?
+				deck 2 stop & deck 2 goto_start & repeat_start WaitTimer 100ms 2 & deck 2 level 100% :
+				nothing :
+				deck 2 level 0% & deck 2 pfl on & deck 1 pfl off & deck 2 play"
+				query="deck 2 level & param_equal 0% && deck 2 play && deck 2 pfl on">
 				<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
 				</tooltip>
 			</button>
-			<button class="button_main" width="46" height="25" x="+40" y="+140-1+43" radius="5"
-				action="deck 2 pfl on ? deck 2 pfl off : deck 2 pfl on & deck 1 pfl off" query="deck 2 pfl on">
-				<tooltip>Toggle Deck 2 headphones. Headphones will come through deck when turned on</tooltip>
-			</button>
-			<!-- <button class="button_main" x="+40" y="+150" width="46" height="30" action="pfl" textcolor="textdarker" sysicon="headphones" iconsize="24"/> -->
+			<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
+			action="deck 2 pfl on ? deck 2 pfl off : deck 2 pfl on & deck 1 pfl off" query="deck 2 pfl on">
+			<tooltip>Toggle Deck 2 headphones. Headphones will come through deck when turned on</tooltip>
+				</button>
+			</group>
 
 			<group name="pitch" x="+64+15+25" y="+0">
 			<textzone x = "+0" y="-25" width="52" height="20" textsize="20">
@@ -2421,7 +2426,7 @@ set $cycleWave1 0
 									deck 2 level 0% ? deck 2 hot_cue 1 : nothing"
 				rightclick="deck 2 delete_cue 1"
 				textaction="deck 2 hot_cue 1 ? cue_name 1 : ''"
-				query="not deck 2 hot_cue 1 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
+				query="not deck 2 loaded ? false : not deck 2 hot_cue 1 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
 			<tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
 			</button>
 			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14"
@@ -2431,7 +2436,7 @@ set $cycleWave1 0
 									deck 2 level 0% ? deck 2 hot_cue 2 : nothing"
 				rightclick="deck 2 delete_cue 1"
 				textaction="deck 2 hot_cue 2 ? cue_name 2 : ''"
-				query="not deck 2 hot_cue 2 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
+				query="not deck 2 loaded ? false : not deck 2 hot_cue 2 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
 			<tooltip>Click to set Hot Cue. When active, clicking hot cue will start song at this point. Right click to disable Hot Cue.</tooltip>
 			</button>
 			 <button class="button_main" x="+80+80" y="+55+50" width="64" height="30"
@@ -2449,14 +2454,14 @@ set $cycleWave1 0
 			<tooltip>Set loop between hot cues (only active when both hot cues are set). Click again or right click to disable.</tooltip>
 			</button>
 
-		<group name="window_button_positions" x="+310" y="+61">
+		<group name="window_button_positions" x="+280" y="+61">
 			<visual>
 				<pos x="-11" y="+1"/>
 				<size width="325" height="84"/>
 				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
 			</visual>
 			<textzone x="-10" y="+8">
-				<size width="330" height="15"/>
+				<size width="325" height="15"/>
 				<text fontsize="14" align="center" color="textdarker" text="WINDOW PANELS" localize="true"/>
 			</textzone>
 
