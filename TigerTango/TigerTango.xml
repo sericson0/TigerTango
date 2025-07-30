@@ -2633,13 +2633,13 @@ set $cycleWave1 0
 			deck 1 'faderStart' 'off' & deck 2 'faderStart' 'off' &
 			setting_setdefault 'fadeLength' '-3' &
 			setting_setdefault 'automixDoubleClick' 'nothing' &
-			setting_setdefault EqMode 'Diabled' &
 			setting_setdefault autoBPMMatch 'no' &
 			setting_setdefault autoKey off &
 			setting_setdefault smartPlay off &
 			setting_setdefault autoPitchLock off &
 			setting_setdefault 'automixTempoMode' 'normal tempo' &
 			setting_setdefault 'pflOnSelect' off &
+			setting_setdefault 'eqMode' 'Frequency' &
 			setting_setdefault equalizerLowFrequency 150 &
 			setting_setdefault equalizerMidFrequency 1000 &
 			setting_setdefault equalizerHighFrequency 8500 &
