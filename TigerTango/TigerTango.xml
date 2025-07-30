@@ -1735,21 +1735,30 @@ set $cycleWave1 0
 				<size width="110" height="16"/>
 				<text fontsize="12" align="center" color="textdarker" text="Click to activate" localize="true" important="true"/>
 			</textzone>
-			<video x="+1" y="+1" source="master">
-				<size width="139" height="84"/>
+			<video x="+0" y="-30" source="master" visibility="not var '$hideVideo'">
+				<size width="315" height="185"/>
 			</video>
-			<button x="+0" y="+0" action="video" rightclick="video_output">
-				<size width="150" height="85"/>
+			<button x="+0" y="+0" 
+				action="video & set '$hideVideo' 0" 
+				rightclick="toggle '$hideVideo'"
+				dblclick="video_output">
+				<size width="106" height="85"/>
+			</button>
+			<button x="+0" y="-30" 
+				action="video & set '$hideVideo' 0" 
+				rightclick="toggle '$hideVideo'" 
+				visibility="video && not var '$hideVideo'">
+				<size width="315" height="185"/>
 			</button>
 		</group>
 
 
-		<group name="videomix" x="+0" y="+0" visibility="has_video_mix">
+		<group name="videomix" x="+0" y="+0" visibility="video ? not var '$hideVideo' ? false : has_video_mix : has_video_mix">
 			<panel class="vfxdrop" width="+110" x="+35" y="+73" action1="video_transition" rightclick="video_transition 500ms" action2="video_transition_select" textaction="get_videotrans_name &amp; param_uppercase"/>
 			<panel class="settingsbutton" width="+135" x="+30" y="+40" action1="deck master video_" action2="deck master video__select" textaction="deck master get_video_name &amp; param_uppercase"/>
 			<button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/>
 		</group>
-		<group name="videosimple" x="+0" y="+0" visibility="not has_video_mix">
+		<group name="videosimple" x="+0" y="+0" visibility="video ? not var '$hideVideo' ? false : not has_video_mix : not has_video_mix">
 			<panel class="vfxdrop" width="+110" x="+35" y="+73"  action1="video_source" action2="video_source_select" textaction="get_text '%videosource' &amp; param_uppercase"/>
 			<!-- <panel class="vdrop" width="+135" x="+30" y="+40"  action1="deck master video_" action2="deck master video__select 'no_sources'" textaction="deck master get_video_name &amp; param_uppercase"/> -->
 			<button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/>
