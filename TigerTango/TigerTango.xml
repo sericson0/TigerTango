@@ -1078,7 +1078,7 @@ set $cycleWave1 0
 		</define>
 		<define class="vfxdrop" placeholders="action1,action2,textaction,width=+113,textwidth=135-40">
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
-				<size width="[WIDTH]" height="25"/>
+				<size width="[WIDTH]" height="30"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
 				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="[TEXTWIDTH]" fontsize="16" align="left"  action="[TEXTACTION]" important="true"/>
@@ -1264,6 +1264,7 @@ set $cycleWave1 0
 						<size width="6" height="58"/>
 						<on color="knobfill" shape="square" border_size="1" border="bordercolor" radius="33"/>
 					</visual>
+					<panel name="coverart_video" visibility="is_video 'active'">
 						<video x="+13" y="+13" source="deck" letterboxing="crop" linkdrop="false">
 							<size width="186" height="186"/>
 							<clipmask x="776" y="216" width="184" height="184"/>
@@ -1735,26 +1736,23 @@ set $cycleWave1 0
 				<text fontsize="12" align="center" color="textdarker" text="Click to activate" localize="true" important="true"/>
 			</textzone>
 			<video x="+1" y="+1" source="master">
-				<size width="110" height="84"/>
+				<size width="139" height="84"/>
 			</video>
 			<button x="+0" y="+0" action="video" rightclick="video_output">
-				<size width="110" height="84"/>
+				<size width="150" height="85"/>
 			</button>
 		</group>
 
 
 		<group name="videomix" x="+0" y="+0" visibility="has_video_mix">
 			<panel class="vfxdrop" width="+110" x="+35" y="+73" action1="video_transition" rightclick="video_transition 500ms" action2="video_transition_select" textaction="get_videotrans_name &amp; param_uppercase"/>
-			<!-- <panel class="settingsbutton" width="+135" x="+30" y="+40" action1="deck master video_" action2="deck master video__select" textaction="deck master get_video_name &amp; param_uppercase"/> -->
-			<panel class="vfxdrop" width="+110" x="+73" y="+104" action1="deck master video_fx" action2="deck master video_fx_select" textaction="deck master get_videofx_name &amp; param_uppercase"/>
-
+			<panel class="settingsbutton" width="+135" x="+30" y="+40" action1="deck master video_" action2="deck master video__select" textaction="deck master get_video_name &amp; param_uppercase"/>
 			<button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/>
 		</group>
 		<group name="videosimple" x="+0" y="+0" visibility="not has_video_mix">
 			<panel class="vfxdrop" width="+110" x="+35" y="+73"  action1="video_source" action2="video_source_select" textaction="get_text '%videosource' &amp; param_uppercase"/>
-			<panel class="vfxdrop" width="+110" x="+35" y="+104"  action1="deck master video_fx" action2="deck master video_fx_select 'no_sources'" textaction="deck master get_videofx_name &amp; param_uppercase"/>
-			<!-- <panel class="vdrop" width="+135" x="+30" y="+50"  action1="deck master video_" action2="deck master video__select 'no_sources'" textaction="deck master get_video_name &amp; param_uppercase"/> -->
-			<!-- <button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/> -->
+			<!-- <panel class="vdrop" width="+135" x="+30" y="+40"  action1="deck master video_" action2="deck master video__select 'no_sources'" textaction="deck master get_video_name &amp; param_uppercase"/> -->
+			<button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/>
 		</group>
 	</panel>
 	</group>
