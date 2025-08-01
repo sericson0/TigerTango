@@ -38,6 +38,9 @@ You can load a stable version directly from Virtual DJ, or can install the devel
 You can find a list of the changes between the version on VirtualDJ and the version on GitHub in the [ChangeLog](ChangeLog.md)
 
 ### Loading TigerTango from VirtualDJ
+> [!IMPORTANT]
+> We currently recommend downloading TigerTango from GitHub (see steps below) to get the addtional updates and safety features. Once User testing has completed then the version on VirtualDJ will be updated (it takes several weeks to go through their review process).
+
 1. Open VirtualDJ and select settings (the gear icon in the upper right)
 2.  Select the Interface tab (looks like a computer monitor)
 3.  Select *Get More*
@@ -66,6 +69,16 @@ To load the development version:
 > You can get the path to the virtual DJ skins by going to settings in Virtual DJ, moving to the interface tab, and clicing 'Edit This Skin' in the bottom right. **Go one up from this folder!!! This is where you want to place the TigerTango folder you downloaded.**
 
 ![alt text](<docs/Installing Development Branch-1.png>)
+
+### OPTIONAL Load the TigerTangoVideo Video Skin.
+Some DJs like to Display song information while DJing. However, the default video skin can have song text that is too small for the milonga. Therefore we have added the TigerTangoVideo video skin to this repository as well. You can load using the following steps.
+1. Follow the steps in Loading from GitHub (section above) to download and unzip the TigerTango-main.zip file.
+2. You need to move the **TigerTangoVideo** folder to where Virtual DJ saves video skins. In Windows this is C:\Users\<USERNAME>\AppData\Local\VirtualDJ\VideoSkins
+> [!NOTE]
+> You can get the path to the virtual DJ video skins by going to settings in Virtual DJ, moving to the interface tab (on left), change to Video Overlay tab (on top) and clicing 'Edit This Skin' in the bottom right. **Go one up from this folder!!! This is where you want to place the TigerTangoVideo folder you downloaded.**
+3. Open Settings -> Interface (tab on left side) -> Video Overlay (tab on right side) -> Select *TigerTangoVideo (edit)*
+
+When you display video it should now use the TigerTangoVideo interface.
 
 ## Initializing Changes Made by TigerTango and Recommended Settings
 TigerTango makes a number of changes to settings when opened. This helps reduce the chance for errors and improves functionality.
