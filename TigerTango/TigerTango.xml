@@ -1891,14 +1891,14 @@ set $cycleWave1 0
 				<pos x="+0" y="+0" width="100" height="32"/>
 			</button>
 			<textzone action="edit_bpm" tooltip="">
-				<pos x="+0" y="+5"/>
+				<pos x="+0" y="+0"/>
 				<size width="85" height="32"/>
 				<text fontsize="24" color="textdeck" weight="bold" align="left" format="%Pbpmex"/>
 			</textzone>
 			<textzone action="edit_bpm" tooltip="" visibility="loaded">
 				<pos x="+85" y="+10"/>
-				<size width="45" height="32-10"/>
-				<text fontsize="20" color="textdarker" colorover="textover" weight="bold" align="right" text="BPM" localize="true"/>
+				<size width="45" height="32-18"/>
+				<text fontsize="18" color="textdarker" colorover="textover" weight="bold" align="right" text="BPM" localize="true"/>
 			</textzone>
 		</group>
 		<group name="time_area" x="-5" y="+32" width="140" height="38">
