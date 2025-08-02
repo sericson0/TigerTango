@@ -5,8 +5,8 @@ By: Sean Ericson (Sericson0@gmail.com)
 A good Tango DJ can enables dancers to find that magical flow and connection we all crave. The art of picking the perfect tandas requires untold hours of study and practice. And nothing kills the magic you are working so hard to create like technical issues. Your DJ software should enable your creativity and not be a hindrance to the flow you are striving so hard to create. This is why I created the TigerTango skin for Virtual DJ. It provides a layout custom suited for the needs of and requirements of tango DJs and other social dances.
 
 This guide discusses how to to get set for DJing tango music with virtual DJ. It walks through the following:
-* Installing Virtual DJ
-* Loading the TigerTango Skin
+* Installing Virtual DJ (Required for TigerTango)
+* Loading the TigerTango Skin (Current recommendation is to use the version on GitHub)
 * Installing third party plugins such as EQs
 * Description of the layout and use of TigerTango
 
@@ -30,7 +30,7 @@ While Virtual DJ is a powerful tool, it is primarily designed for club DJs to mi
 
 This is where TigerTango comes in. It provides an interface that has removed what is not needed and added features that are useful for DJing tango.
 
-You can load a stable version directly from Virtual DJ, or can install the development version from Github https://github.com/sericson0/TigerTango
+There are two ways to load TigerTango. You can load version directly from Virtual DJ, or can install the development version from Github https://github.com/sericson0/TigerTango
 
 > [!IMPORTANT]
 > Because of the additional safety features added to the development version, we currently recommend you follow the steps for downloading from GitHub.
@@ -58,25 +58,34 @@ You should be all set! (See screen shots for step by step)
 ### Loading from GitHub
 
 To load the development version:
-1. Go to https://github.com/sericson0/TigerTango
+1. Go to https://github.com/sericson0/TigerTango (If you are reading these instructions online you have already completed this step! You will just need to scroll to the top of the page to clide Code for step 2).
 2. Click Code (see image below)
 3. Click Download ZIP (see image below)
 4. Open the downloaded zipfile (TigerTango-main.zip)
 5. Open the zipfile and the TigerTango-main folder (There should be a TigerTango folder inside). I.e., you need the folder labeled TigerTango that has a .xml file and several images inside.
-6. Move this folder into where VirtualDJ saves skins (See note below). On Windows this is likely C:\Users\<USERNAME>\AppData\Local\VirtualDJ\Skins.
-
 > [!NOTE]
 > You can get the path to the virtual DJ skins by going to settings in Virtual DJ, moving to the interface tab, and clicing 'Edit This Skin' in the bottom right. **Go one up from this folder!!! This is where you want to place the TigerTango folder you downloaded.**
+6. Move this folder into where VirtualDJ saves skins (See note above). On Windows this is likely C:\Users\<USERNAME>\AppData\Local\VirtualDJ\Skins.
+
 
 ![alt text](<docs/Installing Development Branch-1.png>)
 
+Once you have installed the TigerTango interface, you can open it as follows:
+1. Click settings (gear image in upper right).
+2. Click **Interface** in left tab (see image below)
+3. Select the TigerTango skin (you may have to scroll down)
+4. You can now close the settings interface and should have TigerTango loaded!
+
+![alt text](docs/LoadingTheSkin.png)
 ### OPTIONAL Load the TigerTangoVideo Video Skin.
 Some DJs like to Display song information while DJing. However, the default video skin can have song text that is too small for the milonga. Therefore we have added the TigerTangoVideo video skin to this repository as well. You can load using the following steps.
 1. Follow the steps in Loading from GitHub (section above) to download and unzip the TigerTango-main.zip file.
-2. You need to move the **TigerTangoVideo** folder to where Virtual DJ saves video skins. In Windows this is C:\Users\<USERNAME>\AppData\Local\VirtualDJ\VideoSkins
 > [!NOTE]
 > You can get the path to the virtual DJ video skins by going to settings in Virtual DJ, moving to the interface tab (on left), change to Video Overlay tab (on top) and clicing 'Edit This Skin' in the bottom right. **Go one up from this folder!!! This is where you want to place the TigerTangoVideo folder you downloaded.**
+2. You need to move the **TigerTangoVideo** folder to where Virtual DJ saves video skins. In Windows this is C:\Users\<USERNAME>\AppData\Local\VirtualDJ\VideoSkins
+
 3. Open Settings -> Interface (tab on left side) -> Video Overlay (tab on right side) -> Select *TigerTangoVideo (edit)*
+4. You can now close settings.
 
 When you display video it should now use the TigerTangoVideo interface.
 

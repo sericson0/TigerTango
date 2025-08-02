@@ -1844,7 +1844,7 @@ set $cycleWave1 0
 				<text fontsize="22" color="textoff3" align="left" weight="bold" action="get_time" important="true"/>
 			</textzone>
 		  <button action="display_time 'elapsed,remain'" query="display_time">
-		  	<pos x="+5" y="+1" width="+16+4+65" height="28"/>
+		  	<pos x="+5" y="+10" width="+16+4+65" height="40"/>
 		  </button>
 			<group name="keydisplay" x="+[AREAWIDTH]-37-45-15">
 				<textzone action="setting 'keyDisplay'">
@@ -1920,7 +1920,7 @@ set $cycleWave1 0
 					<text fontsize="22" color="textoff3" align="right" weight="bold" action="get_time" important="true"/>
 				</textzone>
 			  <button action="display_time 'elapsed,remain'" query="display_time">
-			  	<pos x="+0" y="+1" width="+16+4+65" height="28"/>
+			  	<pos x="+0" y="+10" width="+16+4+65" height="40"/>
 			  </button>
 			</group>
 			<group name="keydisplay" x="+15">
