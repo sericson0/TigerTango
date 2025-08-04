@@ -123,17 +123,17 @@ set '$fadeIndicator1' 0
 	</button>
 </window>
 
-set $showWave1 1
-set $cycleWave1 0
+set '$showWave1' 1
+set '$cycleWave1' 0
 <window name="Waveform" posx="100" posy="100" width="600" height="280" shown="false" color="#424346">
-	<textzone x="+0" y="+6" group="horizontal" align="center" scroll="no" click="scroll">
-		<size width="500" height="25"/>
-	<text fontsize="20" align="center" color="#a7a7a7" weight="bold" important="true"
+	<textzone x="+20" y="+6" group="horizontal" align="center" scroll="yes">
+		<size width="430" height="25"/>
+	<text fontsize="16" align="center" color="#a7a7a7" weight="bold" important="true"
 		action="var_equal '$cycleWave' 0 ? (var_equal '$showWave1' 1 ? deck 1 get_title: deck 2 get_title) :
 			deck 1 play ? deck 1 get_title: deck 2 play ? deck 2 get_title :
 				(var_equal '$showWave1' 1 ? deck 1 get_title: deck 2 get_title)" localize="true"/>
-	<text fontsize="20" color="#a7a7a7" action="get_artist_title_separator" important="true" />
-	<text fontsize="20" align="center" color="#a7a7a7" important="true"
+	<text fontsize="16" color="#a7a7a7" action="get_artist_title_separator" important="true" />
+	<text fontsize="16" align="center" color="#a7a7a7" important="true"
 				action="var_equal '$cycleWave' 0 ? (var_equal '$showWave1' 1 ? deck 1 get_artist_before_feat: deck 2 get_artist_before_feat):
 					deck 1 play ? deck 1 get_artist_before_feat:
 						deck 2 play ? deck 2 get_artist_before_feat :
