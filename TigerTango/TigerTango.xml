@@ -2086,7 +2086,7 @@ set '$fadeIndicator1' 0
 								 	& deck 2 unload & deck 1 play & automix on)
 							): (
 								deck 2 play ? deck 2 automix_load & automix on :
-								(deck 1 loaded ? deck 1 automix_load : deck 1 load automix_song 1)
+								(deck 1 loaded ? deck 1 automix_load : automix on & automix off & deck 1 automix_load)
 									& deck 1 play & automix on)
 								 "
 							query="deck 1 automix ? true : deck 2 automix ? true : false">
@@ -2419,7 +2419,7 @@ set '$fadeIndicator1' 0
 							 	& deck 1 unload & deck 2 play & automix on)
 						): (
 							deck 1 play ? deck 1 automix_load & automix on :
-							(deck 2 loaded ? deck 2 automix_load : deck 2 load automix_song 1)
+							(deck 2 loaded ? deck 2 automix_load : automix on & automix off & deck 2 automix_load)
 								& deck 2 play & automix on)
 							"
 							query="deck 1 automix ? true : deck 2 automix ? true : false">
