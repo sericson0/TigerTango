@@ -1846,8 +1846,8 @@ set '$fadeIndicator1' 0
 		  </button>
 			<group name="keydisplay" x="+[AREAWIDTH]-37-45-15">
 				<textzone action="setting 'keyDisplay'">
-					<pos x="+0" y="+20"/>
-					<size width="65" height="28"/>
+					<pos x="+15" y="+20"/>
+					<size width="50" height="28"/>
 					<text fontsize="22" color="textdeck" weight="bold" align="right" action="get_key" important="true"/>
 				</textzone>
 			</group>
@@ -1903,28 +1903,28 @@ set '$fadeIndicator1' 0
 		  	<line x="+0" y="+0" width="[AREAWIDTH]" height="1" color="deckinfolines"/>
 		  	<group name="decktimers" x="+[AREAWIDTH]-65-16-4">
 				<button visibility="display_time 'remain'">
-					<pos x="-12" y="+20"/>
+					<pos x="+60" y="+20"/>
 					<size width="16" height="28"/>
-					<icon width="20" height="20" color="textdark" align="left" sysicon="arrowright" important="true"/>
+					<icon width="20" height="20" color="textdark" align="right" sysicon="arrowright" important="true"/>
 				</button>
 				<button visibility="display_time 'elapsed'">
-					<pos x="-12" y="+20"/>
+					<pos x="+58" y="+20"/>
 					<size width="16" height="28"/>
-					<icon width="20" height="20" color="textdark" align="left" sysicon="arrowleft" important="true"/>
+					<icon width="20" height="20" color="textdark" align="right" sysicon="arrowleft" important="true"/>
 				</button>
 				<textzone>
-					<pos x="-10" y="+20"/>
+					<pos x="-9" y="+20"/>
 					<size width="80" height="28"/>
-					<text fontsize="22" color="textoff3" align="right" weight="bold" action="get_time" important="true"/>
+					<text fontsize="22" color="textoff3" align="left" weight="bold" action="get_time" important="true"/>
 				</textzone>
 			  <button action="display_time 'elapsed,remain'" query="display_time">
-			  	<pos x="+0" y="+10" width="+16+4+65" height="40"/>
+			  	<pos x="-8" y="+10" width="+16+4+65" height="40"/>
 			  </button>
 			</group>
 			<group name="keydisplay" x="+15">
 				<textzone action="setting 'keyDisplay'">
 					<pos x="+0" y="+20"/>
-					<size width="65" height="28"/>
+					<size width="50" height="28"/>
 					<text fontsize="22" color="textdeck" weight="bold" align="left" action="get_key" important="true"/>
 				</textzone>
 			</group>
