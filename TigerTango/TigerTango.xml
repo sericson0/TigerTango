@@ -2113,6 +2113,7 @@ set '$fadeIndicator1' 0
 				set '$fadeIndicator1' 1 &
 					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
 					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+					(setting 'automixMode' 'radio'        ? set '$autoType' 3 : nothing) &
 					setting 'automixMode' 'no mix' &
 				repeat_start 'levelSweep' 20ms 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
 				repeat_start 'WaitTimer' 1300ms 1 &
@@ -2121,7 +2122,9 @@ set '$fadeIndicator1' 0
 				(deck 1 stop & repeat_start 'WaitTimer' 200ms 1 & deck 1 level 100% & deck 2 play & automix on & deck 1 load automix_song 1)
 				) &
 				set '$fadeIndicator1' 0 & repeat_start 'WaitToSwitch' 300ms 1 &
-				var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing
+				( var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence':
+				  var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' :
+				  var_equal '$autoType' 3 ? setting 'automixMode' 'radio' : nothing)
 			): nothing"
 			query="var_equal '$fadeIndicator1' 1">
 
@@ -2229,6 +2232,7 @@ set '$fadeIndicator1' 0
 			</button>
 			<button class="button_main" text="⚠️" query="setting 'automixMode' 'no mix' ? false :
 														  setting 'automixMode' 'skip silence' ? false:
+														  setting 'automixMode' 'radio' ? false :
 														  setting 'automixMode' 'full songs' ? false: true"
 			textsize="14" x="+80+5" y="+53" height="25" width="35"
 				action="setting 'automixMode' 'no mix'" rightclick="setting 'automixMode' 'skip silence'">
@@ -2434,6 +2438,7 @@ set '$fadeIndicator1' 0
 				set '$fadeIndicator2' 1 &
 					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
 					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+					(setting 'automixMode' 'radio' ? set '$autoType' 3 : nothing) &
 					setting 'automixMode' 'no mix' &
 				repeat_start 'levelSweep' 20ms 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
 				repeat_start 'WaitTimer' 1300ms 1 &
@@ -2442,7 +2447,9 @@ set '$fadeIndicator1' 0
 				(deck 2 stop & repeat_start 'WaitTimer' 200ms 1 & deck 2 level 100% & deck 1 play & automix on & deck 2 load automix_song 1)
 				) &
 				set '$fadeIndicator2' 0 & repeat_start 'WaitToSwitch' 300ms 1 &
-				var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence': var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' : nothing
+				( var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence':
+				  var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' :
+				  var_equal '$autoType' 3 ? setting 'automixMode' 'radio' : nothing)
 			) : nothing" query="var_equal '$fadeIndicator2' 1">
 			<tooltip>AUTO PLAYBACK FADE\nFade song on deck and play song on other deck.</tooltip>
 			</button>
