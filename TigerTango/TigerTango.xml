@@ -1117,6 +1117,210 @@ ________________________________________________________________________________
 End of Definitions. Start of Windows.
 __________________________________________________________________________________________________
 -->
+<oninit action="set '$tandaLength' 4"/>
+
+<!-- Video Configuration Window -->
+<window name="VideoOptionsWindow" width="400" height="400+40" posx="960" posy="center" shown="false" color="#424346">
+
+	<visual x="+0" y="+0" width="400" height="401+40">
+		<off color="background" border_size="1" border="bordercolor"/>
+	</visual>
+	<visual x="+5" y="+3" width="400" height="30">
+		<off color="dark" border_size="1"/>
+	</visual>
+
+	<textzone x="+40" y="+3" width="320" height="30">
+		<text text="VIDEO CONFIGURATION OPTIONS" font="Arial" fontsize="18" weight="bold"
+		color="textoff" align="center"/>
+	</textzone>
+
+	<button action="show_window 'VideoOptionsWindow' off">
+		<tooltip> Close  </tooltip>
+		<!-- Position: 5 px from top, 5 px from right.
+			The +420 is the initial window width you set earlier.
+			If you change that width, adjust the 420-5 part too. -->
+		<pos  x="+400-35" y="+4"/>
+		<size width="30" height="30"/>
+		<!-- Drawn vector button (no extra PNG needed) -->
+		<icon sysicon="close" color="textoff3" colorover="white" width="25" height="25"/>
+		<over color="#3b4242"/>
+	</button>
+	<!-- ROW 1. Video options and settings -->
+	<group name="video_options" x="+10" y="+45">
+		<visual>
+			<pos x="+0" y="+0"/>
+			<size width="380" height="95"/>
+			<off shape="square" color="topmenu" radius="1" border_size="1" border="bordercolor2"/>
+		</visual>
+
+		<textzone x="+0" y="+5">
+			<size width="380" height="18"/>
+			<text fontsize="16" align="center" color="texton" weight="bold" text="VIDEO SETTINGS" localize="true"/>
+		</textzone>
+		<group name = "video_name_text>" x="+10" y="+35">
+			<textzone x="+0" y="+0">
+				<size width="110" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="TRANSITIONS" localize="true"/>
+			</textzone>
+			<textzone x="+120" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="EFFECTS" localize="true"/>
+			</textzone>
+			<textzone x="+240" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="OPTIONS" localize="true"/>
+			</textzone>
+		</group>
+
+		<group name="videomix" x="+10" y="+60" visibility="has_video_mix">
+		<panel class="vfxdrop" width="+110" x="+0" y="+0" action1="video_transition"
+					rightclick="video_transition 500ms" action2="video_transition_select"
+					textaction="get_videotrans_name &amp; param_uppercase"/>
+		<panel class="vfxdrop" width="+110" x="+125" y="+0" action1="deck master video_fx" action2="deck master video_fx_select" textaction="deck master get_videofx_name &amp; param_uppercase"/>
+		</group>
+
+		<group name="videosimple" x="+10" y="+55" visibility="not has_video_mix">
+			<panel class="vfxdrop" width="+110" x="+0" y="+0"  action1="video_source" action2="video_source_select" textaction="get_text '%videosource' &amp; param_uppercase"/>
+			<panel class="vfxdrop" width="+110" x="+125" y="+0"  action1="deck master video_fx" action2="deck master video_fx_select 'no_sources'" textaction="deck master get_videofx_name &amp; param_uppercase"/>
+		</group>
+		<button class="settingsbutton" x="+255" y="+55" action="video_output" query="false"/>
+	</group>
+
+	<!-- Row 2 Tiger Tango Video Options -->
+	<group name="video_outputs" x="+10" y="+150" >
+		<visual>
+			<pos x="+0" y="+0"/>
+			<size width="380" height="140"/>
+			<off shape="square" color="topmenu" radius="1" border_size="1" border="bordercolor2"/>
+		</visual>
+
+		<textzone x="+0" y="+10">
+			<size width="380" height="16"/>
+			<text fontsize="16" align="center" color="texton" weight="bold" text="TIGER TANGO VIDEO OUTPUTS" localize="true"/>
+		</textzone>
+
+		<group name = "video_name_text>" x="+10" y="+38">
+			<textzone x="+0" y="+0">
+				<size width="110" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="ALBUM ART" localize="true"/>
+			</textzone>
+			<textzone x="+120" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="LYRICS" localize="true"/>
+			</textzone>
+			<textzone x="+240" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="NEXT TRACK" localize="true"/>
+			</textzone>
+		</group>
+
+		<group name="tigerTango video option buttons row 1" x="+10" y="+60">
+
+		<button class="button_master" x="+0" y="+0" action="toggle '@$hideAlbumArt'"
+				textsize="14" height="30" width="110" text="SHOW ART"
+				query="var_equal '@$hideAlbumArt' 0 ? true : false" >
+			<tooltip>Toggle whether to display album art on video.</tooltip>
+		</button>
+		<button class="button_master" x="+125" y="+0" action="toggle '@$showLyrics'"
+				 textsize="14" height="30" width="110" text="SHOW LYRICS">
+			<tooltip>If on, then song lyrics will be taken from &quot;Comments&quot;\nmetadata and displayed on video</tooltip>
+		</button>
+		<button class="button_master" x="+250" y="+0" action="toggle '@$hideNextTrack'"
+				textsize="14" height="30" width="110" query="var_equal '@$hideNextTrack' 0 ? true : false"
+				text="SHOW NEXT">
+			<tooltip>Toggle whether to display next track on the video.</tooltip>
+		</button>
+	</group>
+
+	<group name="tigerTango video option buttons row 2" x="+10" y="+95">
+		<button class="button_master" x="+0" y="+0" action="toggle '@$smallAlbumArt'"
+				textsize="14" height="30" width="110"
+				textaction="var_equal '@$smallAlbumArt' 1 ? get_text 'SMALL' : get_text 'LARGE'"
+				query="false" >
+			<tooltip>Toggle album art disply size.</tooltip>
+		</button>
+		<button class="button_master" x="+125" y="+0" action="cycle '@$lyricsFont' 3" query="false"
+				 textsize="14" height="30" width="110"
+				 textaction="var_equal '@$lyricsFont' 1 ? get_text 'LARGE' :
+				 			 var_equal '@$lyricsFont' 2 ? get_text 'SMALL' :
+							 get_text 'MEDIUM'">
+			<tooltip>Cycle between lyrics font size</tooltip>
+		</button>
+
+	</group>
+	</group>
+	<!-- Row 3 Counter Settings -->
+	<group name="counter_settings" x="+10" y="+260+40" >
+		<visual>
+			<pos x="+0" y="+0"/>
+			<size width="380" height="100"/>
+			<off shape="square" color="topmenu" radius="1" border_size="1" border="bordercolor2"/>
+		</visual>
+
+		<textzone x="+0" y="+10">
+			<size width="380" height="16"/>
+			<text fontsize="16" align="center" color="texton" weight="bold" text="TANDA COUNTER SETTINGS" localize="true"/>
+		</textzone>
+
+		<group name = "cortina_text>" x="+10" y="+38">
+			<textzone x="+0" y="+0">
+				<size width="110" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="CORTINA" localize="true"/>
+			</textzone>
+			<textzone x="+120" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="TANGO TANDA" localize="true"/>
+			</textzone>
+			<textzone x="+240" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="VALS TANDA" localize="true"/>
+			</textzone>
+		</group>
+
+		<group name="cortina_buttons" x="+10" y="+60">
+			<button class="button_master" x="+0" y="+0" action="toggle '@$cortinaCheck'"
+				textsize="14" height="30" width="110"
+				text="GENRE CHECK">
+				<tooltip>If on, then will only mark as cortina if genre includes the word &quot;Cortina&quot;.\nOtherwise will mark as a cortina any track with genre not in\n&quot;Tango&quot; &quot;Vals&quot; &quot;Milonga&quot; &quot;Alternative&quot;</tooltip>
+			</button>
+			<button class="button_master" x="+125" y="+0" action="toggle '@$tango3SongTanda'"
+				textsize="14" height="30" width="110"
+				textaction="var_equal '@$tango3SongTanda' 1 ? get_text 'TANGO 3' :
+															  get_text 'TANGO 4'"
+				query="false">
+				<tooltip>Set the length of tandas consisting of songs with genre &quot;Tango&quot;</tooltip>
+			</button>
+
+			<button class="button_master" x="+250" y="+0" action="toggle '@$vals4SongTanda'"
+				textsize="14" height="30" width="110"
+				textaction="var_equal '@$vals4SongTanda' 1 ? get_text 'VALS 4' :
+															  get_text 'VALS 3'"
+				query="false">
+				<tooltip>Set the length of tandas consisting of songs with genre &quot;Vals&quot;</tooltip>
+			</button>
+
+		</group>
+
+	</group>
+		<group name="check_video_skin" x="+10" y="+360+40">
+
+		<button class="button_master" x="+40" y="+5"
+			visibility="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on"
+				query="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on"
+			textsize="16" height="30" width="300"
+			action="config 'interface'"
+			textaction="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? '' :
+								get_text 'TIGER TANGO VIDEO NOT ACTIVE'.">
+
+			<!-- > -->
+			<tooltip>Some video functionality only available with TigerTangoVideo Video Skin\nVideo skin can be loaded from settings--Interface--Video Overlay\nSearch for TigerTangoVideo.</tooltip>
+		</button>
+
+	</group>
+
+</window>
+
+
 <window name="single_output_warning" width="400" height="160" posx="960" posy="center" shown="false" color="#424346">
 
   <textzone x="15" y="-10" width="360" height="120"
@@ -1767,20 +1971,64 @@ ________________________________________________________________________________
 		</group>
 
 
-		<group name="videomix" x="+0" y="+0" visibility="video ? var '$largeVideo' ? false : has_video_mix : has_video_mix">
-			<panel class="vfxdrop" width="+110" x="+35" y="+73" action1="video_transition"
-						rightclick="video_transition 500ms" action2="video_transition_select"
-						textaction="get_videotrans_name &amp; param_uppercase"/>
-			<!-- <panel class="settingsbutton" width="+135" x="+30" y="+40" action1="deck master video_" action2="deck master video__select" textaction="deck master get_video_name &amp; param_uppercase"/> -->
-			 <panel class="vfxdrop" width="+110" x="+35" y="+104" action1="deck master video_fx" action2="deck master video_fx_select" textaction="deck master get_videofx_name &amp; param_uppercase"/>
+		<group name="videomix" x="+35" y="+73" visibility="video ? var '$largeVideo' ? false : true : true">
+			<button class="button_master" x="+0" y="+0" width="110" height="25" action="show_window VideoOptionsWindow" textcolor="textdark"
+					textsize="14" text="OPTIONS">
+			<tooltip>Open Video Options Window</tooltip>
+			</button>
+			<!-- When new song start playing, if song counger is running, then do the following:
+			 	- Increment tanda counter by 1
+				- Set tanda length based on genre of the song
+				- specified tanda length for tango, vals, milonga, and alternative
+				- If cortina is not checked, set tanda length to 1 and reset tanda counter to 0
+				- If cortina is checked, then check if genera is cortina to reset counter.
+				- If tanda counter exceeds tanda length, reset it to 1
+			-->
+			<button class="button_master" x="+0" y="+31" textsize="14" height="25" width="52"
+				action="var_equal '$songCounterRunning' 1 ? set '$songCounterRunning' 0 & repeat_stop 'tandaPosCounter' :
+				set '$songCounterRunning' 1 & set '$tandaCounter' 0 &
+				repeat_start_instant 'tandaPosCounter' 1000ms & deck master load_pulse_active 250ms ? (
+					(set '$tandaCounter' `get_var '$tandaCounter' & param_cast & param_add 1`) &
+					(set '$tandaLength' `get_var '$tandaLength' & param_cast`) &
+					(
+						(deck master get_genre & param_lowercase & param_contains 'tango') ?
+							(var_equal '@$tango3SongTanda' 1 ? set '$tandaLength' 3 : set '$tandaLength' 4) :
+						(deck master get_genre & param_lowercase & param_contains 'vals') ?
+							(var_equal '@$vals4SongTanda' 1 ? set '$tandaLength' 4 : set '$tandaLength' 3) :
+						(deck master get_genre & param_lowercase & param_contains 'milonga') ?
+							(set '$tandaLength' 3) :
+						(deck master get_genre & param_lowercase & param_contains 'alternative') ?
+							(set '$tandaLength' 3) :
+						(var_equal '@$cortinaCheck' 0) ?
+							(set '$tandaLength' 1 & set '$tandaCounter' 0) :
+						(deck master get_genre & param_lowercase & param_contains 'cortina') ?
+							(set '$tandaLength' 1 & set '$tandaCounter' 0) :
+						nothing
+					) &
+					(get_var '$tandaCounter' & param_cast 'integer' & param_greater
+					`get_var '$tandaLength' & param_cast 'integer'` ? set '$tandaCounter' 1 : nothing) &
+					repeat_start 'waitTime' 2000ms 1 & repeat_stop 'waitTime'
+					) : nothing
+					"
+				textaction="var_equal '$songCounterRunning' 1 ? get_text 'T C ◼' :
+				get_text 'T C ▶'"
 
-			<!-- <button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/> -->
-		</group>
-		<group name="videosimple" x="+0" y="+0" visibility="video ? var '$largeVideo' ? false : not has_video_mix : not has_video_mix">
-			<panel class="vfxdrop" width="+110" x="+35" y="+73"  action1="video_source" action2="video_source_select" textaction="get_text '%videosource' &amp; param_uppercase"/>
-			<panel class="vfxdrop" width="+110" x="+35" y="+104"  action1="deck master video_fx" action2="deck master video_fx_select 'no_sources'" textaction="deck master get_videofx_name &amp; param_uppercase"/>
-			<!-- <panel class="vdrop" width="+135" x="+30" y="+40"  action1="deck master video_" action2="deck master video__select 'no_sources'" textaction="deck master get_video_name &amp; param_uppercase"/> -->
-			<!-- <button class="settingsbutton" x="+35" y="+110" action="video_output" query="false"/> -->
+				query="var_equal '$songCounterRunning' 1 ? true : false">
+				<tooltip>Add to the tanda counter</tooltip>
+			</button>
+
+			<button class="button_master" x="+58" y="+31"
+				textsize="14" height="25" width="52"
+				action="(set '$tandaCounter' `get_var '$tandaCounter' & param_cast & param_add 1`) &
+						(get_var '$tandaCounter' & param_cast 'integer' & param_greater
+					`get_var '$tandaLength' & param_cast 'integer'` ? set '$tandaCounter' 1 : nothing)
+				"
+				rightclick="set '$tandaCounter' 0"
+				textaction="get_text '`get_var $tandaCounter` / `get_var $tandaLength`'"
+				query="false">
+				<tooltip>Click to increment (+1) tanda counter. Right click to reset to 0.</tooltip>
+			</button>
+
 			</group>
 	</panel>
 	</group>
