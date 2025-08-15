@@ -1523,6 +1523,12 @@ ________________________________________________________________________________
 					<off x="1520" y="0" condition="var_equal '@$colorscheme' 2"/>
 					<on x="1627" y="0"/>
 				</visual>
+				<button class="button_master" x="+40" y="+20+34" width="155" height="25"
+					action="toggle mono_mix" textsize="16"
+					textaction="var_equal 'mono_mix' 1 ? get_text 'MONO' : get_text 'STEREO'">
+					<tooltip>Click to toggle between mono and stereo mix.</tooltip>
+
+				</button>
 			</group>
 			<line name="divider" color="dark"  x="+200-20" y="+4" width="2" height="50-8"/>
 				<panel name="cpu" x="+180+30-10" y="+0" width="50" height="50" childtooltip="true">
