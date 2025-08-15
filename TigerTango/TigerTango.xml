@@ -482,7 +482,7 @@
 			<selected shape="circle" color="green" border_size="3" border="bordercolor3"/>
 		</define>
 		<define class="settingsbutton">
-			<size width="110" height="20"/>
+			<size width="110" height="25"/>
 			<off shape="square" color="dark" border_size="1" border="bordercolor3"/>
 			<over shape="square" color="buttonover" border_size="1" border="bordercolor3"/>
 			<selected shape="square" color="buttonon2" border_size="1" border="bordercolor3"/>
@@ -817,7 +817,7 @@
 				<size width="[WIDTH]" height="25"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
-				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="[TEXTWIDTH]" fontsize="16" align="left"  action="[TEXTACTION]" important="true"/>
+				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="[TEXTWIDTH]" fontsize="14" align="left"  action="[TEXTACTION]" important="true"/>
 			</button>
 			<group x="[WIDTH]">
 				<button x="-30" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
@@ -1115,6 +1115,8 @@
 <!--
 __________________________________________________________________________________________________
 End of Definitions. Start of Windows.
+__________________________________________________________________________________________________
+-->
 <window name="single_output_warning" width="400" height="160" posx="960" posy="center" shown="false" color="#424346">
 
   <textzone x="15" y="-10" width="360" height="120"
@@ -1561,13 +1563,6 @@ ________________________________________________________________________________
 				</textzone>
 			</group>
 		</group>
-
-
-		<group name="beat_matcher" x="858" y="8">
-		<group name="beatbar" x="+40" y="+2">
-		</group>
-	</group>
-
 </group>
 <group name="mixer" x="764" y="-25" width="1920-764-764" height="500">
 	<visual>
@@ -1579,12 +1574,17 @@ ________________________________________________________________________________
 <line x="+205" y="+42" height="180" width="3" color="dark" highlight="" shadow="highlight" />
 <line x="+308" y="+42" height="180" width="3" color="dark" highlight="" shadow="highlight" />
 <line x="+428" y="+42" height="180" width="3" color="dark" highlight="" shadow="highlight" />
+<!--
+_______________________________________________________
+			MASTER MIXER AREA
+_______________________________________________________
+-->
 <panel name="mastermixer" group="mixer">
-		<group name="mastervol" x="+15-3+170+25" y="+32">
-			<!-- <visual>
-				<pos x="+2" y="+1"/>
-				<size width="100" height="200"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
+	<group name="mastervol" x="+15-3+170+25" y="+32">
+		<!-- <visual>
+			<pos x="+2" y="+1"/>
+			<size width="100" height="200"/>
+			<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
 			</visual> -->
 			<textzone x ="-45" y="+10">
 				<size width="194" height="14"/>
@@ -1598,8 +1598,8 @@ ________________________________________________________________________________
 			<visual source="get_vu_meter 'master'" type="linear" granularity="8" orientation="vertical" direction="up">
 				<pos x="+75" y="+45"/>
 				<size width="13" height="130"/>
-			  <off x="1613" y="0" condition="var_not_equal '@$colorscheme' 2"/>
-			  <off x="1520" y="0" condition="var_equal '@$colorscheme' 2"/>
+				<off x="1613" y="0" condition="var_not_equal '@$colorscheme' 2"/>
+				<off x="1520" y="0" condition="var_equal '@$colorscheme' 2"/>
 				<on x="1571" y="0"/>
 			</visual>
 		</group>
@@ -1609,7 +1609,7 @@ ________________________________________________________________________________
 				<pos x="+2" y="+1"/>
 				<size width="110" height="200"/>
 				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
-			</visual> -->
+				</visual> -->
 			<panel class="headphone_fader" x = "+8" y="+30">
 			</panel>
 			<panel class="headphone_mix_fader" x="+60" y="+30">
@@ -1621,11 +1621,11 @@ ________________________________________________________________________________
 				<size width="30" height="30"/>
 				<icon sysicon="headphones" width="30" height="30" color="textdark"/>
 			</button>
-				<textzone x ="-65" y="+10">
+			<textzone x ="-65" y="+10">
 				<size width="194" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="VOL"/>
 			</textzone>
-				<textzone x ="-10" y="+10">
+			<textzone x ="-10" y="+10">
 				<size width="194" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="MIX"/>
 			</textzone>
@@ -1636,33 +1636,38 @@ ________________________________________________________________________________
 				<pos x="+12" y="+1"/>
 				<size width="85" height="200"/>
 				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
-			</visual> -->
-			<button>
-				<pos x="+40" y="+5"/>
-				<size width="30" height="30"/>
-				<icon sysicon="sampler_mic" width="30" height="30" color="textdark"/>
-			</button>
-			<panel class="knobmaster" x="+45" y="+40">
-				<slider action="mic_volume" dblclick="mic_volume 100%" rightclick="mic_volume 100% ? mic_volume 0% : mic_volume 100%" disabled="not get_hasmic" />
-				<textzone><text localize="true" text="MIC VOL"/></textzone>
-			</panel>
-			<button class="button_master" x="+45" y="+40+75" width="44" height="27" action="mic" text="ON" localize="true"/>
-			<button class="button_master" x="+45" y="+40+75+35" width="44" height="27" action="sampler_rec 'mic'" text="REC" localize="true"/>
-			<visual source="get_vu_meter 'mic'" type="linear" granularity="6" orientation="vertical" direction="up">
-				<pos x="+25" y="+45"/>
-				<size width="13" height="130"/>
-			  <off x="1613" y="0" condition="var_not_equal '@$colorscheme' 2"/>
-			  <off x="1520" y="0" condition="var_equal '@$colorscheme' 2"/>
-				<on x="1571" y="0"/>
-			</visual>
-		</group>
+				</visual> -->
+				<button>
+					<pos x="+40" y="+5"/>
+					<size width="30" height="30"/>
+					<icon sysicon="sampler_mic" width="30" height="30" color="textdark"/>
+				</button>
+				<panel class="knobmaster" x="+45" y="+40">
+					<slider action="mic_volume" dblclick="mic_volume 100%" rightclick="mic_volume 100% ? mic_volume 0% : mic_volume 100%" disabled="not get_hasmic" />
+					<textzone><text localize="true" text="MIC VOL"/></textzone>
+				</panel>
+				<button class="button_master" x="+45" y="+40+75" width="44" height="27" action="mic" text="ON" localize="true"/>
+				<button class="button_master" x="+45" y="+40+75+35" width="44" height="27" action="sampler_rec 'mic'" text="REC" localize="true"/>
+				<visual source="get_vu_meter 'mic'" type="linear" granularity="6" orientation="vertical" direction="up">
+					<pos x="+25" y="+45"/>
+					<size width="13" height="130"/>
+					<off x="1613" y="0" condition="var_not_equal '@$colorscheme' 2"/>
+					<off x="1520" y="0" condition="var_equal '@$colorscheme' 2"/>
+					<on x="1571" y="0"/>
+				</visual>
+			</group>
 
-		<group name="masterfx" x="-115+125+1" y="+33">
-			<!-- <visual>
-				<pos x="-8" y="+0"/>
-				<size width="327-125-2" height="200"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
-			</visual> -->
+<!--
+________________________________________________________________________________________
+						MASTER EFFECTS
+________________________________________________________________________________________
+-->
+			<group name="masterfx" x="-115+125+1" y="+33">
+				<!-- <visual>
+					<pos x="-8" y="+0"/>
+					<size width="327-125-2" height="200"/>
+					<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
+					</visual> -->
 			<textzone x="+0" y="+8">
 				<size width="327-125-2" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="MASTER EFFECTS" localize="true"/>
@@ -1670,7 +1675,7 @@ ________________________________________________________________________________
 			<!-- Effects 1 -->
 			<panel class="masterfxdrop"  x="+0-2" y="+35-2" action1="deck master effect_active 1" action2="deck master effect_select 1" textaction="deck master get_effect_name 1 &amp; param_uppercase"/>
 			<button class="button_main" x="+160-2-5" y="+35-2" width="32" height="25" action="deck master effect_show_gui 1" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
-			 	<tooltip>Open Effects GUI</tooltip>
+				<tooltip>Open Effects GUI</tooltip>
 			</button>
 
 			<!-- Effects 2 -->
