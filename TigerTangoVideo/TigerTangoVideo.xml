@@ -2,156 +2,126 @@
 			comment="Video Skin for Argentine Tango DJs" author="Sean Ericson" image="Logo.png" preview="preview.png">
   <copyright>Free for all to use</copyright>
   <font name="Helvetica"/>
-
+<!--breaklineV="960"  -->
 	<group name="class_defines">
 		<define color="background" value="#000000"/>
-
-		<define color="leftdeck" value="#0d86e3"/>
-		<define color="rightdeck" value="#ea0500"/>
-		<define color="deckcolor" value="#0d86e3" deck="left"/>
-		<define color="deckcolor" value="#ff0024" deck="right"/>
-
-		<define color="padcolor1" value="#1c9cff" deck="left"/>
-		<define color="padcolor2" value="#003e5f" deck="left"/>
-		<define color="padcolor1" value="#ff0202" deck="right"/>
-		<define color="padcolor2" value="#3d0101" deck="right"/>
-
-		<define color="decktext" value="#3da4f3" deck="left"/>
-		<define color="decktext" value="#ff3430" deck="right"/>
 		<define color="darktext" value="#d6d6d6"/>
+		<define color="orangetext" value="#F5A524"/>
+		<define color="darkerorange" value="#B64A12"/>
 		<define color="darkertext" value="#a0a0a0"/>
 		<define color="brighttext" value="white"/>
-
-		<!-- <define class="panelback" radius="15" color="background" visibility="55%">
-			<pos x="+0" y="+0"/>
-			<size width="370" height="250"/>
-		</define> -->
-
-		<define class="nexttrackpanel">
-			<size width="400" height="400"/>
-				<cover >
-					<pos x="+200" y="+0"/>
-					<size width="200" height="200"/>
-				</cover>
-			<textzone>
-				<pos x="+166" y="+220"/>
-				<size width="320" height="30"/>
-				<text fontsize="20" align="left" color="darkertext" text="Next Song:"/>
-			</textzone>
-			<textzone group="horizontal" scroll="yes" align="left" >
-				<pos x="+166" y="+250"/>
-				<size width="320" height="50"/>
-				<text fontsize="28" weight="" color="darktext" action="get_artist_before_feat"/>
-				<!-- <text size="18" color="#909090" weight="bold" action="get_featuring_after_artist"/> -->
-			</textzone>
-			<textzone class="textcolorline" group="horizontal" scroll="yes" align="left" >
-				<pos x="+166" y="+280"/>
-				<size width="320" height="60"/>
-				<text fontsize="28" color="brighttext" weight="bold" action="get_title_before_remix"/>
-				<!-- <text size="22" color="#909090" weight="bold" action="get_remix_after_title"/> -->
-			</textzone>
-		</define>
-
-		<define class="action_popups">
-			<stack fadein="200ms" fadeout="500ms">
-				<size width="400" height="400"/>
-				<slot x="+0" y="+20+170+20+170" />
-				<slot x="+0" y="+20+170"/>
-				<slot x="+0" y="+0"/>
-				<item class="nexttrackpanel" visibility="is_using 'load' 10000ms"></item>
-			</stack>
-		</define>
-
-</group>
-
-
-		<!-- CROSSFADER -->
-		<group name="cf" x="+150" y="860">
-			<split name="crossfader" type="horizontal">
-				<pos x="+0" y="-60"/>
-				<size width="1920-300" height="300"/>
-				<left>
-					<blockwave deck="left" blocksize="3" zoom="4" color="leftdeck" visibility="85%" center="left">
-						<pos x="0" y="0" width="1920-300" height="300"/>
-					</blockwave>
-				</left>
-				<right>
-					<blockwave deck="right" blocksize="3" zoom="4" color="rightdeck" visibility="85%" center="left">
-						<pos x="0" y="0" width="1920-300" height="300"/>
-					</blockwave>
-				</right>
-			</split>
-			<group name="cfbg" visibility="20%">
-				<square color="background" radius="20" visibility="deck left loaded ? true : deck right loaded">
-					<pos x="+25" y="+10"/>
-					<size width="1920-400" height="175"/>
-				</square>
-			</group>
-			<split name="crossfader" type="horizontal">
-				<pos x="+50" y="+0"/>
-				<size width="1920-400" height="200"/>
-				<left>
-					<textzone group="horizontal" align="center" deck="left" attachX="both" scroll="yes">
-						<pos x="20" y="9"/>
-						<size width="1920-500" height="75"/>
-						<text fontsize="56" color="decktext" weight="bold" action="get_artist_before_feat & param_uppercase"/>
-						<text fontsize="56" color="darktext" weight="regular" action="get_featuring_after_artist & param_uppercase"/>
-					</textzone>
-
-					<textzone group="horizontal" align="center" deck="left" attachX="both" scroll="yes">
-						<pos x="20" y="9+15+40"/>
-						<size width="1920-95-95-311+1-40+50" height="100"/>
-						<!-- <text fontsize="56" color="darkertext" weight="regular" action="get_artist_title_separator"/> -->
-						<text fontsize="56" color="brighttext" weight="bold" action="get_title_before_remix 'clean' & param_uppercase"/>
-				  </textzone>
-				</left>
-				<right>
-					<textzone group="horizontal" align="center" deck="right" attachX="both" scroll="yes">
-						<pos x="20" y="9"/>
-						<size width="1920-95-95-311+1-40+50" height="75"/>
-						<text fontsize="56" color="decktext" weight="bold" action="get_artist_before_feat & param_uppercase"/>
-						<text fontsize="56" color="darktext" weight="regular" action="get_featuring_after_artist & param_uppercase"/>
-					</textzone>
-					<textzone group="horizontal" align="center" deck="right" attachX="both" scroll="yes">
-						<pos x="20" y="9+15+40"/>
-						<size width="1920-95-95-311+1-40+50" height="100"/>
-						<!-- <text fontsize="56" color="darkertext" weight="regular" action="get_artist_title_separator"/> -->
-						<text fontsize="56" color="brighttext" weight="bold" action="get_title_before_remix 'clean' & param_uppercase"/>
-				  </textzone>
-				</right>
-			</split>
-		  <slider action="get_crossfader_result &amp; param_invert" orientation="horizontal" visibility="get_crossfader_result &amp; param_pingpong &amp; param_multiply 10">
-				<pos x="+311+6" y="+0"/>
-				<size width="1920-95-95-311-12+100" height="100"/>
-				<fader>
-				  <pos x="5" y="0"/>
-				  <size width="2" height="100"/>
-				</fader>
-		  </slider>
-	 </group>
- 	<!-- DECKS -->
-	<group name="leftdeck">
-		<deck deck="left">
-			<panel class="action_popups" x="+960+400" y="50"></panel>
-			<cover x="480" y="50" width="960" height="720" visibility="deck 1 play ? deck 1 level 0% ? false: true : false"/>
-
-		</deck>
 	</group>
-	<group name="rightdeck">
-		<deck deck="right">
-			<panel class="action_popups" x="+960+400" y="50"></panel>
-			<cover x="480" y="50" width="960" height="720" visibility="deck 2 play ? deck 2 level 0% ? false: true : false"/>
-		</deck>
-	</group>
+
+<!-- Add Logos -->
 	<logo visibility="not has_logo 'videoskin'">
-		<pos x="1920-32-172" y="32"/>
+		<pos x="50" y="+30"/>
 		<size width="172" height="43" />
 	</logo>
 
- <visual>
-		<pos x="50" y="30"/>
+	<visual>
+		<pos x="1920-350" y="+30"/>
 		<size width="280" height="140" />
 		<off x="" y=""/>
-</visual>
+	</visual>
+
+<!-- Panel to show the artist, title, and album art of next track -->
+	<group name="nexttrack" x="+1920-350" y="+375"
+			visibility="automix ? (var_equal '@$hideNextTrack' 0)">
+			<cover source="automix 1" visibility="var_equal '@$hideAlbumArt' 0">
+				<pos x="+0" y="+0"/>
+				<size width="200" height="200"/>
+			</cover>
+			<textzone>
+				<pos x="+0" y="+220"/>
+				<size width="320" height="40"/>
+				<text fontsize="28" align="left" color="darkertext" text="Next Song:"/>
+			</textzone>
+			<textzone group="horizontal" scroll="yes" align="left">
+				<pos x="+0" y="+260"/>
+				<size width="320" height="60"/>
+				<text fontsize="28" color="darktext" action="get_automix_song 'artist' 1  & param_uppercase"/>
+			</textzone>
+			<textzone group="horizontal" scroll="yes" align="left" >
+				<pos x="+0" y="+310"/>
+				<size width="320" height="60"/>
+				<text fontsize="28" color="orangetext" weight="bold" action="get_automix_song 'title' 1 & param_uppercase"/>
+			</textzone>
+	</group>
+
+	<group name="masterdeck" x="+150" y="+40">
+		<deck deck="master">
+			<!-- ALbum art display. Show if hideAlbumArt is not true.
+			 	 If lyrics are active and there are lyrics (comments not blank)
+				 Then show for 12 seconds and then hide) -->
+			<cover x="+710-400" y="+40" width="800" height="650"
+				visibility="var_equal '@$hideAlbumArt'  1 ? false :
+							var_equal '@$smallAlbumArt' 1 ? false :
+								(var_equal '@$showLyrics' 0 ? true :
+									get_comment & param_equal '' ? true :
+									load_pulse_active 12000ms)"/>
+				<!-- Small cover -->
+				<cover x="+710-200" y="+300" width="300" height="300"
+					visibility="var_equal '@$hideAlbumArt'  1 ? false :
+					var_equal '@$smallAlbumArt' 0 ? false :
+					(var_equal '@$showLyrics' 0 ? true :
+					get_comment & param_equal '' ? true :
+					load_pulse_active 12000ms)"/>
+
+			<!-- Display Lyrics Only show if showLyrics is set to 1 and comments are not empty-->
+			<group name="lyrics_panel" x="+0" y="+60"
+				visibility="var_equal '@$showLyrics' 0 ? false :
+								get_comment & param_equal '' ? false :
+								not load_pulse_active 12000ms">
+				<!-- Small text -->
+				<text x="+0" y="+0" width="1920-500-60" height="670" fontsize="30" color="#EDEFF2"
+						scroll="yes" action="get_comment" align="center"
+						visibility="var_equal '@$lyricsFont' 2 ? true : false"
+						/>
+				<!-- Mid Text -->
+				<text x="+0" y="+0" width="1920-500-60" height="670" fontsize="36" color="#EDEFF2"
+				scroll="yes" action="get_comment" align="center"
+				visibility="var_equal '@$lyricsFont' 0 ? true : false"/>
+				<!-- Large Text -->
+				<text x="+0" y="+0" width="1920-500-60" height="670" fontsize="44" color="#EDEFF2"
+						scroll="yes" action="get_comment" align="center"
+						visibility="var_equal '@$lyricsFont' 1 ? true : false"
+						/>
+			</group>
+			<!-- Wave at bottom -->
+			<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center">
+				<pos x="+0" y="+724" width="1920-500" height="300"/>
+			</blockwave>
+
+			<!-- Genre and tanda counter -->
+			<group name="track_text" x="-75" y="+750">
+				<textzone group="horizontal" align="center">
+					<pos x="+0" y="+0"/>
+					<size width="1920-500" height="60"/>
+					<text fontsize="56" color="orangetext" weight="bold"
+							action="var_equal '$songCounterRunning' 0 ? (get_genre & param_uppercase) : (
+										var_equal '$tandaLength' 1 ? get_text 'CORTINA' :
+									(get_text '`get_genre & param_uppercase` `get_var $tandaCounter`/`get_var $tandaLength`') )"/>
+
+				</textzone>
+				<!-- Track artist -->
+				<textzone group="horizontal" align="center" attachX="both" scroll="yes">
+					<pos x="+0" y="+75"/>
+					<size width="1920-500" height="75"/>
+					<text fontsize="56" color="darktext" weight="bold" action="get_artist_before_feat & param_uppercase"/>
+					<text fontsize="56" color="darktext" weight="regular" action="get_featuring_after_artist & param_uppercase"/>
+				</textzone>
+
+				<!-- Track title -->
+				<textzone group="horizontal" align="center" attachX="both" scroll="yes">
+					<pos x="+0" y="+140"/>
+					<size width="1920-500" height="100"/>
+					<text fontsize="56" color="orangetext" weight="bold" action="get_title_before_remix 'clean' & param_uppercase"/>
+				</textzone>
+			</group>
+
+		</deck>
+
+	</group>
+
 
 </skin>
