@@ -98,9 +98,13 @@
 					<pos x="+0" y="+0"/>
 					<size width="1920-500" height="60"/>
 					<text fontsize="56" color="orangetext" weight="bold"
-							action="var_equal '$songCounterRunning' 0 ? (get_genre & param_uppercase) : (
+							action="var_equal '$songCounterRunning' 0 ?
+									var_equal '@$hideGenre' 1 ? '' : (get_genre & param_uppercase) : (
 										var_equal '$tandaLength' 1 ? get_text 'CORTINA' :
-									(get_text '`get_genre & param_uppercase` `get_var $tandaCounter`/`get_var $tandaLength`') )"/>
+									(
+									var_equal '@$hideGenre' 1 ? (get_text '`get_var $tandaCounter`/`get_var $tandaLength`') :
+									get_text '`get_genre & param_uppercase` `get_var $tandaCounter`/`get_var $tandaLength`')
+									)"/>
 
 				</textzone>
 				<!-- Track artist -->
