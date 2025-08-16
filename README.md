@@ -16,6 +16,25 @@ You can find a video tutorial of TigerTango here https://youtu.be/k9lrT9ofaWw
 >  TigerTango is currently in its first version. I have tried my best to make it a tool that will be valuable to Tango DJs and DJs of other social dances, but the only way to know what will be most useful is to have people try it and give feedback. If you run into any issues, or if there were any functionality you wish were updated or added, please reach out to me at sericson0@gmail.com. You can also post an issue on https://github.com/sericson0/TigerTango/issues
 
  I would love to hear from you!
+
+## Shout Outs and Aknowlegements
+This project would not have been possible without the substantial time and expert support from several members of the Tango community.
+
+Huge thank you to **Chris Hart** and **Andrew Hart**. The layout, look, and functionality of TigerTango has been much improved because of their efforts and support. Of special note, it is because of them that TigerTango is able to display the tanda count, and their work showed the path to be able to integrate lyrics to the video display.
+
+Thank you to **Gabriele Capocelli (DJ Gabbo)** for your work to implement the hot cue buttons, for your expert feedback, and for being the very first user to try out TigerTango!
+
+Thank you to **Michael Plaks** for all of your suggestions, feedback, and support in getting this project to a point where it can be a useful tool to DJs.
+
+Thank you **DJ Claudiu**, **Chris Tran** and everyone who has supported with user testing and providing feedback to this project. And thank you to
+
+Shout out to **Mira Gordin** for designing the tiger logo that I adopted to make the Tiger Tango logo.
+
+Special thank you to **Jacqueline Pham** for your patience and for being willing to answer all my tango DJ questions.
+
+And thank you to you for taking the time to try out this tool and for your part in growing and supporting this community of dancers that we all love.
+
+
 ## Intalling Virtual DJ
 
 To install Virtual DJ, go to https://virtualdj.com/, click on download, choose your system type, and follow the installation instructions.
@@ -78,7 +97,9 @@ Once you have installed the TigerTango interface, you can open it as follows:
 
 ![alt text](docs/LoadingTheSkin.png)
 ### OPTIONAL Load the TigerTangoVideo Video Skin.
-Some DJs like to Display song information while DJing. However, the default video skin can have song text that is too small for the milonga. Therefore we have added the TigerTangoVideo video skin to this repository as well. You can load using the following steps.
+Some DJs like to Display song information while DJing. However, the default video skin is not ideally suited for displaying what we would want as tango DJs. Therefore we have added the TigerTangoVideo video skin to this repository as well. You can read more about connecting to the Video Skin in the [Video Skin](#video-skin) section.
+
+You can load the TigerTango Video skin using the following steps.
 1. Follow the steps in Loading from GitHub (section above) to download and unzip the TigerTango-main.zip file.
 > [!NOTE]
 > You can get the path to the virtual DJ video skins by going to settings in Virtual DJ, moving to the interface tab (on left), change to Video Overlay tab (on top) and clicing 'Edit This Skin' in the bottom right. **Go one up from this folder!!! This is where you want to place the TigerTangoVideo folder you downloaded.**
@@ -243,7 +264,7 @@ To use a plugin, follow these steps:
    * Click the dropdown chevron to select the effect
    * Press the plus to toggle the effect's graphic interface
    * Click the effects button to toggle on or off the effect (when on the effect button will change color)
-2. **Master Video** Here you can add video effects such as projecting the song album art or title to an external monitor
+2. **Master Video** Here you can add video effects such as projecting the song album art or title to an external monitor. See the [Video Skin](#video-skin) section later in this document for more details.
 3. **Master Volume** This fader changes the sound going to the speakers.
 4. **Headphone Volume** When audio is set up for both speakers and headphones, then you can change the headphone volume here. The Mix slider determines what percent of the main mix comes through headphones. If you want to just head the headphone song, then turn mix volume to zero.
 5. **Mic Volume** If you have a mic connected to your interface, then you can selet the mic volume here.
@@ -259,6 +280,7 @@ The Info section presents the following:
 3. Battery level if the computer is not plugged into a power source. **If you see a battery symbol, this means your computer is not plugged in**
 4. Current time
 5. Settings menu (gear icon). Click to open the Virtual DJ settings option.
+6. A button to toggle between Stero and Mono outputs. Defaults to Stereo. If Mono is activated, then left and right channels are summed before sending out to main.
 
 ### Toolbox
 The Toolbox section contains an array of tools and checks.
@@ -291,6 +313,102 @@ Click on a panel to open an adjustable panel window. The following panels are op
 > The GitHub version has replaced the panels on the left with a toolbox area. This has two additiona plugin spaces (come after the top plugins in order) and includes the setting warning indicators. In the top left is also a small record button which can be used to record short blank tracks to add silence or use as dummy spacers to separate tandas.
 
 Note: In the GitHub version, the STAGE panel has been replaced with a waveform viewer window.
+
+## Video Skin
+![alt text](VideoDisplayExample.png)
+The TigerTango Video skin allows you to display
+
+* Track title and artist
+* Genre and position in the tanda
+* Upcoming Track
+* Album cover art
+* Song lyrics
+
+> [!IMPORANT]
+> For full functionality, you need to download both the TigerTango skin and the TigerTangoVideo Video skin (they are two separate things). See installation notes above for installation details.
+
+> [!NOTE]
+> If the TigerTangoVideo video skin is not loaded, then a popup button at the bottom of the configuration menu will apprear.
+
+The Video area in the Master section controls video outputs.
+![alt text](VideoDisplayArea.png)
+### Video Area
+The Video area is where you will click to display the video screen. There will be a video that you can pull to an external display or monitor along with a preview on the TigerTango skin
+* Click the video symbol to toggle display
+* Right click to toggle the type of output
+* If the video is active, then right click the video display area to toggle between a small and large preview. Large preview can be easier to see what is being displayed.
+
+### Options
+
+The Options button opens the video configuration options window
+![alt text](VideoConfigurationOptions-1.png)
+#### **Video Settings**
+This area allows you to update video effects, transitions, and options. See the virtual DJ documentation for a complete description of these  options
+#### **Tiger Tango Video Outputs**
+These buttons control elements on the TigerTango video screen.
+* **Show ART** toggles whether or not to display album art.
+* **Album Art Size** toggles between displaying a large or smaller album art on the display.
+* **Show Lyrics** toggles whether to display lyrics. Lyrics can be saved in the *Comments* metadata section (see more about showing lyrics below).
+* **Lyrics Size** cycles between smaller, medium, and larger lyrics text fonts.
+* **SHOW NEXT** toggle whether to display a panel of what the next track will be.
+* **Show GENRE** toggle whether to display the track genre above the artist name.
+#### Tanda Counter Settings
+These buttons configure how the tanda counter operates. See [Operating the Tanda Counter](#operating-the-tanda-counter-the) for a description of how to operate the tanda counter. The tanda counter displays which position in the tanda the current track is in, such as being the 3rd of 4 songs.
+
+The counter will loop to 1 whenever the track number is above the current tanda number. It will also reset when a cortina is detected.
+* **GENRE CHECK** By default, a cortina is identified as any song whose genre is not in: Tango, Vals, Milonga, Alternative (case does not matter). If Genre Check is activated, then a cortina will be idenfied when 'Cortina' is included in the genre name.
+* By default, Tango tandas are 4 songs and Vals tandas are 3 songs. These can be updated to 3 (4) songs by toggling the buttons. Milongas and Alternative songs are fixed at 3 songs for the tanda.
+
+### Operating the Tanda Counter
+The tanda counter allows you to display the tanda position on screen. Click the **TC** (Tanda Counter) button below the options button to start the counter. The suggested process is to start the counter before the first song in your set. See the above section for setting options.
+
+> [!IMPORTANT]
+> The tanda counter identifies tanda length by looking at the **Genre** metadata tag. Identified generas are ones which contain the words Tango, Vals, Milonga, Alternative (case does not matter, and can contain other words).
+
+The button to the right of the **TC** button shows the current tanda position. Clicking it will increment the position, Right click to reset to zero. Each time a new song is loaded the counter should increment by 1.
+
+## Displaying Lyrics
+You can display lyrics to the screen as follows:
+1. Add lyrics to the **Comments** metadata tag (unfortunately the comments tag was the only option to use because it is the only tag that allows multiline inputs).
+2. Open the Video Options panel and enable **SHOW LYRICS**
+3. Start the video. Lyrics should display after 12 seconds of showing the album art.
+4. You can change text size through the options panel.
+5. Tracks without lyrics (empty comment tag) will display the album art by default.
+
+You can also include translations by including them in the comments as well (Any text in the comments tag will display as static text).
+
+> [!WARNING]
+> Enabling lyrics will display any comments in your track comments metadatdata area
+
+## Troubleshooting
+Here are a few common issues along with troubleshooting steps
+
+### No Audio is coming out?
+1. If the deck wont move when you press play, then it is very lidekly that the audio is not configured correctly. Go into Settings -> Audio. Make sure that there are no errors by the master output. Try changing the channels to 1 & 2.
+2. Look at the VU meter next to the master fader (in MASTER VOL area). If it is not moving then it likely means one or more of the following:
+   1. Deck is not playing (check that the turntable is moving)
+   2. deck volume is off (check deck volume slider)
+   3. Master fader is off (check master fader in MASTER VOL area)
+3. If the VU meter is moving but no sound is coming out, then it is likely one the following.
+   1. Your computer is muted or at low volume. Check your computer volume. Suggested volume for good gain staging is somewhere around 80%.
+   2. Something downstream of your computer is not turned on and configured properly. Check that your DAC, Mixer, and speaker are all turned on and plugged in.
+
+### Headphone Prelisting is not working?
+1. First check your audio settings that your system is configured to both main and headphones.
+2. Check that the headphone output is properly routed to your headphones.
+3. Next check that the PFL (prefade listen) is turned on for the deck you are listening to. This is the light below the headphones icon. If it is not turned on then press the button. Clicking the preklisten button (headphone icon) should also automatically turn on PFL.
+4. Check that your headphones are plugged in.
+
+### Using Automix
+When using automix, there are two main recommendations to avoid issues.
+1. **Don't reach the end of your automix.** Automix tends to work best when it knows what song is coming next.
+2. **Add tracks to the playlist, not directly to the deck.** Automix may not always no where to play next if it plays a track from the deck which is not added to the automix. This can lead to unexpected behavior. It is recommended to add songs to the playlist and let automix load them to the deck.
+
+### Skin Flickering
+If you happen to notice the skin flickering then you will want to change the following setting
+* Settings -> Options -> experimentalSkinEngine -> Off
+The **experiementalSkinEngine** setting can reduce computer CPU usage but can coause flickering on some computers.
+
 
 ## Example Workflow
 This section walks through how you could use TigerTango for DJing.
