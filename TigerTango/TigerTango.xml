@@ -1340,27 +1340,51 @@ ________________________________________________________________________________
   </button>
 </window>
 
-<window name="documentation" width="180" height="90" posx="right" posy="top" shown="false" color="#424346">
+<window name="documentation" width="200" height="100" posx="right" posy="top" shown="false" resize="false" color="#424346">
+	<visual>
+		<pos x="+0" y="+0"/>
+		<size width="200" height="100"/>
+		<off shape="square" color="topmenu" radius="1" border_size="1" border="bordercolor2"/>
+	</visual>
+	<visual x="+5" y="+3" width="200-10" height="20">
+		<off color="dark" border_size="1"/>
+	</visual>
+	<textzone x="+0" y="+6">
+		<size width="200" height="14"/>
+		<text fontsize="14" align="center" color="textoff" text="DOCUMENTATION" localize="true"/>
+	</textzone>
+	<button action="show_window 'documentation' off">
+		<tooltip> Close  </tooltip>
+		<pos  x="+200-25" y="+3"/>
+		<size width="20" height="20"/>
+		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
+		<over color="#3b4242"/>
+	</button>
 
-  <textzone x="0" y="0" width="170" height="50"
-            text="TigerTango Documentation at\nhttps://github.com/sericson0/TigerTango"
-            font="Arial" size="12"
+	<button class="button_master" action="open_help"
+			width="140" height="20" x="+30" y="+30" textsize="10"
+			text="GO TO VJD DOCS">
+		<tooltip>Click to go to Virtual DJ user manual</tooltip>
+	</button>
+
+  <textzone x="0" y="+50" width="200" height="50"
+            text="TigerTango Documentation at\nhttps://github.com/sericson0/TigerTango\n\nReach me at\nSericson0@gmail.com"
+            font="Arial" size="8" color="textoff"
             multiline="yes" align="center"/>
-  <button x="55" y="55" width="70" height="20" action="show_window 'documentation' off">
-    <text     color="#FFFFFF" align="center" text="Close Window" size="12"/>
-    <off      color="#777777" color2="#666666" radius="3"/>
-    <over     color="#136b87" color2="#555555"/>
-    <selected color="#444444" color2="#333333"/>
-  </button>
 </window>
 
 
 <!-- Windows -->
 
 <window name="BrowserWindow" posx="100" posy="100" width="600" height="500" shown="false" color="#424346">
+
+	<visual x="+5" y="+3" width="600-10" height="20">
+		<off color="dark" border_size="1"/>
+	</visual>
+
 	<textzone x="+0" y="+6">
 		<size width="600" height="14"/>
-		<text fontsize="14" align="center" color="#a7a7a7" text="Browser Panel" localize="true"/>
+		<text fontsize="14" align="center" color="textoff" text="BROWSER PANEL" localize="true"/>
 	</textzone>
     <browser>
         <pos  x="5"  y="25"/>
@@ -1368,22 +1392,34 @@ ________________________________________________________________________________
 	</browser>
 	<button action="show_window 'BrowserWindow' off">
 		<tooltip> Close  </tooltip>
-		<!-- Position: 5 px from top, 5 px from right.
-			The +420 is the initial window width you set earlier.
-			If you change that width, adjust the 420-5 part too. -->
 		<pos  x="+600-25" y="+3"/>
 		<size width="20" height="20"/>
-		<!-- Drawn vector button (no extra PNG needed) -->
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
-		<over color="#db333f"/>
+		<over color="#3b4242"/>
 	</button>
 </window>
 
 <window name="SearchWindow" posx="100" posy="100" width="600" height="500" shown="false" color="#424346">
+	<visual x="+5" y="+3" width="600-10" height="20">
+		<off color="dark" border_size="1"/>
+	</visual>
+
 	<textzone x="+0" y="+6">
 		<size width="600" height="14"/>
-		<text fontsize="14" align="center" color="#a7a7a7" text="Search Panel" localize="true"/>
+		<text fontsize="14" align="center" color="textoff" text="SEARCH PANEL" localize="true"/>
 	</textzone>
+
+	<!-- Close Button -->
+	<button action="show_window 'SearchWindow' off">
+		<tooltip>Close</tooltip>
+		<pos x="+600-25" y="+3"/>
+		<size width="20" height="20"/>
+		<visual>
+			<off shape="square" color="#888888" border_size="1" border="#666666" radius="3"/>
+		</visual>
+		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
+		<over color="#3b4242"/>
+	</button>
 
 	<!-- Folder Tree / Toolbar -->
 	<browsertoolbartree resizeX="no" attachX="left">
@@ -1403,43 +1439,46 @@ ________________________________________________________________________________
 		<pos x="210" y="25"/>
 	</fileview>
 
-	<!-- Close Button -->
-	<button action="show_window 'SearchWindow' off">
-		<tooltip>Close</tooltip>
-		<pos x="+600-25" y="+3"/>
-		<size width="20" height="20"/>
-		<visual>
-			<off shape="square" color="#888888" border_size="1" border="#666666" radius="3"/>
-		</visual>
-		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
-		<over color="#db333f"/>
-	</button>
 </window>
 
 <window name="SideviewWindow" posx="100" posy="100" width="500" height="700" shown="false" color="#424346">
+	<visual x="+5" y="+3" width="600-10" height="20">
+		<off color="dark" border_size="1"/>
+	</visual>
+
 	<textzone x="+0" y="+6">
 		<size width="500" height="14"/>
-		<text fontsize="14" align="center" color="#a7a7a7" text="Sideview Panel" localize="true"/>
+		<text fontsize="14" align="center" color="textoff" text="SIDEVIEW PANEL" localize="true"/>
 	</textzone>
+	<button action="show_window 'SideviewWindow' off">
+		<tooltip> Close  </tooltip>
+		<pos  x="+500-25" y="+3"/>
+		<size width="20" height="20"/>
+		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
+		<over color="#3b4242"/>
+	</button>
+
 
     <sideview>
         <pos  x="5"  y="25"/>
         <size width="500-10" height="700-30"/>
 	</sideview>
-	<button action="show_window 'SideviewWindow' off">
-		<tooltip> Close  </tooltip>
-		<!-- Position: 5 px from top, 5 px from right.
-			The +420 is the initial window width you set earlier.
-			If you change that width, adjust the 420-5 part too. -->
-		<pos  x="+500-25" y="+3"/>
-		<size width="20" height="20"/>
-		<!-- Drawn vector button (no extra PNG needed) -->
-		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
-		<over color="#db333f"/>
-	</button>
 </window>
 
 <window name="Waveform" posx="100" posy="100" width="600" height="280" shown="false" color="#424346">
+	<visual x="+0" y="+3" width="600" height="30">
+		<off color="dark" border_size="1"/>
+	</visual>
+
+	<button action="show_window 'Waveform' off">
+		<tooltip> Close  </tooltip>
+		<pos  x="+600-25" y="+10"/>
+		<size width="20" height="20"/>
+		<!-- Drawn vector button (no extra PNG needed) -->
+		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
+		<over color="#3b4242"/>
+	</button>
+
 	<textzone x="+20" y="+6" group="horizontal" align="center" scroll="yes">
 		<size width="430" height="25"/>
 	<text fontsize="16" align="center" color="#a7a7a7" weight="bold" important="true"
@@ -1513,17 +1552,7 @@ ________________________________________________________________________________
 			<size width="26-4" height="173-70"/>
 			<fader width="26-4" height="8" color="gray"/>
 		</slider>
-	<button action="show_window 'Waveform' off">
-		<tooltip> Close  </tooltip>
-		<!-- Position: 5 px from top, 5 px from right.
-			The +420 is the initial window width you set earlier.
-			If you change that width, adjust the 420-5 part too. -->
-		<pos  x="+600-25" y="+3"/>
-		<size width="20" height="20"/>
-		<!-- Drawn vector button (no extra PNG needed) -->
-		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
-		<over color="#db333f"/>
-	</button>
+
 	<button action="var_equal '$showWave2' 0 ? set '$showWave2' 1 : set '$showWave2' 0" query="var_equal '$showWave' 1" >
 		<tooltip> Toggle deck waveform to display</tooltip>
 		<pos  x="+600-130" y="+10"/>
@@ -1544,6 +1573,10 @@ ________________________________________________________________________________
 </window>
 
 <window name="SidelistWindow" posx="100" posy="100" width="500" height="700" shown="false" color="#424346">
+	<visual x="+5" y="+3" width="500-10" height="20">
+		<off color="dark" border_size="1"/>
+	</visual>
+
 	<textzone x="+0" y="+6">
 		<size width="500" height="14"/>
 	<text fontsize="14" align="center" color="#a7a7a7" text="Sidelist Panel" localize="true"/>
@@ -1557,14 +1590,17 @@ ________________________________________________________________________________
 		<pos  x="+500-25" y="+3"/>
 		<size width="20" height="20"/>
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
-		<over color="#db333f"/>
+		<over color="#3b4242"/>
 	</button>
 </window>
 
 <window name="BrowserInfoWindow" posx="100" posy="100" width="500" height="500" shown="false" color="#424346">
+	<visual x="+5" y="+3" width="500-10" height="20">
+		<off color="dark" border_size="1"/>
+	</visual>
 	<textzone x="+0" y="+6">
 		<size width="500" height="14"/>
-	<text fontsize="14" align="center" color="#a7a7a7" text="Browser Info Panel" localize="true"/>
+	<text fontsize="14" align="center" color="textoff" text="Browser Info Panel" localize="true"/>
 	</textzone>
     <browserinfo attachX="both" attachY="both">
       <pos  x="0" y="27"/>
@@ -1575,7 +1611,7 @@ ________________________________________________________________________________
 		<pos  x="+500-25" y="+3"/>
 		<size width="20" height="20"/>
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
-		<over color="#db333f"/>
+		<over color="#3b4242"/>
 	</button>
 </window>
 
