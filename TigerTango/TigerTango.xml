@@ -2523,9 +2523,10 @@ ________________________________________________________________________________
 				<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
 			</button>
 
-			<button class="button_main" text="⚠️" query="not has_system_volume" action="config 'audio'"
-			textsize="14" x="+40+6" y="+53" height="25" width="35">
-				<tooltip>Sound Card is not configured correctly</tooltip>
+			<button class="button_main" text="⚠️" query="var_equal '$checkSoundCard' 1 ? false : not has_system_volume" action="config 'audio'"
+			textsize="14" x="+40+6" y="+53" height="25" width="35"
+			rightclick="toggle '$checkSoundCard'">
+				<tooltip>Sound Card may not be configured correctly.\nClick to go to audio settings.\nRight click to ignore.</tooltip>
 			</button>
 			<button class="button_main" text="⚠️" query="setting 'automixMode' 'no mix' ? false :
 														  setting 'automixMode' 'skip silence' ? false:
