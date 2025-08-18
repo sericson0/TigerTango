@@ -331,7 +331,7 @@ The TigerTango Video skin allows you to display
 > If the TigerTangoVideo video skin is not loaded, then a popup button at the bottom of the configuration menu will apprear.
 
 The Video area in the Master section controls video outputs.
-![alt text](VideoDisplayArea.png)
+![alt text](VideoDisplayArea-1.png)
 ### Video Area
 The Video area is where you will click to display the video screen. There will be a video that you can pull to an external display or monitor along with a preview on the TigerTango skin
 * Click the video symbol to toggle display
@@ -341,7 +341,7 @@ The Video area is where you will click to display the video screen. There will b
 ### Options
 
 The Options button opens the video configuration options window
-![alt text](VideoConfigurationOptions-1.png)
+![alt text](VideoConfigurationOptions-2.png)
 #### **Video Settings**
 This area allows you to update video effects, transitions, and options. See the virtual DJ documentation for a complete description of these  options
 #### **Tiger Tango Video Outputs**
@@ -350,6 +350,7 @@ These buttons control elements on the TigerTango video screen.
 * **Album Art Size** toggles between displaying a large or smaller album art on the display.
 * **Show Lyrics** toggles whether to display lyrics. Lyrics can be saved in the *Comments* metadata section (see more about showing lyrics below).
 * **Lyrics Size** cycles between smaller, medium, and larger lyrics text fonts.
+* **Lyrics Justification** toggle between left justification and center justification
 * **SHOW NEXT** toggle whether to display a panel of what the next track will be.
 * **Show GENRE** toggle whether to display the track genre above the artist name.
 #### Tanda Counter Settings
@@ -358,6 +359,10 @@ These buttons configure how the tanda counter operates. See [Operating the Tanda
 The counter will loop to 1 whenever the track number is above the current tanda number. It will also reset when a cortina is detected.
 * **GENRE CHECK** By default, a cortina is identified as any song whose genre is not in: Tango, Vals, Milonga, Alternative (case does not matter). If Genre Check is activated, then a cortina will be idenfied when 'Cortina' is included in the genre name.
 * By default, Tango tandas are 4 songs and Vals tandas are 3 songs. These can be updated to 3 (4) songs by toggling the buttons. Milongas and Alternative songs are fixed at 3 songs for the tanda.
+
+### Lyrics
+Click the lyrics button to toggle displaying lyrics on or off. Right click to edit the lyrics of the currently loaded song.
+Note that lyrics are added to the comment section of a track.
 
 ### Operating the Tanda Counter
 The tanda counter allows you to display the tanda position on screen. Click the **TC** (Tanda Counter) button below the options button to start the counter. The suggested process is to start the counter before the first song in your set. See the above section for setting options.
@@ -370,6 +375,9 @@ The button to the right of the **TC** button shows the current tanda position. C
 ## Displaying Lyrics
 You can display lyrics to the screen as follows:
 1. Add lyrics to the **Comments** metadata tag (unfortunately the comments tag was the only option to use because it is the only tag that allows multiline inputs).
+> [!NOTE]
+> You can add lyrics by selecting a song and clicking the 'COMMENTS' section in the info browser area (bottom right area).
+> You can also edit the lyrics of a currently loaded song by right clicking on the lyrics button in the video area.
 2. Open the Video Options panel and enable **SHOW LYRICS**
 3. Start the video. Lyrics should display after 12 seconds of showing the album art.
 4. You can change text size through the options panel.
@@ -379,6 +387,18 @@ You can also include translations by including them in the comments as well (Any
 
 > [!WARNING]
 > Enabling lyrics will display any comments in your track comments metadatdata area
+
+The lyrics text can have 13 rows, 16 rows for medium text, and 18 rows for large text (numbers may vary by a row or two depending on skin streatching). For some songs, this means that you will have to combine multiple short rows of lyrics onto a single row.
+
+While there is no automatic way to project both lyrics and translations, you can add translations by including them as a second column. For example:
+
+letra fila uno    lyrics line one
+fila dos ...      line two ...
+fila tres ...     line three .....
+
+> [!NOTE]
+> If you are adding both lyrics and translations, it will likely display best if you toggle the left justification in the video options menue so that the lines to keep the columns aligned.
+
 
 ## Troubleshooting
 Here are a few common issues along with troubleshooting steps
