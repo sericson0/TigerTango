@@ -1112,6 +1112,7 @@
 	<dialogs darkmode="false" condition="var_equal '@$colorscheme' 2"/>
 
 </group>
+
 <!--
 __________________________________________________________________________________________________
 End of Definitions. Start of Windows.
@@ -1240,11 +1241,17 @@ ________________________________________________________________________________
 			<tooltip>Toggle album art disply size.</tooltip>
 		</button>
 		<button class="button_master" x="+125" y="+0" action="cycle '@$lyricsFont' 3" query="false"
-				 textsize="14" height="30" width="110"
+				 textsize="14" height="30" width="65"
 				 textaction="var_equal '@$lyricsFont' 1 ? get_text 'LARGE' :
 				 			 var_equal '@$lyricsFont' 2 ? get_text 'SMALL' :
 							 get_text 'MEDIUM'">
 			<tooltip>Cycle between lyrics font size</tooltip>
+		</button>
+		<button class="button_master" x="+125+70" y="+0" action="toggle '@$lyricsLeftJustify'" query="false"
+				 textsize="14" height="30" width="40"
+				 textaction="var_equal '@$lyricsLeftJustify' 1 ? get_text 'L |──' :
+				 			 		get_text 'C ─|─'">
+			<tooltip>Toggle left vs center justify for lyrics</tooltip>
 		</button>
 		<button class="button_master" x="+250" y="+0" action="toggle '@$hideGenre'"
 				textsize="14" height="30" width="110" query="var_equal '@$hideGenre' 0 ? true : false"
@@ -2012,10 +2019,18 @@ ________________________________________________________________________________
 
 
 		<group name="videomix" x="+35" y="+73" visibility="video ? var '$largeVideo' ? false : true : true">
-			<button class="button_master" x="+0" y="+0" width="110" height="25" action="show_window VideoOptionsWindow" textcolor="textdark"
-					textsize="14" text="OPTIONS">
+			<button class="button_master" x="+0" y="+0" width="52" height="25" action="show_window VideoOptionsWindow" textcolor="textdark"
+					textsize="14" >
+			<icon sysicon="settings" color="textoff3" colorselected="texton" colorover="texton" width="22" height="22"/>
 			<tooltip>Open Video Options Window</tooltip>
 			</button>
+
+			<button class="button_master" x="+58" y="+0" width="52" height="25" action = "toggle '@$showLyrics'"
+				rightclick="deck master edit_comment" textcolor="textdark"
+					textsize="14" text="♫ ✎">
+			<tooltip>Click to toggle lyrics.\nRight click to edit lyrics of currently playing song\nNote: You can edit song lyrics by clicking the\ncomment section in the 'Info' panel.</tooltip>
+			</button>
+
 			<!-- When new song start playing, if song counger is running, then do the following:
 			 	- Increment tanda counter by 1
 				- Set tanda length based on genre of the song
