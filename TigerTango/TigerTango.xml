@@ -423,15 +423,6 @@
 			<line color="faderlines" x="+4" y="+121" width="22" height="1" />
 			<line color="faderlines" x="+0" y="+135" width="30" height="2" />
 		</define>
-		<define class="titler" placeholders="text" w="332">
-			<line x="+0" y="+5" height="3" width="138" color="dark" highlight="" shadow="highlight"/>
-			<textzone>
-				<pos x="+138" y="+0"/>
-				<size width="56" height="15"/>
-				<text fontsize="12" weight="" color="textdarker" align="center" text="[TEXT]" localize="true"/>
-			</textzone>
-			<line x="+138+56" y="+5" height="3" width="138" color="dark" highlight="" shadow="highlight" />
-		</define>
 	</group>
 	<group name="buttons">
 		<define class="button_main" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=buttonoff1,oncolor=buttonon1,overcolor=buttonover1,tooltip">
@@ -510,6 +501,18 @@
 		</define>
 	</group>
 	<group name="faders-knobs">
+		<define class="hslider" orientation="horizontal" relative='false'>
+				<size width="50" height="5"/>
+				<off width="-5" color="faderinoff" shape="square" radius="2"/>
+				<on width="-5" color="faderinoff" shape="square" radius="2"/>
+				<mouserect x="+0" y="-6" width="93" height="18"/>
+				<fader width="5" height="18">
+					<size width="5" height="18" />
+					<off shape="square" color="gray" radius="2"/>
+					<on shape="square" color="gray" radius="2"/>
+				</fader>
+		</define>
+
 		<define class="volume_fader">
 			<visual>
 				<pos x="+0" y="+0"/>
@@ -633,6 +636,160 @@
 				</fader>
 			</slider>
 		</define>
+
+		<define class="eq_knob_low">
+			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+				<text text="LOW" color = "textdark" align = "center"/>
+			</textzone>
+			<panel class="knob" x="+0" y="+0">
+				<slider action="eq_low" dblclick="eq_low 50%" rightclick="eq_low 50%" frommiddle="true">
+				<tooltip>Slide to turn Low EQ.\nRight click to reset to 0 dB.</tooltip>
+				</slider>
+			</panel>
+			<button>
+				<pos x="+0" y="+50"/>
+				<size width="48" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight=""
+					   action="param_equal eq_low 0.5 ? get_text '0 dB' :
+					   		   param_greater eq_low 0.5 ? get_text '`eq_low & param_multiply 200 & param_add -100 & param_cast integer`%' :
+							   							  get_text '+`eq_low & param_multiply 200 & param_add -100 & param_cast integer`%'" important="true"/>
+			</button>
+		</define>
+		<define class="eq_knob_mid">
+			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+				<text text="MID" color = "textdark" align = "center"/>
+			</textzone>
+			<panel class="knob" x="+0" y="+0">
+				<slider action="eq_mid" dblclick="eq_mid 50%" rightclick="eq_mid 50%" frommiddle="true">
+				<tooltip>Slide to turn Mid EQ.\nRight click to reset to 0 dB.</tooltip>
+				</slider>
+			</panel>
+			<button>
+				<pos x="+0" y="+50"/>
+				<size width="48" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight=""
+				action="param_equal eq_mid 0.5 ? get_text '0 dB' :
+				param_greater eq_mid 0.5 ? get_text '`eq_mid & param_multiply 200 & param_add -100 & param_cast integer`%' :
+				get_text '+`eq_mid & param_multiply 200 & param_add -100 & param_cast integer`%'" important="true"/>
+			</button>
+		</define>
+		<define class="eq_knob_high">
+			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+				<text text="HIGH" color = "textdark" align = "center"/>
+			</textzone>
+			<panel class="knob" x="+0" y="+0">
+				<slider action="eq_high" dblclick="eq_high 50%" rightclick="eq_high 50%" frommiddle="true">
+					<tooltip>Slide to turn High EQ.\nRight click to reset to 0 dB.</tooltip>
+				</slider>
+			</panel>
+			<button>
+				<pos x="+0" y="+50"/>
+				<size width="48" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight=""
+					   action="param_equal eq_high 0.5 ? get_text '0 dB' :
+					   		   param_greater eq_high 0.5 ? get_text '`eq_high & param_multiply 200 & param_add -100 & param_cast integer`%' :
+							   							  get_text '+`eq_high & param_multiply 200 & param_add -100 & param_cast integer`%'" important="true"/>
+			</button>
+		</define>
+		<define class="eq_freq_fader_low">
+			<slider class="hslider" x="+0" y="+0" default="0.5" action="set '$low_freq_var' & get_var '$low_freq_var' & param_multiply 160 &
+			param_add 80 & param_limit 80 240 & param_cast 'integer' & setting 'equalizerLowFrequency'"
+			rightclick = "set '$low_freq_var' 0.5 & setting 'equalizerLowFrequency' 160">
+			<tooltip>Slide to set the low frequency curve center.\nRight click to reset to default 160 Hz.</tooltip>
+			</slider>
+			<button>
+				<pos x="+0" y="+20"/>
+				<size width="48" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight=""
+				action="get_text '`setting equalizerLowFrequency & param_cast integer` Hz'" important="true"
+				rightclick = "set '$low_freq_var' 0.5 & setting 'equalizerLowFrequency' 160"/>
+				<tooltip>Low frequency center</tooltip>
+			</button>
+		</define>
+		<define class="eq_freq_fader_mid">
+			<slider class="hslider" x="+0" y="+0" default="0.2" action="set '$mid_freq_var' & get_var '$mid_freq_var' & param_multiply 2500 &
+					param_add 500 & param_limit 500 3000 & param_cast 'integer' & setting 'equalizerMidFrequency'"
+					rightclick = "set '$mid_freq_var' 0.2 & setting 'equalizerMidFrequency' 1000" >
+					<tooltip>Slide to set the mid frequency curve center.\nRight click to reset to default 1,000 Hz.</tooltip>
+			</slider>
+			<button>
+				<pos x="+0" y="+20"/>
+				<size width="48" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight=""
+					   action="get_text '`setting equalizerMidFrequency & param_cast integer` Hz'" important="true"
+					   rightclick = "set '$mid_freq_var' 0.2 & setting 'equalizerMidFrequency' 1000" />
+					   <tooltip>Mid frequency center.</tooltip>
+			</button>
+		</define>
+		<define class="eq_freq_fader_high">
+			<slider class="hslider" x="+0" y="+0" default="0.5" action="set '$high_freq_var' & get_var '$high_freq_var' & param_multiply 6000 &
+					param_add 4000 & param_limit 4000 10000 & param_cast 'integer' & setting 'equalizerHighFrequency'"
+					rightclick = "set '$high_freq_var' 0.75 & setting 'equalizerHighFrequency' 8500">
+				<tooltip>Slide to set the mid frequency curve center.\nRight click to reset to default 8,500 Hz</tooltip>
+			</slider>
+			<button>
+				<pos x="+0" y="+20"/>
+				<size width="48" height="25"/>
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<text fontsize="12" color="textdark" align="center" weight=""
+				action="get_text '`setting equalizerHighFrequency & param_multiply 0.001` kHz'" important="true"
+				rightclick = "set '$high_freq_var' 0.75 & setting 'equalizerHighFrequency' 8500"/>
+				<tooltip>High frequency center </tooltip>
+			</button>
+		</define>
+
+		<define class="spectrum_line" placeholders="xpos, source">
+			<visual type="linear" orientation="vertical" direction="up"
+				source="[SOURCE]">
+			<pos  x="[XPOS]" y="+0"/>
+			<size width="8" height="50"/>
+			<off shape="square" color="faderinoff" border="faderinoff" border_size="1" radius="1"/>
+			<on  shape="square" color="faderin" radius="1"/>
+			</visual>
+		</define>
+
+		<define class="spectrum_analyzer">
+			  <panel class="spectrum_line" source="get_spectrum_band 2 24"  xpos="+0" />
+			  <panel class="spectrum_line" source="get_spectrum_band 3 24"  xpos="+8" />
+			  <panel class="spectrum_line" source="get_spectrum_band 4 24"  xpos="+16" />
+			  <panel class="spectrum_line" source="get_spectrum_band 5 24"  xpos="+24" />
+			  <panel class="spectrum_line" source="get_spectrum_band 6 24"  xpos="+32" />
+			  <panel class="spectrum_line" source="get_spectrum_band 7 24"  xpos="+40" />
+			  <panel class="spectrum_line" source="get_spectrum_band 8 24"  xpos="+48" />
+			  <panel class="spectrum_line" source="get_spectrum_band 9 24"  xpos="+56" />
+			 <panel class="spectrum_line" source="get_spectrum_band 10 24" xpos="+64" />
+			 <panel class="spectrum_line" source="get_spectrum_band 11 24" xpos="+72" />
+			 <panel class="spectrum_line" source="get_spectrum_band 12 24" xpos="+80" />
+			 <panel class="spectrum_line" source="get_spectrum_band 13 24" xpos="+88" />
+			 <panel class="spectrum_line" source="get_spectrum_band 14 24" xpos="+96" />
+			 <panel class="spectrum_line" source="get_spectrum_band 15 24" xpos="+104" />
+			 <panel class="spectrum_line" source="get_spectrum_band 16 24" xpos="+112" />
+			 <panel class="spectrum_line" source="get_spectrum_band 17 24" xpos="+120" />
+			 <panel class="spectrum_line" source="get_spectrum_band 18 24" xpos="+128" />
+			 <panel class="spectrum_line" source="get_spectrum_band 19 24" xpos="+136" />
+			 <panel class="spectrum_line" source="get_spectrum_band 20 24" xpos="+144" />
+			 <panel class="spectrum_line" source="get_spectrum_band 21 24" xpos="+152" />
+			 <panel class="spectrum_line" source="get_spectrum_band 22 24" xpos="+160" />
+			 <panel class="spectrum_line" source="get_spectrum_band 23 24" xpos="+168" />
+			<!-- Labels (choose a few key bands to mark) -->
+			<textzone x="+0"   y="+55" width="30" height="15" text="60Hz"  fontsize="10" color="textdark" align="left"/>
+			<!-- <textzone x="+40"  y="+55" width="30" height="15" text="250" fontsize="10" color="textdark"  align="center"/> -->
+			<textzone x="+34"  y="+55" width="30" height="15" text=".5k" fontsize="10" color="textdark"  align="left"/>
+			<textzone x="+34+24"  y="+55" width="30" height="15" text="1k"    fontsize="10" color="textdark" align="left"/>
+			<textzone x="+34+24+24"  y="+55" width="30" height="15" text="2k"    fontsize="10" color="textdark" align="left"/>
+			<textzone x="+34+24+24+24" y="+55" width="30" height="15" text="4k"    fontsize="10" color="textdark" align="center"/>
+			<textzone x="+34+24+24+24+24+12" y="+55" width="30" height="15" text="8k"    fontsize="10" color="textdark" align="center"/>
+
+			 <!-- <panel class="spectrum_line" source="get_spectrum_band 24 24" xpos="+176" /> -->
+			<!-- <panel class="spectrum_line" source = "get_spectrum_band 10 16" xpos="+90" /> -->
+			<!-- <panel class="spectrum_line" source = "get_spectrum_band 10 16" xpos="+90" /> -->
+		</define>
+
 
 		<define class="filter_fader">
 			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
@@ -794,23 +951,23 @@
 	<group name="others">
 		<define class="fxdrop" placeholders="action1,action2,textaction" >
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
-				<size width="160" height="30"/>
+				<size width="140" height="25"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
-				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="85+85-10-10-30" fontsize="16" align="left" action="[TEXTACTION]" important="true"/>
+				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="140-30" fontsize="16" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
-			<button x="+160-30" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
-				<size width="30-1" height="30-2"/>
+			<button x="+140-30" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
+				<size width="30-1" height="25-2"/>
 				<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 				<icon sysicon="chevrondown" width="16" height="16" color="textdarker" colorover="textover" colordown="texton"/>
 			</button>
-			<button x="+160-30" y="+1" action="[ACTION2]" visibility="[ACTION1]">
-				<size width="30-1" height="30-2"/>
+			<button x="+140-30" y="+1" action="[ACTION2]" visibility="[ACTION1]">
+				<size width="30-1" height="25-2"/>
 				<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 				<icon sysicon="chevrondown" width="16" height="16" color="texton" colorover="textover" colordown="texton"/>
 			</button>
-			<line color="bordercolor" x="+85+85-20-20" y="+0" width="1" height="30" novisibility="[ACTION1]"/>
-			<line color="darker" x="+85+85-20-20" y="+0" width="1" height="30" visibility="[ACTION1]"/>
+			<line color="bordercolor" x="+85+85-20-20" y="+0" width="1" height="25" novisibility="[ACTION1]"/>
+			<line color="darker" x="+85+85-20-20" y="+0" width="1" height="25" visibility="[ACTION1]"/>
 		</define>
 		<define class="vfxdrop" placeholders="action1,action2,textaction,width=+113,textwidth=135-40">
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
@@ -1795,7 +1952,6 @@ ________________________________________________________________________________
 						<on shape="square" color="green"/>
 					</visual>
 				</panel>
-			<!-- <line name="divider" color="dark"  x="+160+50" y="+4" width="1" height="27-8"/> -->
 				<panel name="battery" x="+200+10+80-15-5" y="+0" width="50" height="50" visibility="is_battery" childtooltip="true">
 					<visual source="get_battery & param_smaller 20% ? blink : off">
 						<pos x="+0" y="+20"/>
@@ -1810,7 +1966,6 @@ ________________________________________________________________________________
 						<on shape="square" color="green"/>
 					</visual>
 				</panel>
-			<!-- <line name="divider" color="dark"  x="+300+50+25" y="+4" width="2" height="50-8"/> -->
 			<group name="clock" x="+300+50-10-5" y="+0">
 				<textzone>
 					<pos x="+0" y="+0"/>
@@ -1940,7 +2095,6 @@ ________________________________________________________________________________
 			<button class="button_main" x="+160-2-5" y="+35+40-11" width="32" height="25" action="deck master effect_show_gui 2" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
-			<!-- <line x="+200" y="+30" height="150" width="3" color="dark" highlight="" shadow="shadow"/> -->
 
 			<!-- Effects 3 -->
 			<panel class="masterfxdrop"  x="+0-2" y="+35+40+40-20" action1="deck master effect_active 3" action2="deck master effect_select 3" textaction="deck master get_effect_name 3 &amp; param_uppercase"/>
@@ -2247,7 +2401,7 @@ ________________________________________________________________________________
 
 <panel name="deckleft" x="+0" y="80" width="764" height="389">
 	<deck deck="left">
-		<line x="+35+85+85+85+85+10-30" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight" />
+		<line x="+35+85+85+85+85+10-22" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight" />
 		<dropzone>
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
@@ -2258,10 +2412,8 @@ ________________________________________________________________________________
 		<panel class="deckinfo" areawidth="170" left="+23+2" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+23+2" visibility="skin_width && param_smaller 1501"/>
 
-		<group name="eq" x="+0" y="+250">
-			<!-- <button class="menu_select" x="+46+5" y="+0" action="eq_mode"/> -->
+		<!-- <group name="eq" x="+0" y="+250">
 			<panel class="eq_fader_low" x="+15" y="+0">
-				<!-- <slider action="eq_low" dblclick="eq_low 50%" rightclick="eq_low 0% ? eq_low 50% : eq_low 0%" frommiddle="true"/> -->
 				<textzone action="eq_mode +1" visibility="not eq_kill_low"><text action="low_label"/></textzone>
 				<textzone action="eq_mode +1" visibility="eq_kill_low"><text action="low_label"/></textzone>
 			</panel>
@@ -2290,54 +2442,94 @@ ________________________________________________________________________________
 				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
 				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 1 eq_high & param_multiply 100 & param_cast 'integer'`%" important="true"/>
 			</button>
+		</group> -->
+		<group name="eq_pitch_volume" x="+5" y="+235">
 
+			<group name="top_buttons" x="+0" y="-102">
+				<panel class="fxdrop"  x="+15" y="+0" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
+				<button class="button_main" x="+140+5+15" y="+0" width="32" height="25" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+					<tooltip>Open Effects GUI</tooltip>
+				</button>
+				<panel class="fxdrop"  x="+15" y="+35" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
+				<button class="button_main" x="+140+5+15" y="+35" width="32" height="25" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+					<tooltip>Open Effects GUI</tooltip>
+				</button>
+				<button class="button_main" x="+220" y="+0" height="25" width="125" action="toggle $showLeftSpectrum" text = "SPECTRUM">
+					<tooltip>Click to toggle spectrum analyzer display.</tooltip>
+				</button>
 
-		<group name="pitch" x="+64+64+64+64+5-45" y="+0">
-			<textzone x = "+0" y="-25" width="52" height="20" textsize="20">
-				<text text="PITCH" color = "textdark" align = "center"/>
-			</textzone>
-			<panel class="pitch_fader" x="+0" y="+0"/>
-			<button>
-				<pos x="+0" y="+180+1"/>
-				<size width="52" height="25"/>
-				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
-				<text fontsize="12" color="textdark" align="center" weight="" format="%Ppitch%" important="true"/>
-			</button>
-			<button class="pitchreset_button" x="-18" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
-		</group>
-			<group name="volume_and_headphones" x="+64+64+64+64+64-28">
+				<button class="button_main" x="+220" y="+35" height="25" width="55" action="eq_reset & pitch_reset" text = "RESET" query="false">
+					<tooltip>Reset EQ and Pitch.</tooltip>
+				</button>
+
+				<button class="button_main" x="+280" y="+35" height="25" width="64"
+						action="setting 'equalizerFrequencySpread' 'default' ?
+									setting 'equalizerFrequencySpread' 'full kill' :
+									setting 'equalizerFrequencySpread' 'default'" text = "RESET"
+									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
+					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
+				</button>
+			</group>
+			<line x="+20" y="-30" height="3" width="170" color="dark" highlight="" shadow="highlight" />
+			<line x="+220" y="-30" height="3" width="120" color="dark" highlight="" shadow="highlight" />
+
+			<group name="eq" x="+15" y="+0">
+				<panel class="eq_knob_low" x="+0" y="+0"/>
+				<panel class="eq_freq_fader_low" x="+0" y="+100" />
+				<panel class="eq_knob_mid" x="+64" y="+0"/>
+				<panel class="eq_freq_fader_mid" x="+64" y="+100" />
+				<panel class="eq_knob_high" x="+64+64" y="+0"/>
+				<panel class="eq_freq_fader_high" x="+64+64" y="+100" />
+				<panel class="spectrum_analyzer" x="+0" y="+150" visibility="var_equal $showLeftSpectrum 1"/>
+
+				<!-- action="set v & get_var 'v' & param_multiply 220 &
+				param_add 80 & param_limit 80 300 & param_cast 'integer' & setting 'equalizerLowFrequency'"-->
+				<!-- <panel class="eq_freq_knob_low" x="+0" y="+100"/> -->
+				<!-- <button class="button_master" x="+0" y="+30" textaction="setting 'equalizerLowFrequency' & param_cast 'integer' & param_append ' Hz'" height="25" width="50"/> -->
+			</group>
+
+			<group name="pitch" x="+64+64+64+64+5-35" y="+0">
+				<textzone x = "+0" y="-25" width="52" height="20" textsize="20">
+					<text text="PITCH" color = "textdark" align = "center"/>
+				</textzone>
+				<panel class="pitch_fader" x="+0" y="+0"/>
+				<button>
+					<pos x="+0" y="+180+1"/>
+					<size width="52" height="25"/>
+					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+					<text fontsize="12" color="textdark" align="center" weight="" format="%Ppitch%" important="true"/>
+				</button>
+				<button class="pitchreset_button" x="-18" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
+			</group>
+			<group name="volume_and_headphones" x="+64+64+64+64+64-28" y="+0">
 
 				<textzone x="+0" y="-25" width="52" height="20" textsize="20">
 					<text text="VOL" color = "textdark" align = "center"/>
 				</textzone>
-				<panel class="volume_fader" x="+0" y="+0"/>
+			<panel class="volume_fader" x="+0" y="+0"/>
 
-				<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
-				action="deck 1 play ?
-				deck 1 level 0% ?
-								deck 1 stop & deck 1 goto_start & repeat_start WaitTimer 100ms 1 & deck 1 level 100% :
-								nothing :
-								deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
-								query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
-								<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
-								</tooltip>
-							</button>
+			<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
+			action="deck 1 play ?
+			deck 1 level 0% ?
+			deck 1 stop & deck 1 goto_start & repeat_start WaitTimer 100ms 1 & deck 1 level 100% :
+			nothing :
+			deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
+			query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
+			<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
+			</tooltip>
+		</button>
 
-							<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
-							action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
-							<tooltip>Toggle Deck 1 headphones. Headphones will come through deck when turned on.</tooltip>
-						</button>
-			</group>
+		<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
+		action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
+		<tooltip>Toggle Deck 1 headphones. Headphones will come through deck when turned on.</tooltip>
+	</button>
+	</group>
+	</group>
 
-			</group>
 
 
-		<group name="fx" x="+15" y="+125">
-			<panel class="titler" x="+0" y="+3" text="" localize="true"/>
-			<panel class="fxdrop"  x="+0" y="+34" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
-			<button class="button_main" x="+160+7" y="+33" width="32" height="32" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
-				<tooltip>Open Effects GUI</tooltip>
-			</button>
+<!-- <group name="fx" x="+15" y="+110">
+
 			<panel class="fx_fader" x="+160+17+42" y="+32-8" visibility="effect_active" textsize="10">
 				<slider action="effect_slider 1" dblclick="effect_slider_reset 1" disabled="not effect_has_slider 1" frommiddle="get_effect_slider_default 1 0.5"/>
 				<textzone><text action="get_effect_slider_label 1" /></textzone>
@@ -2354,9 +2546,7 @@ ________________________________________________________________________________
 				<slider action="effect_slider 2" dblclick="effect_slider_reset 2" disabled="not effect_has_slider 2" frommiddle="get_effect_slider_default 2 0.5"/>
 				<textzone><text action="get_effect_slider_label 2" /></textzone>
 			</panel>
-			<line x="+0" y="+90" height="3" width="140" color="dark" highlight="" shadow="highlight" />
-			<line x="200" y="+90" height="3" width="140" color="dark" highlight="" shadow="highlight" />
-		</group>
+		</group> -->
 
 
 		<group name="play_button_positions" x="+375+5" y="+401">
@@ -2528,7 +2718,7 @@ ________________________________________________________________________________
 					((deck 1 play ? deck 2 load automix_song 1 : deck 1 load automix_song 1) & automix_dualdeck on)
 				) &
 				 (var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)">
-				<tooltip>Click to toggle between 'Single' and 'Dual Deck' automix mode. WARNING! There can be some unexpected behaviors when switching between 1 and 2 decks when there are duplicate songs in your automix. </tooltip>
+				<tooltip>Click to toggle between 'Single' and 'Dual Deck' automix mode.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix. </tooltip>
 			</button>
 			<!-- "" -->
 			<!-- ___________ Row 2 of warnings _________________  -->
@@ -2587,7 +2777,7 @@ ________________________________________________________________________________
 </panel>
 <panel name="deckright" x="1920-764" y="80" width="764" height="389">
 	<deck deck="right">
-		<line x="+764-35-85-85-85-85-35+5+30+25" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight"/>
+		<line x="+764-35-85-85-85-85-35+5+30+25-8" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight"/>
 		<dropzone>
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
@@ -2597,6 +2787,96 @@ ________________________________________________________________________________
 
 		<panel class="deckinfo" areawidth="170" left="+0" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+0" visibility="skin_width && param_smaller 1501"/>
+
+
+		<group name="eq_pitch_volume" x="+430" y="+235">
+			<group name="volume_and_headphones" x="+0" y="+0">
+				<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+					<text text="VOL" color = "textdark" align = "center"/>
+				</textzone>
+				<panel class="volume_fader" x="+0" y="+0"/>
+
+						<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
+						action="deck 1 play ?
+						deck 1 level 0% ?
+						deck 1 stop & deck 1 goto_start & repeat_start WaitTimer 100ms 1 & deck 1 level 100% :
+						nothing :
+						deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
+						query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
+						<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
+						</tooltip>
+					</button>
+
+					<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
+					action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
+					<tooltip>Toggle Deck 1 headphones. Headphones will come through deck when turned on.</tooltip>
+				</button>
+			</group>
+			<group name="pitch" x="+64" y="+0">
+				<textzone x = "+0" y="-25" width="52" height="20" textsize="20">
+					<text text="PITCH" color = "textdark" align = "center"/>
+				</textzone>
+				<panel class="pitch_fader" x="+0" y="+0"/>
+				<button>
+					<pos x="+0" y="+180+1"/>
+					<size width="52" height="25"/>
+					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+					<text fontsize="12" color="textdark" align="center" weight="" format="%Ppitch%" important="true"/>
+				</button>
+				<button class="pitchreset_button" sysicon="arrowleft" x="+52+2" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
+			</group>
+
+			<group name="top_buttons" x="+0" y="-102">
+				<panel class="fxdrop"  x="+64+64+15" y="+0" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
+				<button class="button_main" x="+64+64+140+5+15" y="+0" width="32" height="25" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+					<tooltip>Open Effects GUI</tooltip>
+				</button>
+				<panel class="fxdrop"  x="+64+64+15" y="+35" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
+				<button class="button_main" x="+64+64+140+5+15" y="+35" width="32" height="25" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+					<tooltip>Open Effects GUI</tooltip>
+				</button>
+				<button class="button_main" x="+0" y="+0" height="25" width="125" action="toggle $showLeftSpectrum" text = "SPECTRUM">
+					<tooltip>Click to toggle spectrum analyzer display.</tooltip>
+				</button>
+
+				<button class="button_main" x="+70" y="+35" height="25" width="55" action="eq_reset & pitch_reset" text = "RESET" query="false">
+					<tooltip>Reset EQ and Pitch.</tooltip>
+				</button>
+
+				<button class="button_main" x="+0" y="+35" height="25" width="64"
+						action="setting 'equalizerFrequencySpread' 'default' ?
+									setting 'equalizerFrequencySpread' 'full kill' :
+									setting 'equalizerFrequencySpread' 'default'" text = "RESET"
+									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
+					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
+				</button>
+			</group>
+			<line x="+0" y="-30" height="3" width="120" color="dark" highlight="" shadow="highlight" />
+			<line x="+64+64+15" y="-30" height="3" width="170" color="dark" highlight="" shadow="highlight" />
+
+			<group name="eq" x="+15+64+64" y="+0">
+				<panel class="eq_knob_low" x="+0" y="+0"/>
+				<panel class="eq_freq_fader_low" x="+0" y="+100" />
+				<panel class="eq_knob_mid" x="+64" y="+0"/>
+				<panel class="eq_freq_fader_mid" x="+64" y="+100" />
+				<panel class="eq_knob_high" x="+64+64" y="+0"/>
+				<panel class="eq_freq_fader_high" x="+64+64" y="+100" />
+				<panel class="spectrum_analyzer" x="+0" y="+150" visibility="var_equal $showLeftSpectrum 1"/>
+
+				<!-- action="set v & get_var 'v' & param_multiply 220 &
+				param_add 80 & param_limit 80 300 & param_cast 'integer' & setting 'equalizerLowFrequency'"-->
+				<!-- <panel class="eq_freq_knob_low" x="+0" y="+100"/> -->
+				<!-- <button class="button_master" x="+0" y="+30" textaction="setting 'equalizerLowFrequency' & param_cast 'integer' & param_append ' Hz'" height="25" width="50"/> -->
+			</group>
+
+	</group>
+
+
+
+
+<!--
+
+
 
 		<group name="eq" x="+764-85-85-85-85-30" y="+250">
 
@@ -2635,9 +2915,7 @@ ________________________________________________________________________________
 			</button>
 			<button class="pitchreset_button" sysicon="arrowleft" x="+52+2" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
 		</group>
-			<!-- <button class="menu_select" x="+46+5" y="+0" action="eq_mode"/> -->
 			<panel class="eq_fader_low" x="+64+64+10+50" y="+0">
-				<!-- <slider action="eq_low" dblclick="eq_low 50%" rightclick="eq_low 0% ? eq_low 50% : eq_low 0%" frommiddle="true"/> -->
 				<textzone action="eq_mode +1" visibility="not eq_kill_low"><text action="low_label"/></textzone>
 				<textzone action="eq_mode +1" visibility="eq_kill_low"><text action="low_label"/></textzone>
 			</panel>
@@ -2660,8 +2938,6 @@ ________________________________________________________________________________
 			</button>
 
 			<panel class="eq_fader_high" x="+64+64+64+64+10+40" y="+0">
-				<!-- <textzone action="eq_mode +1" visibility="not eq_kill_high"><text action="high_label"/></textzone> -->
-				<!-- <textzone action="eq_mode +1" visibility="eq_kill_high"><text action="high_label"/></textzone> -->
 			</panel>
 			<button>
 				<pos x="+64+64+64+64+10+40" y="+180+1"/>
@@ -2670,13 +2946,12 @@ ________________________________________________________________________________
 				<text fontsize="12" color="textdark" align="center" weight="" format="`deck 2 eq_high & param_multiply 100 & param_cast 'integer'`%" important="true"/>
 			</button>
 
-		</group>
+		</group> -->
 
 
-		<group name="fx" x="+764-85-85-85-85-20" y="+125">
-			<panel class="titler" x="+15" y="+3" text="" localize="true"/>
+		<!-- <group name="fx" x="+764-85-85-85-85-20" y="+125">
 			<panel class="fxdrop"  x="+25" y="+34" action1="effect_active" action2="effect_select" textaction="get_effect_name &amp; param_uppercase"/>
-			<button class="button_main" x="+160+17+20" y="+33" width="32" height="32" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
+			<button class="button_main" x="+160+17+20" y="+33" width="28" height="32" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 				<tooltip>Open Effects GUI</tooltip>
 			</button>
 
@@ -2698,7 +2973,7 @@ ________________________________________________________________________________
 			</panel>
 			<line x="+30" y="+90" height="3" width="140" color="dark" highlight="" shadow="highlight" />
 			<line x="+200" y="+90" height="3" width="140" color="dark" highlight="" shadow="highlight" />
-		</group>
+		</group> -->
 
 		<group name="play_button_pos" x="+150+10" y="+401">
 				<button class="button_main"
@@ -2715,8 +2990,6 @@ ________________________________________________________________________________
 				</visual>
 				<textzone x="+0" y="+0" width="64" height="40" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 				</group>
-				<!-- <button  visibility="play_mode 'numark'" class="button_main" textcolor="textdark" textsize="14" x="+10+94+4-20" y="+331-40" width="24" height="24" action="stop_button" sysicon="stop" iconsize="22"/>
-				<button class="button_main" x="+50" y="+0" width="64" height="40" sysicon="play_button" iconsize="40" action="play_button"/> -->
 				<button class="button_main" x="+80" y="+0" width="64" height="40" sysicon="play_button" iconsize="40"
 						action="deck 2 play ? play_pause:
 						        deck 2 level 0 ? deck 2 play_pause:
