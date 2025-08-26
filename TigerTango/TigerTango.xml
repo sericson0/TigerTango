@@ -747,43 +747,44 @@
 			<visual type="linear" orientation="vertical" direction="up"
 				source="[SOURCE]">
 			<pos  x="[XPOS]" y="+0"/>
-			<size width="8" height="50"/>
+			<size width="8" height="60"/>
 			<off shape="square" color="faderinoff" border="faderinoff" border_size="1" radius="1"/>
 			<on  shape="square" color="faderin" radius="1"/>
 			</visual>
 		</define>
 
 		<define class="spectrum_analyzer">
-			  <panel class="spectrum_line" source="get_spectrum_band 2 24"  xpos="+0" />
-			  <panel class="spectrum_line" source="get_spectrum_band 3 24"  xpos="+8" />
-			  <panel class="spectrum_line" source="get_spectrum_band 4 24"  xpos="+16" />
-			  <panel class="spectrum_line" source="get_spectrum_band 5 24"  xpos="+24" />
-			  <panel class="spectrum_line" source="get_spectrum_band 6 24"  xpos="+32" />
-			  <panel class="spectrum_line" source="get_spectrum_band 7 24"  xpos="+40" />
-			  <panel class="spectrum_line" source="get_spectrum_band 8 24"  xpos="+48" />
-			  <panel class="spectrum_line" source="get_spectrum_band 9 24"  xpos="+56" />
-			 <panel class="spectrum_line" source="get_spectrum_band 10 24" xpos="+64" />
-			 <panel class="spectrum_line" source="get_spectrum_band 11 24" xpos="+72" />
-			 <panel class="spectrum_line" source="get_spectrum_band 12 24" xpos="+80" />
-			 <panel class="spectrum_line" source="get_spectrum_band 13 24" xpos="+88" />
-			 <panel class="spectrum_line" source="get_spectrum_band 14 24" xpos="+96" />
-			 <panel class="spectrum_line" source="get_spectrum_band 15 24" xpos="+104" />
-			 <panel class="spectrum_line" source="get_spectrum_band 16 24" xpos="+112" />
-			 <panel class="spectrum_line" source="get_spectrum_band 17 24" xpos="+120" />
-			 <panel class="spectrum_line" source="get_spectrum_band 18 24" xpos="+128" />
-			 <panel class="spectrum_line" source="get_spectrum_band 19 24" xpos="+136" />
-			 <panel class="spectrum_line" source="get_spectrum_band 20 24" xpos="+144" />
-			 <panel class="spectrum_line" source="get_spectrum_band 21 24" xpos="+152" />
-			 <panel class="spectrum_line" source="get_spectrum_band 22 24" xpos="+160" />
-			 <panel class="spectrum_line" source="get_spectrum_band 23 24" xpos="+168" />
+			  <panel class="spectrum_line" source="get_spectrum_band 2 32"  xpos="+0" />
+			  <panel class="spectrum_line" source="get_spectrum_band 3 32"  xpos="+8" />
+			  <panel class="spectrum_line" source="get_spectrum_band 4 32"  xpos="+16" />
+			  <panel class="spectrum_line" source="get_spectrum_band 5 32"  xpos="+24" />
+			  <panel class="spectrum_line" source="get_spectrum_band 6 32"  xpos="+32" />
+			  <panel class="spectrum_line" source="get_spectrum_band 7 32"  xpos="+40" />
+			  <panel class="spectrum_line" source="get_spectrum_band 8 32"  xpos="+48" />
+			  <panel class="spectrum_line" source="get_spectrum_band 9 32"  xpos="+56" />
+			  <panel class="spectrum_line" source="get_spectrum_band 10 32" xpos="+64" />
+			  <panel class="spectrum_line" source="get_spectrum_band 11 32" xpos="+72" />
+			  <panel class="spectrum_line" source="get_spectrum_band 12 32" xpos="+80" />
+			  <panel class="spectrum_line" source="get_spectrum_band 13 32" xpos="+88" />
+			  <panel class="spectrum_line" source="get_spectrum_band 14 32" xpos="+96" />
+			  <panel class="spectrum_line" source="get_spectrum_band 15 32" xpos="+104" />
+			  <panel class="spectrum_line" source="get_spectrum_band 16 32" xpos="+112" />
+			  <panel class="spectrum_line" source="get_spectrum_band 17 32" xpos="+120" />
+			  <panel class="spectrum_line" source="get_spectrum_band 18 32" xpos="+128" />
+			  <panel class="spectrum_line" source="get_spectrum_band 19 32" xpos="+136" />
+			  <panel class="spectrum_line" source="get_spectrum_band 20 32" xpos="+144" />
+			  <panel class="spectrum_line" source="get_spectrum_band 21 32" xpos="+152" />
+			  <panel class="spectrum_line" source="get_spectrum_band 22 32" xpos="+160" />
+			  <panel class="spectrum_line" source="get_spectrum_band 23 32" xpos="+168" />
+			  <panel class="spectrum_line" source="get_spectrum_band 24 32" xpos="+176" />
 			<!-- Labels (choose a few key bands to mark) -->
-			<textzone x="+0"   y="+55" width="30" height="15" text="60Hz"  fontsize="10" color="textdark" align="left"/>
-			<!-- <textzone x="+40"  y="+55" width="30" height="15" text="250" fontsize="10" color="textdark"  align="center"/> -->
-			<textzone x="+34"  y="+55" width="30" height="15" text=".5k" fontsize="10" color="textdark"  align="left"/>
-			<textzone x="+34+24"  y="+55" width="30" height="15" text="1k"    fontsize="10" color="textdark" align="left"/>
-			<textzone x="+34+24+24"  y="+55" width="30" height="15" text="2k"    fontsize="10" color="textdark" align="left"/>
-			<textzone x="+34+24+24+24" y="+55" width="30" height="15" text="4k"    fontsize="10" color="textdark" align="center"/>
-			<textzone x="+34+24+24+24+24+12" y="+55" width="30" height="15" text="8k"    fontsize="10" color="textdark" align="center"/>
+			<textzone x="+0"   y="+60" width="30" height="15" text="60Hz"  fontsize="10" color="textdark" align="left"/>
+			<!-- <textzone x="+40"  y="+60" width="30" height="15" text="250" fontsize="10" color="textdark"  align="center"/> -->
+			<textzone x="+34"  y="+60" width="30" height="15" text=".5k" fontsize="10" color="textdark"  align="left"/>
+			<textzone x="+34+24+16"  y="+60" width="30" height="15" text="1k"    fontsize="10" color="textdark" align="left"/>
+			<textzone x="+34+24+24+24"  y="+60" width="30" height="15" text="2k"    fontsize="10" color="textdark" align="left"/>
+			<textzone x="+34+24+24+24+24+12" y="+60" width="30" height="15" text="4k"    fontsize="10" color="textdark" align="center"/>
+			<textzone x="+34+24+24+24+24+8+24" y="+60" width="30" height="15" text="6k"    fontsize="10" color="textdark" align="center"/>
 
 			 <!-- <panel class="spectrum_line" source="get_spectrum_band 24 24" xpos="+176" /> -->
 			<!-- <panel class="spectrum_line" source = "get_spectrum_band 10 16" xpos="+90" /> -->
@@ -2842,7 +2843,7 @@ ________________________________________________________________________________
 				<button class="button_main" x="+64+64+140+5+15" y="+35" width="32" height="25" action="effect_show_gui" textcolor="textdark" textsize="14" text="+" offcolor="darker" oncolor="darker" overcolor="darker">
 					<tooltip>Open Effects GUI</tooltip>
 				</button>
-				<button class="button_main" x="+0" y="+0" height="25" width="125" action="toggle $showLeftSpectrum" text = "SPECTRUM">
+				<button class="button_main" x="+0" y="+0" height="25" width="125" action="toggle '$showRightSpectrum'" text = "SPECTRUM">
 					<tooltip>Click to toggle spectrum analyzer display.</tooltip>
 				</button>
 
@@ -2868,7 +2869,7 @@ ________________________________________________________________________________
 				<panel class="eq_freq_fader_mid" x="+64" y="+100" />
 				<panel class="eq_knob_high" x="+64+64" y="+0"/>
 				<panel class="eq_freq_fader_high" x="+64+64" y="+100" />
-				<panel class="spectrum_analyzer" x="+0" y="+150" visibility="var_equal $showLeftSpectrum 1"/>
+				<panel class="spectrum_analyzer" x="-4" y="+150" visibility="var_equal $showRightSpectrum 1"/>
 
 				<!-- action="set v & get_var 'v' & param_multiply 220 &
 				param_add 80 & param_limit 80 300 & param_cast 'integer' & setting 'equalizerLowFrequency'"-->
