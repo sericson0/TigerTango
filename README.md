@@ -26,6 +26,10 @@ Thank you to **Gabriele Capocelli (DJ Gabbo)** for your work to implement the ho
 
 Thank you to **Michael Plaks** for all of your suggestions, feedback, and support in getting this project to a point where it can be a useful tool to DJs.
 
+Thank you **Eric Heleno** for your great suggestion on making the EQ buttons semiparametric and for giving your expert eye to the skin. And thank you in general for sharing your wealth of knowledge of sound with me. I hear the world differently because of you.
+
+Thank you **Janice Ng** for giving your expert UX developer eye. So many great observations packed into a couple hour session. And thank you for inspring us all with your commitment to your tango growth and art.
+
 Thank you **DJ Claudiu**, **Chris Tran** and everyone who has supported with user testing and providing feedback to this project. And thank you to
 
 Shout out to **Mira Gordin** for designing the tiger logo that I adopted to make the Tiger Tango logo.
