@@ -2467,17 +2467,17 @@ ________________________________________________________________________________
 		<group name="eq_pitch_volume" x="+5" y="+235">
 
 			<group name="top_buttons" x="+20" y="-102">
-				<button class="button_main" x="+10" y="+0" height="25" width="150"
+				<button class="button_main" x="+5" y="+0" height="25" width="160"
 						action="toggle $showLeftSpectrum" text = "SPECTRUM" textsize="16">
 					<tooltip>Display spectrum analyzer</tooltip>
 				</button>
 
-				<button class="button_main" x="+10" y="+35" height="25" width="70"
+				<button class="button_main" x="+5" y="+35" height="25" width="70"
 					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="16">
 					<tooltip>Reset EQ and Pitch.</tooltip>
 				</button>
 
-				<button class="button_main" x="+80+10" y="+35" height="25" width="70"
+				<button class="button_main" x="+80+5" y="+35" height="25" width="80"
 						action="setting 'equalizerFrequencySpread' 'default' ?
 									setting 'equalizerFrequencySpread' 'full kill' :
 									setting 'equalizerFrequencySpread' 'default'" text = "RESET" textsize="16"
@@ -2844,19 +2844,19 @@ ________________________________________________________________________________
 				<panel class="fxdrop"  x="+0" y="+0" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
 				<panel class="fxdrop"  x="+0" y="+35" action1="effect_active 2" action2="effect_select 2" action3="effect_show_gui 2" textaction="get_effect_name 2 &amp; param_uppercase"/>
 
-				<button class="button_main" x="+155" y="+0" height="25" width="150"
+				<button class="button_main" x="+150" y="+0" height="25" width="160"
 				 action="toggle '$showRightSpectrum'" text = "SPECTRUM" textsize="16">
 					<tooltip>Display spectrum analyzer.</tooltip>
 				</button>
 
-				<button class="button_main" x="+155" y="+35" height="25" width="70" textsize="16"
+				<button class="button_main" x="+150" y="+35" height="25" width="80" textsize="16"
 						action="setting 'equalizerFrequencySpread' 'default' ?
 									setting 'equalizerFrequencySpread' 'full kill' :
 									setting 'equalizerFrequencySpread' 'default'" text = "RESET"
 									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
 					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
 				</button>
-				<button class="button_main" x="+155+80" y="+35" height="25" width="70"
+				<button class="button_main" x="+155+85" y="+35" height="25" width="70"
 					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="16">
 					<tooltip>Reset EQ and Pitch.</tooltip>
 				</button>
