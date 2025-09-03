@@ -2234,39 +2234,41 @@ ________________________________________________________________________________
 				- If tanda counter exceeds tanda length, reset it to 1
 			-->
 			<button class="button_master" x="+0" y="+31" textsize="14" height="25" width="52"
-				action= "var_equal '$songCounterRunning' 1 ? set '$songCounterRunning' 0 & repeat_stop 'tandaPosCounter' :
-				set '$songCounterRunning' 1 & set '$tandaCounter' 0  &
-						set '$lastTrack' '' & set '$lastArtist' '' &
-			repeat_start_instant 'tandaPosCounter' 1000ms -1 &
-					(
-					(deck master get_genre & param_lowercase & param_contains 'tango') ?
-						(var_equal '@$tango3SongTanda' 1 ? set '$tandaLength' 3 : set '$tandaLength' 4) :
-					(deck master get_genre & param_lowercase & param_contains 'vals') ?
-						(var_equal '@$vals4SongTanda' 1 ? set '$tandaLength' 4 : set '$tandaLength' 3) :
-					(deck master get_genre & param_lowercase & param_contains 'milonga') ?
-						(set '$tandaLength' 3) :
-					(deck master get_genre & param_lowercase & param_contains 'alternative') ?
-						(set '$tandaLength' 3) :
-					(var_equal '@$cortinaCheck' 0) ?
-						(set '$tandaLength' 1 & set '$tandaCounter' 0) :
-					(deck master get_genre & param_lowercase & param_contains 'cortina') ?
-						(set '$tandaLength' 1 & set '$tandaCounter' -1) :
-					nothing
-				) &
-			deck master load_pulse_active 1500ms ? (
-					 set 'doubleCounted' 1 &
-					 	(param_equal `deck master get_title` get_var '$lastTitle' ? nothing : set 'doubleCounted' 0) &
-					 	(param_equal `deck master get_artist` get_var '$lastArtist' ? nothing : set 'doubleCounted' 0) &
-							var_equal 'doubleCounted' 1 ? nothing : (
-				repeat_start 'waitTime' 1000ms 1 &
-						set '$lastTitle'  `deck master get_title` & set '$lastArtist' `deck master get_artist` &
-				(set '$tandaCounter' `get_var '$tandaCounter' & param_cast & param_add 1`) &
-				(set '$tandaLength' `get_var '$tandaLength' & param_cast`) &
-
-				(get_var '$tandaCounter' & param_cast 'integer' & param_greater
-				`get_var '$tandaLength' & param_cast 'integer'` ? set '$tandaCounter' 1 : nothing)) &
-				repeat_start 'waitTime' 5000ms 1
-				) : nothing
+				action= "var_equal '$songCounterRunning' 1 ?
+					set '$songCounterRunning' 0 & set '$tandaCounter' 0 & repeat_stop 'tandaPosCounter' :
+					set '$songCounterRunning' 1 & set '$tandaCounter' 0 &
+					set '$curPos' `get_automix_position` &
+					set '$curAutomix' `automix` &
+					repeat_start_instant 'tandaPosCounter' 1000ms & 
+						(
+							(deck master get_genre & param_lowercase & param_contains 'tango') ?
+								(var_equal '@$tango3SongTanda' 1 ? set '$tandaLength' 3 : set '$tandaLength' 4) :
+							(deck master get_genre & param_lowercase & param_contains 'vals') ?
+								(var_equal '@$vals4SongTanda' 1 ? set '$tandaLength' 4 : set '$tandaLength' 3) :
+							(deck master get_genre & param_lowercase & param_contains 'milonga') ?
+								(set '$tandaLength' 3) :
+							(deck master get_genre & param_lowercase & param_contains 'alternative') ?
+								(set '$tandaLength' 3) :
+							(var_equal '@$cortinaCheck' 0) ?
+								(set '$tandaLength' 1 & set '$tandaCounter' 0) :
+							(deck master get_genre & param_lowercase & param_contains 'cortina') ?
+								(set '$tandaLength' 1 & set '$tandaCounter' 0) :
+							not var '$tandaLength' ? set '$tandaLength' 3 : nothing
+						) &
+						(automix ? (param_add `get_var $curPos & param_cast & param_invert` `get_automix_position` & param_equal 0 ? set '$bumpCounter' 0 : set '$bumpCounter' 1) : 
+						(deck master load_pulse_active 250ms ? set '$bumpCounter' 1 : set '$bumpCounter' 0)) &
+						(
+							not var '$bumpCounter' ? (var_not_equal '$tandaLength' 1 ? var_equal '$tandaCounter' 0 ? set '$tandaCounter' 1) : (
+								set '$curPos' `get_automix_position` & 
+								(get_var '$curAutomix' & param_equal `automix` ?
+									(set '$tandaCounter' `get_var '$tandaCounter' & param_cast & param_add 1`) &
+									(set '$tandaLength' `get_var '$tandaLength' & param_cast`) &
+									(get_var '$tandaCounter' & param_cast 'integer' & param_greater
+									`get_var '$tandaLength' & param_cast 'integer'` ? set '$tandaCounter' 1 : nothing)
+									: set '$curAutomix' `automix`
+								)
+							)
+						)
 				"
 
 				textaction="var_equal '$songCounterRunning' 1 ? get_text 'T C ◼' :
