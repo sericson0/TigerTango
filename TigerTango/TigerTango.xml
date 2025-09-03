@@ -956,7 +956,7 @@
 				<size width="110" height="25"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
-				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="140-30" fontsize="16" align="left" action="[TEXTACTION]" important="true"/>
+				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="110-25" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
 			<button x="+110-20" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
 				<size width="20-1" height="25-2"/>
@@ -2239,7 +2239,7 @@ ________________________________________________________________________________
 					set '$songCounterRunning' 1 & set '$tandaCounter' 0 &
 					set '$curPos' `get_automix_position` &
 					set '$curAutomix' `automix` &
-					repeat_start_instant 'tandaPosCounter' 1000ms & 
+					repeat_start_instant 'tandaPosCounter' 1000ms &
 						(
 							(deck master get_genre & param_lowercase & param_contains 'tango') ?
 								(var_equal '@$tango3SongTanda' 1 ? set '$tandaLength' 3 : set '$tandaLength' 4) :
@@ -2255,11 +2255,11 @@ ________________________________________________________________________________
 								(set '$tandaLength' 1 & set '$tandaCounter' 0) :
 							not var '$tandaLength' ? set '$tandaLength' 3 : nothing
 						) &
-						(automix ? (param_add `get_var $curPos & param_cast & param_invert` `get_automix_position` & param_equal 0 ? set '$bumpCounter' 0 : set '$bumpCounter' 1) : 
+						(automix ? (param_add `get_var $curPos & param_cast & param_invert` `get_automix_position` & param_equal 0 ? set '$bumpCounter' 0 : set '$bumpCounter' 1) :
 						(deck master load_pulse_active 250ms ? set '$bumpCounter' 1 : set '$bumpCounter' 0)) &
 						(
 							not var '$bumpCounter' ? (var_not_equal '$tandaLength' 1 ? var_equal '$tandaCounter' 0 ? set '$tandaCounter' 1) : (
-								set '$curPos' `get_automix_position` & 
+								set '$curPos' `get_automix_position` &
 								(get_var '$curAutomix' & param_equal `automix` ?
 									(set '$tandaCounter' `get_var '$tandaCounter' & param_cast & param_add 1`) &
 									(set '$tandaLength' `get_var '$tandaLength' & param_cast`) &
