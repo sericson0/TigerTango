@@ -1,4 +1,4 @@
-<skin name="TigerTango" version="2025" width="1920" height="1080" nbdecks="2" comment="For DJs of Argentine Tango and other social dances" breakline="568" breakline2="1070" image="graphics.png" preview="preview.png" author="Sean Ericson">
+<skin name="TigerTango" version="2025" width="1920" height="1080" nbdecks="2" comment="For DJs of Argentine Tango and other social dances" breakline="560+50+24" breakline2="1070" image="graphics.png" preview="preview.png" author="Sean Ericson">
 <copyright>None</copyright>
 <font name="Arial"/>
 <background x="1817" y="0" width="100" height="100" repeat="true"/>
@@ -55,6 +55,8 @@
 		<define color="browser_seperatortab" value="#4d4e52"/>
 		<define color="browser_scrollbar" value="#323336"/>
 		<define color="browser_scrollbtn" value="#9b9b9b"/>
+		<!-- <define color="browser_scrollbar" value="red"/>
+		<define color="browser_scrollbtn" value="red"/> -->
 
 		<!-- browser sampler pads -->
 		<define color="browser_button" value="#323336"/>
@@ -86,11 +88,6 @@
 		<define color="browser_iconbuttonactive" value="#2e6b76"/>
 
 		<!-- waveforms -->
-		<define color="waveform_active1" value="#157794"/>
-		<define color="waveform_passive1" value="#0f566c"/>
-		<define color="waveform_active2" value="#b63039"/>
-		<define color="waveform_passive2" value="#8f2b31"/>
-
 		<define color="gridlines" value="#7d7d7d"/>
 		<define color="colorbass" value="#0e4551" deck="left"/>
 		<define color="colormed" value="#0f5869" deck="left"/>
@@ -1268,7 +1265,7 @@
 					<scrollbars background="browser_scrollbar" button="browser_scrollbtn"/>
 					<info background="background" stripes="background2" text="textbrowser" label="textdark" artist="textover" title="textbright"/>
 					<search background="browserback" text="textbrowser"/>
-					<prelisten background="background2"/>
+					<prelisten background="background2" buttonselected="#A34210"/>
 					<plugins background="browserback" text="textbrowser" title="background2" titletext="textbright">
 						<buttons
 							over_deck1="#1c7b97"
@@ -2268,7 +2265,7 @@ ________________________________________________________________________________
 
 				(get_var '$tandaCounter' & param_cast 'integer' & param_greater
 				`get_var '$tandaLength' & param_cast 'integer'` ? set '$tandaCounter' 1 : nothing)) &
-				repeat_start 'waitTime' 2000ms 1
+				repeat_start 'waitTime' 5000ms 1
 				) : nothing
 				"
 
@@ -2468,19 +2465,19 @@ ________________________________________________________________________________
 
 			<group name="top_buttons" x="+20" y="-102">
 				<button class="button_main" x="+5" y="+0" height="25" width="160"
-						action="toggle $showLeftSpectrum" text = "SPECTRUM" textsize="16">
+						action="toggle $showLeftSpectrum" text = "SPECTRUM" textsize="14">
 					<tooltip>Display spectrum analyzer</tooltip>
 				</button>
 
 				<button class="button_main" x="+5" y="+35" height="25" width="70"
-					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="16">
+					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="14">
 					<tooltip>Reset EQ and Pitch.</tooltip>
 				</button>
 
 				<button class="button_main" x="+80+5" y="+35" height="25" width="80"
 						action="setting 'equalizerFrequencySpread' 'default' ?
 									setting 'equalizerFrequencySpread' 'full kill' :
-									setting 'equalizerFrequencySpread' 'default'" text = "RESET" textsize="16"
+									setting 'equalizerFrequencySpread' 'default'" text = "RESET" textsize="14"
 									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
 					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
 				</button>
@@ -2845,11 +2842,11 @@ ________________________________________________________________________________
 				<panel class="fxdrop"  x="+0" y="+35" action1="effect_active 2" action2="effect_select 2" action3="effect_show_gui 2" textaction="get_effect_name 2 &amp; param_uppercase"/>
 
 				<button class="button_main" x="+150" y="+0" height="25" width="160"
-				 action="toggle '$showRightSpectrum'" text = "SPECTRUM" textsize="16">
+				 action="toggle '$showRightSpectrum'" text = "SPECTRUM" textsize="14">
 					<tooltip>Display spectrum analyzer.</tooltip>
 				</button>
 
-				<button class="button_main" x="+150" y="+35" height="25" width="80" textsize="16"
+				<button class="button_main" x="+150" y="+35" height="25" width="80" textsize="14"
 						action="setting 'equalizerFrequencySpread' 'default' ?
 									setting 'equalizerFrequencySpread' 'full kill' :
 									setting 'equalizerFrequencySpread' 'default'" text = "RESET"
@@ -2857,7 +2854,7 @@ ________________________________________________________________________________
 					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
 				</button>
 				<button class="button_main" x="+155+85" y="+35" height="25" width="70"
-					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="16">
+					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="14">
 					<tooltip>Reset EQ and Pitch.</tooltip>
 				</button>
 
@@ -3061,89 +3058,14 @@ ________________________________________________________________________________
 </filelist>
 </group>
 
-				<!-- automix    ="#4080C4" -->
 <line name="browser_top"  x="10" y="1080-500+50" width="1920-20" height="4" color="bordercolor" />
-<!-- <browser class="browser">
-	<pos x="10" y="1080-500-30" />
-	<size width="1920-20" height="500+15"/>
-	<zoomed x="10" y="258" width="1920-20" height="1080-258-10"/>
-</browser> -->
-<split name="effects" type="horizontal" position="100%" grab="0">
-<pos x="11" y="560+50+30"/>
-<size width="1898" height="509-70"/>
 
-<left>
-	<split name="info" type="horizontal" position="80%" grab="10">
-	<pos x="0" y="0"/>
-	<size width="1898" height="509-70"/>
+<browser class="browser">
+	<pos x="10" y="560+50+24" />
+	<size width="1920-20" height="509-70+6"/>
+	<zoomed x="10" y="200" width="1920-20" height="1080-200-10"/>
+</browser>
 
-	<left>
-		<split name="folders" type="horizontal" position="25%" grab="10">
-		<pos x="0" y="0"/>
-		<size width="1898" height="509-70"/>
-
-		<left>
-			<browsertoolbartree resizeX="no" attachX="left">
-			<size width="35" height="509-70"/>
-			<pos x="0" y="0"/>7
-			</browsertoolbartree>
-			<folderlist resizeX="yes" attachX="both">
-			<size width="1898-37" height="509-70"/>
-			<pos x="0+37" y="0"/>
-			</folderlist>
-		</left>
-		<right>
-			<split name="sideview" type="horizontal" position="70%" grab="10">
-			<pos x="0" y="0"/>
-			<size width="1898" height="509-70"/>
-
-			<left>
-				<fileview attachX="both" attachY="both">
-				<size width="1898" height="509-70"/>
-				<pos x="0" y="0"/>
-				</fileview>
-			</left>
-
-			<right>
-				<sideview attachX="both" attachY="both">
-					<pos  x="0" y="0"/>
-					<size width="1890" height="509-70"/>
-				</sideview>
-			</right>
-
-			<separator close="right" closed="no" size="16"  />
-			</split>
-		</right>
-
-	<separator close="left" size="16" closed="no" />
-
-	</split>
-
-	</left>
-
-	<right>
-    <browserinfo attachX="both" attachY="both">
-      <pos  x="0" y="0"/>
-      <size width="1890" height="509-70"/>
-    </browserinfo>
-	</right>
-
-	<separator close="right" size="16" closed="no" />
-
-	</split>
-
-	</left>
-
-	<right>
-		<pluginzone resizeX="no" resizeY="yes" attachX="both">
-		<size width="1898" height="509-70"/>
-		<pos x="0" y="0"/>
-		</pluginzone>
-	</right>
-
-<separator close="right" closed="no" size="0"  />
-
-</split>
 
 <oninit action="setting_setdefault skinWaveformType 'shapes'"/>
 <oninit action="setting_setdefault coverflow 'smart'"/>
