@@ -1435,7 +1435,7 @@ ________________________________________________________________________________
 				textsize="14" height="30" width="110"
 				textaction="var_equal '@$smallAlbumArt' 1 ? get_text 'SMALL' : get_text 'LARGE'"
 				query="false" >
-			<tooltip>Album art disply size.</tooltip>
+			<tooltip>Album art display size.</tooltip>
 		</button>
 		<button class="button_master" x="+125" y="+0" action="cycle '@$lyricsFont' 3" query="false"
 				 textsize="14" height="30" width="65"
@@ -1489,7 +1489,7 @@ ________________________________________________________________________________
 			<button class="button_master" x="+0" y="+0" action="toggle '@$cortinaCheck'"
 				textsize="14" height="30" width="110"
 				text="GENRE CHECK">
-				<tooltip>If on, then will only mark as cortina if genre includes the word &quot;Cortina&quot;.\nOtherwise will mark as a cortina any track with genre not in\n&quot;Tango&quot; &quot;Vals&quot; &quot;Milonga&quot; &quot;Alternative&quot;</tooltip>
+				<tooltip>If on,  will mark as cortina if genre includes the word\n &quot;Cortina&quot;. Otherwise a cortina is any track with genre not\ncontaining &quot;Tango&quot;, &quot;Vals&quot;, &quot;Milonga&quot; or &quot;Alternative&quot;</tooltip>
 			</button>
 			<button class="button_master" x="+125" y="+0" action="toggle '@$tango3SongTanda'"
 				textsize="14" height="30" width="110"
@@ -2249,6 +2249,10 @@ ________________________________________________________________________________
 					set '$curAutomix' `automix` &
 					repeat_start_instant 'tandaPosCounter' 1000ms &
 						(
+							(var_equal '@$cortinaCheck' 1) ?
+								((deck master get_genre & param_lowercase & param_contains 'cortina') ?
+								(set '$tandaLength' 1 & set '$tandaCounter' 0) :
+								(var_smaller '$tandaLength' 2 ? set '$tandaLength' 3 : nothing)) :
 							(deck master get_genre & param_lowercase & param_contains 'tango') ?
 								(var_equal '@$tango3SongTanda' 1 ? set '$tandaLength' 3 : set '$tandaLength' 4) :
 							(deck master get_genre & param_lowercase & param_contains 'vals') ?
@@ -2257,11 +2261,7 @@ ________________________________________________________________________________
 								(set '$tandaLength' 3) :
 							(deck master get_genre & param_lowercase & param_contains 'alternative') ?
 								(set '$tandaLength' 3) :
-							(var_equal '@$cortinaCheck' 0) ?
-								(set '$tandaLength' 1 & set '$tandaCounter' 0) :
-							(deck master get_genre & param_lowercase & param_contains 'cortina') ?
-								(set '$tandaLength' 1 & set '$tandaCounter' 0) :
-							not var '$tandaLength' ? set '$tandaLength' 3 : nothing
+							(set '$tandaLength' 1 & set '$tandaCounter' 0)
 						) &
 						(automix ? (param_add `get_var $curPos & param_cast & param_invert` `get_automix_position` & param_equal 0 ? set '$bumpCounter' 0 : set '$bumpCounter' 1) :
 						(deck master load_pulse_active 250ms ? set '$bumpCounter' 1 : set '$bumpCounter' 0)) &
