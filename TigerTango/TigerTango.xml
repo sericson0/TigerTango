@@ -748,44 +748,52 @@
 			<visual type="linear" orientation="vertical" direction="up"
 				source="[SOURCE]">
 			<pos  x="[XPOS]" y="+0"/>
-			<size width="8" height="60"/>
+			<size width="10" height="60"/>
 			<off shape="square" color="faderinoff" border="faderinoff" border_size="1" radius="1"/>
 			<on  shape="square" color="faderin" radius="1"/>
 			</visual>
 		</define>
 
 		<define class="spectrum_analyzer">
-			  <panel class="spectrum_line" source="get_spectrum_band 2 32"  xpos="+0" />
-			  <panel class="spectrum_line" source="get_spectrum_band 3 32"  xpos="+8" />
-			  <panel class="spectrum_line" source="get_spectrum_band 4 32"  xpos="+16" />
-			  <panel class="spectrum_line" source="get_spectrum_band 5 32"  xpos="+24" />
-			  <panel class="spectrum_line" source="get_spectrum_band 6 32"  xpos="+32" />
-			  <panel class="spectrum_line" source="get_spectrum_band 7 32"  xpos="+40" />
-			  <panel class="spectrum_line" source="get_spectrum_band 8 32"  xpos="+48" />
-			  <panel class="spectrum_line" source="get_spectrum_band 9 32"  xpos="+56" />
-			  <panel class="spectrum_line" source="get_spectrum_band 10 32" xpos="+64" />
-			  <panel class="spectrum_line" source="get_spectrum_band 11 32" xpos="+72" />
-			  <panel class="spectrum_line" source="get_spectrum_band 12 32" xpos="+80" />
-			  <panel class="spectrum_line" source="get_spectrum_band 13 32" xpos="+88" />
-			  <panel class="spectrum_line" source="get_spectrum_band 14 32" xpos="+96" />
-			  <panel class="spectrum_line" source="get_spectrum_band 15 32" xpos="+104" />
-			  <panel class="spectrum_line" source="get_spectrum_band 16 32" xpos="+112" />
-			  <panel class="spectrum_line" source="get_spectrum_band 17 32" xpos="+120" />
-			  <panel class="spectrum_line" source="get_spectrum_band 18 32" xpos="+128" />
-			  <panel class="spectrum_line" source="get_spectrum_band 19 32" xpos="+136" />
-			  <panel class="spectrum_line" source="get_spectrum_band 20 32" xpos="+144" />
-			  <panel class="spectrum_line" source="get_spectrum_band 21 32" xpos="+152" />
-			  <panel class="spectrum_line" source="get_spectrum_band 22 32" xpos="+160" />
-			  <panel class="spectrum_line" source="get_spectrum_band 23 32" xpos="+168" />
-			  <panel class="spectrum_line" source="get_spectrum_band 24 32" xpos="+176" />
+			  <panel class="spectrum_line" source="get_spectrum_band 1 32"  xpos="+0" />
+			  <panel class="spectrum_line" source="get_spectrum_band 2 32"  xpos="+10" />
+			  <panel class="spectrum_line" source="get_spectrum_band 3 32"  xpos="+20" />
+			  <panel class="spectrum_line" source="get_spectrum_band 4 32"  xpos="+30" />
+			  <panel class="spectrum_line" source="get_spectrum_band 5 32"  xpos="+40" />
+			  <panel class="spectrum_line" source="get_spectrum_band 6 32"  xpos="+50" />
+			  <panel class="spectrum_line" source="get_spectrum_band 7 32"  xpos="+60" />
+			  <panel class="spectrum_line" source="get_spectrum_band 8 32"  xpos="+70" />
+			  <panel class="spectrum_line" source="get_spectrum_band 9 32"  xpos="+80" />
+			  <panel class="spectrum_line" source="get_spectrum_band 10 32" xpos="+90" />
+			  <panel class="spectrum_line" source="get_spectrum_band 11 32" xpos="+100" />
+			  <panel class="spectrum_line" source="get_spectrum_band 12 32" xpos="+110" />
+			  <panel class="spectrum_line" source="get_spectrum_band 13 32" xpos="+120" />
+			  <panel class="spectrum_line" source="get_spectrum_band 14 32" xpos="+130" />
+			  <panel class="spectrum_line" source="get_spectrum_band 15 32" xpos="+140" />
+			  <panel class="spectrum_line" source="get_spectrum_band 16 32" xpos="+150" />
+			  <panel class="spectrum_line" source="get_spectrum_band 17 32" xpos="+160" />
+			  <panel class="spectrum_line" source="get_spectrum_band 18 32" xpos="+170" />
+			  <panel class="spectrum_line" source="get_spectrum_band 19 32" xpos="+180" />
+			  <panel class="spectrum_line" source="get_spectrum_band 20 32" xpos="+190" />
+			  <panel class="spectrum_line" source="get_spectrum_band 21 32" xpos="+200" />
+			  <panel class="spectrum_line" source="get_spectrum_band 22 32" xpos="+210" />
+			  <panel class="spectrum_line" source="get_spectrum_band 23 32" xpos="+220" />
+			  <panel class="spectrum_line" source="get_spectrum_band 24 32" xpos="+230" />
+			  <panel class="spectrum_line" source="get_spectrum_band 25 32" xpos="+240" />
+			  <panel class="spectrum_line" source="get_spectrum_band 26 32" xpos="+250" />
+			  <panel class="spectrum_line" source="get_spectrum_band 27 32" xpos="+260" />
+			  <panel class="spectrum_line" source="get_spectrum_band 28 32" xpos="+270" />
+			  <panel class="spectrum_line" source="get_spectrum_band 29 32" xpos="+280" />
+			  <panel class="spectrum_line" source="get_spectrum_band 30 32" xpos="+290" />
 			<!-- Labels (choose a few key bands to mark) -->
-			<textzone x="+0"   y="+60" width="30" height="15" text="60Hz"  fontsize="10" color="textdark" align="left"/>
+			<textzone x="+10"   y="+52" width="30" height="20" text="  |\n60Hz"  fontsize="10" color="textdark" align="left"/>
+			<textzone x="+50"   y="+52" width="30" height="20" text="  |\n300"  fontsize="10" color="textdark" align="left"/>
 			<!-- <textzone x="+40"  y="+60" width="30" height="15" text="250" fontsize="10" color="textdark"  align="center"/> -->
-			<textzone x="+34"  y="+60" width="30" height="15" text=".5k" fontsize="10" color="textdark"  align="left"/>
-			<textzone x="+34+24+16"  y="+60" width="30" height="15" text="1k"    fontsize="10" color="textdark" align="left"/>
-			<textzone x="+34+24+24+24"  y="+60" width="30" height="15" text="2k"    fontsize="10" color="textdark" align="left"/>
-			<textzone x="+34+24+24+24+24+12" y="+60" width="30" height="15" text="4k"    fontsize="10" color="textdark" align="center"/>
-			<textzone x="+34+24+24+24+24+8+24" y="+60" width="30" height="15" text="6k"    fontsize="10" color="textdark" align="center"/>
+			<textzone x="+80"  y="+52" width="30" height="20" text="  |\n500" fontsize="10" color="textdark"  align="left"/>
+			<textzone x="+110"  y="+52" width="30" height="20" text=" |\n1k"    fontsize="10" color="textdark" align="left"/>
+			<textzone x="+160"  y="+52" width="30" height="20" text=" |\n2k"    fontsize="10" color="textdark" align="left"/>
+			<textzone x="+200" y="+52" width="30" height="20" text=" |\n4k"    fontsize="10" color="textdark" align="center"/>
+			<textzone x="+250" y="+52" width="30" height="20" text=" |\n8k"    fontsize="10" color="textdark" align="center"/>
 
 			 <!-- <panel class="spectrum_line" source="get_spectrum_band 24 24" xpos="+176" /> -->
 			<!-- <panel class="spectrum_line" source = "get_spectrum_band 10 16" xpos="+90" /> -->
@@ -953,25 +961,25 @@
 	<group name="others">
 		<define class="fxdrop" placeholders="action1,action2,action3,textaction" >
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
-				<size width="110" height="25"/>
+				<size width="145" height="25"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
-				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="110-25" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
+				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="145-25" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
-			<button x="+110-20" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
-				<size width="20-1" height="25-2"/>
+			<button x="+145-25" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
+				<size width="25-1" height="25-2"/>
 				<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 				<icon sysicon="chevrondown" width="14" height="14" color="textdarker" colorover="textover" colordown="texton"/>
 			</button>
-			<button x="+110-25" y="+1" action="[ACTION2]" visibility="[ACTION1]">
-				<size width="20-1" height="25-2"/>
+			<button x="+145-25" y="+1" action="[ACTION2]" visibility="[ACTION1]">
+				<size width="25-1" height="25-2"/>
 				<over shape="square" color="dropdownon" condition="var_not_equal '@$colorscheme' 2"/>
 				<icon sysicon="chevrondown" width="16" height="16" color="texton" colorover="textover" colordown="texton"/>
 			</button>
-			<line color="bordercolor" x="+110-20" y="+0" width="1" height="25" novisibility="[ACTION1]"/>
-			<line color="darker" x="+110-20" y="+0" width="1" height="25" visibility="[ACTION1]"/>
-			<button class="" x="+110" y="+0" action="[ACTION3]">
-				<size  width="25" height="25" />
+			<line color="bordercolor" x="+145-25" y="+0" width="1" height="25" novisibility="[ACTION1]"/>
+			<line color="darker" x="+145-25" y="+0" width="1" height="25" visibility="[ACTION1]"/>
+			<button class="" x="+145" y="+0" action="[ACTION3]">
+				<size  width="30" height="25" />
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
 				<tooltip>Open Effects GUI</tooltip>
@@ -2463,31 +2471,37 @@ ________________________________________________________________________________
 		<panel class="deckinfo" areawidth="170" left="+23+2" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+23+2" visibility="skin_width && param_smaller 1501"/>
 
-		<group name="eq_pitch_volume" x="+5" y="+235">
+		<group name="spectrum" x="+20" y="+130">
+			<button class="button_main" x="+0" y="+0" height="60" width="20"
+					action="toggle '$showLeftSpectrum'" query="false"
+					textaction="var_equal '$showLeftSpectrum' 1 ? get_text '◼' : get_text '▶'">
+				<tooltip>Toggle Spectrum Analyzer</tooltip>
+			</button>
+			<panel class="spectrum_analyzer" x="+20" y="+0" visibility="var_equal '$showLeftSpectrum' 1"/>
+			<visual visibility="var_equal '$showLeftSpectrum' 0">
+				<pos x="+20" y="+0"/>
+				<size width="300" height="60"/>
+				<off shape="square" color="faderinoff" border_size="1" border="bordercolor" radius="1"/>
+			</visual>
 
-			<group name="top_buttons" x="+20" y="-102">
-				<button class="button_main" x="+5" y="+0" height="25" width="160"
-						action="toggle $showLeftSpectrum" text = "SPECTRUM" textsize="14">
-					<tooltip>Display spectrum analyzer</tooltip>
-				</button>
-
-				<button class="button_main" x="+5" y="+35" height="25" width="70"
+			<line x="+0" y="+80" height="3" width="325" color="dark" highlight="" shadow="highlight" />
+		</group>
+		<group name="eq_pitch_volume" x="+5" y="+235+7">
+			<group name="bottom_buttons" x="+15" y="+153">
+				<button class="button_main" x="+0" y="+0" height="25" width="80"
 					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="14">
 					<tooltip>Reset EQ and Pitch.</tooltip>
 				</button>
 
-				<button class="button_main" x="+80+5" y="+35" height="25" width="80"
+				<button class="button_main" x="+80+10" y="+0" height="25" width="85"
 						action="setting 'equalizerFrequencySpread' 'default' ?
 									setting 'equalizerFrequencySpread' 'full kill' :
 									setting 'equalizerFrequencySpread' 'default'" text = "RESET" textsize="14"
 									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
 					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
 				</button>
-				<panel class="fxdrop"  x="+185" y="+0" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
-				<panel class="fxdrop"  x="+185" y="+35" action1="effect_active 2" action2="effect_select 2" action3="effect_show_gui 2"  textaction="get_effect_name 2 &amp; param_uppercase"/>
+				<panel class="fxdrop"  x="+0" y="+32" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
 			</group>
-			<line x="+20" y="-30" height="3" width="170" color="dark" highlight="" shadow="highlight" />
-			<line x="+205" y="-30" height="3" width="135" color="dark" highlight="" shadow="highlight" />
 
 			<group name="eq" x="+15" y="+0">
 				<panel class="eq_knob_low" x="+0" y="+0"/>
@@ -2496,7 +2510,7 @@ ________________________________________________________________________________
 				<panel class="eq_freq_fader_mid" x="+64" y="+100" />
 				<panel class="eq_knob_high" x="+64+64" y="+0"/>
 				<panel class="eq_freq_fader_high" x="+64+64" y="+100" />
-				<panel class="spectrum_analyzer" x="+0" y="+150" visibility="var_equal $showLeftSpectrum 1"/>
+
 
 				<!-- action="set v & get_var 'v' & param_multiply 220 &
 				param_add 80 & param_limit 80 300 & param_cast 'integer' & setting 'equalizerLowFrequency'"-->
@@ -2510,7 +2524,7 @@ ________________________________________________________________________________
 				</textzone>
 				<panel class="pitch_fader" x="+0" y="+0"/>
 				<button>
-					<pos x="+0" y="+180+1"/>
+					<pos x="+0" y="+180+1+3"/>
 					<size width="52" height="25"/>
 					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
 					<text fontsize="12" color="textdark" align="center" weight="" format="%Ppitch%" important="true"/>
@@ -2535,7 +2549,7 @@ ________________________________________________________________________________
 			</tooltip>
 		</button>
 
-		<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
+		<button class="button_main" width="46" height="25" x="+0" y="+140-1+43+3" radius="5"
 		action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
 		<tooltip>Set Deck 1 prefade listen. Headphones will come through deck when turned on.</tooltip>
 	</button>
@@ -2801,8 +2815,24 @@ ________________________________________________________________________________
 		<panel class="deckinfo" areawidth="170" left="+0" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+0" visibility="skin_width && param_smaller 1501"/>
 
+		<group name="spectrum" x="+430" y="+130">
+			<button class="button_main" x="+0" y="+0" height="60" width="20" query="false"
+					action="toggle '$showRightSpectrum'"
+					textaction="var_equal '$showRightSpectrum' 1 ? get_text '◼' : get_text '▶'">
+				<tooltip>Toggle Spectrum Analyzer</tooltip>
+			</button>
+			<panel class="spectrum_analyzer" x="+20" y="+0" visibility="var_equal '$showRightSpectrum' 1"/>
+			<visual visibility="var_equal '$showRightSpectrum' 0">
+				<pos x="+20" y="+0"/>
+				<size width="300" height="60"/>
+				<off shape="square" color="faderinoff" border_size="1" border="bordercolor" radius="1"/>
+			</visual>
 
-		<group name="eq_pitch_volume" x="+430" y="+235">
+			<line x="+0" y="+80" height="3" width="325" color="dark" highlight="" shadow="highlight" />
+		</group>
+
+
+		<group name="eq_pitch_volume" x="+430" y="+235+7">
 			<group name="volume_and_headphones" x="+0" y="+0">
 				<textzone x="+0" y="-25" width="52" height="20" textsize="20">
 					<text text="VOL" color = "textdark" align = "center"/>
@@ -2839,30 +2869,21 @@ ________________________________________________________________________________
 				<button class="pitchreset_button" sysicon="arrowleft" x="+52+2" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
 			</group>
 
-			<group name="top_buttons" x="+0" y="-102">
-				<panel class="fxdrop"  x="+0" y="+0" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
-				<panel class="fxdrop"  x="+0" y="+35" action1="effect_active 2" action2="effect_select 2" action3="effect_show_gui 2" textaction="get_effect_name 2 &amp; param_uppercase"/>
-
-				<button class="button_main" x="+150" y="+0" height="25" width="160"
-				 action="toggle '$showRightSpectrum'" text = "SPECTRUM" textsize="14">
-					<tooltip>Display spectrum analyzer.</tooltip>
-				</button>
-
-				<button class="button_main" x="+150" y="+35" height="25" width="80" textsize="14"
-						action="setting 'equalizerFrequencySpread' 'default' ?
-									setting 'equalizerFrequencySpread' 'full kill' :
-									setting 'equalizerFrequencySpread' 'default'" text = "RESET"
-									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
-					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
-				</button>
-				<button class="button_main" x="+155+85" y="+35" height="25" width="70"
+			<group name="bottom_buttons" x="+145" y="+153">
+				<button class="button_main" x="+0" y="+0" height="25" width="80"
 					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="14">
 					<tooltip>Reset EQ and Pitch.</tooltip>
 				</button>
 
+				<button class="button_main" x="+80+10" y="+0" height="25" width="85"
+						action="setting 'equalizerFrequencySpread' 'default' ?
+									setting 'equalizerFrequencySpread' 'full kill' :
+									setting 'equalizerFrequencySpread' 'default'" text = "RESET" textsize="14"
+									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
+					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
+				</button>
+				<panel class="fxdrop"  x="+0" y="+32" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
 			</group>
-			<line x="+0" y="-30" height="3" width="135" color="dark" highlight="" shadow="highlight" />
-			<line x="+64+64+15" y="-30" height="3" width="170" color="dark" highlight="" shadow="highlight" />
 
 			<group name="eq" x="+15+64+64" y="+0">
 				<panel class="eq_knob_low" x="+0" y="+0"/>
@@ -2871,12 +2892,6 @@ ________________________________________________________________________________
 				<panel class="eq_freq_fader_mid" x="+64" y="+100" />
 				<panel class="eq_knob_high" x="+64+64" y="+0"/>
 				<panel class="eq_freq_fader_high" x="+64+64" y="+100" />
-				<panel class="spectrum_analyzer" x="-4" y="+150" visibility="var_equal $showRightSpectrum 1"/>
-
-				<!-- action="set v & get_var 'v' & param_multiply 220 &
-				param_add 80 & param_limit 80 300 & param_cast 'integer' & setting 'equalizerLowFrequency'"-->
-				<!-- <panel class="eq_freq_knob_low" x="+0" y="+100"/> -->
-				<!-- <button class="button_master" x="+0" y="+30" textaction="setting 'equalizerLowFrequency' & param_cast 'integer' & param_append ' Hz'" height="25" width="50"/> -->
 			</group>
 
 	</group>
