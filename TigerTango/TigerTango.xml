@@ -2248,11 +2248,14 @@ ________________________________________________________________________________
 					set '$curPos' `get_automix_position` &
 					set '$curAutomix' `automix` &
 					repeat_start_instant 'tandaPosCounter' 1000ms &
+						set '$isCortina' 0 &
 						(
 							(var_equal '@$cortinaCheck' 1) ?
 								((deck master get_genre & param_lowercase & param_contains 'cortina') ?
-								(set '$tandaLength' 1 & set '$tandaCounter' 0) :
-								(var_smaller '$tandaLength' 2 ? set '$tandaLength' 3 : nothing)) :
+								set '$isCortina' 1 : nothing) :
+							nothing
+						) &
+						(
 							(deck master get_genre & param_lowercase & param_contains 'tango') ?
 								(var_equal '@$tango3SongTanda' 1 ? set '$tandaLength' 3 : set '$tandaLength' 4) :
 							(deck master get_genre & param_lowercase & param_contains 'vals') ?
@@ -2261,8 +2264,10 @@ ________________________________________________________________________________
 								(set '$tandaLength' 3) :
 							(deck master get_genre & param_lowercase & param_contains 'alternative') ?
 								(set '$tandaLength' 3) :
-							(set '$tandaLength' 1 & set '$tandaCounter' 0)
+							(var_equal '@$cortinaCheck' 0 ? set '$isCortina' 1 : nothing)
 						) &
+						(var '$isCortina' ? (set '$tandaLength' 1 & set '$tandaCounter' 0) :
+							(var_smaller '$tandaLength' 2 ? set '$tandaLength' 3 : nothing)) &
 						(automix ? (param_add `get_var $curPos & param_cast & param_invert` `get_automix_position` & param_equal 0 ? set '$bumpCounter' 0 : set '$bumpCounter' 1) :
 						(deck master load_pulse_active 250ms ? set '$bumpCounter' 1 : set '$bumpCounter' 0)) &
 						(
