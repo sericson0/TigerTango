@@ -964,7 +964,7 @@
 				<size width="145" height="25"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
-				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="145-25" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
+				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="145-25" fontsize="16" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
 			<button x="+145-25" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
 				<size width="25-1" height="25-2"/>
