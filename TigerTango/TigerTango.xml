@@ -2845,20 +2845,21 @@ ________________________________________________________________________________
 				<panel class="volume_fader" x="+0" y="+0"/>
 
 						<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
-						action="deck 1 play ?
-						deck 1 level 0% ?
-						deck 1 stop & deck 1 goto_start & repeat_start WaitTimer 100ms 1 & deck 1 level 100% :
+						action="deck 2 play ?
+						deck 2 level 0% ?
+						deck 2 stop & deck 2 goto_start & repeat_start WaitTimer 100ms 1 & deck 2 level 100% :
 						nothing :
-						deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
-						query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
+						deck 2 level 0% & deck 2 pfl on & deck 1 pfl off & deck 2 play"
+						query="deck 2 level & param_equal 0% && deck 2 play && deck 2 pfl on">
 						<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
 						</tooltip>
 					</button>
 
 					<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
-					action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
+					action="deck 2 pfl on ? deck 2 pfl off : deck 2 pfl on & deck 1 pfl off" query="deck 2 pfl on">
 					<tooltip>Deck 1 Prelisten headphones. Headphones will come through deck when turned on.</tooltip>
 				</button>
+
 			</group>
 			<group name="pitch" x="+64" y="+0">
 				<textzone x = "+0" y="-25" width="52" height="20" textsize="20">
