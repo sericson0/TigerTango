@@ -70,24 +70,29 @@
 			<!-- Display Lyrics Only show if showLyrics is set to 1 and comments are not empty-->
 
 			<!-- Left Justify -->
-			<group name="lyrics_panel" x="-30" y="-10"
+			<group name="lyrics_panel" x="-30-45" y="-10"
 					visibility="var_equal '@$showLyrics' 0 ? false :
 								var_equal '@$lyricsLeftJustify' 0 ? false :
 							get_comment & param_equal '' ? false :
-							not load_pulse_active 12000ms">
+							not load_pulse_active 10000ms">
 			<!-- Small text -->
-			<text x="+0" y="+0" width="1920-500-30" height="710" fontsize="30" color="#EDEFF2"
-			action="get_comment" align="left" multiline="yes" font="Arial"
-			visibility="var_equal '@$lyricsFont' 2 ? true : false"
+			<text x="+0" y="+0" width="1920-500+45" height="750" fontsize="18" color="#EDEFF2"
+			action="get_comment" align="left" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 3 ? true : false"/>
+
+			<!-- Medium text -->
+			<text x="+0" y="+0" width="1920-500+45" height="750" fontsize="24" color="#EDEFF2"
+			action="get_comment" align="left" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 0 ? true : false"
 			/>
-			<!-- Mid Text -->
-			<text x="+0" y="+0" width="1920-500-30" height="710" fontsize="36" color="#EDEFF2"
-			action="get_comment" align="left" multiline="yes" font="Arial"
-			visibility="var_equal '@$lyricsFont' 0 ? true : false"/>
 			<!-- Large Text -->
-			<text x="+0" y="+0" width="1920-500-30" height="710" fontsize="44" color="#EDEFF2"
-			action="get_comment" align="left" multiline="yes" font="Arial"
-			visibility="var_equal '@$lyricsFont' 1 ? true : false"
+			<text x="+0" y="+0" width="1920-500+45" height="750" fontsize="30" color="#EDEFF2"
+			action="get_comment" align="left" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 1 ? true : false"/>
+			<!-- Larger Text -->
+			<text x="+0" y="+0" width="1920-500+45" height="750" fontsize="38" color="#EDEFF2"
+			action="get_comment" align="left" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 2 ? true : false"
 			/>
 		</group>
 		<!-- Center Justify -->
@@ -95,20 +100,25 @@
 					visibility="var_equal '@$showLyrics' 0 ? false :
 								var_equal '@$lyricsLeftJustify' 1 ? false :
 							get_comment & param_equal '' ? false :
-							not load_pulse_active 12000ms">
+							not load_pulse_active 10000ms">
 			<!-- Small text -->
-			<text x="+0" y="+0" width="1920-500-60" height="710" fontsize="30" color="#EDEFF2"
-			action="get_comment" align="center" multiline="yes"
-			visibility="var_equal '@$lyricsFont' 2 ? true : false"
+			<text x="+0" y="+0" width="1920-500-60" height="750" fontsize="18" color="#EDEFF2"
+			action="get_comment" align="center" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 3 ? true : false"
 			/>
-			<!-- Mid Text -->
-			<text x="+0" y="+0" width="1920-500-60" height="710" fontsize="36" color="#EDEFF2"
-			action="get_comment" align="center" multiline="yes"
-			visibility="var_equal '@$lyricsFont' 0 ? true : false"/>
+			<!-- Mid text -->
+			<text x="+0" y="+0" width="1920-500-60" height="750" fontsize="24" color="#EDEFF2"
+			action="get_comment" align="center" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 0 ? true : false"
+			/>
 			<!-- Large Text -->
-			<text x="+0" y="+0" width="1920-500-60" height="710" fontsize="44" color="#EDEFF2"
-			action="get_comment" align="center" multiline="yes"
-			visibility="var_equal '@$lyricsFont' 1 ? true : false"
+			<text x="+0" y="+0" width="1920-500-60" height="750" fontsize="30" color="#EDEFF2"
+			action="get_comment" align="center" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 1 ? true : false"/>
+			<!-- Larger Text -->
+			<text x="+0" y="+0" width="1920-500-60" height="750" fontsize="38" color="#EDEFF2"
+			action="get_comment" align="center" multiline="yes" font="Courier New"
+			visibility="var_equal '@$lyricsFont' 2 ? true : false"
 			/>
 		</group>
 

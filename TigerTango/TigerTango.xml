@@ -1437,10 +1437,15 @@ ________________________________________________________________________________
 				query="false" >
 			<tooltip>Album art display size.</tooltip>
 		</button>
-		<button class="button_master" x="+125" y="+0" action="cycle '@$lyricsFont' 3" query="false"
+		<button class="button_master" x="+125" y="+0" action="cycle '@$lyricsFont' 4" query="false"
+				rightclick="var '@$lyricsFont' 0 ? set '@$lyricsFont' 3 : 
+							var '@$lyricsFont' 1 ? set '@$lyricsFont' 0 : 
+							var '@$lyricsFont' 2 ? set '@$lyricsFont' 1 : 
+												   set '@$lyricsFont' 2"
 				 textsize="14" height="30" width="65"
 				 textaction="var_equal '@$lyricsFont' 1 ? get_text 'LARGE' :
-				 			 var_equal '@$lyricsFont' 2 ? get_text 'SMALL' :
+				 			 var_equal '@$lyricsFont' 2 ? get_text 'LARGER' :
+				 			 var_equal '@$lyricsFont' 3 ? get_text 'SMALL' :
 							 get_text 'MEDIUM'">
 			<tooltip>Cycle lyrics font size</tooltip>
 		</button>
@@ -2550,13 +2555,13 @@ ________________________________________________________________________________
 			nothing :
 			deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
 			query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
-			<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
+			<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
 			</tooltip>
 		</button>
 
 		<button class="button_main" width="46" height="25" x="+0" y="+140-1+43+3" radius="5"
 		action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
-		<tooltip>Set Deck 1 prefade listen. Headphones will come through deck when turned on.</tooltip>
+		<tooltip>Deck 1 prefade listen. Headphones will come through deck when turned on.</tooltip>
 	</button>
 	</group>
 	</group>
@@ -2851,15 +2856,14 @@ ________________________________________________________________________________
 						nothing :
 						deck 2 level 0% & deck 2 pfl on & deck 1 pfl off & deck 2 play"
 						query="deck 2 level & param_equal 0% && deck 2 play && deck 2 pfl on">
-						<tooltip>Pre-LISTEN\nPress to listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
+						<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
 						</tooltip>
 					</button>
 
 					<button class="button_main" width="46" height="25" x="+0" y="+140-1+43" radius="5"
 					action="deck 2 pfl on ? deck 2 pfl off : deck 2 pfl on & deck 1 pfl off" query="deck 2 pfl on">
-					<tooltip>Deck 1 Prelisten headphones. Headphones will come through deck when turned on.</tooltip>
+					<tooltip>Deck 2 Prefade listen. Headphones will come through deck when turned on.</tooltip>
 				</button>
-
 			</group>
 			<group name="pitch" x="+64" y="+0">
 				<textzone x = "+0" y="-25" width="52" height="20" textsize="20">
