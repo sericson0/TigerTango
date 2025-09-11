@@ -85,7 +85,8 @@
 		<define color="browser_iconbuttonover" value="#565758"/>
 		<define color="browser_iconbuttondown" value="#2f3032"/>
 		<define color="browser_iconbuttonselected" value="#4d4e52"/>
-		<define color="browser_iconbuttonactive" value="#2e6b76"/>
+		<!-- <define color="browser_iconbuttonactive" value="#2e6b76"/> -->
+		<define color="browser_iconbuttonactive" value="#A34210"/>
 
 		<!-- waveforms -->
 		<define color="gridlines" value="#7d7d7d"/>
@@ -2614,13 +2615,7 @@ ________________________________________________________________________________
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
-			<button class="button_main" text="FADE" width="64" height="40" x="+33+40+85" y="+0" textsize = "16"
-			action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
-			<tooltip>Fade song (3 second fade)</tooltip>
-			</button>
-			<!-- _________ROW 2 ______________ -->
-
-			<button class="button_main" text="AUTO" width="64" height="40" x="+0" y="+55" textsize = "16"
+			<button class="button_main" text="AUTO" width="64" height="40" x="+33+40+85" y="+0" textsize = "16"
 					action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
 							automix_dualdeck ? (
 								deck 2 play ? (deck 1 unload & deck 2 automix_load & automix on) :
@@ -2634,7 +2629,19 @@ ________________________________________________________________________________
 							query="deck 1 automix ? true : deck 2 automix ? true : false">
 				<tooltip>Toggle auto playback (Automix).</tooltip>
 			</button>
+			<!-- _________ROW 2 ______________ -->
 
+			<button class="button_main" text="FADE" width="64" height="40" x="+0" y="+55" textsize = "16"
+				action="
+				set 'fadeIndicator' 1 & 
+					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+					var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+					var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & level -1% & level 0 ? repeat_stop 'levelSweep' & 
+					stop & repeat_start WaitTimer 100ms 1 & level 100% & set 'fadeIndicator' 0"
+				query = "var_equal 'fadeIndicator' 1 ? true : false">
+			<tooltip>Fade out song. Uses set fade duration.</tooltip>
+			</button>
 
 			<!-- Button implements the following logic (in a super annoying way ;-)
 			 	0. Give single deck automix warning window if not in dualdeck mode (button only works in dual deck)
@@ -2648,17 +2655,21 @@ ________________________________________________________________________________
 				<!--  show_window 'single_deck_automix_warning': -->
 
 
-			<button class="button_main" text="AUTO FADE" width="145" height="40" x="+80" y="+55" textsize = "16"
+			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+80" y="+55" textsize = "16"
 			action="
+				(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+				 var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
 				deck 1 play ? deck 1 level 0% ? nothing :
 				(
+
 				set '$fadeIndicator1' 1 &
 					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
 					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
 					(setting 'automixMode' 'radio'        ? set '$autoType' 3 : nothing) &
 					setting 'automixMode' 'no mix' &
-				repeat_start 'levelSweep' 20ms 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
-				repeat_start 'WaitTimer' 1300ms 1 &
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
+				repeat_start 'WaitTimer' 1800ms 1 &
 				(not automix_dualdeck ?
 					(deck 2 automix off & deck 1 automix on & automix_skip & repeat_start 'WaitTimer' 200ms 1 & deck 1 level 100%):
 				(deck 1 stop & repeat_start 'WaitTimer' 200ms 1 & deck 1 level 100% & deck 2 play & automix on & deck 1 load automix_song 1)
@@ -2671,8 +2682,18 @@ ________________________________________________________________________________
 			query="var_equal '$fadeIndicator1' 1">
 
 
-			<tooltip>Fade song and play next song in automix.\n(3 second fade. 1.5 second silence)\nUseful for fading cortinas</tooltip>
+			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
+			
 			</button>
+			<button class="button_main" width="35" height="40" x="+80+105+5" y="+55" textsize = "16"
+			action="cycle '@$fadeLength' 4" 
+			textaction="var_equal '@$fadeLength' 0 ? get_text '3 S' : 
+														var_equal '@$fadeLength' 1 ? get_text '5 S' : 
+														var_equal '@$fadeLength' 2 ? get_text '7 S' : 
+														get_text '9 S'" >
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
+			</button>
+			
 			<!-- _________ROW 3 ______________ -->
 			 <!-- Add 3 cue slots -->
 			 <button class="button_main_radial" x="+0" y="+55+50" width="64" height="30" textsize="14"
@@ -2927,12 +2948,7 @@ ________________________________________________________________________________
 								deck 1 level 0 ? deck 2 play_pause:
 								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
 
-				<button class="button_main" text="FADE" width="64" height="40" x="+33+40+85" y="+0" textsize="16"
-				action="repeat_start levelSweep 20ms 101 & level -1% & level 0 ? repeat_stop levelSweep & stop & repeat_start WaitTimer 100ms 1 & level 100%">
-				<tooltip>Fade out song (3 second fade)</tooltip>
-			</button>
-				<!-- _________ROW 2 ______________ -->
-			<button class="button_main" text="AUTO" width="64" height="40" x="+0" y="+55" textsize = "16"
+			<button class="button_main" text="AUTO" width="64" height="40" x="+33+40+85" y="+0" textsize = "16"
 				action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
 						automix_dualdeck ? (
 							deck 1 play ? (deck 2 unload & deck 1 automix_load & automix on) :
@@ -2947,9 +2963,25 @@ ________________________________________________________________________________
 
 				<tooltip>Toggle Auto playback (Automix).</tooltip>
 			</button>
+				<!-- _________ROW 2 ______________ -->
 
-			<button class="button_main" text="AUTO FADE" width="145" height="40" x="+80" y="+55" textsize = "16"
+			<button class="button_main" text="FADE" width="64" height="40" x="+0" y="+55" textsize="16"
+				action="
+					set 'fadeIndicator' 1 & 
+					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+					var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+					var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & level -1% & level 0 ? repeat_stop 'levelSweep' & 
+					stop & repeat_start WaitTimer 100ms 1 & level 100% & set 'fadeIndicator' 0"
+				query = "var_equal 'fadeIndicator' 1 ? true : false" >
+				<tooltip>Fade out song. Uses set fade duration.</tooltip>
+			</button>
+
+			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+80" y="+55" textsize = "16"
 			action="
+			(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+				 var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
 			deck 2 play ? deck 2 level 0% ? nothing :
 			(
 				set '$fadeIndicator2' 1 &
@@ -2957,8 +2989,8 @@ ________________________________________________________________________________
 					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
 					(setting 'automixMode' 'radio' ? set '$autoType' 3 : nothing) &
 					setting 'automixMode' 'no mix' &
-				repeat_start 'levelSweep' 20ms 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
-				repeat_start 'WaitTimer' 1300ms 1 &
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
+				repeat_start 'WaitTimer' 1800ms 1 &
 				(not automix_dualdeck ?
 					(deck 1 automix off & deck 2 automix on & automix_skip & repeat_start 'WaitTimer' 200ms 1 & deck 2 level 100%):
 				(deck 2 stop & repeat_start 'WaitTimer' 200ms 1 & deck 2 level 100% & deck 1 play & automix on & deck 2 load automix_song 1)
@@ -2968,7 +3000,15 @@ ________________________________________________________________________________
 				  var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' :
 				  var_equal '$autoType' 3 ? setting 'automixMode' 'radio' : nothing)
 			) : nothing" query="var_equal '$fadeIndicator2' 1">
-			<tooltip>Fade song and play next song in automix.\n(3 second fade. 1.5 second silence)\nUseful for fading cortinas.</tooltip>
+			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
+			</button>
+						<button class="button_main" width="35" height="40" x="+80+100+10" y="+55" textsize = "16"
+			action="cycle '@$fadeLength' 4" 
+			textaction="var_equal '@$fadeLength' 0 ? get_text '3 S' : 
+														var_equal '@$fadeLength' 1 ? get_text '5 S' : 
+														var_equal '@$fadeLength' 2 ? get_text '7 S' : 
+														get_text '9 S'" >
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
 			</button>
 			<!-- _________ROW 3 ______________ -->
 			<!-- Add 2 cue slots -->
