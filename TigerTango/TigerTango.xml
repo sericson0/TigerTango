@@ -499,8 +499,9 @@
 			<icon dy="+1" sysicon="arrowdown" width="14" height="14" color="textoff2" colorover="textover" colordown="texton"/>
 		</define>
 	</group>
+
 	<group name="faders-knobs">
-		<define class="hslider" orientation="horizontal" relative='false'>
+		<!-- <define class="hslider" orientation="horizontal" relative='false'>
 				<size width="50" height="5"/>
 				<off width="-5" color="faderinoff" shape="square" radius="2"/>
 				<on width="-5" color="faderinoff" shape="square" radius="2"/>
@@ -509,6 +510,16 @@
 					<size width="5" height="18" />
 					<off shape="square" color="gray" radius="2"/>
 					<on shape="square" color="gray" radius="2"/>
+				</fader>
+		</define> -->
+
+		<define class="eq_freq_knob" orientation="round" relative='false' placeholders="angmin=-130,angmax=130">
+				<size width="46" height="46"/>
+				<off width="38" height="38" shape="circle" color="knobcolor1" color2="knobcolor2" gradient="vertical" border="bordercolor" border_size="2"/>
+				<on width="-5" color="faderinoff" shape="square" radius="2"/>
+				<mouserect x="+0" y="-6" width="93" height="38"/>
+				<fader color="#848484" width="2" height="15"  anglemin="[ANGMIN]" anglemax="[ANGMAX]">
+				<fill width="46" height="46" radius="18" color="knobfill" backcolor="faderback"/>
 				</fader>
 		</define>
 
@@ -693,14 +704,15 @@
 							   							  get_text '+`eq_high & param_multiply 200 & param_add -100 & param_cast integer`%'" important="true"/>
 			</button>
 		</define>
+
 		<define class="eq_freq_fader_low">
-			<slider class="hslider" x="+0" y="+0" action="set '@$low_freq_var' & get_var '@$low_freq_var' & param_multiply 160 &
-			param_add 80 & param_limit 80 240 & param_cast 'integer' & setting 'equalizerLowFrequency'"
-			rightclick = "set '@$low_freq_var' 0.5 & setting 'equalizerLowFrequency' 160">
-			<tooltip>Set low frequency center.\nRight click to reset to default 160 Hz.</tooltip>
-			</slider>
+				<slider class="eq_freq_knob" x="+0" y="+0" action="set '@$low_freq_var' & get_var '@$low_freq_var' & param_multiply 160 &
+				param_add 80 & param_limit 80 240 & param_cast 'integer' & setting 'equalizerLowFrequency'"
+				rightclick = "set '@$low_freq_var' 0.5 & setting 'equalizerLowFrequency' 160">
+				<tooltip>Set low frequency center.\nRight click to reset to default 160 Hz.</tooltip>
+				</slider>
 			<button>
-				<pos x="+0" y="+20"/>
+				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
 				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
 				<text fontsize="12" color="textdark" align="center" weight=""
@@ -710,13 +722,13 @@
 			</button>
 		</define>
 		<define class="eq_freq_fader_mid">
-			<slider class="hslider" x="+0" y="+0" action="set '@$mid_freq_var' & get_var '@$mid_freq_var' & param_multiply 2500 &
+			<slider class="eq_freq_knob" angmin="-40" angmax="160" x="+0" y="+0" action="set '@$mid_freq_var' & get_var '@$mid_freq_var' & param_multiply 2500 &
 					param_add 500 & param_limit 500 3000 & param_cast 'integer' & setting 'equalizerMidFrequency'"
 					rightclick = "set '@$mid_freq_var' 0.2 & setting 'equalizerMidFrequency' 1000" >
 					<tooltip>Set mid frequency center.\nRight click to reset to default 1,000 Hz.</tooltip>
 			</slider>
 			<button>
-				<pos x="+0" y="+20"/>
+				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
 				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
 				<text fontsize="12" color="textdark" align="center" weight=""
@@ -726,13 +738,13 @@
 			</button>
 		</define>
 		<define class="eq_freq_fader_high">
-			<slider class="hslider" x="+0" y="+0" action="set '@$high_freq_var' & get_var '@$high_freq_var' & param_multiply 6000 &
+			<slider class="eq_freq_knob" angmin="-150" angmax="50" x="+0" y="+0" action="set '@$high_freq_var' & get_var '@$high_freq_var' & param_multiply 6000 &
 					param_add 4000 & param_limit 4000 10000 & param_cast 'integer' & setting 'equalizerHighFrequency'"
 					rightclick = "set '@$high_freq_var' 0.75 & setting 'equalizerHighFrequency' 8500">
 				<tooltip>Set high frequency center.\nRight click to reset to default 8,500 Hz</tooltip>
 			</slider>
 			<button>
-				<pos x="+0" y="+20"/>
+				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
 				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
 				<text fontsize="12" color="textdark" align="center" weight=""
@@ -2230,7 +2242,7 @@ ________________________________________________________________________________
 
 <!-- DECK DEFINE -->
 
-<define class="deckinfo" x="-13" y="+10" placeholders="*areawidth,textalign,left" classdeck="left">
+<define class="deckinfo" x="-13" y="+30" placeholders="*areawidth,textalign,left" classdeck="left">
 
 	<group name="deckinfo_main" x="[LEFT]">
 		<visual name="deckinfo_background">
@@ -2306,7 +2318,7 @@ ________________________________________________________________________________
 </define>
 
 
-<define class="deckinfo" x="+130" y="+10" placeholders="*areawidth,textalign,left" classdeck="right">
+<define class="deckinfo" x="+130" y="+30" placeholders="*areawidth,textalign,left" classdeck="right">
 	<group name="deckinfo_main" x="[LEFT]">
 		<visual name="deckinfo_background">
 			<pos x="+0" y="+0" />
@@ -2383,7 +2395,7 @@ ________________________________________________________________________________
 	</group>
 </define>
 
-<panel name="deckleft" x="+0" y="80" width="764" height="389">
+<panel name="deckleft" x="+0" y="100" width="764" height="389">
 	<deck deck="left">
 		<line x="+35+85+85+85+85+10-22" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight" />
 		<dropzone visibility="deck 1 automix ? false : deck 2 automix ? false : true">
@@ -2395,7 +2407,7 @@ ________________________________________________________________________________
 		<panel class="deckinfo" areawidth="170" left="+23+2" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+23+2" visibility="skin_width && param_smaller 1501"/>
 
-		<group name="spectrum" x="+20" y="+130">
+		<group name="spectrum" x="+20" y="+130+20">
 			<button class="button_main" x="+0" y="+0" height="60" width="20"
 					action="toggle '$showLeftSpectrum'" query="false"
 					textaction="var_equal '$showLeftSpectrum' 1 ? get_text '◼' : get_text '▶'">
@@ -2408,10 +2420,10 @@ ________________________________________________________________________________
 				<off shape="square" color="faderinoff" border_size="1" border="bordercolor" radius="1"/>
 			</visual>
 
-			<line x="+0" y="+80" height="3" width="325" color="dark" highlight="" shadow="highlight" />
+			<line x="+0" y="+78" height="3" width="325" color="dark" highlight="" shadow="highlight" />
 		</group>
-		<group name="eq_pitch_volume" x="+5" y="+235+7">
-			<group name="bottom_buttons" x="+15" y="+153">
+		<group name="eq_pitch_volume" x="+5" y="+235+7+20">
+			<group name="bottom_buttons" x="+15" y="+153+32">
 				<button class="button_main" x="+0" y="+0" height="25" width="80"
 					action="eq_reset & pitch_reset" text = "RESET" query="false" textsize="14">
 					<tooltip>Reset EQ and Pitch.</tooltip>
@@ -2424,22 +2436,17 @@ ________________________________________________________________________________
 									textaction="setting 'equalizerFrequencySpread' 'default' ? get_text 'DEFAULT' : get_text 'FULL'">
 					<tooltip>Toggle EQ Spread between Default and Full Kill.</tooltip>
 				</button>
-				<panel class="fxdrop"  x="+0" y="+32" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
+				<panel class="fxdrop"  x="+0" y="+38" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
 			</group>
 
 			<group name="eq" x="+15" y="+0">
 				<panel class="eq_knob_low" x="+0" y="+0"/>
-				<panel class="eq_freq_fader_low" x="+0" y="+100" />
+				<panel class="eq_freq_fader_low" x="+0" y="+90" />
 				<panel class="eq_knob_mid" x="+64" y="+0"/>
-				<panel class="eq_freq_fader_mid" x="+64" y="+100" />
+				<panel class="eq_freq_fader_mid" x="+64" y="+90" />
 				<panel class="eq_knob_high" x="+64+64" y="+0"/>
-				<panel class="eq_freq_fader_high" x="+64+64" y="+100" />
+				<panel class="eq_freq_fader_high" x="+64+64" y="+90" />
 
-
-				<!-- action="set v & get_var 'v' & param_multiply 220 &
-				param_add 80 & param_limit 80 300 & param_cast 'integer' & setting 'equalizerLowFrequency'"-->
-				<!-- <panel class="eq_freq_knob_low" x="+0" y="+100"/> -->
-				<!-- <button class="button_master" x="+0" y="+30" textaction="setting 'equalizerLowFrequency' & param_cast 'integer' & param_append ' Hz'" height="25" width="50"/> -->
 			</group>
 
 			<group name="pitch" x="+64+64+64+64+5-35+2" y="+0">
@@ -2456,7 +2463,7 @@ ________________________________________________________________________________
 				<button class="pitchreset_button" x="-18" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
 				<!-- Pitch check warning button -->
 				<button class="button_master" text="⚠️" visibility="pitch 100% ? false : true" query="true"
-					textsize="14" x="-28" y="+180+1+3" height="25" width="28"
+					textsize="14" x="+0" y="+180+1+3+25" height="25" width="52"
 					action="pitch_reset">
 					<tooltip>Pitch not set to normal. Click to reset picth to 100%.</tooltip>
 				</button>
@@ -2487,34 +2494,9 @@ ________________________________________________________________________________
 	</group>
 
 
-
-<!-- <group name="fx" x="+15" y="+110">
-
-			<panel class="fx_fader" x="+160+17+42" y="+32-8" visibility="effect_active" textsize="10">
-				<slider action="effect_slider 1" dblclick="effect_slider_reset 1" disabled="not effect_has_slider 1" frommiddle="get_effect_slider_default 1 0.5"/>
-				<textzone><text action="get_effect_slider_label 1" /></textzone>
-			</panel>
-			<panel class="fx_fader_off" x="+160+17+42" y="+32-8" visibility="not effect_active" textsize="10">
-				<slider action="effect_slider 1" dblclick="effect_slider_reset 1" disabled="not effect_has_slider 1" frommiddle="get_effect_slider_default 1 0.5"/>
-				<textzone><text action="get_effect_slider_label 1" /></textzone>
-			</panel>
-			<panel class="fx_fader" x="+160+17+48+17+38" y="+32-8" visibility="effect_active" textsize="10">
-				<slider action="effect_slider 2" dblclick="effect_slider_reset 2" disabled="not effect_has_slider 2" frommiddle="get_effect_slider_default 2 0.5"/>
-				<textzone><text action="get_effect_slider_label 2" /></textzone>
-			</panel>
-			<panel class="fx_fader_off" x="+160+17+48+17+38" y="+32-8" visibility="not effect_active" textsize="10">
-				<slider action="effect_slider 2" dblclick="effect_slider_reset 2" disabled="not effect_has_slider 2" frommiddle="get_effect_slider_default 2 0.5"/>
-				<textzone><text action="get_effect_slider_label 2" /></textzone>
-			</panel>
-		</group> -->
-
-
-		<group name="play_button_positions" x="+375+5" y="+401">
-<!-- ? deck 1 volume & deck 2 volume ?  -->
-			<!-- <button  visibility="play_mode 'numark'" class="button_main" textcolor="textdark" textsize="14" x="+440+5-20" y="+331-40" width="24" height="24" action="stop_button" sysicon="stop" iconsize="22"/> -->
-			<!-- <button class="button_main" x="-30" y="+0" width="64" height="40" sysicon="play_button" iconsize="40" action="play_button"/> --> -->
+		<group name="play_button_positions" x="+375+5" y="+401-5">
 				<button class="button_main"
-					x="+0" y="+0" width="64" height="40"
+					x="+33+40+85" y="+0" width="64" height="35"
 					text="ADD" textsize="16"
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
 			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
@@ -2522,19 +2504,19 @@ ________________________________________________________________________________
 			<group visibility="var '$addMsg' 1" x="+0" y="+0">
 			<visual>
 				<pos  x="+0" y="+0"/>
-				<size width="64" height="40"/>
+				<size width="64" height="35"/>
 				<off color="#555555" radius="6"/>
 			</visual>
-			<textzone x="+0" y="+0" width="64" height="40" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			<textzone x="+33+40+85" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 			</group>
-			<button class="button_main" x="+80" y="+0" width="64" height="40" sysicon="play_button" iconsize="40"
+			<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
 					action="deck 1 play ? play_pause:
 							deck 1 level 0 ? deck 1 play_pause:
 							deck 2 level 0 ? deck 1 play_pause:
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
-			<button class="button_main" text="AUTO" width="64" height="40" x="+33+40+85" y="+0" textsize = "16"
+			<button class="button_main" text="AUTO" width="64" height="35" x="+0" y="+0" textsize = "16"
 					action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
 							automix_dualdeck ? (
 								deck 2 play ? (deck 1 unload & deck 2 automix_load & automix on) :
@@ -2550,7 +2532,7 @@ ________________________________________________________________________________
 			</button>
 			<!-- _________ROW 2 ______________ -->
 
-			<button class="button_main" text="FADE" width="64" height="40" x="+0" y="+55" textsize = "16"
+			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+35+10" textsize = "16"
 				action="
 				set 'fadeIndicator' 1 & 
 					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
@@ -2574,7 +2556,7 @@ ________________________________________________________________________________
 				<!--  show_window 'single_deck_automix_warning': -->
 
 
-			<button class="button_main" text="AUTO FADE" width="100" height="40" x="+80" y="+55" textsize = "16"
+			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+35+10" textsize = "16"
 			action="
 				(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
 				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
@@ -2604,7 +2586,7 @@ ________________________________________________________________________________
 			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
 			
 			</button>
-			<button class="button_main" width="35" height="40" x="+80+105+5" y="+55" textsize = "16"
+			<button class="button_main" width="35" height="35" x="+80+105+5" y="+35+10" textsize = "16"
 			action="cycle '@$fadeLength' 4" 
 			textaction="var_equal '@$fadeLength' 0 ? get_text '3 S' : 
 														var_equal '@$fadeLength' 1 ? get_text '5 S' : 
@@ -2615,7 +2597,7 @@ ________________________________________________________________________________
 			
 			<!-- _________ROW 3 ______________ -->
 			 <!-- Add 3 cue slots -->
-			 <button class="button_main_radial" x="+0" y="+55+50" width="64" height="30" textsize="14"
+			 <button class="button_main_radial" x="+0" y="+35+10+35+10" width="64" height="30" textsize="14"
 			 action="not deck 1 hot_cue 1 ? deck 1 hot_cue 1 :
 			 not deck 2 play ? deck 1 hot_cue 1 :
 			 deck 2 level 0% ? deck 1 hot_cue 1 :
@@ -2625,7 +2607,7 @@ ________________________________________________________________________________
 			 query="not deck 1 loaded ? false : not deck 1 hot_cue 1 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
 			 <tooltip>Set Hot Cue.\nRight click to disable Hot Cue.</tooltip>
 			</button>
-			<button class="button_main_radial" x="+80" y="+55+50" width="64" height="30" textsize="14"
+			<button class="button_main_radial" x="+80" y="+35+10+35+10" width="64" height="30" textsize="14"
 			action="not deck 1 hot_cue 2 ? deck 1 hot_cue 2 :
 			not deck 2 play ? deck 1 hot_cue 2 :
 			deck 2 level 0% ? deck 1 hot_cue 2 :
@@ -2643,7 +2625,7 @@ ________________________________________________________________________________
 			5. Return to original position (cue 9) and remove cue
 			6. Reset parameters to before
 		-->
-		<button class="button_main" x="+80+80" y="+55+50" width="64" height="30"
+		<button class="button_main" x="+80+80" y="+35+10+35+10" width="64" height="30"
 				action="
 				not deck 1 hot_cue 1 ? nothing : not deck 1 hot_cue 2 ? nothing :
 				(setting 'autoSortCues' 0 ? set 'sortOrder' 0 : set 'sortOrder' 1 ) &
@@ -2662,7 +2644,7 @@ ________________________________________________________________________________
 
 		</group>
 
-		<group name="toolbox" x="+15" y="+463">
+		<!-- <group name="toolbox" x="+15" y="+463">
 			<visual>
 				<pos x="+0" y="+0"/>
 				<size width="325" height="84"/>
@@ -2672,19 +2654,12 @@ ________________________________________________________________________________
 				<size width="325" height="15"/>
 				<text fontsize="14" align="center" color="textdarker" text="TOOLBOX" localize="true"/>
 			</textzone>
-			<!-- Effects 6 -->
-			<panel class="masterfxdrop"  x="+7" y="+24"
-					action1="deck master effect_active 6"
-					action2="deck master effect_select 6"
-					action3="deck master effect_show_gui 6"
-					textaction="deck master get_effect_name 6 &amp; param_uppercase"/>
+			
 			<button class="button_master" text="REC 🔴"
 			textsize="14" x="+200+2" y="+23" height="25" width="75"
 				action="record_config">
 				<tooltip>Configure recording options</tooltip>=""
 			</button>
-			<!-- checks if soundcard is configured correctly -->
-<!-- setting 'automixDualDeck' ? 'D' :  -->
 			<button class="button_master" textaction="automix_dualdeck ? get_text 'D' : get_text 'S'" query="false"
 			textsize="14" x="+200+80" y="+23" height="25" width="35"
 			action="
@@ -2697,8 +2672,6 @@ ________________________________________________________________________________
 				 (var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)">
 				<tooltip>Toggle 'Single' and 'Dual Deck' automix mode.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix. </tooltip>
 			</button>
-			<!-- "" -->
-			<!-- ___________ Row 2 of warnings _________________  -->
 			<button class="button_master" text="⚠️" query="var_equal '$ignoreDblClickInd' 1 ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
 			textsize="14" x="+7" y="+53" height="25" width="35"
 				action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$ignoreDblClickInd'">
@@ -2749,7 +2722,7 @@ ________________________________________________________________________________
 				action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off & setting 'autoBPMMatch' 'no'">
 				<tooltip>Auto match BPM, key, or pitch is turned on. This will affect sound quality. Click to turn these settings off.</tooltip>
 			</button>
-		</group>
+		</group> -->
 </deck>
 </panel>
 <panel name="deckright" x="1920-764" y="80" width="764" height="389">
@@ -2971,7 +2944,7 @@ ________________________________________________________________________________
 			<tooltip>Set loop between hot cues (only active when both hot cues are set).\nClick again or right click to disable.</tooltip>
 			</button>
 
-		<group name="window_button_positions" x="+280" y="+61">
+		<!-- <group name="window_button_positions" x="+280" y="+61">
 			<visual>
 				<pos x="-11" y="+1"/>
 				<size width="325" height="84"/>
@@ -3015,11 +2988,10 @@ ________________________________________________________________________________
 
 			<button class="button_master" text="INFO" x="+210+5" y="+55" textsize = "10" width="90" height="25"
 					action="show_window 'BrowserInfoWindow'" query="show_window 'BrowserInfoWindow'">
-			<!-- <size width="80" height="30"/> -->
 			<tooltip>Open Browser Info Window</tooltip>
 			</button>
 
-		</group>
+		</group> -->
 	</group>
 
 	</deck>
