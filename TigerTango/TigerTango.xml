@@ -41,7 +41,6 @@
 		<define color="bordercolor2" value="#232425"/>
 		<define color="bordercolor3" value="#252628"/>
 		<define color="topmenu" value="#313335"/>
-		<define color="jogwheelbackground" value="#1e1e20"/>
 
 		<define color="pitchlock_off" value="#525252"/>
 
@@ -224,7 +223,6 @@
 		<define color="bordercolor2" value="#6b6c6d"/>
 		<define color="bordercolor3" value="#7e7e80"/>
 		<define color="topmenu" value="#e4e2e4"/>
-		<define color="jogwheelbackground" value="#cfcfcf"/>
 
 		<define color="pitchlock_off" value="#b2acac"/>
 
@@ -339,7 +337,6 @@
 		<define color="shadow" value="#373737" />
 		<define color="dropdown" value="#1c1b1d"/>
 		<define color="dropdownon" value="#101113"/>
-		<define color="jogwheelbackground" value="#151617"/>
 		<define color="display" value="#101113"/>
 		<define color="waveformbackground" value="#101113"/>
 		<define color="browserback" value="#131314"/>
@@ -1060,6 +1057,14 @@
 				<off x="0" y="0" condition="var_not_equal '@$colorscheme' 2"/>
 				<off x="1120" y="0" condition="var_equal '@$colorscheme' 2"/>
 			</visual>
+						<!-- DROPZONE OFF BUTTON -->
+			<button visibility="deck 1 automix ? true : deck 2 automix ? true : false">
+				<pos x="+18" y="+2"/>
+				<size width="28" height="28"/>
+				<background color="#000000"/>
+				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
+				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
+			</button>
 			<group visibility="loaded">
 				<group name="turntable_coverart_off" visibility="var_equal '@$jogcoverart' 2 && not is_video 'active'">
 					<!--  vinyl  -->
@@ -1154,99 +1159,8 @@
 				<size width="2" height="2"/>
 				<off color="#dadee0" shape="circle" radius="1"/>
 			</visual>
-			<!-- <scratch>
-				<pos x="+19" y="+26"/>
-				<size width="184" height="184"/>
-				<mousecircle width="184" height="184"/>
-			</scratch> -->
-			<!-- <button action="vinyl_mode">
-				<pos x="+22" y="+8"/>
-				<size width="22" height="23"/>
-				<off x="23" y="264"/>
-				<over x="50" y="264"/>
-				<on x="50" y="264"/>
-			</button> -->
 		</define>
-		<define class="jogwheel">
-				<group x="+5" y="+12">
-					<visual name="outercircle_border">
-						<pos x="-3" y="-3"/>
-						<size width="212+6" height="212+6"/>
-						<off shape="circle" color="bordercolor" />
-					</visual>
-					<visual source="get_position" type="circle">
-						<tooltip/>
-						<pos x="+2" y="+2"/>
-						<size width="212-4" height="212-4"/>
-						<off shape="circle" color="mixerbackground" />
-						<on shape="circle" color="knobfill"/>
-					</visual>
-					<visual name="innercircle_border">
-						<pos x="+13" y="+13"/>
-						<size  width="212-26" height="212-26"/>
-						<off shape="circle" color="jogwheelbackground" border_size="1" border="black" />
-					</visual>
-					<panel name="coverart_big" visibility="var_equal '@$jogcoverart' 0 && not is_video 'active'">
-						<cover rotate="yes" visibility="0.7">
-							<pos x="+13" y="+13"/>
-							<size width="212-26" height="212-26"/>
-							<default x="1628" y="26" width="184" height="184"/>
-						</cover>
-					</panel>
-					<visual type="rotation" source="get_rotation">
-						<pos x="+106-3" y="+106-29"/>
-						<size width="6" height="58"/>
-						<on color="knobfill" shape="square" border_size="1" border="bordercolor" radius="33"/>
-					</visual>
-					<panel name="coverart_video" visibility="is_video 'active'">
-						<video x="+13" y="+13" source="deck" letterboxing="crop" linkdrop="false">
-							<size width="186" height="186"/>
-							<clipmask x="776" y="216" width="184" height="184"/>
-						</video>
-						<visual name="centercircle" visibility="0.2">
-							<pos x="+68+4" y="+68+4"/>
-							<size width="212-68-68-8" height="212-68-68-8"/>
-							<off shape="circle" color="white" border_size="8" border="darkgray"/>
-						</visual>
-						<visual type="rotation" source="get_rotation">
-							<pos x="+106-3" y="+106-29"/>
-							<size width="6" height="58"/>
-							<on color="knobfill" shape="square" border_size="1" border="bordercolor" radius="33"/>
-						</visual>
-					</panel>
-					<panel name="coverart_small" visibility="var_equal '@$jogcoverart' 1 && not is_video 'active'">
-						<visual name="centercircle">
-							<pos x="+68" y="+68"/>
-							<size width="212-68-68" height="212-68-68"/>
-							<off shape="circle" color="black" border_size="8" border="darker"/>
-						</visual>
-						<group visibility="loaded">
-							<cover rotate="yes" shape="circle" visibility="0.7">
-								<pos x="+80" y="+80"/>
-								<size width="212-80-80" height="212-80-80"/>
-							</cover>
-						</group>
-					</panel>
-					<panel name="center_circle"  visibility="not is_video 'active' ? var_not_equal '@$jogcoverart' 1 ? true : not loaded : 0">
-		        		<visual name="center_outer" x="+68" y="+68" tooltip="">
-		                    <size width="212-68-68" height="212-68-68"/>
-		                    <off color="knobfill" border="display" border_size="12" shape="circle"/>
-		                </visual>
-		                <slider orientation="round" action="get_rotation" x="+106-28" y="+106-28" width="56" height="56" >
-							<fader color="darker" width="8" height="16" radius="14"/>
-						</slider>
-		                <visual name="center_inner" x="+106-17" y="+106-17" tooltip="">
-		                    <size width="34" height="34"/>
-		                    <off color="knobfill" border="darker" border_size="10" shape="circle"/>
-		                </visual>
-					</panel>
-					<!-- <scratch>
-						<pos x="+0" y="+0"/>
-						<size width="212" height="212"/>
-						<mousecircle width="212" height="212"/>
-					</scratch> -->
-				</group>
-			</define>
+		
 		   <define class="songpos" colorPlayed="darker" colorBass="colorbass" colorMed="colormed" colorHigh="colorhigh" placeholders="width">
 				<pos x="+1" y="+1"/>
 				<size width="[WIDTH]" height="70-2"/>
@@ -2472,12 +2386,11 @@ ________________________________________________________________________________
 <panel name="deckleft" x="+0" y="80" width="764" height="389">
 	<deck deck="left">
 		<line x="+35+85+85+85+85+10-22" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight" />
-		<dropzone>
+		<dropzone visibility="deck 1 automix ? false : deck 2 automix ? false : true">
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
 		</dropzone>
-			<panel class="turntable" x="+440-65" y="+152" name="jogwheel_turntable" visibility="var_equal '@$jogtype' 0"/>
-			<panel class="jogwheel" x="+440-65" y="+152" name="jogwheel_spinner" visibility="var_equal '@$jogtype' 1"/>
+			<panel class="turntable" x="+440-65" y="+152" name="jogwheel_turntable"/>
 		<!--  width="743" -->
 		<panel class="deckinfo" areawidth="170" left="+23+2" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+23+2" visibility="skin_width && param_smaller 1501"/>
@@ -2836,12 +2749,11 @@ ________________________________________________________________________________
 <panel name="deckright" x="1920-764" y="80" width="764" height="389">
 	<deck deck="right">
 		<line x="+764-35-85-85-85-85-35+5+30+25-8" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight"/>
-		<dropzone>
+		<dropzone visibility="deck 1 automix ? false : deck 2 automix ? false : true">
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
 		</dropzone>
-				<panel class="turntable" x="+10+92+55" y="+152" name="jogwheel_turntable" visibility="var_equal '@$jogtype' 0"/>
-				<panel class="jogwheel" x="+10+92+55" y="+152" name="jogwheel_spinner" visibility="var_equal '@$jogtype' 1"/>
+				<panel class="turntable" x="+10+92+55" y="+152" name="jogwheel_turntable"/>
 
 		<panel class="deckinfo" areawidth="170" left="+0" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+0" visibility="skin_width && param_smaller 1501"/>
