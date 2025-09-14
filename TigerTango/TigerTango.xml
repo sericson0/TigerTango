@@ -501,17 +501,6 @@
 	</group>
 
 	<group name="faders-knobs">
-		<!-- <define class="hslider" orientation="horizontal" relative='false'>
-				<size width="50" height="5"/>
-				<off width="-5" color="faderinoff" shape="square" radius="2"/>
-				<on width="-5" color="faderinoff" shape="square" radius="2"/>
-				<mouserect x="+0" y="-6" width="93" height="18"/>
-				<fader width="5" height="18">
-					<size width="5" height="18" />
-					<off shape="square" color="gray" radius="2"/>
-					<on shape="square" color="gray" radius="2"/>
-				</fader>
-		</define> -->
 
 		<define class="eq_freq_knob" orientation="round" relative='false' placeholders="angmin=-130,angmax=130">
 				<size width="46" height="46"/>
@@ -1030,7 +1019,7 @@
 				<size width="155" height="25"/>
 				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
 				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
-				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="150-30" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
+				<text color="textoff2" colorover="textover" colorselected="texton" dx="6" width="150-30-6" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
 
 			<button x="+155-30" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
@@ -1476,36 +1465,44 @@ ________________________________________________________________________________
   </button>
 </window>
 
-<window name="documentation" width="200" height="100" posx="right" posy="top" shown="false" resize="false" color="#424346">
-	<visual>
+<window name="documentation" width="300" height="200" posx="right" posy="top" shown="false" resize="true" color="topmenu" breakline="0">
+	<!-- <visual>
 		<pos x="+0" y="+0"/>
-		<size width="200" height="100"/>
-		<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
-	</visual>
-	<visual x="+5" y="+3" width="200-10" height="20">
+		<size width="200" height="90"/>
+		<off shape="square" color= radius="4" border_size="1" border="bordercolor2"/>
+	</visual> -->
+	<visual x="+5" y="+3" width="300-10" height="20">
 		<off color="dark" border_size="1"/>
 	</visual>
 	<textzone x="+0" y="+6">
-		<size width="200" height="14"/>
-		<text fontsize="14" align="center" color="textoff" text="DOCUMENTATION" localize="true"/>
+		<size width="300" height="14"/>
+		<text fontsize="10" align="center" color="textoff" text="DOCUMENTATION" localize="true"/>
 	</textzone>
 	<button action="show_window 'documentation' off">
 		<tooltip> Close  </tooltip>
-		<pos  x="+200-25" y="+3"/>
+		<pos  x="+300-25" y="+3"/>
 		<size width="20" height="20"/>
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
 		<over color="#3b4242"/>
 	</button>
 
 	<button class="button_master" action="open_help"
-			width="140" height="20" x="+30" y="+30" textsize="10"
+			width="140" height="20" x="+80" y="+30" textsize="10"
 			text="GO TO VJD DOCS">
 		<tooltip>Open Virtual DJ user manual</tooltip>
 	</button>
 
-  <textzone x="0" y="+50" width="200" height="50"
-            text="TigerTango Documentation at\nhttps://github.com/sericson0/TigerTango\n\nReach me at\nSericson0@gmail.com"
-            font="Arial" size="8" color="textoff"
+  <textzone x="+10" y="+55" width="290" height="50"
+            text="TigerTango Documentation at\nhttps://github.com/sericson0/TigerTango"
+            font="Arial" fontsize="10" color="textoff"
+            multiline="yes" align="center"/>
+  <textzone x="+10" y="+90" width="280" height="50"
+            text="Reach me at \nSericson0@gmail.com"
+            font="Arial" fontsize="10" color="textoff"
+            multiline="yes" align="center"/>
+  <textzone x="+10" y="+110" width="280" height="100"
+            text="TigerTango is free for all. If you would like to support\nthisand other tango projects you can donate to:\nVenmo: @Sean-Ericson-1\nZelle: sericson0@gmail.com"
+            font="Arial" fontsize="10" color="textoff"
             multiline="yes" align="center"/>
 </window>
 
@@ -1809,7 +1806,7 @@ ________________________________________________________________________________
 	</group>
 	<group name="applicationbuttons" condition="is_pc">
 		<logo>
-			<pos x="10" y="8"/>
+			<pos x="15+25" y="8"/>
 			<size width="115" height="27"/>
 		</logo>
 
@@ -1835,51 +1832,192 @@ ________________________________________________________________________________
 		<!-- Custom logo -->
 	<visual>
 		<off x="1070" y="267"/>
-		<pos x="100" y="0"/>
+		<pos x="-0" y="40"/>
 		<size width="350" height="120"/>
 	</visual>
-	<button action="settings">
-		<pos x="1910-40-165+40" y="8"/>
-		<size width="50" height="50"/>
-		<off border_size="1" border="bordercolor" color="topmenu"/>
-		<over border_size="1" border="bordercolor" color="background2"/>
-		<selected border_size="1" border="bordercolor" color="background2"/>
-		<icon sysicon="settings" color="textoff3" colorselected="texton" colorover="texton" width="27" height="27"/>
-	</button>
 
-	<group name="login" x="420" y="8">
+	<group name="accessory_area" x="230+22+13" y="8"> 
 		<visual>
 			<pos x="+0" y="+0"/>
-			<size width="150" height="50"/>
+			<size width="100+265" height="115"/>
 			<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
 		</visual>
-		<visual>
-			<pos x="+5" y="+15"/>
-			<size width="16" height="16"/>
-			<off x="144" y="347"/>
-		</visual>
-		<button action="connect">
-			<pos x="+26" y="+10"/>
-			<size width="150" height="27"/>
-			<text width="150-26-5" fontsize="14" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
+		<textzone>
+			<pos x="+0" y="+7"/>
+			<size width="100-2" height="13"/>
+			<text fontsize="14" color="textdarker" align="center" text="ACCESS" localize="true"/>
+		</textzone>
+		<!-- Second Row -->
+<!-- REC  -->
+		<button class="button_master" text="REC 🔴"
+			textsize="16" x="+10" y="+33" height="30" width="78"
+			query = 'false'
+			action="setting 'coverDownload' 'no' & setting 'recordWaitForSound' 'no' & record_config">
+		<tooltip>Record a track.\nUseful for recording silence\nOr making dummy tracks to separate tandas.</tooltip>
+		</button>
+
+		<button class="button_master" text="💾"
+			textsize="16" x="+10" y="+33+30+10" height="30" width="35"
+			action = "playlist_save">
+		<tooltip>Save Automix to playlist.\nUseful for saving milonga playlist</tooltip>
+		</button>
+		<button class="button_master" text="🎨"
+			textsize="16" x="+35+10+8" y="+33+30+10" height="30" width="35"
+			action = "quick_filter">
+		<tooltip>Color and filter options.\nUseful for setting colors by genre, feel, ect.</tooltip>
+		</button>
+		<line x="+95" y="+10" height="100" width="3" color="dark" highlight="" shadow="highlight" />
+	</group>
+
+	<group name="configuration_options_area" x="363" y="8"> 
+		<!-- <visual>
+			<pos x="+0" y="+0"/>
+			<size width="267" height="115"/>
+			<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
+		</visual> -->
+		<textzone>
+			<pos x="+0" y="+7"/>
+			<size width="267" height="13"/>
+			<text fontsize="14" color="textdarker" align="center" text="CONFIGURATION" localize="true"/>
+		</textzone>
+
+
+		<group name="automix_type" x="+7" y="+33">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="120" height="30"/>
+				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
+			</visual>
+			<menu tooltip="Set Automix Type.">
+				<pos x="+0" y="+0"/>
+				<size width="120" height="30"/>
+				<text dx="10" width="90" fontsize="14" weight="bold" color="textoff3" colorover="textover" align="left" 
+						localize="true" important="true"
+						action="setting 'automixMode' 'no mix' ? get_text 'NO MIX' : 
+						setting 'automixMode' 'skip silence' ? get_text 'SILIENCE' :
+						setting 'automixMode' 'full songs' ? get_text 'FULL SONG' :
+						setting 'automixMode' 'radio' ? get_text 'RADIO' :
+						setting 'automixMode' 'smart' ? get_text 'NOT SMART' :
+						get_text 'FORCE FADE'"
+						/>
+				<icon dx="45" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
+				<item text="NO MIX" localize="true" action="setting 'automixMode' 'no mix'" check="setting 'automixMode' 'no mix'"/>
+				<item text="FULL SONG" localize="true" action="setting 'automixMode' 'full songs'" check="setting 'automixMode' 'full songs'"/>
+				<item text="RADIO" localize="true" action="setting 'automixMode' 'radio'" check="setting 'automixMode' 'radio'"/>
+				<item text="SKIP SILENCE" localize="true" action="setting 'automixMode' 'skip silence'" check="setting 'automixMode' 'skip silence'"/>
+			</menu>
+		</group>
+		<!-- Set fade length -->
+		<group name="fadelength" x="+7" y="+33+30+10" 
+			visibility="setting 'automixMode' 'skip silence' ? true : 
+					setting 'automixMode' 'full songs' ? true : 
+					setting 'automixMode' 'radio' ? true : false">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="120" height="30"/>
+				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
+			</visual>
+			<menu tooltip="Set gap length between songs.\nNot applicable for 'No Mix'">
+				<pos x="+0" y="+0"/>
+				<size width="120" height="30"/>
+				<text dx="10" width="90" fontsize="14" weight="bold" color="textoff3" colorover="textover" align="left" 
+						action="param_equal `setting 'fadeLength'` 0 ? get_text 'GAP – 0s' : get_text 'GAP – `setting fadeLength & param_multiply -1`s'" localize="true" important="true"/>
+				<icon dx="45" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
+				<item text="NO GAP" localize="true" action="setting 'fadeLength' 0" check="param_equal `setting 'fadeLength'` 0"/>
+				<item text="2 SEC" localize="true" action="setting 'fadeLength' 0 & setting 'fadeLength' -2" check="param_equal `setting 'fadeLength'` -2"/>
+				<item text="3 SEC" localize="true" action="setting 'fadeLength' 0 & setting 'fadeLength' -3" check="param_equal `setting 'fadeLength'` -3"/>
+				<item text="4 SEC" localize="true" action="setting 'fadeLength' 0 & setting 'fadeLength' -4" check="param_equal `setting 'fadeLength'` -4"/>
+				<item text="5 SEC" localize="true" action="setting 'fadeLength' 0 & setting 'fadeLength' -5" check="param_equal `setting 'fadeLength'` -5"/>
+			</menu>
+		</group>
+		<button class="button_master" 
+			textaction="automix_dualdeck ? get_text 'DUAL DECK ◉ ◉' : get_text 'SINGLE DECK ◉'" query="false"
+		textsize="14" x="+130+4" y="+33" height="30" width="125"
+		action="
+		set '$decksPaused' 1 &
+			(deck 1 play ? set '$decksPaused' 0 : nothing) &
+			(deck 2 play ? set '$decksPaused' 0 : nothing) &
+			(automix_dualdeck ? automix_dualdeck off :
+				((deck 1 play ? deck 2 load automix_song 1 : deck 1 load automix_song 1) & automix_dualdeck on)
+			) &
+				(var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)">
+			<tooltip>Set 'Single' or 'Dual Deck' automix mode.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix. </tooltip>
+		</button>
+				<!-- MONO STEREO BUTTON -->
+		<button class="button_master" x="+130+4" y="+33+30+10" width="125" height="30"
+			action="toggle mono_mix" textsize="14"
+			textaction="var_equal 'mono_mix' 1 ? get_text 'MONO OUT' : get_text 'STEREO OUT'">
+			<tooltip>Select mono or stereo mix.</tooltip>
 		</button>
 	</group>
 
+	<group name="settings_area" x="1910-40-165+40" y="8">
+		<button action="settings">
+			<pos x="+0" y="+0"/>
+			<size width="50" height="50"/>
+			<off border_size="1" border="bordercolor" color="topmenu" radius="5"/>
+			<over border_size="1" border="bordercolor" color="background2" radius="5"/>
+			<selected border_size="1" border="bordercolor" color="background2" radius="5"/>
+			<icon sysicon="settings" color="textoff3" colorselected="texton" colorover="texton" width="32" height="32"/>
+		</button>
+
+		<!-- LOGIN INFO -->
+		<group name="login" x="-120" y="+57">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="115+55" height="25"/>
+				<off shape="square" color="topmenu" radius="4" border_size="1" 
+				color="buttonoff1" color2="buttonoff2" border="bordercolor2"/>
+			</visual>
+			<visual>
+				<pos x="+3" y="+4"/>
+				<size width="16" height="16"/>
+				<off x="144" y="347"/>
+			</visual>
+			<button action="connect">
+				<pos x="+26" y="+4"/>
+				<size width="110+50" height="20"/>
+				<text width="115-26-5+50" fontsize="12" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
+			</button>
+		</group>
+
+		<group name="window_panel" x="-120" y="+90">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="113" height="25"/>
+				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
+			</visual>
+			<menu tooltip="Open new window panel.">
+				<pos x="+0" y="+0"/>
+				<size width="113" height="25"/>
+				<text dx="10" width="90" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
+						text="WINDOWS" localize="true" important="true"/>
+				<icon dx="45" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
+				<item text="WAVEFORM" localize="true" action="show_window 'Waveform'" check="show_window 'Waveform'"/>
+				<item text="BROWSER" localize="true" action="show_window 'BrowserWindow'" check="show_window 'BrowserWindow'"/>
+				<item text="SEARCH" localize="true" action="show_window 'SearchWindow'" check="show_window 'SearchWindow'"/>
+				<item text="SIDEVIEW" localize="true" action="show_window 'SideviewWindow'" check="show_window 'SideviewWindow'"/>
+				<item text="SIDELIST" localize="true" action="show_window 'SidelistWindow'" check="show_window 'SidelistWindow'"/>
+				<item text="INFO" localize="true" action="show_window 'BrowserInfoWindow'" check="show_window 'BrowserInfoWindow'"/>
+			</menu>
+		</group>
+
 	<button action="show_window 'documentation'" query="show_window 'documentation'">
-		<pos x="580" y="8"/>
-		<size width="50" height="50"/>
-		<off border_size="1" border="bordercolor" color="topmenu"/>
+		<pos x="+0" y="+90"/>
+		<size width="50" height="25"/>
+		<off border_size="1" border="bordercolor" color="topmenu" radius="4"/>
 		<over border_size="1" border="bordercolor" color="background2"/>
 		<selected border_size="1" border="bordercolor" color="background2"/>
-		<text text="?" align="center" fontsize="22" weight="bold" color="textoff3" colorselected="texton" colorover="texton"/>
+		<text text="DOCS" weight="bold" align="center" fontsize="14" color="textoff3" colorselected="texton" colorover="texton"/>
 		<tootltip> Docuementation can be found at https://github.com/sericson0/TigerTango</tootltip>
 	</button>
+	</group>
 
 		<group name="topbar_status" x="1250+18" y="8">
 
 			<visual>
 				<pos x="+25" y="+0"/>
-				<size width="560-60-15-40" height="50"/>
+				<size width="445" height="50"/>
 				<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
 			</visual>
 			<group name="mastervu" x="-15" y="+0">
@@ -1907,12 +2045,95 @@ ________________________________________________________________________________
 					<off x="1520" y="0" condition="var_equal '@$colorscheme' 2"/>
 					<on x="1627" y="0"/>
 				</visual>
-				<button class="button_master" x="+40" y="+20+34" width="155" height="25"
-					action="toggle mono_mix" textsize="16"
-					textaction="var_equal 'mono_mix' 1 ? get_text 'MONO' : get_text 'STEREO'">
-					<tooltip>Select between mono or stereo mix.</tooltip>
 
+				<group name="warning_area" x="+40" y="+20+35+2">
+					<visual>
+						<pos x="+0" y="+0"/>
+						<size width="325" height="60"/>
+						<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
+					</visual>
+					<textzone>
+						<pos x="+0" y="+7"/>
+						<size width="325" height="13"/>
+						<text fontsize="14" color="textdarker" align="center" text="WARNING LIGHTS" localize="true"/>
+					</textzone>
+			<panel name="automix_click_warning" visibility="setting 'automixDoubleCLick' 'nothing' ? false: true">
+				<button class="button_master" text="⚠️"  query="var_equal '$ignoreDblClickInd' 1 ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
+				textsize="14" x="+7" y="+28" height="25" width="35"
+					action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$ignoreDblClickInd'">
+					<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
 				</button>
+			</panel>
+
+			<panel name="hitting_limiter_warning" visibility="get_limiter & pulse 10000ms"> 
+				<button class="button_master" text="⚠️" query="get_limiter & pulse 2000ms" 
+					action="master_volume -15%"
+				textsize="14" x="+40+6" y="+28" height="25" width="35"
+				rightclick="toggle '$checkSoundCard'">
+					<tooltip>HITTING LIMITER! Turn down master fader!\nClick to turn down master fader 15%.\nSuggest setting option 'zeroDB' to -3db to reduce chance of clipping.</tooltip>
+				</button>
+			</panel>
+			<panel name="automix_mode" visibility="setting 'automixMode' 'no mix' ? false :
+														  setting 'automixMode' 'skip silence' ? false:
+														  setting 'automixMode' 'radio' ? false :
+														  setting 'automixMode' 'full songs' ? false: true">
+		
+			<button class="button_master" text="⚠️" 
+				query="true"
+				textsize="14" x="+80+5" y="+28" height="25" width="35"
+				action="setting 'automixMode' 'no mix'" rightclick="setting 'automixMode' 'skip silence'">
+				<tooltip>Setting Automix to 'Smart' or 'Remove Intro/Outro' will clip tracks.\nValid settings are 'no mix', 'skip silence', 'radio', 'full songs'\nClick to change settings to 'Back-to-Back' (use song ending silence).\nRight click to change settings to 'Skip Silence'
+				</tooltip>
+			</button>
+			</panel>
+
+			<panel name="automix_setting_warnings" visibility="not setting 'autoMixTempoMode' 'normal tempo' ? true: setting 'automixSkipLength' ? true : setting 'automixMaxLength'">
+				<button class="button_master" text="⚠️" query="true"
+				textsize="14" x="+120+4" y="+28" height="25" width="35"
+					action="setting 'autoMixTempoMode' 'normal tempo' & setting 'automixSkipLength' 0 & setting 'automixMaxLength' 0">
+					<tooltip>Automix settings not configured properly.\nClick to set 'autoMixTempoMode' to 'normal tempo'\nand 'automixSkipLength' to 0.</tooltip>
+				</button>
+			</panel>
+
+			<panel name="positive_fade_length_warning" visibility="setting 'fadeLength'">
+				<button class="button_master" text="⚠️" query="true"
+				textsize="14" x="+160+3" y="+28" height="25" width="35"
+					action="setting 'fadeLength' 0 & setting 'fadeLength' -3" rightclick="setting 'fadeLength' 0">
+					<tooltip>Automix 'fadeLength' setting is above 0\nThis will cut end of tracks\nClick to set to 3 second second gap between songs.\nRight click to set to 0.</tooltip>
+				</button>
+			</panel>
+
+			<panel name="crossfader_not_disabled_warning" visibility="not crossfader_disable ? true : deck 1 fader_start ? true : tdeck 2 fader_start">
+				<button class="button_master" text="⚠️" query="true"
+				textsize="14" x="+200+2" y="+28" height="25" width="35"
+					action="crossfader_disable on & deck 1 fader_start off & deck 2 fader_start off">
+					<tooltip>Crossfader or Fader Start are enabled.\nCAN CAUSE ERRORS!\nClick to disable Crossfader and Fader Start.</tooltip>
+				</button>
+			</panel>
+			<panel name="incorrect_loop_setting_warning" 
+					visibility="(not setting 'autoSortCues' ? true :
+							(deck 1 setting 'smartLoop' on ? true : deck 2 setting 'smartLoop' on ? true : false))">
+				<button
+					class="button_master" text="⚠️"
+					query="var_equal '$ignoreCueSettingsInd' 1 ? false : true"
+					rightclick="toggle '$ignoreCueSettingsInd'"
+				textsize="14" x="+200+40+1" y="+28" height="25" width="35"
+					action="setting 'autoSortCues' on & deck 1 setting 'smartLoop' off & deck 2 setting 'smartLoop' off">
+					<tooltip>Click to change settings 'smartLoop' off and autoSortCues on.\nEnsures loop button works as expected.\nRight click to ignore warning.</tooltip>
+				</button>
+			</panel>
+				<panel name="auto_match_configuration_warning" 
+					visibility="auto_pitch_lock ? true : auto_match_key ? true : 
+								auto_pitch_lock ? true : not setting 'autoBPMMatch' 'no'"> 
+				<button class="button_master" text="⚠️" query="true"
+				textsize="14" x="+200+80" y="+28" height="25" width="35"
+					action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off & setting 'autoBPMMatch' 'no'">
+					<tooltip>Auto match BPM, key, or pitch are turned on.\nClick to turn settings off.</tooltip>
+				</button>
+				</panel>
+
+				</group>
+
 			</group>
 			<line name="divider" color="dark"  x="+200-20" y="+4" width="2" height="50-8"/>
 				<panel name="cpu" x="+180+30-10" y="+0" width="50" height="50" childtooltip="true">
@@ -1947,7 +2168,6 @@ ________________________________________________________________________________
 					<pos x="+0" y="+0"/>
 					<size width="120" height="50"/>
 					<text fontsize="28" color="textoff3" align="center" weight="bold" action="get_clock"/>
-					<text2 fontsize="28" color="textoff2" align="center" weight="bold" format="%counter" important="true"/>
 				</textzone>
 			</group>
 		</group>
@@ -1969,11 +2189,6 @@ _______________________________________________________
 -->
 <panel name="mastermixer" group="mixer">
 	<group name="mastervol" x="+15-3+170+25" y="+32">
-		<!-- <visual>
-			<pos x="+2" y="+1"/>
-			<size width="100" height="200"/>
-			<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
-			</visual> -->
 			<textzone x ="-45" y="+10">
 				<size width="194" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="MASTER VOL"/>
@@ -1981,8 +2196,6 @@ _______________________________________________________
 			<panel class="master_fader" x="+15" y="+30">
 				<!-- <slider action="master_volume" dblclick="master_volume 100%" rightclick="master_volume 100% ? master_volume 20% : master_volume 100%"/> -->
 			</panel>
-			<!-- <button class="button_master" x="+6" y="+6+75" width="44" height="27" query="true" text="ON" localize="true"/> -->
-			<!-- <button class="button_master" x="+6" y="+6+75+35" width="44" height="27" action="sampler_rec 'master'" text="REC" localize="true"/> -->
 			<visual source="get_vu_meter 'master'" type="linear" granularity="8" orientation="vertical" direction="up">
 				<pos x="+75" y="+45"/>
 				<size width="13" height="130"/>
@@ -1993,15 +2206,9 @@ _______________________________________________________
 		</group>
 
 		<group name="hp" x="+130-3+160+15+10" y="+32">
-			<!-- <visual>
-				<pos x="+2" y="+1"/>
-				<size width="110" height="200"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
-				</visual> -->
 			<panel class="headphone_fader" x = "+8" y="+30">
 			</panel>
 			<panel class="headphone_mix_fader" x="+60" y="+30">
-				<!-- <slider action="headphone_mix" dblclick="headphone_mix 100%" rightclick="headphone_mix 100% ? headphone_mix 0% : headphone_mix 100%" disabled="not get_hasheadphones"/> -->
 				<textzone><text localize="true" text="MIX"/></textzone>
 			</panel>
 			<button>
@@ -2020,11 +2227,6 @@ _______________________________________________________
 		</group>
 
 		<group name="mic" x="+280-3+140" y="+32">
-			<!-- <visual>
-				<pos x="+12" y="+1"/>
-				<size width="85" height="200"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="2"/>
-				</visual> -->
 				<button>
 					<pos x="+40" y="+5"/>
 					<size width="30" height="30"/>
@@ -2402,7 +2604,7 @@ ________________________________________________________________________________
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
 		</dropzone>
-			<panel class="turntable" x="+440-65" y="+152" name="jogwheel_turntable"/>
+			<panel class="turntable" x="+440-50" y="+152" name="jogwheel_turntable"/>
 		<!--  width="743" -->
 		<panel class="deckinfo" areawidth="170" left="+23+2" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+23+2" visibility="skin_width && param_smaller 1501"/>
@@ -2493,8 +2695,7 @@ ________________________________________________________________________________
 	</group>
 	</group>
 
-
-		<group name="play_button_positions" x="+375+5" y="+401-5">
+		<group name="play_button_positions" x="+375+10" y="+401-5">
 				<button class="button_main"
 					x="+33+40+85" y="+0" width="64" height="35"
 					text="ADD" textsize="16"
@@ -2586,12 +2787,12 @@ ________________________________________________________________________________
 			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
 			
 			</button>
-			<button class="button_main" width="35" height="35" x="+80+105+5" y="+35+10" textsize = "16"
+			<button class="button_main" width="35" height="35" x="+80+105+2" y="+35+10" textsize = "16"
 			action="cycle '@$fadeLength' 4" 
-			textaction="var_equal '@$fadeLength' 0 ? get_text '3 S' : 
-														var_equal '@$fadeLength' 1 ? get_text '5 S' : 
-														var_equal '@$fadeLength' 2 ? get_text '7 S' : 
-														get_text '9 S'" >
+			textaction="var_equal '@$fadeLength' 0 ? get_text '3s' : 
+														var_equal '@$fadeLength' 1 ? get_text '5s' : 
+														var_equal '@$fadeLength' 2 ? get_text '7s' : 
+														get_text '9s'" >
 			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
 			</button>
 			
@@ -2643,86 +2844,6 @@ ________________________________________________________________________________
 			<!-- <button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 3" rightclick="delete_cue 3" textaction="hot_cue 3 ? cue_name 3 : ''"/> -->
 
 		</group>
-
-		<!-- <group name="toolbox" x="+15" y="+463">
-			<visual>
-				<pos x="+0" y="+0"/>
-				<size width="325" height="84"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
-			</visual>
-			<textzone x="-10" y="+5">
-				<size width="325" height="15"/>
-				<text fontsize="14" align="center" color="textdarker" text="TOOLBOX" localize="true"/>
-			</textzone>
-			
-			<button class="button_master" text="REC 🔴"
-			textsize="14" x="+200+2" y="+23" height="25" width="75"
-				action="record_config">
-				<tooltip>Configure recording options</tooltip>=""
-			</button>
-			<button class="button_master" textaction="automix_dualdeck ? get_text 'D' : get_text 'S'" query="false"
-			textsize="14" x="+200+80" y="+23" height="25" width="35"
-			action="
-			set '$decksPaused' 1 &
-				(deck 1 play ? set '$decksPaused' 0 : nothing) &
-				(deck 2 play ? set '$decksPaused' 0 : nothing) &
-				(automix_dualdeck ? automix_dualdeck off :
-					((deck 1 play ? deck 2 load automix_song 1 : deck 1 load automix_song 1) & automix_dualdeck on)
-				) &
-				 (var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)">
-				<tooltip>Toggle 'Single' and 'Dual Deck' automix mode.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix. </tooltip>
-			</button>
-			<button class="button_master" text="⚠️" query="var_equal '$ignoreDblClickInd' 1 ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
-			textsize="14" x="+7" y="+53" height="25" width="35"
-				action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$ignoreDblClickInd'">
-				<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
-			</button>
-
-			<button class="button_master" text="⚠️" query="var_equal '$checkSoundCard' 1 ? false : not has_system_volume" action="config 'audio'"
-			textsize="14" x="+40+6" y="+53" height="25" width="35"
-			rightclick="toggle '$checkSoundCard'">
-				<tooltip>Sound Card may not be configured correctly.\nClick to go to audio settings.\nRight click to ignore.</tooltip>
-			</button>
-			<button class="button_master" text="⚠️" query="setting 'automixMode' 'no mix' ? false :
-														  setting 'automixMode' 'skip silence' ? false:
-														  setting 'automixMode' 'radio' ? false :
-														  setting 'automixMode' 'full songs' ? false: true"
-			textsize="14" x="+80+5" y="+53" height="25" width="35"
-				action="setting 'automixMode' 'no mix'" rightclick="setting 'automixMode' 'skip silence'">
-				<tooltip>Setting Automix to 'Smart' or 'Remove Intro/Outro' will clip tracks. Click to change settings to 'Back-to-Back' (use song ending silence). Right click to change settings to 'Skip Silence'
-				</tooltip>
-			</button>
-			<button class="button_master" text="⚠️" query="not setting 'autoMixTempoMode' 'normal tempo' ? true: setting 'automixSkipLength' ? true : setting 'automixMaxLength'"
-			textsize="14" x="+120+4" y="+53" height="25" width="35"
-				action="setting 'autoMixTempoMode' 'normal tempo' & setting 'automixSkipLength' 0 & setting 'automixMaxLength' 0">
-				<tooltip>Automix settings not configured properly. Can cause errors. Click to set 'autoMixTempoMode' to 'normal tempo' and 'automixSkipLength' to 0.</tooltip>
-			</button>
-			<button class="button_master" text="⚠️" query="setting 'fadeLength'"
-			textsize="14" x="+160+3" y="+53" height="25" width="35"
-				action="setting 'fadeLength' 0 & setting 'fadeLength' -3" rightclick="setting 'fadeLength' 0">
-				<tooltip>Automix 'fadeLength' setting is above 0, meaning the end of tracks could be cut. Click to set to -3 (a 3 second gap between songs). Right click to set to 0.</tooltip>
-			</button>
-			<button class="button_master" text="⚠️" query="not crossfader_disable ? true : deck 1 fader_start ? true : tdeck 2 fader_start"
-			textsize="14" x="+200+2" y="+53" height="25" width="35"
-				action="crossfader_disable on & deck 1 fader_start off & deck 2 fader_start off">
-				<tooltip>Crossfader or Fader Start is enabled. This can cause TigerTango to not work properly. Click to disable Crossfader and Fader Start.</tooltip>
-			</button>
-			<button
-				class="button_master" text="⚠️"
-				query="var_equal '$ignoreCueSettingsInd' 1 ? false :
-					(not setting 'autoSortCues' ? true :
-						(deck 1 setting 'smartLoop' on ? true : deck 2 setting 'smartLoop' on ? true : false))"
-				rightclick="toggle '$ignoreCueSettingsInd'"
-			textsize="14" x="+200+40+1" y="+53" height="25" width="35"
-				action="setting 'autoSortCues' on & deck 1 setting 'smartLoop' off & deck 2 setting 'smartLoop' off">
-				<tooltip>Click to change to recommended settings 'smartLoop' off and autoSortCues on. This ensures loop button will work as expected. Right click to ignore warning.</tooltip>
-			</button>
-			<button class="button_master" text="⚠️" query="auto_pitch_lock ? true : auto_match_key ? true : auto_pitch_lock ? true : not setting 'autoBPMMatch' 'no'"
-			textsize="14" x="+200+80" y="+53" height="25" width="35"
-				action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off & setting 'autoBPMMatch' 'no'">
-				<tooltip>Auto match BPM, key, or pitch is turned on. This will affect sound quality. Click to turn these settings off.</tooltip>
-			</button>
-		</group> -->
 </deck>
 </panel>
 <panel name="deckright" x="1920-764" y="100" width="764" height="389">
@@ -2732,7 +2853,7 @@ ________________________________________________________________________________
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
 		</dropzone>
-				<panel class="turntable" x="+10+92+55" y="+152" name="jogwheel_turntable"/>
+				<panel class="turntable" x="+10+92+50" y="+152" name="jogwheel_turntable"/>
 
 		<panel class="deckinfo" areawidth="170" left="+0" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+0" visibility="skin_width && param_smaller 1501"/>
@@ -2824,7 +2945,7 @@ ________________________________________________________________________________
 
 	</group>
 
-		<group name="play_button_pos" x="+150+10" y="+401-5">
+		<group name="play_button_pos" x="+150+5" y="+401-5">
 				<button class="button_main"
 							x="+0" y="+0" width="64" height="35"
 							text="ADD" textsize="16"
@@ -2894,17 +3015,17 @@ ________________________________________________________________________________
 				) &
 				set '$fadeIndicator2' 0 & repeat_start 'WaitToSwitch' 300ms 1 &
 				( var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence':
-				  var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' :
+				  var_equal '$autoType' 2 ? setting 'automixModsxe' 'full songs' :
 				  var_equal '$autoType' 3 ? setting 'automixMode' 'radio' : nothing)
 			) : nothing" query="var_equal '$fadeIndicator2' 1">
 			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
 			</button>
-						<button class="button_main" width="35" height="35" x="+80+100+10" y="+35+10" textsize = "16"
+						<button class="button_main" width="35" height="35" x="+80+100+8" y="+35+10" textsize = "16"
 			action="cycle '@$fadeLength' 4" 
-			textaction="var_equal '@$fadeLength' 0 ? get_text '3 S' : 
-														var_equal '@$fadeLength' 1 ? get_text '5 S' : 
-														var_equal '@$fadeLength' 2 ? get_text '7 S' : 
-														get_text '9 S'" >
+			textaction="var_equal '@$fadeLength' 0 ? get_text '3s' : 
+														var_equal '@$fadeLength' 1 ? get_text '5s' : 
+														var_equal '@$fadeLength' 2 ? get_text '7s' : 
+														get_text '9s'" >
 			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
 			</button>
 			<!-- _________ROW 3 ______________ -->
@@ -2944,69 +3065,21 @@ ________________________________________________________________________________
 			<tooltip>Set loop between hot cues (only active when both hot cues are set).\nClick again or right click to disable.</tooltip>
 			</button>
 
-		<!-- <group name="window_button_positions" x="+280" y="+61">
-			<visual>
-				<pos x="-11" y="+1"/>
-				<size width="325" height="84"/>
-				<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="5"/>
-			</visual>
-			<textzone x="-10" y="+8">
-				<size width="325" height="15"/>
-				<text fontsize="14" align="center" color="textdarker" text="WINDOW PANELS" localize="true"/>
-			</textzone>
-
-			<button class="button_master" text="BROWSER" x="+0+5" y="+27" textsize = "10" action="show_window 'BrowserWindow'" query="show_window 'BrowserWindow'">
-				<size width="90" height="25"/>
-			<tooltip>Open Browser Window</tooltip>
-			</button>
-
-			<button class="button_master" text="SEARCH" x="+105+5" y="+27" textsize = "10"
-			action="show_window 'SearchWindow'" query="show_window 'SearchWindow'">
-			<size width="90" height="25"/>
-			<tooltip>Open Search Window</tooltip>
-			</button>
-
-			<button class="button_master" text="SIDEVIEW" x="+210+5" y="+27" textsize = "10" width="80" height="30"
-			action="show_window 'SideviewWindow'" query="show_window 'SideviewWindow'">
-			<size width="90" height="25"/>
-			<tooltip>Open Sideview Window</tooltip>
-			</button>
-
-			<button class="button_master" text="WAVEFORM" x="+0+5" y="+55" textsize = "10"
-			action="show_window 'Waveform'" query="show_window 'Waveform'">
-			<size width="90" height="25"/>
-			<tooltip>Open Waveform Viewer</tooltip>
-			</button>
-
-
-
-			<button class="button_master" text="SIDELIST" x="+105+5" y="+55" textsize = "10"
-					action="show_window 'SidelistWindow'" query="show_window 'SidelistWindow'">
-			<size width="90" height="25"/>
-			<tooltip>Open Sidelist Window</tooltip>
-			</button>
-
-			<button class="button_master" text="INFO" x="+210+5" y="+55" textsize = "10" width="90" height="25"
-					action="show_window 'BrowserInfoWindow'" query="show_window 'BrowserInfoWindow'">
-			<tooltip>Open Browser Info Window</tooltip>
-			</button>
-
-		</group> -->
 	</group>
 
 	</deck>
 </panel>
 
 
-<group name="automix_panel" x="635" y="215">
+<group name="automix_panel" x="640" y="215">
 	<visual>
 		<pos x="+0" y="-5"/>
-		<size width="655" height="420"/>
+		<size width="640" height="420"/>
 		<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="4"/>
 	</visual>
 
 	<filelist source="automix">
-		<size width="645" height="410"/>
+		<size width="630" height="410"/>
 	<pos x="+5	" y="+0"/>
     <colors>
         <lists background="#202020"
