@@ -58,14 +58,14 @@
 							var_equal '@$smallAlbumArt' 1 ? false :
 								(var_equal '@$showLyrics' 0 ? true :
 									get_comment & param_equal '' ? true :
-									load_pulse_active 12000ms)"/>
+									load_pulse_active 10000ms)"/>
 				<!-- Small cover -->
 				<cover x="+710-200" y="+300" width="300" height="300"
 					visibility="var_equal '@$hideAlbumArt'  1 ? false :
 					var_equal '@$smallAlbumArt' 0 ? false :
 					(var_equal '@$showLyrics' 0 ? true :
 					get_comment & param_equal '' ? true :
-					load_pulse_active 12000ms)"/>
+					load_pulse_active 10000ms)"/>
 
 			<!-- Display Lyrics Only show if showLyrics is set to 1 and comments are not empty-->
 

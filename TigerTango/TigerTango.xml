@@ -1646,15 +1646,15 @@ ________________________________________________________________________________
 	</button>
 
 
-		<panel name="line_waveform_top" class="horisontal_innershadow" x="0" y="44-1" width="600" height="1"></panel>
-		<panel name="line_waveform_bottom" class="horisontal_innerhighlight" x="0" y="44+137-1" width="600" height="1"></panel>
+		<!-- <panel name="line_waveform_top" class="horisontal_innershadow" x="0" y="44-1" width="600" height="1"></panel> -->
+		<!-- <panel name="line_waveform_bottom" class="horisontal_innerhighlight" x="0" y="44+137-1" width="600" height="1"></panel> -->
 
 		<panel x="+0" y="+40">
 			<square posx="0" posy="2005" width="600" height="240" radius="4" border="2" border_color="#121314" color="#121314"/>
 		</panel>
 		<panel name="Wave1" visibility="var_equal '$cycleWave' 0 ? (var_equal '$showWave2' 0 ? true : false) :
 				deck 1 play ? true: deck 2 play ? false : (var_equal '$showWave2' 0 ? true: false)">
-			<scratchwave deck="left" orientation="horizontal" color="scratch1" color2="scratch2">
+			<scratchwave deck="left" orientation="horizontal" center="600" color="scratch1" color2="scratch2">
 				<pos x="0" y="+45+10"/>
 				<size width="600" height="220"/>
 				<grid size="1" mainsize="4" height="8" pos="-10" maincolor="deckcolor" color="darkgray" mirrored="true" shapepos="-11" shapemirrored="up"/>
@@ -1693,14 +1693,14 @@ ________________________________________________________________________________
 			<size width="26-2" height="173-70"/>
 			<off shape="square" color="darker" border_size="1" border="graydarker"/>
 		</visual>
-		<line color="#D3D3D3">
+		<!-- <line color="#D3D3D3">
 		<pos x="300" y="250"/>
 		<size width="1" height="50"/>
 		</line>
 		<line color="#D3D3D3">
 		<pos x="300" y="30"/>
 		<size width="1" height="10"/>
-		</line>
+		</line> -->
 		<slider action="zoom &amp; zoom_scratch" rightclick="temporary" dblclick="reset" orientation="vertical">
 			<pos x="+10+2" y="+45+35+80"/>
 			<size width="26-4" height="173-70"/>
@@ -1757,7 +1757,7 @@ ________________________________________________________________________________
 	End of Windows. Start of main skin
 ______________________________________________________________________________________
 -->
-
+<line name="browser_top"  x="641" y="202" width="639" height="8" color="bordercolor" />
 <group name="grabzones">
 	<grabzone>
 		<pos x="0" y="0"/>
@@ -1853,13 +1853,13 @@ ________________________________________________________________________________
 			textsize="16" x="+10" y="+33" height="30" width="78"
 			query = 'false'
 			action="setting 'coverDownload' 'no' & setting 'recordWaitForSound' 'no' & record_config">
-		<tooltip>Record a track.\nUseful for recording silence\nOr making dummy tracks to separate tandas.</tooltip>
+		<tooltip>Make a recording.\nUseful for recording silence\nOr making dummy tracks to separate tandas.</tooltip>
 		</button>
 
 		<button class="button_master" text="💾"
 			textsize="16" x="+10" y="+33+30+10" height="30" width="35"
 			action = "playlist_save">
-		<tooltip>Save Automix to playlist.\nUseful for saving milonga playlist</tooltip>
+		<tooltip>Save Automix to playlist.\nUseful for keeping record of what you played.</tooltip>
 		</button>
 		<button class="button_master" text="🎨"
 			textsize="16" x="+35+10+8" y="+33+30+10" height="30" width="35"
@@ -2002,14 +2002,9 @@ ________________________________________________________________________________
 			</menu>
 		</group>
 
-	<button action="show_window 'documentation'" query="show_window 'documentation'">
-		<pos x="+0" y="+90"/>
-		<size width="50" height="25"/>
-		<off border_size="1" border="bordercolor" color="topmenu" radius="4"/>
-		<over border_size="1" border="bordercolor" color="background2"/>
-		<selected border_size="1" border="bordercolor" color="background2"/>
-		<text text="DOCS" weight="bold" align="center" fontsize="14" color="textoff3" colorselected="texton" colorover="texton"/>
-		<tootltip> Docuementation can be found at https://github.com/sericson0/TigerTango</tootltip>
+	<button class="button_master" action="show_window 'documentation'" query="show_window 'documentation'"
+		x="+0" y="+90" width="50" height="25" text="DOCS" textsize="14"> 
+		<tootltip>Click to open Documentation.\nTigerTango Docs can be found at https://github.com/sericson0/TigerTango</tootltip>
 	</button>
 	</group>
 
@@ -2697,7 +2692,7 @@ ________________________________________________________________________________
 
 		<group name="play_button_positions" x="+375+10" y="+401-5">
 				<button class="button_main"
-					x="+33+40+85" y="+0" width="64" height="35"
+					x="+0" y="+0" width="64" height="35"
 					text="ADD" textsize="16"
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
 			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
@@ -2708,7 +2703,7 @@ ________________________________________________________________________________
 				<size width="64" height="35"/>
 				<off color="#555555" radius="6"/>
 			</visual>
-			<textzone x="+33+40+85" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 			</group>
 			<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
 					action="deck 1 play ? play_pause:
@@ -2717,7 +2712,7 @@ ________________________________________________________________________________
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
-			<button class="button_main" text="AUTO" width="64" height="35" x="+0" y="+0" textsize = "16"
+			<button class="button_main" text="AUTO" width="64" height="35" x="+33+40+85" y="+0" textsize = "16"
 					action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
 							automix_dualdeck ? (
 								deck 2 play ? (deck 1 unload & deck 2 automix_load & automix on) :
@@ -2838,8 +2833,7 @@ ________________________________________________________________________________
 				var_equal 'sortOrder' 1 ? setting 'autoSortCues' 1 : nothing"
 					textsize="14" textaction="loop ? get_text 'LOOP' : deck 1 hot_cue 1 ? deck 1 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
 					rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 1 loop">
-			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.
-					 Click again or right click to disable.</tooltip>
+			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
 			</button>
 			<!-- <button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 3" rightclick="delete_cue 3" textaction="hot_cue 3 ? cue_name 3 : ''"/> -->
 
@@ -3062,7 +3056,7 @@ ________________________________________________________________________________
 					 var_equal 'sortOrder' 1 ? setting 'autoSortCues' 1 : nothing"
 						 textsize="14" textaction="loop ? get_text 'LOOP' : deck 2 hot_cue 1 ? deck 2 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
 						 rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 2 loop">
-			<tooltip>Set loop between hot cues (only active when both hot cues are set).\nClick again or right click to disable.</tooltip>
+			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
 			</button>
 
 	</group>
