@@ -23,6 +23,14 @@
 		<size width="280" height="140" />
 		<off x="" y=""/>
 	</visual>
+<!-- Optional Custom Logo -->
+	<visual>
+		<pos x="1920-350" y="+190"/>
+		<size width="280" height="140" />
+		<off x="325" y="0"/>
+	</visual>
+
+
 
 <!-- Panel to show the artist, title, and album art of next track -->
 	<group name="nexttrack" x="+1920-350" y="+375"
