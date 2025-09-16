@@ -1227,11 +1227,8 @@ ________________________________________________________________________________
 <oninit action="set '$tandaLength' 4"/>
 
 <!-- Video Configuration Window -->
-<window name="VideoOptionsWindow" width="400" height="400+40" posx="960" posy="center" shown="false" color="#424346">
+<window name="VideoOptionsWindow" width="400" height="400+300" posx="960" posy="center" shown="false" color="#424346" breakline="700">
 
-	<visual x="+0" y="+0" width="400" height="401+40">
-		<off color="background" border_size="1" border="bordercolor"/>
-	</visual>
 	<visual x="+5" y="+3" width="400" height="30">
 		<off color="dark" border_size="1"/>
 	</visual>
@@ -1243,15 +1240,12 @@ ________________________________________________________________________________
 
 	<button action="show_window 'VideoOptionsWindow' off">
 		<tooltip> Close  </tooltip>
-		<!-- Position: 5 px from top, 5 px from right.
-			The +420 is the initial window width you set earlier.
-			If you change that width, adjust the 420-5 part too. -->
 		<pos  x="+400-35" y="+4"/>
 		<size width="30" height="30"/>
-		<!-- Drawn vector button (no extra PNG needed) -->
 		<icon sysicon="close" color="textoff3" colorover="white" width="25" height="25"/>
 		<over color="#3b4242"/>
 	</button>
+
 	<!-- ROW 1. Video options and settings -->
 	<group name="video_options" x="+10" y="+45">
 		<visual>
@@ -1297,7 +1291,7 @@ ________________________________________________________________________________
 	<group name="video_outputs" x="+10" y="+150" >
 		<visual>
 			<pos x="+0" y="+0"/>
-			<size width="380" height="140"/>
+			<size width="380" height="140+90"/>
 			<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
 		</visual>
 
@@ -1306,7 +1300,7 @@ ________________________________________________________________________________
 			<text fontsize="16" align="center" color="texton" weight="bold" text="TIGER TANGO VIDEO OUTPUTS" localize="true"/>
 		</textzone>
 
-		<group name = "video_name_text>" x="+10" y="+38">
+		<group name = "video_name_text_row1>" x="+10" y="+38">
 			<textzone x="+0" y="+0">
 				<size width="110" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="ALBUM ART" localize="true"/>
@@ -1317,7 +1311,7 @@ ________________________________________________________________________________
 			</textzone>
 			<textzone x="+240" y="+0">
 				<size width="120" height="14"/>
-				<text fontsize="14" align="center" color="textdarker" text="DISPLAY" localize="true"/>
+				<text fontsize="14" align="center" color="textdarker" text="NEXT PANEL" localize="true"/>
 			</textzone>
 		</group>
 
@@ -1339,7 +1333,23 @@ ________________________________________________________________________________
 		</button>
 	</group>
 
-	<group name="tigerTango video option buttons row 2" x="+10" y="+95">
+	<group name="tigerTango video option buttons row 2" x="+10" y="+105">
+		<group name = "video_name_text_row2>" x="0" y="+0">
+			<textzone x="+0" y="+0">
+				<size width="110" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="ART SIZE" localize="true"/>
+			</textzone>
+			<textzone x="+120" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="LYRICS SIZE" localize="true"/>
+			</textzone>
+			<textzone x="+240" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="GENRE TEXT" localize="true"/>
+			</textzone>
+		</group>
+
+		<group name="button_second_row" x="+0" y="+20">
 		<button class="button_master" x="+0" y="+0" action="toggle '@$smallAlbumArt'"
 				textsize="14" height="30" width="110"
 				textaction="var_equal '@$smallAlbumArt' 1 ? get_text 'SMALL' : get_text 'LARGE'"
@@ -1351,28 +1361,61 @@ ________________________________________________________________________________
 							var '@$lyricsFont' 1 ? set '@$lyricsFont' 0 : 
 							var '@$lyricsFont' 2 ? set '@$lyricsFont' 1 : 
 												   set '@$lyricsFont' 2"
-				 textsize="14" height="30" width="65"
+				 textsize="14" height="30" width="110"
 				 textaction="var_equal '@$lyricsFont' 1 ? get_text 'LARGE' :
 				 			 var_equal '@$lyricsFont' 2 ? get_text 'LARGER' :
 				 			 var_equal '@$lyricsFont' 3 ? get_text 'SMALL' :
 							 get_text 'MEDIUM'">
 			<tooltip>Cycle lyrics font size</tooltip>
 		</button>
-		<button class="button_master" x="+125+70" y="+0" action="toggle '@$lyricsLeftJustify'" query="false"
-				 textsize="14" height="30" width="40"
-				 textaction="var_equal '@$lyricsLeftJustify' 1 ? get_text 'L |──' :
-				 			 		get_text 'C ─|─'">
-			<tooltip>Left vs center justify for lyrics</tooltip>
-		</button>
 		<button class="button_master" x="+250" y="+0" action="toggle '@$hideGenre'"
 				textsize="14" height="30" width="110" query="var_equal '@$hideGenre' 0 ? true : false"
 				text="SHOW GENRE">
 			<tooltip>Display track Genre.</tooltip>
 		</button>
+		</group>
 	</group>
+	<!-- Row 3 of video options -->
+	<group name="tigerTango video option buttons row 3" x="+10" y="+170">
+		<group name = "video_name_text_row3>" x="0" y="+0">
+			<!-- <textzone x="+0" y="+0">
+				<size width="110" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="TITLE SIZE" localize="true"/>
+			</textzone> -->
+			<textzone x="+120" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="LYRICS POS" localize="true"/>
+			</textzone>
+			<textzone x="+240" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="TITLE SIZE" localize="true"/>
+			</textzone>
+		</group>
+
+		<group name="button_third_row" x="+0" y="+20">
+			<button class="button_master" x="+250" y="+0" action="toggle '@$largeTitleText'"
+					textsize="14" height="30" width="110"
+					textaction="var_equal '@$largeTitleText' 0 ? get_text 'NORMAL' : get_text 'LARGE'"
+					query="false" >
+				<tooltip>Title Text Size.</tooltip>
+			</button>
+			<button class="button_master" x="+125" y="+0" action="toggle '@$lyricsLeftJustify'" query="false"
+					textsize="14" height="30" width="110"
+					textaction="var_equal '@$lyricsLeftJustify' 1 ? get_text 'LEFT |──' :
+											get_text 'CENTER ─|─'">
+				<tooltip>Left vs center justify for lyrics</tooltip>
+			</button>
+			<!-- <button class="button_master" x="+250" y="+0" action="toggle '@$hideCortinaInfo'"
+					textsize="14" height="30" width="110" textaction="var_equal '@$hideCortinaInfo' 0 ? 
+							get_text 'SHOW' : get_text 'HIDE'">
+				<tooltip>Hide cortina title info.\nWhen active, displays 'CORTINA' instead of song titel.</tooltip>
+			</button> -->
+		</group>
+		</group>
+
 	</group>
 	<!-- Row 3 Counter Settings -->
-	<group name="counter_settings" x="+10" y="+260+40" >
+	<group name="counter_settings" x="+10" y="+260+40+90" >
 		<visual>
 			<pos x="+0" y="+0"/>
 			<size width="380" height="100"/>
@@ -1425,20 +1468,17 @@ ________________________________________________________________________________
 
 	</group>
 		<group name="check_video_skin" x="+10" y="+360+40">
-
-		<button class="button_master" x="+40" y="+5"
-			visibility="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on"
-				query="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on"
-			textsize="16" height="30" width="300"
-			action="config 'interface'"
-			textaction="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? '' :
-								get_text 'TIGER TANGO VIDEO NOT ACTIVE'.">
-
-			<!-- > -->
-			<tooltip>Some video functionality only available with TigerTangoVideo Video Skin\nVideo skin can be loaded from settings--Interface--Video Overlay\nSearch for TigerTangoVideo.</tooltip>
-		</button>
-
 	</group>
+
+	<button class="button_master" x="+10" y="+150"
+		visibility="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on"
+			query="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on"
+		textsize="18" height="340" width="380"
+		action="config 'interface'"
+		textaction="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? '' :
+							get_text '⚠️ TIGER TANGO VIDEO NOT ACTIVE ⚠️\n\nLoad Video Skin from Video Overlay\n\n->Settings\n-> Interface\n-> Video Overlay\n-> TigerTango Video' ">
+		<tooltip>Some video functionality only available with TigerTangoVideo Video Skin\nVideo skin can be loaded from settings--Interface--Video Overlay\nSearch for TigerTangoVideo.</tooltip>
+	</button>
 
 </window>
 
@@ -1494,7 +1534,7 @@ ________________________________________________________________________________
             font="Arial" fontsize="10" color="textoff"
             multiline="yes" align="center"/>
   <textzone x="+10" y="+110" width="280" height="100"
-            text="TigerTango is free for all. If you would like to support\nthisand other tango projects you can donate to:\nVenmo: @Sean-Ericson-1\nZelle: sericson0@gmail.com"
+            text="TigerTango is free for all. If you would like to support\nthis and other tango projects you can donate to:\nVenmo: @Sean-Ericson-1\nZelle: sericson0@gmail.com"
             font="Arial" fontsize="10" color="textoff"
             multiline="yes" align="center"/>
 </window>
