@@ -58,10 +58,10 @@
 
 	<group name="masterdeck" x="+150" y="+40">
 		<deck deck="master">
-			<!-- ALbum art display. Show if hideAlbumArt is not true.
+			<!-- Album art display. Show if hideAlbumArt is not true.
 			 	 If lyrics are active and there are lyrics (comments not blank)
-				 Then show for 12 seconds and then hide) -->
-			<cover x="+710-400" y="+40" width="800" height="650"
+				 Then show for 10 seconds and then hide) -->
+			<cover x="+710-400" y="+20" width="700" height="600"
 				visibility="var_equal '@$hideAlbumArt'  1 ? false :
 							var_equal '@$smallAlbumArt' 1 ? false :
 								(var_equal '@$showLyrics' 0 ? true :
@@ -130,14 +130,12 @@
 			/>
 		</group>
 
-			<!-- scroll="yes"  -->
-			<!-- Wave at bottom -->
-			<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center">
-				<pos x="+0" y="+724" width="1920-500" height="300"/>
-			</blockwave>
-
+			<group name="Normal Text Size" visibility="var_equal '@$largeTitleText' 0">
+				<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center">
+					<pos x="+0" y="+724" width="1920-500" height="300"/>
+				</blockwave>
 			<!-- Genre and tanda counter -->
-			<group name="track_text" x="-75" y="+750">
+				<group name="track_text" x="-75" y="+750">
 				<textzone group="horizontal" align="center">
 					<pos x="+0" y="+0"/>
 					<size width="1920-500" height="60"/>
@@ -165,8 +163,45 @@
 					<size width="1920-500" height="100"/>
 					<text fontsize="56" color="orangetext" weight="bold" action="get_title_before_remix 'clean' & param_uppercase"/>
 				</textzone>
+				</group>
 			</group>
+		<!-- LARGE TEXT -->
+			<group name="Large Text Size" visibility="var_equal '@$largeTitleText' 1">
 
+			<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center">
+					<pos x="+0" y="+675" width="1920-500" height="300"/>
+			</blockwave>
+			<!-- Genre and tanda counter -->
+				<group name="track_text" x="-75" y="+600">
+				<textzone group="horizontal" align="center">
+					<pos x="-50" y="+0"/>
+					<size width="1920-400" height="160"/>
+					<text fontsize="56+56+12" color="orangetext" weight="bold"
+							action="var_equal '$songCounterRunning' 0 ?
+									var_equal '@$hideGenre' 1 ? '' : (get_genre & param_uppercase) : (
+										var_equal '$tandaLength' 1 ? get_text 'CORTINA' :
+									(
+									var_equal '@$hideGenre' 1 ? (get_text '`get_var $tandaCounter`/`get_var $tandaLength`') :
+									get_text '`get_genre & param_uppercase` `get_var $tandaCounter`/`get_var $tandaLength`')
+									)"/>
+
+				</textzone>
+				<!-- Track artist -->
+				<textzone group="horizontal" align="center" attachX="both" scroll="yes">
+					<pos x="-50" y="+125"/>
+					<size width="1920-300" height="160"/>
+					<text fontsize="56+56+12" color="darktext" weight="bold" action="get_artist_before_feat & param_uppercase"/>
+					<text fontsize="56+56+12" color="darktext" weight="regular" action="get_featuring_after_artist & param_uppercase"/>
+				</textzone>
+
+				<!-- Track title -->
+				<textzone group="horizontal" align="center" attachX="both" scroll="yes">
+					<pos x="-50" y="+250"/>
+					<size width="1920-400" height="160"/>
+					<text fontsize="56+56+12" color="orangetext" weight="bold" action="get_title_before_remix 'clean' & param_uppercase"/>
+				</textzone>
+				</group>
+			</group>
 		</deck>
 
 	</group>
