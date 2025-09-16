@@ -1059,13 +1059,6 @@
 				<off x="1120" y="0" condition="var_equal '@$colorscheme' 2"/>
 			</visual>
 						<!-- DROPZONE OFF BUTTON -->
-			<button visibility="deck 1 automix ? true : deck 2 automix ? true : false">
-				<pos x="+18" y="+2"/>
-				<size width="28" height="28"/>
-				<background color="#000000"/>
-				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
-				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
-			</button>
 			<group visibility="loaded">
 				<group name="turntable_coverart_off" visibility="var_equal '@$jogcoverart' 2 && not is_video 'active'">
 					<!--  vinyl  -->
@@ -1894,7 +1887,7 @@ ________________________________________________________________________________
 				<text dx="10" width="90" fontsize="14" weight="bold" color="textoff3" colorover="textover" align="left" 
 						localize="true" important="true"
 						action="setting 'automixMode' 'no mix' ? get_text 'NO MIX' : 
-						setting 'automixMode' 'skip silence' ? get_text 'SILIENCE' :
+						setting 'automixMode' 'skip silence' ? get_text 'SILENCE' :
 						setting 'automixMode' 'full songs' ? get_text 'FULL SONG' :
 						setting 'automixMode' 'radio' ? get_text 'RADIO' :
 						setting 'automixMode' 'smart' ? get_text 'NOT SMART' :
@@ -1931,7 +1924,8 @@ ________________________________________________________________________________
 			</menu>
 		</group>
 		<button class="button_master" 
-			textaction="automix_dualdeck ? get_text 'DUAL DECK ◉ ◉' : get_text 'SINGLE DECK ◉'" query="false"
+			textaction="automix_dualdeck ? get_text 'DUAL DECK ◉ ◉' : get_text 'SINGLE DECK ◉'" 
+			query="var_equal '$deckSafetyOff' 1 ? true : false"
 		textsize="14" x="+130+4" y="+33" height="30" width="125"
 		action="
 		set '$decksPaused' 1 &
@@ -1940,8 +1934,10 @@ ________________________________________________________________________________
 			(automix_dualdeck ? automix_dualdeck off :
 				((deck 1 play ? deck 2 load automix_song 1 : deck 1 load automix_song 1) & automix_dualdeck on)
 			) &
-				(var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)">
-			<tooltip>Set 'Single' or 'Dual Deck' automix mode.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix. </tooltip>
+				(var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)"
+		rightclick = "toggle '$deckSafetyOff'"		
+			>
+			<tooltip>Set 'Single' or 'Dual Deck' automix mode.\nRight click to disable deck safety. Button lights up when safety is off.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix.</tooltip>
 		</button>
 				<!-- MONO STEREO BUTTON -->
 		<button class="button_master" x="+130+4" y="+33+30+10" width="125" height="30"
@@ -2595,11 +2591,29 @@ ________________________________________________________________________________
 <panel name="deckleft" x="+0" y="100" width="764" height="389">
 	<deck deck="left">
 		<line x="+35+85+85+85+85+10-22" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight" />
-		<dropzone visibility="deck 1 automix ? false : deck 2 automix ? false : true">
+		<dropzone visibility="
+				var_equal '$deckSafetyOff' 1 ? true : 
+				deck 1 automix ? false : 
+				deck 2 automix ? automix_dualdeck ? false : true : true">
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
 		</dropzone>
-			<panel class="turntable" x="+440-50" y="+152" name="jogwheel_turntable"/>
+			<group name="turntable_area" x="+440-50" y="+152">
+			<panel class="turntable" x="+0" y="+0" name="jogwheel_turntable"/>
+			<button visibility="
+						var_equal '$deckSafetyOff' 1 ? false : 
+						deck 1 automix ? true : 
+							deck 2 automix ? 
+								automix_dualdeck ? true : false : 
+							false">
+				<pos x="+18" y="+2"/>
+				<size width="28" height="28"/>
+				<background color="#000000"/>
+				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
+				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
+			</button>
+			</group>
+
 		<!--  width="743" -->
 		<panel class="deckinfo" areawidth="170" left="+23+2" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+23+2" visibility="skin_width && param_smaller 1501"/>
@@ -2843,11 +2857,30 @@ ________________________________________________________________________________
 <panel name="deckright" x="1920-764" y="100" width="764" height="389">
 	<deck deck="right">
 		<line x="+764-35-85-85-85-85-35+5+30+25-8" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight"/>
-		<dropzone visibility="deck 1 automix ? false : deck 2 automix ? false : true">
+	
+		<dropzone visibility="
+			var_equal '$deckSafetyOff' 1 ? true : 
+				deck 2 automix ? false : 
+				deck 1 automix ? automix_dualdeck ? false : true : true">
 			<pos x="+0" y="+0"/>
 			<size width="764" height="389"/>
 		</dropzone>
-				<panel class="turntable" x="+10+92+50" y="+152" name="jogwheel_turntable"/>
+
+		<group name="turntable_area" x="+10+92+50" y="+152">
+			<panel class="turntable" x="+0" y="+0" name="jogwheel_turntable"/>
+			<button visibility="
+						var_equal '$deckSafetyOff' 1 ? false : 
+						deck 2 automix ? true : 
+							deck 1 automix ? 
+								automix_dualdeck ? true : false : 
+							false">
+				<pos x="+18" y="+2"/>
+				<size width="28" height="28"/>
+				<background color="#000000"/>
+				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
+				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
+			</button>
+			</group>
 
 		<panel class="deckinfo" areawidth="170" left="+0" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+0" visibility="skin_width && param_smaller 1501"/>
