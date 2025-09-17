@@ -25,11 +25,11 @@ The simplest way to download TigerTango is directly from Virtual DJ. If you want
 7.  Select the TigerTango Skin (should now appear as an option)
 
 You should be all set! (See screen shots for step by step)
-![alt text](<Selecting Skin.png>)
+![alt text](<docs/images/Selecting Skin.png>)
 
-![alt text](<Clicking Install.png>)
+![alt text](<docs/images/Clicking Install.png>)
 
-![alt text](LoadingTheSkin.png)
+![alt text](docs/images/LoadingTheSkin.png)
 ### Loading from GitHub
 
 To load the development version:
@@ -42,7 +42,7 @@ To load the development version:
 > You can get the path to the virtual DJ skins by going to settings in Virtual DJ, moving to the interface tab, and clicing 'Edit This Skin' in the bottom right. **Go one up from this folder!!! This is where you want to place the TigerTango folder you downloaded.**
 6. Move this folder into where VirtualDJ saves skins (See note above). On Windows this is likely C:\Users\<USERNAME>\AppData\Local\VirtualDJ\Skins.
 
-![alt text](<Installing Development Branch.png>)
+![alt text](<docs/images/Installing Development Branch.png>)
 
 Once you have installed the TigerTango interface, you can open it as follows:
 1. Click settings (gear image in upper right).

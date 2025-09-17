@@ -80,21 +80,9 @@ Special thank you to **Jacqueline Pham** for your patience and for being willing
 
 And thank you to you for taking the time to try out this tool and for your part in growing and supporting this community of dancers that we all love.
 
+## Go to Installation Step ➡️ [Installation](docs/sections/Installation.md)
+
 <!-- 
-* 
-* Loading the TigerTango Skin (Current recommendation is to use the version on GitHub)
-* Installing third party plugins such as EQs
-* Description of the layout and use of TigerTango
-
-
-
-> [!NOTE]
->  TigerTango is currently in its first version. 
-
- I would love to hear from you!
-
-
-
 ## Initializing Changes Made by TigerTango and Recommended Settings
 TigerTango makes a number of changes to settings when opened. This helps reduce the chance for errors and improves functionality.
 >[!IMPORTANT]
@@ -448,8 +436,8 @@ This section walks through how you could use TigerTango for DJing.
 
 ## Providing Feedback
 Please consider this version of TigerTango as an initial stable release. I have tried my best to make it a tool that is useful and valuable to Tango DJs and other social dances, but I am sure there are additional steps to make it more useful and robust.
-
+<!--  -->
 If you run into any issues, or have any thoughts, suggestions, or requests for improvements, I would love to hear from you. I would also love to hear if you find this tool useful.
 
 > [!NOTE]
->  You can reach me at sericson0@gmail.com or can post on github at https://github.com/sericson0/TigerTango -->
+>  You can reach me at sericson0@gmail.com or can post on github at https://github.com/sericson0/TigerTango --> -->
