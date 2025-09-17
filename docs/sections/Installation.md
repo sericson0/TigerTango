@@ -63,3 +63,6 @@ You can load the TigerTango Video skin using the following steps.
 4. You can now close settings.
 
 When you display video it should now use the TigerTangoVideo interface.
+
+
+## Go to Setting Up Plugins ➡️ [Plugins](docs/sections/Plugins.md)
