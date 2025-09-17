@@ -4,8 +4,14 @@ By: Sean Ericson (Sericson0@gmail.com)
 
 A good Tango DJ can enables dancers to find that magical flow and connection we all crave. The art of picking the perfect tandas requires untold hours of study and practice. And nothing kills the magic you are working so hard to create like technical issues. Your DJ software should enable your creativity and not be a hindrance to the flow you are striving so hard to create. This is why I created the TigerTango skin for Virtual DJ. It provides a layout custom suited for the needs of and requirements of tango DJs and other social dances.
 
-This guide discusses how to to get set for DJing tango music with virtual DJ. It walks through the following:
-* Installing Virtual DJ (Required for TigerTango)
+This guide discusses how to to get set for DJing tango music with virtual DJ and TigerTango. It walks through the following:
+- [Introduction to TigerTango](docs/sections/Introduction.md)
+- [Installing Virtual DJ and TigerTango](docs/sections/Installation.md)
+- [Setting up Third Party Plugins](docs/sections/Plugins.md)
+- [Walkthough of TigerTango](docs/sections/Walkthrough.md)
+- [Troubleshooting and Common Questions](docs/sections/Troubleshooting.md)
+<!-- 
+* 
 * Loading the TigerTango Skin (Current recommendation is to use the version on GitHub)
 * Installing third party plugins such as EQs
 * Description of the layout and use of TigerTango
@@ -473,4 +479,4 @@ Please consider this version of TigerTango as an initial stable release. I have 
 If you run into any issues, or have any thoughts, suggestions, or requests for improvements, I would love to hear from you. I would also love to hear if you find this tool useful.
 
 > [!NOTE]
->  You can reach me at sericson0@gmail.com or can post on github at https://github.com/sericson0/TigerTango
+>  You can reach me at sericson0@gmail.com or can post on github at https://github.com/sericson0/TigerTango -->
