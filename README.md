@@ -29,8 +29,9 @@ TigerTango is a customized Virtual DJ skin that is specifically designed for the
 
 This guide discusses how to to get set for DJing tango music with virtual DJ and TigerTango
 - [Installing Virtual DJ and TigerTango](docs/sections/Installation.md)
-- [Setting up Third Party Plugins](docs/sections/Plugins.md)
+- [Recommended Settings](docs/sections/Configuring.md)
 - [Walkthough of TigerTango](docs/sections/Walkthrough.md)
+- [Setting up Third Party Plugins](docs/sections/Plugins.md)
 - [Troubleshooting and Common Questions](docs/sections/Troubleshooting.md)
 
 ## Why is it called TigerTango? 
@@ -94,24 +95,6 @@ If you are DJing for a show and want to turn background notifications off then c
 
 ## Installing Plugins
 
-Tango DJs and Club DJs are opposites: *Club DJs play high quality recordings of low quality music while tango DJs play low quality recordings of high quality music* ;-) Jokes aside, what club DJs do is mix and modify parts of songs to enhance the energy and flow in the room, whereas when tango DJs modify a song it is primarily to remove artifacts such as hiss or add lost frequencies such as bass frequencies to bring out to enhance the sound quality of the recording. This is why different tools are required.
-
-Enhancing the sound quality of older recordings can be done with EQing. While there is a 3-band EQ built into the TigerTango skin, more advanced EQ plugins can be installed.
-
-Here I show how to install *TDR NOVA*, a powerful and free parametric EQ by Tokyo Dawn Records.
-
-1) Go to https://www.tokyodawn.net/tdr-nova/ and select the correct installer for your computer
-2) Run the installer on your computer
-3) Accept the license agreement and click through next on each popup.
-4) Open Virtual DJ options, search **vstFxFolder**, and set to where your VST3 files save to. On Windows this is "C:\Program Files\Common Files\VST3"
-5) Close and restart Virtual DJ
-
-* Tokyo Dawn has some additional nice free and paid plugins.
-* https://analogobsession.com/ hvas a number of free analog emulations that are worth checking out
-* Voxengo has a free 16 band graphic equalizer https://www.voxengo.com/product/marvelgeq/
-* Toneboosters has a free audio spectrogram for those interested in visualizing the music https://www.toneboosters.com/tb_spectrogram_v1.html
-
-* You can also connect any VST3 plugin into Virtual DJ.
 
 ## Using TigerTango
 
