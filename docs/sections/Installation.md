@@ -65,4 +65,4 @@ You can load the TigerTango Video skin using the following steps.
 When you display video it should now use the TigerTangoVideo interface.
 
 
-## Configuring Virtual DJ with Recommended Settings ➡️ [Recommended Settings](docs/sections/RecommendedSettings.md)
+## Next Section ➡️ [Recommended Settings](docs/sections/RecommendedSettings.md)

@@ -150,7 +150,8 @@ The square below the headphones sets prefade listen. It will light up when activ
 ### EQ and Pitch
 TigerTango has a 3-band semiparametric EQ. The first row of knobs sets the level for the, low, mid, and high bands.
 
-> [!NOTE] The Virtual DJ EQ levels do not map directly to decibel changes. The lower righthand button allows you to switch between the "default" and "full kill" which cuts both wider and deeper. 
+> [!NOTE] 
+> The Virtual DJ EQ levels do not map directly to decibel changes. The lower righthand button allows you to switch between the "default" and "full kill" which cuts both wider and deeper. 
  
 The reset button at the bottom left resets all equalizer values ot 0 dB along with resetting the pitch.  
 
@@ -198,7 +199,7 @@ The STEREO/MONO button toggles between playing out to stereo, and summing left a
 ## Master Area
 ![](../images/MasterArea.png)
 The Master section Has four components:
-1. **Master Video** Here you can add video effects such as projecting the song album art or title to an external monitor. See the [Video Skin](#video-skin) section later in this document for details.
+1. **Master Video** Here you can add video effects such as projecting the song album art or title to an external monitor. See the [Video Skin](VideoDisplay.md) section later in this document for details.
 2. **Master Effects** There are 5 effects slots where you can add plugins such as compressors, limiters, saturation, or EQ. (The toolbox has 2 additional plugin spots). Virtual DJ can integrate with any VST-based plugin. You can add VST plugins by placing them in the Virtual DJ vstFxFolder path (search vstFxFolder in the Virtual DJ options).
 >[!NOTE]
 >To use a plugin:
@@ -240,3 +241,5 @@ The Windows dropdown menue allows you to open additional window panels. The foll
 * **INFO** Opens and expandable info panel. Useful for metadata work.
 
 The DOCS button opens a window pointing to Virtual DJ and TigerTango documentation (the GitHub where this document resides).
+
+## Next Section ➡️ [Video Display](docs/sections/VideoDisplay.md)
