@@ -4,6 +4,7 @@ To get to playing music, we follow the steps of:
   - [Configuring Audio](#configuring-audio)
   - [Warnings and Settings](#warnings-and-settings)
   - [Playing Music](#playing-music)
+  - [Next Section ➡️ TigerTango Layout](#next-section-️-tigertango-layout)
 
 ## Configuring Audio
 For Virtual DJ to work correctly, you need to configure your audio to play how you want it.
@@ -43,3 +44,7 @@ There are two ways of loading a song in TigerTango.
 
 >[!WARNING]
 >There are some nuances to using the virtual DJ automix that are worth reading about. Please Read the [Staging Area Section](Layout.md/#staging-area) to get familiar with the specifics of Virtual DJ automix. 
+
+
+
+## Next Section ➡️ [TigerTango Layout](docs/sections/Layout.md)
