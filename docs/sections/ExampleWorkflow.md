@@ -32,4 +32,4 @@ This section walks through how you could use TigerTango for DJing.
 * Open the automix in the side view panel, click the settings button, and clear the automix so you have a clean slate for your next set.
 * Tell your other DJ friends about TigerTango ;-) 
 
-## Next Section ➡️ [Troubleshooting](docs/sections/Troubleshooting.md)
+## Next Section ➡️ [Troubleshooting](Troubleshooting.md)
