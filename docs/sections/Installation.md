@@ -98,4 +98,4 @@ The following steps walk through an example of how to install *TDR NOVA*, a powe
 > You can also connect any VST3 plugin into Virtual DJ. This can be useful if you use something like an Apollo interface and want to have their plugins available in your DJ interface. 
 
 
-## Next Section ➡️ [Getting Started](docs/sections/GettingStarted.md)
+## Next Section ➡️ [Getting Started](GettingStarted.md)

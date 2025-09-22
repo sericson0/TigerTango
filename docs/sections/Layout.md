@@ -242,4 +242,4 @@ The Windows dropdown menue allows you to open additional window panels. The foll
 
 The DOCS button opens a window pointing to Virtual DJ and TigerTango documentation (the GitHub where this document resides).
 
-## Next Section ➡️ [Video Display](docs/sections/VideoDisplay.md)
+## Next Section ➡️ [Video Display](VideoDisplay.md)

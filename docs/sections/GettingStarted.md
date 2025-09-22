@@ -47,4 +47,4 @@ There are two ways of loading a song in TigerTango.
 
 
 
-## Next Section ➡️ [TigerTango Layout](docs/sections/Layout.md)
+## Next Section ➡️ [TigerTango Layout](Layout.md)

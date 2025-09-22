@@ -124,3 +124,5 @@ This logo should now display to the video skin.
 
 > [!NOTE] 
 > If you want to remove the logo or use a new custom logo, then just replace the Logo.png file with the previously saved copy. 
+
+## Next Section ➡️ [Example Workflow](ExampleWorkflow.md)
