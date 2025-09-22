@@ -98,14 +98,4 @@ Special thank you to **Jacqueline Pham** for your patience and for being willing
 
 And thank you to you for taking the time to try out this tool and for your part in growing and supporting this community of dancers that we all love.
 
-## Go to Installation Step ➡️ [Installation](docs/sections/Installation.md)
-
-
-
-
-
-
-> [!NOTE]
->  You can reach me at sericson0@gmail.com or can post on github at https://github.com/sericson0/TigerTango
-
 ## Next Section ➡️ [Installation](docs/sections/Installation.md)
