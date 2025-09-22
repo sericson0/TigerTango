@@ -694,7 +694,7 @@
 			</button>
 		</define>
 
-		<define class="eq_freq_fader_low">
+		<define class="eq_sweep_low">
 				<slider class="eq_freq_knob" x="+0" y="+0" action="set '@$low_freq_var' & get_var '@$low_freq_var' & param_multiply 160 &
 				param_add 80 & param_limit 80 240 & param_cast 'integer' & setting 'equalizerLowFrequency'"
 				rightclick = "set '@$low_freq_var' 0.5 & setting 'equalizerLowFrequency' 160">
@@ -705,12 +705,28 @@
 				<size width="48" height="25"/>
 				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
 				<text fontsize="12" color="textdark" align="center" weight=""
-				action="get_text '`setting equalizerLowFrequency & param_cast integer` Hz'" important="true"
-				rightclick = "set '@$low_freq_var' 0.5 & setting 'equalizerLowFrequency' 160"/>
+				action="get_text '`setting equalizerLowFrequency & param_cast integer` Hz'" important="true"/>
 				<tooltip>Low frequency center</tooltip>
 			</button>
+
+			<button class="button_main" 
+				action="down ? repeat_start_instant 'eqLowDown' 200ms & 
+				setting 'equalizerLowFrequency' `setting 'equalizerLowFrequency' & param_add -1` & 
+				set '@$low_freq_var' `get_var '@$low_freq_var' & param_add -0.00625`: repeat_stop 'eqLowDown' "
+				x="+0" y="+50+27" width="22" height="17" text="−">
+				<tooltip>Decrement Low Frequency Center.</tooltip>
+			</button>
+
+			<button class="button_main" 
+				action="down ? repeat_start_instant 'eqLowDown' 200ms & 
+				setting 'equalizerLowFrequency' `setting 'equalizerLowFrequency' & param_add 1` & 
+				set '@$low_freq_var' `get_var '@$low_freq_var' & param_add 0.00625`: repeat_stop 'eqLowDown' "
+				x="+26" y="+50+27" width="22" height="17" text="+">
+				<tooltip>Increment Low Frequency Center.\nUse knob for large adjustments and\nbuttons for fine tuning</tooltip>
+			</button>
 		</define>
-		<define class="eq_freq_fader_mid">
+
+		<define class="eq_sweep_mid">
 			<slider class="eq_freq_knob" angmin="-40" angmax="160" x="+0" y="+0" action="set '@$mid_freq_var' & get_var '@$mid_freq_var' & param_multiply 2500 &
 					param_add 500 & param_limit 500 3000 & param_cast 'integer' & setting 'equalizerMidFrequency'"
 					rightclick = "set '@$mid_freq_var' 0.2 & setting 'equalizerMidFrequency' 1000" >
@@ -725,6 +741,29 @@
 					   rightclick = "set '@$mid_freq_var' 0.2 & setting 'equalizerMidFrequency' 1000" />
 					   <tooltip>Mid frequency center.</tooltip>
 			</button>
+
+			<button class="button_main" 
+				action="down ? repeat_start_instant 'eqMidDown' 150ms & 
+				setting 'equalizerMidFrequency' `setting 'equalizerMidFrequency' & param_add -10` & 
+				set '@$mid_freq_var' `get_var '@$mid_freq_var' & param_add -0.004`: repeat_stop 'eqMidDown' "
+				rightclick="down ? repeat_start_instant 'eqMidDown' 200ms & 
+				setting 'equalizerMidFrequency' `setting 'equalizerMidFrequency' & param_add -1` & 
+				set '@$mid_freq_var' `get_var '@$mid_freq_var' & param_add -0.0004`: repeat_stop 'eqMidDown' "
+				x="+0" y="+50+27" width="22" height="17" text="−">
+				<tooltip>Decrement Mid Frequency Center by 10.\nRight click to decrement by 1</tooltip>
+			</button>
+
+			<button class="button_main" 
+				action="down ? repeat_start_instant 'eqMidDown' 150ms & 
+				setting 'equalizerMidFrequency' `setting 'equalizerMidFrequency' & param_add 10` & 
+				set '@$mid_freq_var' `get_var '@$mid_freq_var' & param_add 0.004`: repeat_stop 'eqMidDown' "
+				rightclick="down ? repeat_start_instant 'eqMidDown' 200ms & 
+				setting 'equalizerMidFrequency' `setting 'equalizerMidFrequency' & param_add 1` & 
+				set '@$mid_freq_var' `get_var '@$mid_freq_var' & param_add 0.0004`: repeat_stop 'eqMidDown' "
+				x="+26" y="+50+27" width="22" height="17" text="+">
+				<tooltip>Increment Mid Frequency Center by 10.\nRight click to increment by 1</tooltip>
+			</button>
+
 		</define>
 		<define class="eq_freq_fader_high">
 			<slider class="eq_freq_knob" angmin="-150" angmax="50" x="+0" y="+0" action="set '@$high_freq_var' & get_var '@$high_freq_var' & param_multiply 6000 &
@@ -741,6 +780,28 @@
 				rightclick = "set '@$high_freq_var' 0.75 & setting 'equalizerHighFrequency' 8500"/>
 				<tooltip>High frequency center </tooltip>
 			</button>
+			<button class="button_main" 
+				action="down ? repeat_start_instant 'eqHighDown' 200ms & 
+				setting 'equalizerHighFrequency' `setting 'equalizerHighFrequency' & param_add -100` & 
+				set '@$high_freq_var' `get_var '@$high_freq_var' & param_add -0.01666667`: repeat_stop 'eqHighDown' "
+				rightclick="down ? repeat_start_instant 'eqHighDown' 200ms & 
+				setting 'equalizerHighFrequency' `setting 'equalizerHighFrequency' & param_add -10` & 
+				set '@$high_freq_var' `get_var '@$high_freq_var' & param_add -0.001666667`: repeat_stop 'eqHighDown' "
+				x="+0" y="+50+27" width="22" height="17" text="−">
+				<tooltip>Decrement High Frequency Center by 100.\nRight click to decrement by 10</tooltip>
+			</button>
+
+			<button class="button_main" 
+				action="down ? repeat_start_instant 'eqHighDown' 200ms & 
+				setting 'equalizerHighFrequency' `setting 'equalizerHighFrequency' & param_add 100` & 
+				set '@$high_freq_var' `get_var '@$high_freq_var' & param_add 0.01666667`: repeat_stop 'eqHighDown' "
+				rightclick="down ? repeat_start_instant 'eqHighDown' 200ms & 
+				setting 'equalizerHighFrequency' `setting 'equalizerHighFrequency' & param_add 10` & 
+				set '@$high_freq_var' `get_var '@$high_freq_var' & param_add 0.001666667`: repeat_stop 'eqHighDown' "
+				x="+26" y="+50+27" width="22" height="17" text="+">
+				<tooltip>Increment High Frequency Center by 100.\nRight click to increment by 10</tooltip>
+			</button>
+
 		</define>
 
 		<define class="spectrum_line" placeholders="xpos, source">
@@ -2692,12 +2753,13 @@ ________________________________________________________________________________
 
 			<group name="eq" x="+15" y="+0">
 				<panel class="eq_knob_low" x="+0" y="+0"/>
-				<panel class="eq_freq_fader_low" x="+0" y="+90" />
 				<panel class="eq_knob_mid" x="+64" y="+0"/>
-				<panel class="eq_freq_fader_mid" x="+64" y="+90" />
 				<panel class="eq_knob_high" x="+64+64" y="+0"/>
-				<panel class="eq_freq_fader_high" x="+64+64" y="+90" />
-
+			</group>
+			<group name="sweeps" x="+15" y="+82">
+				<panel class="eq_sweep_low" x="+0" y="+0" />
+				<panel class="eq_sweep_mid" x="+64" y="+0" />
+				<panel class="eq_freq_fader_high" x="+64+64" y="+0" />
 			</group>
 
 			<group name="pitch" x="+64+64+64+64+5-35" y="+0">
@@ -3003,11 +3065,13 @@ ________________________________________________________________________________
 
 			<group name="eq" x="+15+64+64" y="+0">
 				<panel class="eq_knob_low" x="+0" y="+0"/>
-				<panel class="eq_freq_fader_low" x="+0" y="+100" />
 				<panel class="eq_knob_mid" x="+64" y="+0"/>
-				<panel class="eq_freq_fader_mid" x="+64" y="+100" />
 				<panel class="eq_knob_high" x="+64+64" y="+0"/>
-				<panel class="eq_freq_fader_high" x="+64+64" y="+100" />
+			</group>
+			<group name="sweeps" x="+15+64+65" y="+85">
+				<panel class="eq_sweep_low" x="+0" y="+0" />
+				<panel class="eq_sweep_mid" x="+64" y="+0" />
+				<panel class="eq_freq_fader_high" x="+64+64" y="+0" />
 			</group>
 
 	</group>
