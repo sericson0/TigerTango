@@ -567,77 +567,8 @@
 			</slider>
 		</define>
 
-		<define class="eq_fader_low">
-			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
-				<text text="LOW" color = "textdark" align = "center"/>
-			</textzone>
-			<visual x="+0" y="+0">
-				<size width="52" height="177"/>
-				<off color="faderbackground" shape="square" border="bordercolor" border_size="1" radius="5" />
-			</visual>
-			<panel class="pitch_lines" x="+11" y="+7+10+4"/>
-			<slider action="eq_low" orientation="vertical" dblclick="eq_low 50%" rightclick="eq_low 0% ? eq_low 50% : eq_low 0%" frommiddle="true">
-			<pos x="+26-3" y="+7"/>
-				<size width="6" height="177-14"/>
-				<off height="-14" color="faderinoff" shape="square" border="bordercolor2" border_size="1" radius="3"/>
-				<on height="-14" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
-				<mouserect x="-20" y="+0" width="40" height="177-14"/>
-				<fader>
-					<size width="40" height="21"/>
-					<off x="236" y="266" condition="var_not_equal '@$colorscheme' 2"/>
-					<off x="292" y="344" condition="var_equal '@$colorscheme' 2"/>
-				</fader>
-			</slider>
-		</define>
-
-		<define class="eq_fader_mid">
-			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
-				<text text="Mid" color = "textdark" align = "center"/>
-			</textzone>
-			<visual x="+0" y="+0">
-				<size width="52" height="177"/>
-				<off color="faderbackground" shape="square" border="bordercolor" border_size="1" radius="5" />
-			</visual>
-			<panel class="pitch_lines" x="+11" y="+7+10+4"/>
-			<slider action="eq_mid" orientation="vertical" dblclick="eq_mid 50%" rightclick="eq_mid 0% ? eq_mid 50% : eq_mid 0%" frommiddle="true">
-			<pos x="+26-3" y="+7"/>
-				<size width="6" height="177-14"/>
-				<off height="-14" color="faderinoff" shape="square" border="bordercolor2" border_size="1" radius="3"/>
-				<on height="-14" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
-				<mouserect x="-20" y="+0" width="40" height="177-14"/>
-				<fader>
-					<size width="40" height="21"/>
-					<off x="236" y="266" condition="var_not_equal '@$colorscheme' 2"/>
-					<off x="292" y="344" condition="var_equal '@$colorscheme' 2"/>
-				</fader>
-			</slider>
-		</define>
-
-		<define class="eq_fader_high">
-			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
-				<text text="HIGH" color = "textdark" align = "center"/>
-			</textzone>
-			<visual x="+0" y="+0">
-				<size width="52" height="177"/>
-				<off color="faderbackground" shape="square" border="bordercolor" border_size="1" radius="5" />
-			</visual>
-			<panel class="pitch_lines" x="+11" y="+7+10+4"/>
-			<slider action="eq_high" orientation="vertical" dblclick="eq_high 50%" rightclick="eq_high 0% ? eq_high 50% : eq_high 0%" frommiddle="true">
-			<pos x="+26-3" y="+7"/>
-				<size width="6" height="177-14"/>
-				<off height="-14" color="faderinoff" shape="square" border="bordercolor2" border_size="1" radius="3"/>
-				<on height="-14" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
-				<mouserect x="-20" y="+0" width="40" height="177-14"/>
-				<fader>
-					<size width="40" height="21"/>
-					<off x="236" y="266" condition="var_not_equal '@$colorscheme' 2"/>
-					<off x="292" y="344" condition="var_equal '@$colorscheme' 2"/>
-				</fader>
-			</slider>
-		</define>
-
 		<define class="eq_knob_low">
-			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+			<textzone x="+0" y="-25" width="52" height="20" textsize="20" visibility="not browser_zoom">
 				<text text="LOW" color = "textdark" align = "center"/>
 			</textzone>
 			<panel class="knob" x="+0" y="+0">
@@ -656,7 +587,7 @@
 			</button>
 		</define>
 		<define class="eq_knob_mid">
-			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+			<textzone x="+0" y="-25" width="52" height="20" textsize="20" visibility="not browser_zoom">
 				<text text="MID" color = "textdark" align = "center"/>
 			</textzone>
 			<panel class="knob" x="+0" y="+0">
@@ -675,7 +606,7 @@
 			</button>
 		</define>
 		<define class="eq_knob_high">
-			<textzone x="+0" y="-25" width="52" height="20" textsize="20">
+			<textzone x="+0" y="-25" width="52" height="20" textsize="20" visibility="not browser_zoom">
 				<text text="HIGH" color = "textdark" align = "center"/>
 			</textzone>
 			<panel class="knob" x="+0" y="+0">
@@ -1851,7 +1782,7 @@ ________________________________________________________________________________
 	End of Windows. Start of main skin
 ______________________________________________________________________________________
 -->
-<line name="browser_top"  x="641" y="202" width="639" height="8" color="bordercolor" />
+<!-- <line name="browser_top"  x="641" y="202" width="639" height="4" color="bordercolor" /> -->
 <group name="grabzones">
 	<grabzone>
 		<pos x="0" y="0"/>
@@ -2102,6 +2033,12 @@ ________________________________________________________________________________
 	<button class="button_master" action="show_window 'documentation'" query="show_window 'documentation'"
 		x="+0" y="+90" width="50" height="25" text="DOCS" textsize="14"> 
 		<tootltip>Click to open Documentation.\nTigerTango Docs can be found at https://github.com/sericson0/TigerTango</tootltip>
+	</button>
+	<!-- <button class="button_master" action="browser_zoom" x="+60" y="+75" width="40" height="40" sysicon="browser_zoom" iconsize="40"> 
+		<tootltip>Expand Browser</tootltip>
+	</button> -->
+	<button class="button_master" action="browser_zoom" x="+60" y="+75-15-2" width="57" height="57" sysicon="browser_zoom" iconsize="50"> 
+		<tootltip>Expand Browser</tootltip>
 	</button>
 	</group>
 
@@ -2409,7 +2346,7 @@ ________________________________________________________________________________
 				<off shape="square" color="display" border_size="1" border="bordercolor"/>
 			</visual>
 			<visual>
-				<pos x="+169-120-15" y="+5"/>
+				<pos x="+35" y="+1"/>
 				<size width="41" height="41"/>
 				<off x="236" y="327" />
 			</visual>
@@ -2689,7 +2626,9 @@ ________________________________________________________________________________
 	</group>
 </define>
 
-<panel name="deckleft" x="+0" y="100" width="764" height="389">
+
+<!-- Left Deck when browser is not expanded -->
+<panel name="deckleft_not_zoomed" x="+0" y="100" width="764" height="389" visibility="not browser_zoom">
 	<deck deck="left">
 		<line x="+35+85+85+85+85+10-22" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight" />
 		<dropzone visibility="
@@ -2706,12 +2645,15 @@ ________________________________________________________________________________
 						deck 1 automix ? true : 
 							deck 2 automix ? 
 								automix_dualdeck ? true : false : 
-							false">
+							false"
+					action = "nothing"
+					rightclick = "toggle 'deckSafetyOff'"	
+							>
 				<pos x="+18" y="+2"/>
 				<size width="28" height="28"/>
 				<background color="#000000"/>
 				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
-				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
+				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\nRight click Single/Double Deck button to disable safety.</tooltip>
 			</button>
 			</group>
 
@@ -2956,7 +2898,223 @@ ________________________________________________________________________________
 		</group>
 </deck>
 </panel>
-<panel name="deckright" x="1920-764" y="100" width="764" height="389">
+<!-- Left Deck when browser is expanded -->
+<panel name="deckleft_zoomed" x="+0" y="100" width="764" height="389" visibility="browser_zoom">
+	<deck deck="left">
+		<dropzone visibility="
+				var_equal '$deckSafetyOff' 1 ? true : 
+				deck 1 automix ? false : 
+				deck 2 automix ? automix_dualdeck ? false : true : true">
+			<pos x="+0" y="+0"/>
+			<size width="764" height="389"/>
+		</dropzone>
+		<panel class="deckinfo" areawidth="170" left="+23+2" visibility="skin_width && param_bigger 1500"/>
+		<panel class="deckinfo" areawidth="190" left="+23+2" visibility="skin_width && param_smaller 1501"/>
+
+		<group name="eq_pitch_volume" x="+5" y="+175-25">
+
+			<group name="eq" x="+15" y="+0">
+				<panel class="eq_knob_low" x="+0" y="+0"/>
+				<panel class="eq_knob_mid" x="+64" y="+0"/>
+				<panel class="eq_knob_high" x="+64+64" y="+0"/>
+			</group>
+			<group name="sweeps" x="+15" y="+82">
+				<panel class="eq_sweep_low" x="+0" y="+0" />
+				<panel class="eq_sweep_mid" x="+64" y="+0" />
+				<panel class="eq_freq_fader_high" x="+64+64" y="+0" />
+			</group>
+
+			<group name="pitch" x="+64+64+64+64+5-35+5" y="+0">
+				<!-- <textzone x = "+0" y="-25" width="52" height="20" textsize="20">
+					<text text="PITCH" color = "textdark" align = "center"/>
+				</textzone> -->
+				<panel class="pitch_fader" x="+0" y="+0"/>
+				<button class="pitchreset_button" x="-18" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
+			</group>
+			<group name="volume_and_headphones" x="+64+64+64+64+64-28+15" y="+0">
+
+				<!-- <textzone x="+0" y="-25" width="52" height="20" textsize="20">
+					<text text="VOL" color = "textdark" align = "center"/>
+				</textzone> -->
+			<panel class="volume_fader" x="+0" y="+0"/>
+
+			<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
+			action="deck 1 play ?
+			deck 1 level 0% ?
+			deck 1 stop & deck 1 goto_start & repeat_start WaitTimer 100ms 1 & deck 1 level 100% :
+			nothing :
+			deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
+			query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
+			<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
+			</tooltip>
+		</button>
+
+	</group>
+	</group>
+		<panel class="fxdrop"  x="+375+10" y="+300-5" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
+		<button class="button_main" visibility="
+					deck 1 automix ? true : 
+						deck 2 automix ? 
+							automix_dualdeck ? true : false : false" 
+			query="var_equal '$deckSafetyOff' 0"
+			action="nothing"
+			rightclick="toggle '$deckSafetyOff'" x="+375+195" y="+290" 
+			width="40" height="30" textsize="22" text="⊘">
+			<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\Right click to disable safety</tooltip>
+		</button>
+		<group name="play_button_positions" x="+375+10" y="+175-25">
+				<button class="button_main"
+					x="+0" y="+0" width="64" height="35"
+					text="ADD" textsize="16"
+					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
+			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+			</button>
+			<group visibility="var '$addMsg' 1" x="+0" y="+0">
+			<visual>
+				<pos  x="+0" y="+0"/>
+				<size width="64" height="35"/>
+				<off color="#555555" radius="6"/>
+			</visual>
+			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			</group>
+			<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
+					action="deck 1 play ? play_pause:
+							deck 1 level 0 ? deck 1 play_pause:
+							deck 2 level 0 ? deck 1 play_pause:
+							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
+
+
+			<button class="button_main" text="AUTO" width="64" height="35" x="+33+40+85" y="+0" textsize = "16"
+					action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
+							automix_dualdeck ? (
+								deck 2 play ? (deck 1 unload & deck 2 automix_load & automix on) :
+								( (deck 1 loaded ? deck 1 automix_load : deck 1 load automix_song 1)
+								 	& deck 2 unload & deck 1 play & automix on)
+							): (
+								deck 2 play ? deck 2 automix_load & automix on :
+								(deck 1 loaded ? deck 1 automix_load : automix on & automix off & deck 1 automix_load)
+									& deck 1 play & automix on)
+								 "
+							query="deck 1 automix ? true : deck 2 automix ? true : false">
+				<tooltip>Toggle auto playback (Automix).</tooltip>
+			</button>
+			<!-- _________ROW 2 ______________ -->
+
+			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+35+10+5" textsize = "16"
+				action="
+				set 'fadeIndicator' 1 & 
+					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+					var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+					var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & level -1% & level 0 ? repeat_stop 'levelSweep' & 
+					stop & repeat_start WaitTimer 100ms 1 & level 100% & set 'fadeIndicator' 0"
+				query = "var_equal 'fadeIndicator' 1 ? true : false">
+			<tooltip>Fade out song. Uses set fade duration.</tooltip>
+			</button>
+
+			<!-- Button implements the following logic (in a super annoying way ;-)
+			 	0. Give single deck automix warning window if not in dualdeck mode (button only works in dual deck)
+			 	1. Checks if deck 1 is playing (if not then don't auto fade)
+				2. Gets current automix mode
+				3. Sets automis mode to 'no mix' (required for button to work)
+				4. Fades song, changes to deck 2, and starts playing on that deck
+				5. Loads next song in automix list and waits .3 seconds (wait seems to help automix logic work correctly)
+				6. Change automix mode back to original settings (only implemented no mix, skip silence, and full songs)
+			-->
+				<!--  show_window 'single_deck_automix_warning': -->
+
+
+			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+35+10+5" textsize = "16"
+			action="
+				(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+				 var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
+				deck 1 play ? deck 1 level 0% ? nothing :
+				(
+
+				set '$fadeIndicator1' 1 &
+					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
+					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+					(setting 'automixMode' 'radio'        ? set '$autoType' 3 : nothing) &
+					setting 'automixMode' 'no mix' &
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & deck 1 level -1% & deck 1 level 0 ? repeat_stop 'levelSweep' &
+				repeat_start 'WaitTimer' 1800ms 1 &
+				(not automix_dualdeck ?
+					(deck 2 automix off & deck 1 automix on & automix_skip & repeat_start 'WaitTimer' 200ms 1 & deck 1 level 100%):
+				(deck 1 stop & repeat_start 'WaitTimer' 200ms 1 & deck 1 level 100% & deck 2 play & automix on & deck 1 load automix_song 1)
+				) &
+				set '$fadeIndicator1' 0 & repeat_start 'WaitToSwitch' 300ms 1 &
+				( var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence':
+				  var_equal '$autoType' 2 ? setting 'automixMode' 'full songs' :
+				  var_equal '$autoType' 3 ? setting 'automixMode' 'radio' : nothing)
+			): nothing"
+			query="var_equal '$fadeIndicator1' 1">
+
+
+			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
+			
+			</button>
+			<button class="button_main" width="35" height="35" x="+80+105+2" y="+35+10+5" textsize = "16"
+			action="cycle '@$fadeLength' 4" 
+			textaction="var_equal '@$fadeLength' 0 ? get_text '3s' : 
+														var_equal '@$fadeLength' 1 ? get_text '5s' : 
+														var_equal '@$fadeLength' 2 ? get_text '7s' : 
+														get_text '9s'" >
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
+			</button>
+			
+			<!-- _________ROW 3 ______________ -->
+			 <!-- Add 3 cue slots -->
+			 <button class="button_main_radial" x="+0" y="+35+10+35+10+10" width="64" height="30" textsize="14"
+			 action="not deck 1 hot_cue 1 ? deck 1 hot_cue 1 :
+			 not deck 2 play ? deck 1 hot_cue 1 :
+			 deck 2 level 0% ? deck 1 hot_cue 1 :
+			 deck 1 level 0% ? deck 1 hot_cue 1 : nothing"
+			 rightclick="deck 1 delete_cue 1"
+			 textaction="deck 1 hot_cue 1 ? cue_name 1 : ''"
+			 query="not deck 1 loaded ? false : not deck 1 hot_cue 1 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
+			 <tooltip>Set Hot Cue.\nRight click to disable Hot Cue.</tooltip>
+			</button>
+			<button class="button_main_radial" x="+80" y="+35+10+35+10+10" width="64" height="30" textsize="14"
+			action="not deck 1 hot_cue 2 ? deck 1 hot_cue 2 :
+			not deck 2 play ? deck 1 hot_cue 2 :
+			deck 2 level 0% ? deck 1 hot_cue 2 :
+			deck 1 level 0% ? deck 1 hot_cue 2 : nothing"
+			rightclick="deck 1 delete_cue 1"
+			textaction="deck 1 hot_cue 2 ? cue_name 2 : ''"
+			query="not deck 1 loaded ? false : not deck 1 hot_cue 2 ? false : not deck 2 play ? true : deck 2 level 0% ? true : deck 1 level 0% ? true : false">
+			<tooltip>Set Hot Cue.\nRight click to disable Hot Cue.</tooltip>
+		</button>
+		<!-- Loop button logic is as follows:
+			1. Check if both hot cues are set (if not then do nogthing)
+			2. Save settings of if autoSortCues or not (sortOrder),  playing or not (playCheck) and position (set_cue 9)
+			3. Stop deck, turn off autoSortCues and turn off loopAutoMove
+			4. Go to Cue 1 and set loop in. Go to Cue 2 and set loop out
+			5. Return to original position (cue 9) and remove cue
+			6. Reset parameters to before
+		-->
+		<button class="button_main" x="+80+80" y="+35+10+35+10+10" width="64" height="30"
+				action="
+				not deck 1 hot_cue 1 ? nothing : not deck 1 hot_cue 2 ? nothing :
+				(setting 'autoSortCues' 0 ? set 'sortOrder' 0 : set 'sortOrder' 1 ) &
+						setting 'loopAutoMove' 0 & setting 'autoSortCues' 0 &
+				(deck 1 play ? set 'playCheck' 1 : set 'playCheck' 0 ) & deck 1 set_cue 9 & deck 1 stop &
+				deck 1 goto_cue 1 & loop_in & deck 1 goto_cue 2 & loop_out &
+				& deck 1 goto_cue 9 & deck 1 delete_cue 9 &
+				(var_equal 'playCheck' 1 ? deck 1 play : nothing ) &
+				var_equal 'sortOrder' 1 ? setting 'autoSortCues' 1 : nothing"
+					textsize="14" textaction="loop ? get_text 'LOOP' : deck 1 hot_cue 1 ? deck 1 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
+					rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 1 loop">
+			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
+			</button>
+			<!-- <button class="button_main_radial" x="+80+80" y="+55+50" width="64" height="30" textsize="14" action="hot_cue 3" rightclick="delete_cue 3" textaction="hot_cue 3 ? cue_name 3 : ''"/> -->
+
+		</group>
+</deck>
+</panel>
+
+<!-- Right Deck when browser is not expanded -->
+<panel name="deckright_not_zoomed" x="1920-764" y="100" width="764" height="389" visibility="not browser_zoom">
 	<deck deck="right">
 		<line x="+764-35-85-85-85-85-35+5+30+25-8" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight"/>
 	
@@ -2975,12 +3133,15 @@ ________________________________________________________________________________
 						deck 2 automix ? true : 
 							deck 1 automix ? 
 								automix_dualdeck ? true : false : 
-							false">
+							false"
+					action = "nothing"
+					rightclick = "toggle 'deckSafetyOff'"		
+							>
 				<pos x="+18" y="+2"/>
 				<size width="28" height="28"/>
 				<background color="#000000"/>
 				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
-				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
+				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\nRight click Single/Double Deck button to disable safety.</tooltip>
 			</button>
 			</group>
 
@@ -3201,36 +3362,247 @@ ________________________________________________________________________________
 	</deck>
 </panel>
 
+<!-- Deck right expanded browser -->
+<panel name="deckright_zoomed" x="1920-764" y="100" width="764" height="389" visibility="browser_zoom">
+	<deck deck="right">
+		<dropzone visibility="
+			var_equal '$deckSafetyOff' 1 ? true : 
+				deck 2 automix ? false : 
+				deck 1 automix ? automix_dualdeck ? false : true : true">
+			<pos x="+0" y="+0"/>
+			<size width="764" height="389"/>
+		</dropzone>
 
-<group name="automix_panel" x="640" y="215">
+		<panel class="deckinfo" areawidth="170" left="+0" visibility="skin_width && param_bigger 1500"/>
+		<panel class="deckinfo" areawidth="190" left="+0" visibility="skin_width && param_smaller 1501"/>
+
+		<group name="eq_pitch_volume" x="+430" y="+175-25">
+			<group name="volume_and_headphones" x="-15" y="+0">
+				<panel class="volume_fader" x="+0" y="+0"/>
+
+						<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
+						action="deck 2 play ?
+						deck 2 level 0% ?
+						deck 2 stop & deck 2 goto_start & repeat_start WaitTimer 100ms 1 & deck 2 level 100% :
+						nothing :
+						deck 2 level 0% & deck 2 pfl on & deck 1 pfl off & deck 2 play"
+						query="deck 2 level & param_equal 0% && deck 2 play && deck 2 pfl on">
+						<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
+						</tooltip>
+					</button>
+			</group>
+			<group name="pitch" x="+60-5" y="+0">
+				<panel class="pitch_fader" x="+0" y="+0"/>
+				<button class="pitchreset_button" sysicon="arrowleft" x="+52+2" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
+			</group>
+
+			<group name="bottom_buttons" x="+145" y="+153+32">
+				<panel class="fxdrop"  x="+0" y="+38" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
+			</group>
+
+			<group name="eq" x="+15+64+64" y="+0">
+				<panel class="eq_knob_low" x="+0" y="+0"/>
+				<panel class="eq_knob_mid" x="+64" y="+0"/>
+				<panel class="eq_knob_high" x="+64+64" y="+0"/>
+			</group>
+			<group name="sweeps" x="+15+64+65" y="+85">
+				<panel class="eq_sweep_low" x="+0" y="+0" />
+				<panel class="eq_sweep_mid" x="+64" y="+0" />
+				<panel class="eq_freq_fader_high" x="+64+64" y="+0" />
+			</group>
+
+	</group>
+
+		<group name="play_button_pos" x="+150+5" y="+175-25">
+				<button class="button_main"
+							x="+0" y="+0" width="64" height="35"
+							text="ADD" textsize="16"
+							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
+					<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+					</button>
+				<group visibility="var '$addMsg' 1" x="+0" y="+0">
+				<visual>
+					<pos  x="+0" y="+0"/>
+					<size width="64" height="40"/>
+					<off color="#555555" radius="6"/>
+				</visual>
+				<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+				</group>
+				<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
+						action="deck 2 play ? play_pause:
+						        deck 2 level 0 ? deck 2 play_pause:
+								deck 1 level 0 ? deck 2 play_pause:
+								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
+
+			<button class="button_main" text="AUTO" width="64" height="35" x="+33+40+85" y="+0" textsize = "16"
+				action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
+						automix_dualdeck ? (
+							deck 1 play ? (deck 2 unload & deck 1 automix_load & automix on) :
+							( (deck 2 loaded ? deck 2 automix_load : deck 2 load automix_song 1)
+							 	& deck 1 unload & deck 2 play & automix on)
+						): (
+							deck 1 play ? deck 1 automix_load & automix on :
+							(deck 2 loaded ? deck 2 automix_load : automix on & automix off & deck 2 automix_load)
+								& deck 2 play & automix on)
+							"
+							query="deck 1 automix ? true : deck 2 automix ? true : false">
+
+				<tooltip>Toggle Auto playback (Automix).</tooltip>
+			</button>
+				<!-- _________ROW 2 ______________ -->
+
+			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+35+10+5" textsize="16"
+				action="
+					set 'fadeIndicator' 1 & 
+					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+					var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+					var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & level -1% & level 0 ? repeat_stop 'levelSweep' & 
+					stop & repeat_start WaitTimer 100ms 1 & level 100% & set 'fadeIndicator' 0"
+				query = "var_equal 'fadeIndicator' 1 ? true : false" >
+				<tooltip>Fade out song. Uses set fade duration.</tooltip>
+			</button>
+
+			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+35+10+5" textsize = "16"
+			action="
+			(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
+				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
+				 var_equal '@$fadeLength' 2 ? set 'fadeVal' 70 : set 'fadeVal' 90) & 
+			deck 2 play ? deck 2 level 0% ? nothing :
+			(
+				set '$fadeIndicator2' 1 &
+					(setting 'automixMode' 'skip silence' ? set '$autoType' 1 : set '$autoType' 0) &
+					(setting 'automixMode' 'full songs'   ? set '$autoType' 2 : nothing) &
+					(setting 'automixMode' 'radio' ? set '$autoType' 3 : nothing) &
+					setting 'automixMode' 'no mix' &
+				repeat_start 'levelSweep' `get_var fadeVal` 101 & deck 2 level -1% & deck 2 level 0 ? repeat_stop 'levelSweep' &
+				repeat_start 'WaitTimer' 1800ms 1 &
+				(not automix_dualdeck ?
+					(deck 1 automix off & deck 2 automix on & automix_skip & repeat_start 'WaitTimer' 200ms 1 & deck 2 level 100%):
+				(deck 2 stop & repeat_start 'WaitTimer' 200ms 1 & deck 2 level 100% & deck 1 play & automix on & deck 2 load automix_song 1)
+				) &
+				set '$fadeIndicator2' 0 & repeat_start 'WaitToSwitch' 300ms 1 &
+				( var_equal '$autoType' 1 ? setting 'automixMode' 'skip silence':
+				  var_equal '$autoType' 2 ? setting 'automixModsxe' 'full songs' :
+				  var_equal '$autoType' 3 ? setting 'automixMode' 'radio' : nothing)
+			) : nothing" query="var_equal '$fadeIndicator2' 1">
+			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
+			</button>
+			<button class="button_main" width="35" height="35" x="+80+100+8" y="+35+10+5" textsize = "16"
+			action="cycle '@$fadeLength' 4" 
+			textaction="var_equal '@$fadeLength' 0 ? get_text '3s' : 
+														var_equal '@$fadeLength' 1 ? get_text '5s' : 
+														var_equal '@$fadeLength' 2 ? get_text '7s' : 
+														get_text '9s'" >
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
+			</button>
+			<!-- _________ROW 3 ______________ -->
+			<!-- Add 2 cue slots -->
+			<button class="button_main_radial" x="+0" y="+35+10+35+10+10" width="64" height="30" textsize="14"
+			 	action="not deck 2 hot_cue 1 ? deck 2 hot_cue 1 :
+							not deck 1 play ? deck 2 hot_cue 1 :
+								deck 1 level 0% ? deck 2 hot_cue 1 :
+									deck 2 level 0% ? deck 2 hot_cue 1 : nothing"
+				rightclick="deck 2 delete_cue 1"
+				textaction="deck 2 hot_cue 1 ? cue_name 1 : ''"
+				query="not deck 2 loaded ? false : not deck 2 hot_cue 1 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
+			<tooltip>Set Hot Cue.\nRight click to disable Hot Cue.</tooltip>
+			</button>
+			<button class="button_main_radial" x="+80" y="+35+10+35+10+10" width="64" height="30" textsize="14"
+			 	action="not deck 2 hot_cue 2 ? deck 2 hot_cue 2 :
+							not deck 1 play ? deck 2 hot_cue 2 :
+								deck 1 level 0% ? deck 2 hot_cue 2 :
+									deck 2 level 0% ? deck 2 hot_cue 2 : nothing"
+				rightclick="deck 2 delete_cue 1"
+				textaction="deck 2 hot_cue 2 ? cue_name 2 : ''"
+				query="not deck 2 loaded ? false : not deck 2 hot_cue 2 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
+			<tooltip>Set Hot Cue.\nRight click to disable Hot Cue.</tooltip>
+			</button>
+			 <button class="button_main" x="+80+80" y="+35+10+35+10+10" width="64" height="30"
+					 action="
+					 not deck 2 hot_cue 1 ? nothing : not deck 2 hot_cue 2 ? nothing :
+					 (setting 'autoSortCues' 0 ? set 'sortOrder' 0 : set 'sortOrder' 1 ) &
+								setting 'loopAutoMove' 0 & setting 'autoSortCues' 0 &
+					 (deck 2 play ? set 'playCheck' 1 : set 'playCheck' 0 ) & deck 2 set_cue 9 & deck 2 stop &
+					 deck 2 goto_cue 1 & loop_in & deck 2 goto_cue 2 & loop_out &
+					 & deck 2 goto_cue 9 & deck 2 delete_cue 9 &
+					 (var_equal 'playCheck' 1 ? deck 2 play : nothing ) &
+					 var_equal 'sortOrder' 1 ? setting 'autoSortCues' 1 : nothing"
+						 textsize="14" textaction="loop ? get_text 'LOOP' : deck 2 hot_cue 1 ? deck 2 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
+						 rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 2 loop">
+			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
+			</button>
+
+		<panel class="fxdrop"  x="+0" y="+150" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
+		<button class="button_main" visibility="
+					deck 2 automix ? true : 
+						deck 1 automix ? 
+							automix_dualdeck ? true : false : false" 
+			query="var_equal '$deckSafetyOff' 0"
+			action="nothing"
+			rightclick="toggle '$deckSafetyOff'" x="+185" y="+145" 
+			width="40" height="30" textsize="22" text="⊘">
+			<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\Right click to disable safety</tooltip>
+		</button>
+	</group>
+
+	</deck>
+</panel>
+
+
+<group name="automix_panel" x="640" y="211-4">
+	<panel  visibility="not browser_zoom">
 	<visual>
 		<pos x="+0" y="-5"/>
-		<size width="640" height="420"/>
-		<off shape="square" color="mixerbackground" border_size="1" border="bordercolor" radius="4"/>
+		<size width="640" height="425+4"/>
+		<off shape="square" color="#161718" border_size="1" border="#161718" radius="4"/>
 	</visual>
 
 	<filelist source="automix">
-		<size width="630" height="410"/>
+		<size width="630" height="409+10"/>
 	<pos x="+5	" y="+0"/>
     <colors>
         <lists background="#202020"
                stripes    ="#2A2A2A"
                selected   ="#555555"
                focus      ="#7A7A7A"
-				playing   ="#4080C4"
-				automix    ="#4080C4"
+				playing   ="browser_automix"
+				automix    ="browser_automix"
 			/>
     </colors>
+	</filelist>
+	</panel>
+	<!-- With browser zoomed -->
+	<panel  visibility="browser_zoom">
+	<visual>
+		<pos x="+0" y="-5"/>
+		<size width="640" height="425-170-25+4"/>
+		<off shape="square" color="#161718" border_size="1" border="#161718" radius="4"/>
+	</visual>
 
-</filelist>
+	<filelist source="automix">
+		<size width="630" height="409-180+4"/>
+	<pos x="+5	" y="+0"/>
+    <colors>
+        <lists background="#202020"
+               stripes    ="#2A2A2A"
+               selected   ="#555555"
+               focus      ="#7A7A7A"
+				playing   ="browser_automix"
+				automix    ="browser_automix"
+			/>
+    </colors>
+	</filelist>
+	</panel>
 </group>
 
-<line name="browser_top"  x="10" y="1080-500+50" width="1920-20" height="4" color="bordercolor" />
+<line name="browser_top"  x="10" y="1080-500+50" width="1920-20" height="4" color="bordercolor" visibility="not browser_zoom"/>
+<line name="browser_top"  x="10" y="340+125-4-25" width="1920-20" height="4" color="bordercolor" visibility="browser_zoom"/>
 
 <browser class="browser">
 	<pos x="10" y="560+50+24" />
 	<size width="1920-20" height="509-70+6"/>
-	<zoomed x="10" y="200" width="1920-20" height="1080-200-10"/>
+	<zoomed x="10" y="340+125-25" width="1920-20" height="1080-340-125+25"/>
 </browser>
 
 
