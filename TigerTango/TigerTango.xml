@@ -2,6 +2,10 @@
 <copyright>None</copyright>
 <font name="Arial"/>
 <background x="1817" y="0" width="100" height="100" repeat="true"/>
+ <!-- condition="not var_equal '@$colorscheme' 2" -->
+<!-- <customicons file="icons.png" iconsize="64" nb="144" nbx="16"/> -->
+<customicons file="icons.png" nb="144" nbx="16"/>
+
 <customicons file="icons_daylight.png" nb="64" nbx="16" condition="var_equal '@$colorscheme' 2"/>
 
 <group name="class_defines">
@@ -62,8 +66,8 @@
 		<define color="browser_buttonactive" value="#4d4e52"/>
 		<define color="browser_buttonselected" value="#4d4e52"/>
 
-		<!-- browser list stripes -->
-		<define color="browser_automix" value="#2e6b76"/>
+		<!-- browser list stripes #C24E14-->
+		<define color="browser_automix" value="#A34210"/>
 		<define color="browser_scan" value="#89cea5"/>
 		<define color="browser_scan" value="#89cea5"/>
 		<define color="browser_selected" value="#393a3b"/>
@@ -1262,8 +1266,8 @@
 					<over color="browser_iconbuttonover" border="bordercolor2" border_size="2" width="60" height="54"/>
 					<selected color="browser_iconbuttonselected" border="bordercolor2" border_size="2" width="60" height="54"/>
 					<active color="browser_iconbuttonactive" border="bordercolor2" border_size="2" width="60" height="54"/>
-					<menu shape="circle" color="darkgray" border="bordercolor3" border_size="8" width="29" height="29"/>
-					<menuover shape="circle" color="gray" border="bordercolor3" border_size="8" width="29" height="29"/>
+					<!-- <menu shape="circle" color="darkgray" border="bordercolor3" border_size="8" width="29" height="29"/> -->
+					<!-- <menuover shape="circle" color="gray" border="bordercolor3" border_size="8" width="29" height="29"/> -->
 				</button>
 				<fontsearch size="18"/>
 				<font name="Arial" size="20"/>
@@ -2042,8 +2046,8 @@ ________________________________________________________________________________
 		</button>
 				<!-- MONO STEREO BUTTON -->
 		<button class="button_master" x="+130+4" y="+33+30+10" width="125" height="30"
-			action="toggle mono_mix" textsize="14"
-			textaction="var_equal 'mono_mix' 1 ? get_text 'MONO OUT' : get_text 'STEREO OUT'">
+			action="mono_mix" textsize="14"
+			textaction="mono_mix ? get_text 'MONO OUT' : get_text 'STEREO OUT'">
 			<tooltip>Select mono or stereo mix.</tooltip>
 		</button>
 	</group>
