@@ -1378,18 +1378,22 @@ ________________________________________________________________________________
 				<size width="110" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="TITLE SIZE" localize="true"/>
 			</textzone> -->
+			<textzone x="+0" y="+0">
+				<size width="120" height="14"/>
+				<text fontsize="14" align="center" color="textdarker" text="TITLE SIZE" localize="true"/>
+			</textzone>
 			<textzone x="+120" y="+0">
 				<size width="120" height="14"/>
 				<text fontsize="14" align="center" color="textdarker" text="LYRICS POS" localize="true"/>
 			</textzone>
 			<textzone x="+240" y="+0">
 				<size width="120" height="14"/>
-				<text fontsize="14" align="center" color="textdarker" text="TITLE SIZE" localize="true"/>
+				<text fontsize="14" align="center" color="textdarker" text="WAVE FORM" localize="true"/>
 			</textzone>
 		</group>
 
 		<group name="button_third_row" x="+0" y="+20">
-			<button class="button_master" x="+250" y="+0" action="toggle '@$largeTitleText'"
+			<button class="button_master" x="+0" y="+0" action="toggle '@$largeTitleText'"
 					textsize="14" height="30" width="110"
 					textaction="var_equal '@$largeTitleText' 0 ? get_text 'NORMAL' : get_text 'LARGE'"
 					query="false" >
@@ -1400,6 +1404,12 @@ ________________________________________________________________________________
 					textaction="var_equal '@$lyricsLeftJustify' 1 ? get_text 'LEFT |──' :
 											get_text 'CENTER ─|─'">
 				<tooltip>Left vs center justify for lyrics</tooltip>
+			</button>
+			<button class="button_master" x="+250" y="+0" action="toggle '@$hideWaveForm'"
+					textsize="14" height="30" width="110"
+					text="SHOW WAVE"
+					query="var_equal '@$hideWaveForm' 0 ? true : false" >
+				<tooltip>Title Text Size.</tooltip>
 			</button>
 			<!-- <button class="button_master" x="+250" y="+0" action="toggle '@$hideCortinaInfo'"
 					textsize="14" height="30" width="110" textaction="var_equal '@$hideCortinaInfo' 0 ? 

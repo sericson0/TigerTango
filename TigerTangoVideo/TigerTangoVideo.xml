@@ -131,7 +131,8 @@
 		</group>
 
 			<group name="Normal Text Size" visibility="var_equal '@$largeTitleText' 0">
-				<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center">
+				<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center"
+							visibility="var_equal '@$hideWaveForm' 0">
 					<pos x="+0" y="+724" width="1920-500" height="300"/>
 				</blockwave>
 			<!-- Genre and tanda counter -->
@@ -168,7 +169,8 @@
 		<!-- LARGE TEXT -->
 			<group name="Large Text Size" visibility="var_equal '@$largeTitleText' 1">
 
-			<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center">
+			<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center" 
+						visibility="var_equal '@$hideWaveForm' 0">
 					<pos x="+0" y="+675" width="1920-500" height="300"/>
 			</blockwave>
 			<!-- Genre and tanda counter -->
