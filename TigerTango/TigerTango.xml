@@ -2760,14 +2760,14 @@ ________________________________________________________________________________
 		<tooltip>Deck 1 prefade listen. Headphones will come through deck when turned on.</tooltip>
 	</button>
 	</group>
-	</group>
-
+</group>
 		<group name="play_button_positions" x="+375+10" y="+401-5">
 				<button class="button_main"
 					x="+0" y="+0" width="64" height="35"
 					text="ADD" textsize="16"
-					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
-			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0"
+					rightclick= "playlist_load 'append' & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
+			<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
 			</button>
 			<group visibility="var '$addMsg' 1" x="+0" y="+0">
 			<visual>
@@ -2980,8 +2980,10 @@ ________________________________________________________________________________
 				<button class="button_main"
 					x="+0" y="+0" width="64" height="35"
 					text="ADD" textsize="16"
-					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
-			<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
+					rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
+								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
+			<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
 			</button>
 			<group visibility="var '$addMsg' 1" x="+0" y="+0">
 			<visual>
@@ -3255,8 +3257,10 @@ ________________________________________________________________________________
 				<button class="button_main"
 							x="+0" y="+0" width="64" height="35"
 							text="ADD" textsize="16"
-							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
-					<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
+							rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
+								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
+					<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
 					</button>
 				<group visibility="var '$addMsg' 1" x="+0" y="+0">
 				<visual>
@@ -3431,8 +3435,10 @@ ________________________________________________________________________________
 				<button class="button_main"
 							x="+0" y="+0" width="64" height="35"
 							text="ADD" textsize="16"
-							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 ">
-					<tooltip>Add selected track(s) to the end of Automix.</tooltip>
+							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
+							rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
+								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
+					<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
 					</button>
 				<group visibility="var '$addMsg' 1" x="+0" y="+0">
 				<visual>
