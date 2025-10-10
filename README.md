@@ -2,7 +2,7 @@
 ![alt text](<TigerTango Logo.png>)
 By: Sean Ericson (Sericson0@gmail.com)
 
-A good Tango DJ can enables dancers to find that magical flow and connection we all crave. The art of picking the perfect tandas requires untold hours of study and practice. And nothing kills the magic you are working so hard to create like technical issues. Your DJ software should enable your creativity and not be a hindrance to the flow you are striving so hard to create. This is why I created the TigerTango skin for Virtual DJ. It provides a layout custom suited for the needs of and requirements of tango DJs and other social dances.
+Nothing kills the magic of the milonga like technical issues. Whether you are just starting out as a tango DJ, or are traveling to DJ the biggest festivals, you deserve a software that enables your creativity instead of hindering the flow you are striving so hard to create. This is why I created the TigerTango skin for Virtual DJ. It provides a layout custom suited for the needs of and requirements of tango DJs and other social dances.
 
 ## What DJs are Saying About TigerTango
 >The TigerTango VirtualDJ skin interface from Sean Ericson is perfect for Tango DJs. As a Traktor user for the last 10 years I never stopped looking for a more practical alternative, until now. Sean’s dedication to develop and test the interface gradually, together with the wider tango community, supports further customisation and safe usage on one of the most popular DJ programs.
@@ -86,7 +86,7 @@ Thank you to **Michael Plaks** for all of your suggestions, feedback, and suppor
 
 Thank you **Eric Heleno** for your great suggestion on making the EQ buttons semiparametric and for giving your expert eye to the skin. And thank you in general for sharing your wealth of knowledge of sound with me. I hear the world differently because of you.
 
-Thank you **Janice Ng** for giving your expert UX developer eye. So many great observations packed into a couple hour session. And thank you for inspring us all with your commitment to your tango growth and art.
+Thank you **@jdancestango** for giving your expert UX developer eye. So many great observations packed into a couple hour session. And thank you for inspring us all with your commitment to your tango growth and art.
 
 Thank you **DJ Ragnar**. In addition to all of your valuable suggestions on this projet, your enthusiasm for tango music inspires us all.  
 
