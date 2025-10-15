@@ -1845,7 +1845,7 @@ ________________________________________________________________________________
 	</group>
 	<group name="applicationbuttons" condition="is_pc">
 		<logo>
-			<pos x="15+25" y="8"/>
+			<pos x="15+25-20" y="8"/>
 			<size width="115" height="27"/>
 		</logo>
 
@@ -1870,42 +1870,56 @@ ________________________________________________________________________________
 	</group>
 		<!-- Custom logo -->
 	<visual>
-		<off x="1070" y="267"/>
-		<pos x="-0" y="40"/>
+		<off x="1070+5" y="267"/>
+		<pos x="-20" y="40"/>
 		<size width="350" height="120"/>
 	</visual>
 
-	<group name="accessory_area" x="230+22+13" y="8"> 
+	<group name="accessory_area" x="230+22+13-45" y="8"> 
 		<visual>
 			<pos x="+0" y="+0"/>
-			<size width="100+265" height="115"/>
+			<size width="100+265+45" height="115"/>
 			<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
 		</visual>
 		<textzone>
 			<pos x="+0" y="+7"/>
-			<size width="100-2" height="13"/>
+			<size width="100-2+40" height="13"/>
 			<text fontsize="14" color="textdarker" align="center" text="ACCESS" localize="true"/>
 		</textzone>
-		<!-- Second Row -->
-<!-- REC  -->
+		<!-- Access Area -->
+		<group name="custom buttons" x="+8" y="+33">
+			<button class="button_master" action="custom_button 1" x="+0" y="+0" 
+					height="30" width="35" textaction="custom_button_name 1" textsize="16"
+					rightclick="custom_button_edit 1">
+				<tooltip>Click to use custom button.\nRight click to edit.</tooltip>
+			</button>
+			<button class="button_master" action="custom_button 2" x="+0" y="+40" 
+					height="30" width="35" textaction="custom_button_name 2" textsize="16"
+					rightclick="custom_button_edit 2">
+				<tooltip>Click to use custom button.\nRight click to edit.</tooltip>
+			</button>
+
+		</group>
+		<group name="access_buttons" x="+10+40+1" y="+33">
 		<button class="button_master" text="REC 🔴"
-			textsize="16" x="+10" y="+33" height="30" width="78"
+			textsize="16" x="+0" y="+0" height="30" width="78"
 			query = 'false'
 			action="setting 'coverDownload' 'no' & setting 'recordWaitForSound' 'no' & record_config">
 		<tooltip>Make a recording.\nUseful for recording silence\nOr making dummy tracks to separate tandas.</tooltip>
 		</button>
 
 		<button class="button_master" text="💾"
-			textsize="16" x="+10" y="+33+30+10" height="30" width="35"
+			textsize="16" x="+0" y="+30+10" height="30" width="35"
 			action = "playlist_save">
 		<tooltip>Save Automix to playlist.\nUseful for keeping record of what you played.</tooltip>
 		</button>
 		<button class="button_master" text="🎨"
-			textsize="16" x="+35+10+8" y="+33+30+10" height="30" width="35"
+			textsize="16" x="+35+8" y="+30+10" height="30" width="35"
 			action = "quick_filter">
 		<tooltip>Color and filter options.\nUseful for setting colors by genre, feel, ect.</tooltip>
 		</button>
-		<line x="+95" y="+10" height="100" width="3" color="dark" highlight="" shadow="highlight" />
+		</group>
+		<line x="+95+40+2" y="+10" height="100" width="3" color="dark" highlight="" shadow="highlight" />
 	</group>
 
 	<group name="configuration_options_area" x="363" y="8"> 
