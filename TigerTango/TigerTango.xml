@@ -1886,38 +1886,44 @@ ________________________________________________________________________________
 			<size width="100-2+40" height="13"/>
 			<text fontsize="14" color="textdarker" align="center" text="ACCESS" localize="true"/>
 		</textzone>
-		<!-- Access Area -->
-		<group name="custom buttons" x="+8" y="+33">
+		<!-- First Row -->
+		<group name="First row buttons" x="+8" y="+33">
 			<button class="button_master" action="custom_button 1" x="+0" y="+0" 
 					height="30" width="35" textaction="custom_button_name 1" textsize="16"
 					rightclick="custom_button_edit 1">
 				<tooltip>Click to use custom button.\nRight click to edit.</tooltip>
 			</button>
-			<button class="button_master" action="custom_button 2" x="+0" y="+40" 
+			<button class="button_master" action="custom_button 2" x="+35+8" y="+0" 
 					height="30" width="35" textaction="custom_button_name 2" textsize="16"
 					rightclick="custom_button_edit 2">
 				<tooltip>Click to use custom button.\nRight click to edit.</tooltip>
 			</button>
-
-		</group>
-		<group name="access_buttons" x="+10+40+1" y="+33">
-		<button class="button_master" text="REC 🔴"
-			textsize="16" x="+0" y="+0" height="30" width="78"
+		<button class="button_master" text="🔴"
+			textsize="16" x="+35+8+35+8" y="+0" height="30" width="35"
 			query = 'false'
 			action="setting 'coverDownload' 'no' & setting 'recordWaitForSound' 'no' & record_config">
 		<tooltip>Make a recording.\nUseful for recording silence\nOr making dummy tracks to separate tandas.</tooltip>
 		</button>
+		</group>
+		<group name="access_buttons" x="+8" y="+33+30+10">
+			<button class="button_master" text="🗑"
+				textsize="16" x="+0" y="+0" height="30" width="35"
+				query="var_equal '$allowPlaylistClear' 1"
+				action="var_equal '$allowPlaylistClear' 1 ? playlist_clear & set '$allowPlaylistClear' 0 : nothing"
+				rightclick="toggle '$allowPlaylistClear'">
+			<tooltip>Right click then left click to clear playlist.\nRight click toggles safety. Left click clears when safety is off.</tooltip>
+			</button>
 
-		<button class="button_master" text="💾"
-			textsize="16" x="+0" y="+30+10" height="30" width="35"
-			action = "playlist_save">
-		<tooltip>Save Automix to playlist.\nUseful for keeping record of what you played.</tooltip>
-		</button>
-		<button class="button_master" text="🎨"
-			textsize="16" x="+35+8" y="+30+10" height="30" width="35"
-			action = "quick_filter">
-		<tooltip>Color and filter options.\nUseful for setting colors by genre, feel, ect.</tooltip>
-		</button>
+			<button class="button_master" text="💾"
+				textsize="16" x="+35+8" y="+0" height="30" width="35"
+				action = "playlist_save">
+			<tooltip>Save Automix to playlist.\nUseful for keeping record of what you played.</tooltip>
+			</button>
+			<button class="button_master" text="🎨"
+				textsize="16" x="+35+8+35+8" y="+0" height="30" width="35"
+				action = "quick_filter">
+			<tooltip>Color and filter options.\nUseful for setting colors by genre, feel, ect.</tooltip>
+			</button>
 		</group>
 		<line x="+95+40+2" y="+10" height="100" width="3" color="dark" highlight="" shadow="highlight" />
 	</group>
