@@ -1572,7 +1572,8 @@ ________________________________________________________________________________
 	</button>
 </window>
 
-<window name="SearchWindow" posx="100" posy="100" width="600" height="500" shown="false" color="#424346">
+<window name="SearchWindow" posx="100" posy="100" width="600" height="500" 
+		shown="false" color="#424346" breakline="30">
 	<visual x="+5" y="+3" width="600-10" height="20">
 		<off color="dark" border_size="1"/>
 	</visual>
@@ -1593,28 +1594,42 @@ ________________________________________________________________________________
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
 		<over color="#3b4242"/>
 	</button>
-
+	
+	<visual x="+5" y="+35" width="600-10" height="500-40">
+		<off color="browserback" border_size="1"/>
+	</visual>
 	<!-- Folder Tree / Toolbar -->
 	<browsertoolbartree resizeX="no" attachX="left">
 		<size width="25" height="465"/>
-		<pos x="0" y="25"/>
+		<pos x="0" y="35"/>
 	</browsertoolbartree>
 
 	<!-- Folder List -->
 	<folderlist resizeX="yes" attachX="both">
 		<size width="175" height="465"/>
-		<pos x="27" y="25"/>
+		<pos x="27" y="35"/>
+		<colors>
+		<lists text="textbrowser" background="browserback" stripes="browserstripe" 
+			over="browserover" overstripes="browseroverstripe" focus="browseroverfocus" 
+			stripes="transparent" over="transparent" selected="browser_selected"
+			text="textbrowser" overtext="textbrowser" selectedtext="texton" 
+			focustext="texton" automix="browser_automix" scan="browser_scan" button="browser_button" buttonactive="browser_buttonactive"/>
+		<separators line="browser_seperatorline" text="texton" background="browser_seperatortab"/>
+		<columns background="background" text="textoff3"/>
+		<scrollbars background="browser_scrollbar" button="browser_scrollbtn"/>
+		</colors>
 	</folderlist>
 
 	<!-- File List -->
 	<fileview attachX="both" attachY="both">
 		<size width="375" height="465"/>
-		<pos x="210" y="25"/>
+		<pos x="210" y="35"/>
 	</fileview>
 
 </window>
 
-<window name="SideviewWindow" posx="100" posy="100" width="500" height="700" shown="false" color="#424346">
+<window name="SideviewWindow" posx="100" posy="100" width="500" height="700" 
+		shown="false" color="#424346" breakline="30">
 	<visual x="+5" y="+3" width="600-10" height="20">
 		<off color="dark" border_size="1"/>
 	</visual>
@@ -1631,10 +1646,12 @@ ________________________________________________________________________________
 		<over color="#3b4242"/>
 	</button>
 
-
+	<visual x="+5" y="+35" width="500-10" height="700-40">
+		<off color="browserback" border_size="1"/>
+	</visual>
     <sideview>
-        <pos  x="5"  y="25"/>
-        <size width="500-10" height="700-30"/>
+        <pos  x="5"  y="35"/>
+        <size width="500-10" height="700-40"/>
 	</sideview>
 </window>
 
@@ -1749,18 +1766,32 @@ ________________________________________________________________________________
 
 </window>
 
-<window name="SidelistWindow" posx="100" posy="100" width="500" height="700" shown="false" color="#424346">
+<window name="SidelistWindow" posx="100" posy="100" width="500" height="700" 
+			shown="false" color="#424346" breakline="30">
 	<visual x="+5" y="+3" width="500-10" height="20">
-		<off color="dark" border_size="1"/>
+		<off color="browserback" border_size="1"/>
 	</visual>
-
 	<textzone x="+0" y="+6">
 		<size width="500" height="14"/>
 	<text fontsize="14" align="center" color="#a7a7a7" text="Sidelist Panel" localize="true"/>
 	</textzone>
+	<visual x="+5" y="+35" width="500-10" height="700-40">
+		<off color="browserback" border_size="1"/>
+	</visual>
     <filelist source="sidelist">
-        <pos  x="5"  y="25"/>
-        <size width="500-10" height="700-30"/>
+        <pos  x="5"  y="35"/>
+        <size width="500-10" height="700-40"/>
+	<colors>
+	<lists text="textbrowser" background="browserback" stripes="browserstripe" 
+			over="browserover" overstripes="browseroverstripe" focus="browseroverfocus" 
+			stripes="transparent" over="transparent" selected="browser_selected"
+			 text="textbrowser" overtext="textbrowser" selectedtext="texton" 
+			 focustext="texton" automix="browser_automix" scan="browser_scan" button="browser_button" buttonactive="browser_buttonactive"/>
+	<separators line="browser_seperatorline" text="texton" background="browser_seperatortab"/>
+	<columns background="background" text="textoff3"/>
+	<scrollbars background="browser_scrollbar" button="browser_scrollbtn"/>
+    </colors>
+
 	</filelist>
 	<button action="show_window 'SidelistWindow' off">
 		<tooltip> Close  </tooltip>
@@ -1771,7 +1802,8 @@ ________________________________________________________________________________
 	</button>
 </window>
 
-<window name="BrowserInfoWindow" posx="100" posy="100" width="500" height="500" shown="false" color="#424346">
+<window name="BrowserInfoWindow" posx="100" posy="100" width="500" height="500" 
+		shown="false" color="#424346" breakline="30">
 	<visual x="+5" y="+3" width="500-10" height="20">
 		<off color="dark" border_size="1"/>
 	</visual>
@@ -1779,9 +1811,13 @@ ________________________________________________________________________________
 		<size width="500" height="14"/>
 	<text fontsize="14" align="center" color="textoff" text="Browser Info Panel" localize="true"/>
 	</textzone>
+
+	<visual x="+5" y="+35" width="500-10" height="500-40">
+		<off color="browserback" border_size="1"/>
+	</visual>
     <browserinfo attachX="both" attachY="both">
-      <pos  x="0" y="27"/>
-      <size width="500" height="500-30"/>
+      <pos  x="0" y="35"/>
+      <size width="500" height="500-40"/>
     </browserinfo>
 	<button action="show_window 'BrowserInfoWindow' off">
 		<tooltip> Close  </tooltip>
