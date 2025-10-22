@@ -265,6 +265,7 @@
 		<define color="buttonover2" value="#b68f91" deck="right"/>
 
 		<!-- browser -->
+		<define color="browser_automix" value="#D0623A"/>
 		<define color="browserback" value="#ebebeb"/>
 		<define color="browserstripe" value="#f9f9f9"/>
 		<define color="browserover" value="#c5c5c5"/>
@@ -2025,58 +2026,6 @@ ________________________________________________________________________________
 			<selected border_size="1" border="bordercolor" color="background2" radius="5"/>
 			<icon sysicon="settings" color="textoff3" colorselected="texton" colorover="texton" width="32" height="32"/>
 		</button>
-
-		<!-- LOGIN INFO -->
-		<group name="login" x="-120" y="+57">
-			<visual>
-				<pos x="+0" y="+0"/>
-				<size width="115+55" height="25"/>
-				<off shape="square" color="topmenu" radius="4" border_size="1" 
-				color="buttonoff1" color2="buttonoff2" border="bordercolor2"/>
-			</visual>
-			<visual>
-				<pos x="+3" y="+4"/>
-				<size width="16" height="16"/>
-				<off x="144" y="347"/>
-			</visual>
-			<button action="connect">
-				<pos x="+26" y="+4"/>
-				<size width="110+50" height="20"/>
-				<text width="115-26-5+50" fontsize="12" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
-			</button>
-		</group>
-
-		<group name="window_panel" x="-120" y="+90">
-			<visual>
-				<pos x="+0" y="+0"/>
-				<size width="113" height="25"/>
-				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
-			</visual>
-			<menu tooltip="Open new window panel.">
-				<pos x="+0" y="+0"/>
-				<size width="113" height="25"/>
-				<text dx="10" width="90" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
-						text="WINDOWS" localize="true" important="true"/>
-				<icon dx="45" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
-				<item text="WAVEFORM" localize="true" action="show_window 'Waveform'" check="show_window 'Waveform'"/>
-				<item text="BROWSER" localize="true" action="show_window 'BrowserWindow'" check="show_window 'BrowserWindow'"/>
-				<item text="SEARCH" localize="true" action="show_window 'SearchWindow'" check="show_window 'SearchWindow'"/>
-				<item text="SIDEVIEW" localize="true" action="show_window 'SideviewWindow'" check="show_window 'SideviewWindow'"/>
-				<item text="SIDELIST" localize="true" action="show_window 'SidelistWindow'" check="show_window 'SidelistWindow'"/>
-				<item text="INFO" localize="true" action="show_window 'BrowserInfoWindow'" check="show_window 'BrowserInfoWindow'"/>
-			</menu>
-		</group>
-
-	<button class="button_master" action="show_window 'documentation'" query="show_window 'documentation'"
-		x="+0" y="+90" width="50" height="25" text="DOCS" textsize="14"> 
-		<tootltip>Click to open Documentation.\nTigerTango Docs can be found at https://github.com/sericson0/TigerTango</tootltip>
-	</button>
-	<!-- <button class="button_master" action="browser_zoom" x="+60" y="+75" width="40" height="40" sysicon="browser_zoom" iconsize="40"> 
-		<tootltip>Expand Browser</tootltip>
-	</button> -->
-	<button class="button_master" action="browser_zoom" x="+60" y="+75-15-2" width="57" height="57" sysicon="browser_zoom" iconsize="50"> 
-		<tootltip>Expand Browser</tootltip>
-	</button>
 	</group>
 
 		<group name="topbar_status" x="1250+18" y="8">
@@ -2112,94 +2061,183 @@ ________________________________________________________________________________
 					<on x="1627" y="0"/>
 				</visual>
 
-				<group name="warning_area" x="+40" y="+20+35+2">
-					<visual>
-						<pos x="+0" y="+0"/>
-						<size width="325" height="60"/>
-						<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
-					</visual>
-					<textzone>
-						<pos x="+0" y="+7"/>
-						<size width="325" height="13"/>
-						<text fontsize="14" color="textdarker" align="center" text="WARNING LIGHTS" localize="true"/>
-					</textzone>
-			<panel name="automix_click_warning" visibility="setting 'automixDoubleCLick' 'nothing' ? false: true">
-				<button class="button_master" text="⚠️"  query="var_equal '$ignoreDblClickInd' 1 ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
-				textsize="14" x="+7" y="+28" height="25" width="35"
-					action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$ignoreDblClickInd'">
-					<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
-				</button>
-			</panel>
+			<group name="warning_area" x="+40" y="+20+35+2">
+				<visual>
+					<pos x="+0" y="+0"/>
+					<size width="325+290" height="60"/>
+					<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
+				</visual>
+				<line x="+325" y="+0" height="60" width="3" color="dark" highlight="" shadow="highlight" />
 
-			<panel name="hitting_limiter_warning" visibility="get_limiter & pulse 10000ms"> 
-				<button class="button_master" text="⚠️" query="get_limiter & pulse 2000ms" 
-					action="master_volume -15%"
-				textsize="14" x="+40+6" y="+28" height="25" width="35"
-				rightclick="toggle '$checkSoundCard'">
-					<tooltip>HITTING LIMITER! Turn down master fader!\nClick to turn down master fader 15%.\nSuggest setting option 'zeroDB' to -3db to reduce chance of clipping.</tooltip>
-				</button>
-			</panel>
-			<panel name="automix_mode" visibility="setting 'automixMode' 'no mix' ? false :
-														  setting 'automixMode' 'skip silence' ? false:
-														  setting 'automixMode' 'radio' ? false :
-														  setting 'automixMode' 'full songs' ? false: true">
-		
-			<button class="button_master" text="⚠️" 
-				query="true"
-				textsize="14" x="+80+5" y="+28" height="25" width="35"
-				action="setting 'automixMode' 'no mix'" rightclick="setting 'automixMode' 'skip silence'">
-				<tooltip>Setting Automix to 'Smart' or 'Remove Intro/Outro' will clip tracks.\nValid settings are 'no mix', 'skip silence', 'radio', 'full songs'\nClick to change settings to 'Back-to-Back' (use song ending silence).\nRight click to change settings to 'Skip Silence'
-				</tooltip>
-			</button>
-			</panel>
+				<textzone>
+					<pos x="+0" y="+7"/>
+					<size width="325" height="13"/>
+					<text fontsize="14" color="textdarker" align="center" text="WARNING LIGHTS" localize="true"/>
+				</textzone>
+				<panel name="automix_click_warning" visibility="setting 'automixDoubleCLick' 'nothing' ? false: true">
+					<button class="button_master" text="⚠️"  query="var_equal '$ignoreDblClickInd' 1 ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
+					textsize="14" x="+7" y="+28" height="25" width="35"
+						action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$ignoreDblClickInd'">
+						<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
+					</button>
+				</panel>
 
-			<panel name="automix_setting_warnings" visibility="not setting 'autoMixTempoMode' 'normal tempo' ? true: setting 'automixSkipLength' ? true : setting 'automixMaxLength'">
-				<button class="button_master" text="⚠️" query="true"
-				textsize="14" x="+120+4" y="+28" height="25" width="35"
-					action="setting 'autoMixTempoMode' 'normal tempo' & setting 'automixSkipLength' 0 & setting 'automixMaxLength' 0">
-					<tooltip>Automix settings not configured properly.\nClick to set 'autoMixTempoMode' to 'normal tempo'\nand 'automixSkipLength' to 0.</tooltip>
-				</button>
-			</panel>
-
-			<panel name="positive_fade_length_warning" visibility="setting 'fadeLength'">
-				<button class="button_master" text="⚠️" query="true"
-				textsize="14" x="+160+3" y="+28" height="25" width="35"
-					action="setting 'fadeLength' 0 & setting 'fadeLength' -3" rightclick="setting 'fadeLength' 0">
-					<tooltip>Automix 'fadeLength' setting is above 0\nThis will cut end of tracks\nClick to set to 3 second second gap between songs.\nRight click to set to 0.</tooltip>
-				</button>
-			</panel>
-
-			<panel name="crossfader_not_disabled_warning" visibility="not crossfader_disable ? true : deck 1 fader_start ? true : tdeck 2 fader_start">
-				<button class="button_master" text="⚠️" query="true"
-				textsize="14" x="+200+2" y="+28" height="25" width="35"
-					action="crossfader_disable on & deck 1 fader_start off & deck 2 fader_start off">
-					<tooltip>Crossfader or Fader Start are enabled.\nCAN CAUSE ERRORS!\nClick to disable Crossfader and Fader Start.</tooltip>
-				</button>
-			</panel>
-			<panel name="incorrect_loop_setting_warning" 
-					visibility="(not setting 'autoSortCues' ? true :
-							(deck 1 setting 'smartLoop' on ? true : deck 2 setting 'smartLoop' on ? true : false))">
-				<button
-					class="button_master" text="⚠️"
-					query="var_equal '$ignoreCueSettingsInd' 1 ? false : true"
-					rightclick="toggle '$ignoreCueSettingsInd'"
-				textsize="14" x="+200+40+1" y="+28" height="25" width="35"
-					action="setting 'autoSortCues' on & deck 1 setting 'smartLoop' off & deck 2 setting 'smartLoop' off">
-					<tooltip>Click to change settings 'smartLoop' off and autoSortCues on.\nEnsures loop button works as expected.\nRight click to ignore warning.</tooltip>
-				</button>
-			</panel>
-				<panel name="auto_match_configuration_warning" 
-					visibility="auto_pitch_lock ? true : auto_match_key ? true : 
-								auto_pitch_lock ? true : not setting 'autoBPMMatch' 'no'"> 
-				<button class="button_master" text="⚠️" query="true"
-				textsize="14" x="+200+80" y="+28" height="25" width="35"
-					action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off & setting 'autoBPMMatch' 'no'">
-					<tooltip>Auto match BPM, key, or pitch are turned on.\nClick to turn settings off.</tooltip>
+				<panel name="hitting_limiter_warning" visibility="get_limiter & pulse 10000ms"> 
+					<button class="button_master" text="⚠️" query="get_limiter & pulse 2000ms" 
+						action="master_volume -15%"
+					textsize="14" x="+40+6" y="+28" height="25" width="35"
+					rightclick="toggle '$checkSoundCard'">
+						<tooltip>HITTING LIMITER! Turn down master fader!\nClick to turn down master fader 15%.\nSuggest setting option 'zeroDB' to -3db to reduce chance of clipping.</tooltip>
+					</button>
+				</panel>
+				<panel name="automix_mode" visibility="setting 'automixMode' 'no mix' ? false :
+															setting 'automixMode' 'skip silence' ? false:
+															setting 'automixMode' 'radio' ? false :
+															setting 'automixMode' 'full songs' ? false: true">
+			
+				<button class="button_master" text="⚠️" 
+					query="true"
+					textsize="14" x="+80+5" y="+28" height="25" width="35"
+					action="setting 'automixMode' 'no mix'" rightclick="setting 'automixMode' 'skip silence'">
+					<tooltip>Setting Automix to 'Smart' or 'Remove Intro/Outro' will clip tracks.\nValid settings are 'no mix', 'skip silence', 'radio', 'full songs'\nClick to change settings to 'Back-to-Back' (use song ending silence).\nRight click to change settings to 'Skip Silence'
+					</tooltip>
 				</button>
 				</panel>
 
+				<panel name="automix_setting_warnings" visibility="not setting 'autoMixTempoMode' 'normal tempo' ? true: setting 'automixSkipLength' ? true : setting 'automixMaxLength'">
+					<button class="button_master" text="⚠️" query="true"
+					textsize="14" x="+120+4" y="+28" height="25" width="35"
+						action="setting 'autoMixTempoMode' 'normal tempo' & setting 'automixSkipLength' 0 & setting 'automixMaxLength' 0">
+						<tooltip>Automix settings not configured properly.\nClick to set 'autoMixTempoMode' to 'normal tempo'\nand 'automixSkipLength' to 0.</tooltip>
+					</button>
+				</panel>
+
+				<panel name="positive_fade_length_warning" visibility="setting 'fadeLength'">
+					<button class="button_master" text="⚠️" query="true"
+					textsize="14" x="+160+3" y="+28" height="25" width="35"
+						action="setting 'fadeLength' 0 & setting 'fadeLength' -3" rightclick="setting 'fadeLength' 0">
+						<tooltip>Automix 'fadeLength' setting is above 0\nThis will cut end of tracks\nClick to set to 3 second second gap between songs.\nRight click to set to 0.</tooltip>
+					</button>
+				</panel>
+
+				<panel name="crossfader_not_disabled_warning" visibility="not crossfader_disable ? true : deck 1 fader_start ? true : tdeck 2 fader_start">
+					<button class="button_master" text="⚠️" query="true"
+					textsize="14" x="+200+2" y="+28" height="25" width="35"
+						action="crossfader_disable on & deck 1 fader_start off & deck 2 fader_start off">
+						<tooltip>Crossfader or Fader Start are enabled.\nCAN CAUSE ERRORS!\nClick to disable Crossfader and Fader Start.</tooltip>
+					</button>
+				</panel>
+				<panel name="incorrect_loop_setting_warning" 
+						visibility="(not setting 'autoSortCues' ? true :
+								(deck 1 setting 'smartLoop' on ? true : deck 2 setting 'smartLoop' on ? true : false))">
+					<button
+						class="button_master" text="⚠️"
+						query="var_equal '$ignoreCueSettingsInd' 1 ? false : true"
+						rightclick="toggle '$ignoreCueSettingsInd'"
+					textsize="14" x="+200+40+1" y="+28" height="25" width="35"
+						action="setting 'autoSortCues' on & deck 1 setting 'smartLoop' off & deck 2 setting 'smartLoop' off">
+						<tooltip>Click to change settings 'smartLoop' off and autoSortCues on.\nEnsures loop button works as expected.\nRight click to ignore warning.</tooltip>
+					</button>
+				</panel>
+					<panel name="auto_match_configuration_warning" 
+						visibility="auto_pitch_lock ? true : auto_match_key ? true : 
+									auto_pitch_lock ? true : not setting 'autoBPMMatch' 'no'"> 
+					<button class="button_master" text="⚠️" query="true"
+					textsize="14" x="+200+80" y="+28" height="25" width="35"
+						action="auto_match_bpm off & auto_match_key off & auto_pitch_lock off & setting 'autoBPMMatch' 'no'">
+						<tooltip>Auto match BPM, key, or pitch are turned on.\nClick to turn settings off.</tooltip>
+					</button>
+					</panel>
+
 				</group>
 
+		<group name="options_area" x="+40+325+7" y="+20+35+2+5">
+		<!-- LOGIN INFO -->
+		<group name="login" x="+0" y="+0">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="110+5+50" height="22"/>
+				<off shape="square" color="topmenu" radius="4" border_size="1" 
+				color="buttonoff1" color2="buttonoff2" border="bordercolor2"/>
+			</visual>
+			<visual>
+				<pos x="+3" y="+3"/>
+				<size width="16" height="16"/>
+				<off x="144" y="347"/>
+			</visual>
+			<button action="connect">
+				<pos x="+26" y="+1"/>
+				<size width="110+50" height="20"/>
+				<text width="110+50-26" fontsize="12" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
+			</button>
+		</group>
+
+		<group name="window_panel" x="+0" y="+28">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="110" height="22"/>
+				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
+			</visual>
+			<menu tooltip="Open new window panel.">
+				<pos x="+0" y="+0"/>
+				<size width="110" height="22"/>
+				<text dx="10" width="90" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
+						text="WINDOWS" localize="true" important="true"/>
+				<icon dx="40" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
+				<item text="WAVEFORM" localize="true" action="show_window 'Waveform'" check="show_window 'Waveform'"/>
+				<item text="BROWSER" localize="true" action="show_window 'BrowserWindow'" check="show_window 'BrowserWindow'"/>
+				<item text="SEARCH" localize="true" action="show_window 'SearchWindow'" check="show_window 'SearchWindow'"/>
+				<item text="SIDEVIEW" localize="true" action="show_window 'SideviewWindow'" check="show_window 'SideviewWindow'"/>
+				<item text="SIDELIST" localize="true" action="show_window 'SidelistWindow'" check="show_window 'SidelistWindow'"/>
+				<item text="INFO" localize="true" action="show_window 'BrowserInfoWindow'" check="show_window 'BrowserInfoWindow'"/>
+			</menu>
+		</group>
+
+	<button class="button_master" action="show_window 'documentation'" query="show_window 'documentation'"
+		x="+110+50+5+5" y="+0" width="50" height="22" text="DOCS" textsize="14"> 
+		<tootltip>Click to open Documentation.\nTigerTango Docs can be found at https://github.com/sericson0/TigerTango</tootltip>
+	</button>
+
+		<group name="color_scheme_menu" x="+110+5" y="+28">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="50" height="22"/>
+				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
+			</visual>
+			<menu tooltip="Choose Color Scheme.">
+				<pos x="+0" y="+0"/>
+				<size width="50" height="22"/>
+				<text dx="5" width="40" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
+						text="💡" localize="true" important="true"/>
+				<icon dx="10" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
+				<item text="Default" localize="true" action="set '@$colorscheme' 0 & load_skin" check="var_equal '@$colorscheme' 0"/>
+				<item text="Contrast" localize="true" action="set '@$colorscheme' 1 & load_skin" check="var_equal '@$colorscheme' 1"/>
+				<item text="Daylight" localize="true" action="set '@$colorscheme' 2 & load_skin" check="var_equal '@$colorscheme' 2"/>
+			</menu>
+		</group>
+		<group name="album_cover_choice" x="+110+5+50+5" y="+28">
+			<visual>
+				<pos x="+0" y="+0"/>
+				<size width="50" height="22"/>
+				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
+			</visual>
+			<menu tooltip="Choose Cover Art Display.">
+				<pos x="+0" y="+0"/>
+				<size width="50" height="22"/>
+				<text dx="5" width="40" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
+						text="💿" localize="true" important="true"/>
+				<icon dx="10" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
+				<item text="No Coverart" localize="true" action="set '@$jogcoverart' 2" check="var_equal '@$jogcoverart' 2"/>
+				<item text="Small Coverart" localize="true" action="set '@$jogcoverart' 1" check="var_equal '@$jogcoverart' 1"/>
+				<item text="Large Coverart" localize="true" action="set '@$jogcoverart' 0" check="var_equal '@$jogcoverart' 0"/>
+			</menu>
+		</group>
+
+	<button class="button_master" action="browser_zoom" x="+120+50+50+7" y="+0" width="50" height="50" sysicon="browser_zoom" iconsize="50"> 
+		<tootltip>Expand Browser</tootltip>
+	</button>
+
+			</group>
 			</group>
 			<line name="divider" color="dark"  x="+200-20" y="+4" width="2" height="50-8"/>
 				<panel name="cpu" x="+180+30-10" y="+0" width="50" height="50" childtooltip="true">
@@ -3598,20 +3636,21 @@ ________________________________________________________________________________
 	<visual>
 		<pos x="+0" y="-5"/>
 		<size width="640" height="425+4"/>
-		<off shape="square" color="#161718" border_size="1" border="#161718" radius="4"/>
+		<off shape="square" color="browserback" border_size="1" border="bordercolor" radius="4"/>
 	</visual>
 
 	<filelist source="automix">
 		<size width="630" height="409+10"/>
 	<pos x="+5	" y="+0"/>
     <colors>
-        <lists background="#202020"
-               stripes    ="#2A2A2A"
-               selected   ="#555555"
-               focus      ="#7A7A7A"
-				playing   ="browser_automix"
-				automix    ="browser_automix"
-			/>
+	<lists text="textbrowser" background="browserback" stripes="browserstripe" 
+			over="browserover" overstripes="browseroverstripe" focus="browseroverfocus" 
+			stripes="transparent" over="transparent" selected="browser_selected"
+			 text="textbrowser" overtext="textbrowser" selectedtext="texton" 
+			 focustext="texton" automix="browser_automix" scan="browser_scan" button="browser_button" buttonactive="browser_buttonactive"/>
+	<separators line="browser_seperatorline" text="texton" background="browser_seperatortab"/>
+	<columns background="background" text="textoff3"/>
+	<scrollbars background="browser_scrollbar" button="browser_scrollbtn"/>
     </colors>
 	</filelist>
 	</panel>
@@ -3620,20 +3659,21 @@ ________________________________________________________________________________
 	<visual>
 		<pos x="+0" y="-5"/>
 		<size width="640" height="425-170-25+4"/>
-		<off shape="square" color="#161718" border_size="1" border="#161718" radius="4"/>
+		<off shape="square" color="browserback" border_size="1" border="bordercolor" radius="4"/>
 	</visual>
 
 	<filelist source="automix">
 		<size width="630" height="409-180+4"/>
 	<pos x="+5	" y="+0"/>
     <colors>
-        <lists background="#202020"
-               stripes    ="#2A2A2A"
-               selected   ="#555555"
-               focus      ="#7A7A7A"
-				playing   ="browser_automix"
-				automix    ="browser_automix"
-			/>
+	<lists text="textbrowser" background="browserback" stripes="browserstripe" 
+			over="browserover" overstripes="browseroverstripe" focus="browseroverfocus" 
+			stripes="transparent" over="transparent" selected="browser_selected"
+			 text="textbrowser" overtext="textbrowser" selectedtext="texton" 
+			 focustext="texton" automix="browser_automix" scan="browser_scan" button="browser_button" buttonactive="browser_buttonactive"/>
+	<separators line="browser_seperatorline" text="texton" background="browser_seperatortab"/>
+	<columns background="background" text="textoff3"/>
+	<scrollbars background="browser_scrollbar" button="browser_scrollbtn"/>
     </colors>
 	</filelist>
 	</panel>
