@@ -4,6 +4,12 @@ By: Sean Ericson (Sericson0@gmail.com)
 
 Nothing kills the magic of the milonga like technical issues. Whether you are just starting out as a tango DJ, or are traveling to DJ the biggest festivals, you deserve a software that enables your creativity instead of hindering the flow you are striving so hard to create. This is why I created the TigerTango skin for Virtual DJ. It provides a layout custom suited for the needs of and requirements of tango DJs and other social dances.
 
+> [!IMPORTANT]
+> In the 2026 release of Virtual DJ, they added a watermark to the program! If you do not have a license, then this will cause issues when playing!
+> There are a few solutions for this. One is to buy the license. Another is to install the 2025 version and not update. That version is here https://drive.google.com/drive/folders/1uAO8mz2jWHvKZ7-leiDQ1G_sjNj8ewcX?usp=drive_link
+> I am working on a third solution which is to develop a version of TigerTango in Mixxx, which is free and open source. 
+
+
 ## What DJs are Saying About TigerTango
 >The TigerTango VirtualDJ skin interface from Sean Ericson is perfect for Tango DJs. As a Traktor user for the last 10 years I never stopped looking for a more practical alternative, until now. Sean’s dedication to develop and test the interface gradually, together with the wider tango community, supports further customisation and safe usage on one of the most popular DJ programs.
 >
