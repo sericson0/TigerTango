@@ -2123,14 +2123,14 @@ ________________________________________________________________________________
 					<button class="button_master" text="🎵🎵"  query="var_equal '$removeDoublePlaySafety' 1"
 					textsize="14" x="+6" y="+30" height="25" width="40"
 						action="toggle '$removeDoublePlaySafety''">
-						<tooltip>Click to toggle dual-deck safety.\nSafety prevents both decks from playing to main.</tooltip>
+						<tooltip>Toggle dual-deck safety.\nSafety prevents both decks from playing to main.</tooltip>
 					</button>
 
 					<button class="button_master" text="⊘⊘" weight="bold" 
 						textsize="18" x="+5+40+6" y="+30" height="25" width="40"
 						action = "toggle '$deckSafetyOff'"
 						query = "var_equal '$deckSafetyOff' 1">
-						<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\n</tooltip>
+						<tooltip>Toggle automix dropzone safety.\nDropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
 					</button>
 				</group>
 
