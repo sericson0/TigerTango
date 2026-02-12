@@ -1086,6 +1086,18 @@
 						<size width="64" height="64"/>
 					</cover>
 				</group>
+				<group name="turntable_coverart_mid" visibility="var_equal '@$jogcoverart' 3 && not is_video 'active'">
+					<visual>
+						<pos x="+19" y="+26"/>
+						<size width="184" height="184"/>
+						<off x="580" y="26" width="184" height="184" condition="var_not_equal '@$colorscheme' 2"/>
+						<off x="580" y="216" width="184" height="184" condition="var_equal '@$colorscheme' 2"/>
+					</visual>
+					<cover rotate="yes" visibility="0.7">
+						<pos x="+19+30" y="+26+30"/>
+						<size width="124" height="124"/>
+					</cover>
+				</group>
 				<group name="turntable_coverart_big" visibility="var_equal '@$jogcoverart' 0 && not is_video 'active'">
 					<!-- full size cover -->
 					<cover rotate="yes">
@@ -2031,7 +2043,7 @@ ________________________________________________________________________________
 		</group>
 		<button class="button_master" 
 			textaction="automix_dualdeck ? get_text 'DUAL DECK ◉ ◉' : get_text 'SINGLE DECK ◉'" 
-			query="var_equal '$deckSafetyOff' 1 ? true : false"
+			query="false"
 		textsize="14" x="+130+4" y="+33" height="30" width="125"
 		action="
 		set '$decksPaused' 1 &
@@ -2041,7 +2053,6 @@ ________________________________________________________________________________
 				((deck 1 play ? deck 2 load automix_song 1 : deck 1 load automix_song 1) & automix_dualdeck on)
 			) &
 				(var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)"
-		rightclick = "toggle '$deckSafetyOff'"		
 			>
 			<tooltip>Set 'Single' or 'Dual Deck' automix mode.\nRight click to disable deck safety. Button lights up when safety is off.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix.</tooltip>
 		</button>
@@ -2072,11 +2083,7 @@ ________________________________________________________________________________
 				<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
 			</visual>
 			<group name="mastervu" x="-15" y="+0">
-				<!-- <textzone>
-					<pos x="+0" y="+20"/>
-					<size width="75" height="20"/>
-					<text fontsize="14" color="textdarker" align="left" text="MASTER" localize="true"/>
-				</textzone> -->
+
 				<visual source="get_vu_meter_left 'master'" type="linear" orientation="horizontal">
 					<pos x="+65" y="+18"/>
 					<size width="100" height="8"/>
@@ -2097,13 +2104,35 @@ ________________________________________________________________________________
 					<on x="1627" y="0"/>
 				</visual>
 
-			<group name="warning_area" x="+40" y="+20+35+2">
+			<group name="warning_area" x="+40+60" y="+20+35+2">
 				<visual>
-					<pos x="+0" y="+0"/>
+					<pos x="-60" y="+0"/>
 					<size width="325+290" height="60"/>
 					<off shape="square" color="topmenu" radius="4" border_size="1" border="bordercolor2"/>
 				</visual>
-				<line x="+325" y="+0" height="60" width="3" color="dark" highlight="" shadow="highlight" />
+				<line x="+323" y="+0" height="60" width="3" color="dark" highlight="" shadow="highlight" />
+				<line x="+35" y="+0" height="60" width="3" color="dark" highlight="" shadow="highlight" />
+				<!-- <line x="+60" y="+0" height="60" width="3" color="dark" highlight="" shadow="highlight" /> -->
+				
+				<group name="safety_area" x="-60" y="+0">
+					<textzone>
+						<pos x="+0" y="+7"/>
+						<size width="60+35" height="13"/>
+						<text fontsize="14" color="textdarker" align="center" text="SAFETY" localize="true"/>
+					</textzone>
+					<button class="button_master" text="🎵🎵"  query="var_equal '$removeDoublePlaySafety' 1"
+					textsize="14" x="+6" y="+30" height="25" width="40"
+						action="toggle '$removeDoublePlaySafety''">
+						<tooltip>Toggle dual-deck safety.\nSafety prevents both decks from playing to main.</tooltip>
+					</button>
+
+					<button class="button_master" text="⊘⊘" weight="bold" 
+						textsize="18" x="+5+40+6" y="+30" height="25" width="40"
+						action = "toggle '$deckSafetyOff'"
+						query = "var_equal '$deckSafetyOff' 1">
+						<tooltip>Toggle automix dropzone safety.\nDropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.</tooltip>
+					</button>
+				</group>
 
 				<textzone>
 					<pos x="+0" y="+7"/>
@@ -2113,7 +2142,7 @@ ________________________________________________________________________________
 				<panel name = "Warning Light Row" y="+30" x="+7">
 				<panel name="automix_click_warning" visibility="setting 'automixDoubleCLick' 'nothing' ? false: true">
 					<button class="button_master" text="⚠️"  query="var_equal '$ignoreDblClickInd' 1 ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
-					textsize="14" x="+0" y="+0" height="25" width="35"
+					textsize="14" x="+39" y="-25" height="25" width="35"
 						action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$ignoreDblClickInd'">
 						<tooltip>Recommended to set automixDoucleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
 					</button>
@@ -2122,8 +2151,7 @@ ________________________________________________________________________________
 				<panel name="hitting_limiter_warning" visibility="get_limiter & pulse 10000ms"> 
 					<button class="button_master" text="⚠️" query="get_limiter & pulse 2000ms" 
 						action="master_volume -15%"
-					textsize="14" x="+39" y="+0" height="25" width="35"
-					rightclick="toggle '$checkSoundCard'">
+					textsize="14" x="+39" y="+0" height="25" width="35">
 						<tooltip>HITTING LIMITER! Turn down master fader!\nClick to turn down master fader 15%.\nSuggest setting option 'zeroDB' to -3db to reduce chance of clipping.</tooltip>
 					</button>
 				</panel>
@@ -2205,89 +2233,75 @@ ________________________________________________________________________________
 				</panel>
 				</group>
 
-		<group name="options_area" x="+40+325+7" y="+20+35+2+5">
+		<group name="options_area" x="+40+325+10+50" y="+20+35+2+5">
 		<!-- LOGIN INFO -->
 		<group name="login" x="+0" y="+0">
 			<visual>
-				<pos x="+0" y="+0"/>
-				<size width="110+5+50" height="22"/>
+				<pos x="+10" y="+0"/>
+				<size width="100+5+50" height="22"/>
 				<off shape="square" color="topmenu" radius="4" border_size="1" 
 				color="buttonoff1" color2="buttonoff2" border="bordercolor2"/>
 			</visual>
 			<visual>
-				<pos x="+3" y="+3"/>
+				<pos x="+3+10" y="+3"/>
 				<size width="16" height="16"/>
 				<off x="144" y="347"/>
 			</visual>
 			<button action="connect">
-				<pos x="+26" y="+1"/>
-				<size width="110+50" height="20"/>
-				<text width="110+50-26" fontsize="12" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
+				<pos x="+26+10" y="+1"/>
+				<size width="100+50" height="20"/>
+				<text width="100+50-26" fontsize="12" weight="" color="textoff3" align="left" action="get_username & param_uppercase" important="true"/>
 			</button>
 		</group>
 
-		<group name="window_panel" x="+0" y="+28">
+		<group name="window_panel" x="+10" y="+28">
 			<visual>
 				<pos x="+0" y="+0"/>
-				<size width="110" height="22"/>
+				<size width="100" height="22"/>
 				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
 			</visual>
 			<menu tooltip="Open new window panel.">
 				<pos x="+0" y="+0"/>
-				<size width="110" height="22"/>
+				<size width="100" height="22"/>
 				<text dx="10" width="90" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
-						text="WINDOWS" localize="true" important="true"/>
+						text="LAYOUT" localize="true" important="true"/>
+				<!-- Color Scheme -->
+				<pos x="+0" y="+0"/>
+				<size width="50" height="22"/>
 				<icon dx="40" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
-				<item text="WAVEFORM" localize="true" action="show_window 'Waveform'" check="show_window 'Waveform'"/>
-				<item text="BROWSER" localize="true" action="show_window 'BrowserWindow'" check="show_window 'BrowserWindow'"/>
-				<item text="SEARCH" localize="true" action="show_window 'SearchWindow'" check="show_window 'SearchWindow'"/>
-				<item text="SIDEVIEW" localize="true" action="show_window 'SideviewWindow'" check="show_window 'SideviewWindow'"/>
-				<item text="SIDELIST" localize="true" action="show_window 'SidelistWindow'" check="show_window 'SidelistWindow'"/>
-				<item text="INFO" localize="true" action="show_window 'BrowserInfoWindow'" check="show_window 'BrowserInfoWindow'"/>
+				<item text="🌊 WAVEFORM" localize="true" action="show_window 'Waveform'" check="show_window 'Waveform'"/>
+				<item text="🌐 BROWSER" localize="true" action="show_window 'BrowserWindow'" check="show_window 'BrowserWindow'"/>
+				<item text="🔍 SEARCH" localize="true" action="show_window 'SearchWindow'" check="show_window 'SearchWindow'"/>
+				<item text="🗂️ SIDEVIEW" localize="true" action="show_window 'SideviewWindow'" check="show_window 'SideviewWindow'"/>
+				<item text="📄 SIDELIST" localize="true" action="show_window 'SidelistWindow'" check="show_window 'SidelistWindow'"/>
+				<item text="📝 INFO" localize="true" action="show_window 'BrowserInfoWindow'" check="show_window 'BrowserInfoWindow'"/>
+				<separator/>
+				<!-- <text dx="5" width="40" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
+						text="💡" localize="true" important="true"/> -->
+				<!-- <icon dx="10" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/> -->
+				<submenu text="💡Color Scheme" localize="true">
+					<item text="Default" localize="true" action="set '@$colorscheme' 0 & load_skin" check="var_equal '@$colorscheme' 0"/>
+					<item text="Contrast" localize="true" action="set '@$colorscheme' 1 & load_skin" check="var_equal '@$colorscheme' 1"/>
+					<item text="Daylight" localize="true" action="set '@$colorscheme' 2 & load_skin" check="var_equal '@$colorscheme' 2"/>
+				</submenu>
+				<!-- Album Art -->
+				<submenu text="💿 Cover Art" localize="true">
+					<item text="No Coverart" localize="true" action="set '@$jogcoverart' 2" check="var_equal '@$jogcoverart' 2"/>
+					<item text="Small Coverart" localize="true" action="set '@$jogcoverart' 1" check="var_equal '@$jogcoverart' 1"/>
+					<item text="Mid Coverart" localize="true" action="set '@$jogcoverart' 3" check="var_equal '@$jogcoverart' 3"/>
+					<item text="Large Coverart" localize="true" action="set '@$jogcoverart' 0" check="var_equal '@$jogcoverart' 0"/>
+				</submenu>
+
+				
 			</menu>
 		</group>
 
 	<button class="button_master" action="show_window 'documentation'" query="show_window 'documentation'"
-		x="+110+50+5+5" y="+0" width="50" height="22" text="DOCS" textsize="14"> 
+		x="+110+5+5-5" y="+28" width="50" height="22" text="DOCS" textsize="14"> 
 		<tootltip>Click to open Documentation.\nTigerTango Docs can be found at https://github.com/sericson0/TigerTango</tootltip>
 	</button>
 
-		<group name="color_scheme_menu" x="+110+5" y="+28">
-			<visual>
-				<pos x="+0" y="+0"/>
-				<size width="50" height="22"/>
-				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
-			</visual>
-			<menu tooltip="Choose Color Scheme.">
-				<pos x="+0" y="+0"/>
-				<size width="50" height="22"/>
-				<text dx="5" width="40" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
-						text="💡" localize="true" important="true"/>
-				<icon dx="10" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
-				<item text="Default" localize="true" action="set '@$colorscheme' 0 & load_skin" check="var_equal '@$colorscheme' 0"/>
-				<item text="Contrast" localize="true" action="set '@$colorscheme' 1 & load_skin" check="var_equal '@$colorscheme' 1"/>
-				<item text="Daylight" localize="true" action="set '@$colorscheme' 2 & load_skin" check="var_equal '@$colorscheme' 2"/>
-			</menu>
-		</group>
-		<group name="album_cover_choice" x="+110+5+50+5" y="+28">
-			<visual>
-				<pos x="+0" y="+0"/>
-				<size width="50" height="22"/>
-				<off shape="square" color="buttonoff1" color2="buttonoff2"  radius="4" border_size="1"  border="bordercolor"/>
-			</visual>
-			<menu tooltip="Choose Cover Art Display.">
-				<pos x="+0" y="+0"/>
-				<size width="50" height="22"/>
-				<text dx="5" width="40" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
-						text="💿" localize="true" important="true"/>
-				<icon dx="10" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
-				<item text="No Coverart" localize="true" action="set '@$jogcoverart' 2" check="var_equal '@$jogcoverart' 2"/>
-				<item text="Small Coverart" localize="true" action="set '@$jogcoverart' 1" check="var_equal '@$jogcoverart' 1"/>
-				<item text="Large Coverart" localize="true" action="set '@$jogcoverart' 0" check="var_equal '@$jogcoverart' 0"/>
-			</menu>
-		</group>
-
-	<button class="button_master" action="browser_zoom" x="+120+50+50+7" y="+0" width="50" height="50" sysicon="browser_zoom" iconsize="50"> 
+	<button class="button_master" action="browser_zoom" x="+120+50+2" y="+0" width="50" height="50" sysicon="browser_zoom" iconsize="50"> 
 		<tootltip>Expand Browser</tootltip>
 	</button>
 
@@ -2893,9 +2907,11 @@ ________________________________________________________________________________
 			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 			</group>
 			<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
-					action="deck 1 play ? play_pause:
+					action="var_equal '$removeDoublePlaySafety' 1 ? play_pause : 
+						deck 1 play ? play_pause:
 							deck 1 level 0 ? deck 1 play_pause:
 							deck 2 level 0 ? deck 1 play_pause:
+
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
@@ -3109,7 +3125,8 @@ ________________________________________________________________________________
 			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 			</group>
 			<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
-					action="deck 1 play ? play_pause:
+					action="var_equal '$removeDoublePlaySafety' 1 ? play_pause : 
+						deck 1 play ? play_pause:
 							deck 1 level 0 ? deck 1 play_pause:
 							deck 2 level 0 ? deck 1 play_pause:
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
@@ -3386,7 +3403,8 @@ ________________________________________________________________________________
 				<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 				</group>
 				<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
-						action="deck 2 play ? play_pause:
+						action="var_equal '$removeDoublePlaySafety' 1 ? play_pause : 
+							deck 2 play ? play_pause:
 						        deck 2 level 0 ? deck 2 play_pause:
 								deck 1 level 0 ? deck 2 play_pause:
 								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
@@ -3564,7 +3582,8 @@ ________________________________________________________________________________
 				<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 				</group>
 				<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
-						action="deck 2 play ? play_pause:
+						action="var_equal '$removeDoublePlaySafety' 1 ? play_pause : 
+						deck 2 play ? play_pause:
 						        deck 2 level 0 ? deck 2 play_pause:
 								deck 1 level 0 ? deck 2 play_pause:
 								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
@@ -3694,7 +3713,7 @@ ________________________________________________________________________________
 	</visual>
 
 	<filelist source="automix">
-		<size width="630" height="409+10"/>
+		<size width="630" height="409+15"/>
 	<pos x="+5	" y="+0"/>
     <colors>
 	<lists text="textbrowser" background="browserback" stripes="browserstripe" 
@@ -3707,12 +3726,13 @@ ________________________________________________________________________________
 	<scrollbars background="browser_scrollbar" button="browser_scrollbtn"/>
     </colors>
 	</filelist>
+
 	</panel>
 	<!-- With browser zoomed -->
 	<panel  visibility="browser_zoom">
 	<visual>
 		<pos x="+0" y="-5"/>
-		<size width="640" height="425-170-25+4"/>
+		<size width="640" height="425-170-25+4+5"/>
 		<off shape="square" color="browserback" border_size="1" border="bordercolor" radius="4"/>
 	</visual>
 
