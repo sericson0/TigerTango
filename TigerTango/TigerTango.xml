@@ -3211,7 +3211,7 @@ ________________________________________________________________________________
 <!-- Right Deck when browser is not expanded -->
 <panel name="deckright_not_zoomed" x="1920-764" y="100" width="764" height="389" visibility="not browser_zoom">
 	<deck deck="right">
-		<line x="+764-35-85-85-85-85-35+5+30+25-8" y="+150" height="280+100" width="3" color="dark" highlight="" shadow="highlight"/>
+		<line x="+764-35-85-85-85-85-35+5+30+25-8" y="+150" height="380" width="3" color="dark" highlight="" shadow="highlight"/>
 	
 		<dropzone visibility="
 			var_equal '$deckSafetyOff' 1 ? true : 
@@ -3221,7 +3221,7 @@ ________________________________________________________________________________
 			<size width="764" height="389"/>
 		</dropzone>
 
-		<group name="turntable_area" x="+10+92+50" y="+152">
+		<group name="turntable_area" x="+152" y="+152">
 			<panel class="turntable" x="+0" y="+0" name="jogwheel_turntable"/>
 			<button visibility="
 						var_equal '$deckSafetyOff' 1 ? false : 
@@ -3260,14 +3260,14 @@ ________________________________________________________________________________
 		</group>
 
 
-		<group name="eq_pitch_volume" x="+430" y="+235+7+20">
+		<group name="eq_pitch_volume" x="+430" y="+262">
 			<group name="volume_and_headphones" x="+0" y="+0">
 				<textzone x="+0" y="-25" width="52" height="20" textsize="20">
 					<text text="VOL" color = "textdark" align = "center"/>
 				</textzone>
 				<panel class="volume_fader" x="+0" y="+0"/>
 
-						<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
+						<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+137"
 						action="deck 2 play ?
 						deck 2 level 0% ?
 						deck 2 stop & deck 2 goto_start & repeat_start WaitTimer 100ms 1 & deck 2 level 100% :
@@ -3278,7 +3278,7 @@ ________________________________________________________________________________
 						</tooltip>
 					</button>
 
-					<button class="button_main" width="46" height="25" x="+0" y="+140-1+43+3" radius="5"
+					<button class="button_main" width="46" height="25" x="+0" y="+185" radius="4"
 					action="deck 2 pfl on ? deck 2 pfl off : deck 2 pfl on & deck 1 pfl off" query="deck 2 pfl on">
 					<tooltip>Deck 2 Prefade listen. Headphones will come through deck when turned on.</tooltip>
 				</button>
@@ -3289,17 +3289,17 @@ ________________________________________________________________________________
 				</textzone>
 				<panel class="pitch_fader" x="+0" y="+0"/>
 				<button>
-					<pos x="+0" y="+180+3+1"/>
+					<pos x="+0" y="+184"/>
 					<size width="52" height="25"/>
-					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 					<text fontsize="12" color="textdark" align="center" weight="" format="%Ppitch%" important="true"/>
 				</button>
 				<button class="pitchreset_button" sysicon="arrowleft" x="+52+2" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
 				<!-- Pitch check warning button -->
 				<button class="button_master" text="⚠️" visibility="pitch 100% ? false : true" query="true"
-					textsize="14" x="+0" y="+180+1+3+25" height="25" width="52"
+					textsize="14" x="+0" y="+209" height="25" width="52"
 					action="pitch_reset">
-					<tooltip>Pitch not set to normal. Click to reset picth to 100%.</tooltip>
+					<tooltip>Pitch not set to normal. Click to reset pitch to 100%.</tooltip>
 				</button>
 			</group>
 
@@ -3319,20 +3319,20 @@ ________________________________________________________________________________
 				<panel class="fxdrop"  x="+0" y="+38" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
 			</group>
 
-			<group name="eq" x="+15+64+64" y="+0">
+			<group name="eq" x="+143" y="+0">
 				<panel class="eq_knob_low" x="+0" y="+0"/>
 				<panel class="eq_knob_mid" x="+64" y="+0"/>
-				<panel class="eq_knob_high" x="+64+64" y="+0"/>
+				<panel class="eq_knob_high" x="+128" y="+0"/>
 			</group>
-			<group name="sweeps" x="+15+64+65" y="+85">
+			<group name="sweeps" x="+144" y="+85">
 				<panel class="eq_sweep_low" x="+0" y="+0" />
 				<panel class="eq_sweep_mid" x="+64" y="+0" />
-				<panel class="eq_freq_fader_high" x="+64+64" y="+0" />
+				<panel class="eq_freq_fader_high" x="+128" y="+0" />
 			</group>
 
 	</group>
 
-		<group name="play_button_pos" x="+150+5" y="+401-5">
+		<group name="play_button_positions" x="+155" y="+396">
 				<button class="button_main"
 							x="+0" y="+0" width="64" height="35"
 							text="ADD" textsize="16"
@@ -3440,7 +3440,7 @@ ________________________________________________________________________________
 				query="not deck 2 loaded ? false : not deck 2 hot_cue 2 ? false : not deck 1 play ? true : deck 1 level 0% ? true : deck 2 level 0% ? true : false">
 			<tooltip>Set Hot Cue.\nRight click to disable Hot Cue.</tooltip>
 			</button>
-			 <button class="button_main" x="+80+80" y="+35+10+35+10" width="64" height="30"
+			 <button class="button_main" x="+160" y="+90" width="64" height="30"
 					 action="
 					 not deck 2 hot_cue 1 ? nothing : not deck 2 hot_cue 2 ? nothing :
 					 (setting 'autoSortCues' 0 ? set 'sortOrder' 0 : set 'sortOrder' 1 ) &
@@ -3474,11 +3474,11 @@ ________________________________________________________________________________
 		<panel class="deckinfo" areawidth="170" left="+0" visibility="skin_width && param_bigger 1500"/>
 		<panel class="deckinfo" areawidth="190" left="+0" visibility="skin_width && param_smaller 1501"/>
 
-		<group name="eq_pitch_volume" x="+430" y="+175-25">
+		<group name="eq_pitch_volume" x="+430" y="+150">
 			<group name="volume_and_headphones" x="-15" y="+0">
 				<panel class="volume_fader" x="+0" y="+0"/>
 
-						<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+140-3"
+						<button class="button_main" sysicon="headphones" iconsize="32" width="46" height="40" x="+0" y="+137"
 						action="deck 2 play ?
 						deck 2 level 0% ?
 						deck 2 stop & deck 2 goto_start & repeat_start WaitTimer 100ms 1 & deck 2 level 100% :
@@ -3498,20 +3498,20 @@ ________________________________________________________________________________
 				<panel class="fxdrop"  x="+0" y="+38" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
 			</group>
 
-			<group name="eq" x="+15+64+64" y="+0">
+			<group name="eq" x="+143" y="+0">
 				<panel class="eq_knob_low" x="+0" y="+0"/>
 				<panel class="eq_knob_mid" x="+64" y="+0"/>
-				<panel class="eq_knob_high" x="+64+64" y="+0"/>
+				<panel class="eq_knob_high" x="+128" y="+0"/>
 			</group>
-			<group name="sweeps" x="+15+64+65" y="+85">
+			<group name="sweeps" x="+144" y="+85">
 				<panel class="eq_sweep_low" x="+0" y="+0" />
 				<panel class="eq_sweep_mid" x="+64" y="+0" />
-				<panel class="eq_freq_fader_high" x="+64+64" y="+0" />
+				<panel class="eq_freq_fader_high" x="+128" y="+0" />
 			</group>
 
 	</group>
 
-		<group name="play_button_pos" x="+150+5" y="+175-25">
+		<group name="play_button_positions" x="+155" y="+150">
 				<button class="button_main"
 							x="+0" y="+0" width="64" height="35"
 							text="ADD" textsize="16"
@@ -3700,13 +3700,13 @@ ________________________________________________________________________________
 	</panel>
 </group>
 
-<line name="browser_top"  x="10" y="1080-500+50" width="1920-20" height="4" color="bordercolor" visibility="not browser_zoom"/>
-<line name="browser_top"  x="10" y="340+125-4-25" width="1920-20" height="4" color="bordercolor" visibility="browser_zoom"/>
+<line name="browser_top"  x="10" y="630" width="1920-20" height="4" color="bordercolor" visibility="not browser_zoom"/>
+<line name="browser_top"  x="10" y="436" width="1920-20" height="4" color="bordercolor" visibility="browser_zoom"/>
 
 <browser class="browser">
-	<pos x="10" y="560+50+24" />
+	<pos x="10" y="634" />
 	<size width="1920-20" height="509-70+6"/>
-	<zoomed x="10" y="340+125-25" width="1920-20" height="1080-340-125+25"/>
+	<zoomed x="10" y="440" width="1900" height="640"/>
 </browser>
 
 
