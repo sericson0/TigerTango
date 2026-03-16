@@ -100,10 +100,10 @@
 		<define color="colormed" value="#896526" deck="sandbox"/>
 		<define color="colorhigh" value="#c0892a" deck="sandbox"/>
 
-		<define color="scratch1" value="#0076c1" deck="left"/>
-		<define color="scratch2" value="#0076c1" deck="left"/>
-		<define color="scratch1" value="#f30d2e" deck="right"/>
-		<define color="scratch2" value="#f30d2e" deck="right"/>
+		<define color="scratch1" value="#157794" deck="left"/>
+		<define color="scratch2" value="#157794" deck="left"/>
+		<define color="scratch1" value="#b0333b" deck="right"/>
+		<define color="scratch2" value="#b0333b" deck="right"/>
 
 		<define color="needle" value="#d1d1d1"/>
 		<define color="gridlines" value="#7d7d7d"/>
@@ -295,10 +295,10 @@
 		<define color="browser_iconbuttonactive" value="#3b8976"/>
 
 		<!-- waveforms -->
-		<define color="scratch1" value="#00548B" deck="left"/>
-		<define color="scratch2" value="#00548B" deck="left"/>
-		<define color="scratch1" value="red" deck="right"/>
-		<define color="scratch2" value="red" deck="right"/>
+		<define color="scratch1" value="#157794" deck="left"/>
+		<define color="scratch2" value="#157794" deck="left"/>
+		<define color="scratch1" value="#b0333b" deck="right"/>
+		<define color="scratch2" value="#b0333b" deck="right"/>
 
 		<define color="needle" value="black"/>
 		<define color="gridlines" value="#3b3b3b"/>
@@ -424,21 +424,21 @@
 	<group name="buttons">
 		<define class="button_main" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=12,textcolor=textoff,offcolor=buttonoff1,oncolor=buttonon1,overcolor=buttonover1,tooltip">
 			<size width="[WIDTH]" height="[HEIGHT]"/>
-			<off color="[OFFCOLOR]" color2="buttonoff2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<over color="[OVERCOLOR]" color2="buttonover2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<selected color="[ONCOLOR]" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<off color="[OFFCOLOR]" color2="buttonoff2" gradient="vertical" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<over color="[OVERCOLOR]" color2="buttonover2" gradient="vertical" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<selected color="[ONCOLOR]" color2="buttonon2" gradient="vertical" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<down color="buttonon1" color2="buttonon2" gradient="vertical" shape="square" radius="4" border="bordercolor" border_size="1" />
 			<text fontsize="[TEXTSIZE]" weight="bold" color="[TEXTCOLOR]" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
 			<icon sysicon="[SYSICON]" color="[TEXTCOLOR]" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
 			<tooltip text="[TOOLTIP]" localize="true"/>
 		</define>
 		<define class="button_main_radial" placeholders="width,height,text,important=true,textaction,sysicon,iconsize,textsize=11">
 			<size width="[WIDTH]" height="[HEIGHT]"/>
-			<off color="padsoff1" color2="padsoff2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<over color="buttonover1" color2="buttonover2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<down color="padson1" color2="padson2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<selected color="padson1" color2="padson2" gradient="circular" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<text fontsize="[TEXTSIZE]" color="textoff2" colorover="textover" colorselected="texton" colordown="texton" align="center" weight="" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
+			<off color="padsoff1" color2="padsoff2" gradient="circular" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<over color="buttonover1" color2="buttonover2" gradient="circular" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<down color="padson1" color2="padson2" gradient="circular" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<selected color="padson1" color2="padson2" gradient="circular" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<text fontsize="[TEXTSIZE]" color="textoff2" colorover="textover" colorselected="texton" colordown="texton" align="center" weight="bold" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
 			<icon sysicon="[SYSICON]" color="textoff" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
 		</define>
 		<define class="mixerpanel" placeholders="text">
@@ -450,10 +450,10 @@
 		</define>
 		<define class="button_master" placeholders="width,height,text,important,textaction,sysicon,iconsize,textsize=10">
 			<size width="[WIDTH]" height="[HEIGHT]"/>
-			<off color="buttonoff1" color2="buttonoff2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<over color="colormasterover" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<selected color="colormaster1" color2="colormaster2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
-			<down color="colormaster1" color2="colormaster2" gradient="vertical" shape="square" radius="5" border="bordercolor" border_size="1" />
+			<off color="buttonoff1" color2="buttonoff2" gradient="vertical" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<over color="colormasterover" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<selected color="colormaster1" color2="colormaster2" gradient="vertical" shape="square" radius="4" border="bordercolor" border_size="1" />
+			<down color="colormaster1" color2="colormaster2" gradient="vertical" shape="square" radius="4" border="bordercolor" border_size="1" />
 			<text fontsize="[TEXTSIZE]" weight="bold" color="textoff3" colorover="textover" colorselected="texton" colordown="texton" align="center" action="[TEXTACTION]" text="[TEXT]" localize="true" important="[IMPORTANT]"/>
 			<icon sysicon="[SYSICON]" color="texton" colorover="textover" colordown="texton" colorselected="texton" width="[ICONSIZE]" height="[ICONSIZE]" />
 		</define>
@@ -482,9 +482,9 @@
 		</define>
 		<define class="checkbutton">
 			<size width="12" height="12"/>
-			<off color="faderback" shape="square" border="bordercolor" radius="3" border_size="1"/>
-			<over color="green" shape="square" border="bordercolor" radius="3" border_size="1"/>
-			<on color="darkgreen" shape="square" border="bordercolor" radius="3" border_size="1" />
+			<off color="faderback" shape="square" border="bordercolor" radius="4" border_size="1"/>
+			<over color="green" shape="square" border="bordercolor" radius="4" border_size="1"/>
+			<on color="darkgreen" shape="square" border="bordercolor" radius="4" border_size="1" />
 			<text fontsize="12" text="" color="white"/>
 			<textdown dx="+1" fontsize="8" text="✔" color="textoff2"/>
 		</define>
@@ -513,14 +513,14 @@
 			<visual>
 				<pos x="+0" y="+0"/>
 				<size width="46" height="130"/>
-				<off color="faderbackground" shape="square" border="bordercolor" radius="5" border_size="1"/>
+				<off color="faderbackground" shape="square" border="bordercolor" radius="4" border_size="1"/>
 			</visual>
 			<panel class="volume_lines" x="+8" y="+20"/>
 			<slider action="level" rightclick="temporary" orientation="vertical">
 				<pos x="+23-3" y="+3"/>
 				<size width="6" height="130-6"/>
-				<off height="-21" color="faderinoff" shape="square" border="darker" border_size="1" radius="3"/>
-				<on height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
+				<off height="-21" color="faderinoff" shape="square" border="darker" border_size="1" radius="4"/>
+				<on height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="4"/>
 				<mouserect x="-20" y="+0" width="40" height="120"/>
 				<fader>
 					<size width="40" height="21"/>
@@ -534,8 +534,8 @@
 			<slider action="level" rightclick="temporary" orientation="vertical">
 				<pos x="+23-3" y="+0"/>
 				<size width="6" height="126-6"/>
-				<off height="-21" color="faderinoff" shape="square" border="darker" border_size="1" radius="3"/>
-				<on height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
+				<off height="-21" color="faderinoff" shape="square" border="darker" border_size="1" radius="4"/>
+				<on height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="4"/>
 				<mouserect x="-20" y="+0" width="40" height="120"/>
 				<fader>
 					<size width="40" height="21"/>
@@ -547,14 +547,14 @@
 		<define class="pitch_fader">
 			<visual x="+0" y="+0">
 				<size width="52" height="177"/>
-				<off color="faderbackground" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="faderbackground" shape="square" border="bordercolor" border_size="1" radius="4" />
 			</visual>
 			<panel class="pitch_lines" x="+11" y="+21"/>
 			<slider action="pitch" rightclick="temporary" direction="down" orientation="vertical" frommiddle="true">
 				<pos x="+26-3" y="+7"/>
 				<size width="6" height="177-14"/>
-				<on height="-14" color="faderinoff" shape="square" border="bordercolor2" border_size="1" radius="3"/>
-				<off height="-14" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
+				<on height="-14" color="faderinoff" shape="square" border="bordercolor2" border_size="1" radius="4"/>
+				<off height="-14" color="faderin" shape="square" border="darker" border_size="1" radius="4"/>
 				<mouserect x="-20" y="+0" width="40" height="177-14"/>
 				<fader>
 					<size width="40" height="21"/>
@@ -576,7 +576,7 @@
 			<button>
 				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
-				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 				<text fontsize="12" color="textdark" align="center" weight=""
 					   action="param_equal eq_low 0.5 ? get_text '0 dB' :
 					   		   param_greater eq_low 0.5 ? get_text '`eq_low & param_multiply 200 & param_add -100 & param_cast integer`%' :
@@ -595,7 +595,7 @@
 			<button>
 				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
-				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 				<text fontsize="12" color="textdark" align="center" weight=""
 				action="param_equal eq_mid 0.5 ? get_text '0 dB' :
 				param_greater eq_mid 0.5 ? get_text '`eq_mid & param_multiply 200 & param_add -100 & param_cast integer`%' :
@@ -614,7 +614,7 @@
 			<button>
 				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
-				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 				<text fontsize="12" color="textdark" align="center" weight=""
 					   action="param_equal eq_high 0.5 ? get_text '0 dB' :
 					   		   param_greater eq_high 0.5 ? get_text '`eq_high & param_multiply 200 & param_add -100 & param_cast integer`%' :
@@ -631,7 +631,7 @@
 			<button>
 				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
-				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 				<text fontsize="12" color="textdark" align="center" weight=""
 				action="get_text '`setting equalizerLowFrequency & param_cast integer` Hz'" important="true"/>
 				<tooltip>Low frequency center</tooltip>
@@ -663,7 +663,7 @@
 			<button>
 				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
-				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 				<text fontsize="12" color="textdark" align="center" weight=""
 					   action="get_text '`setting equalizerMidFrequency & param_cast integer` Hz'" important="true"
 					   rightclick = "set '@$mid_freq_var' 0.2 & setting 'equalizerMidFrequency' 1000" />
@@ -702,7 +702,7 @@
 			<button>
 				<pos x="+0" y="+50"/>
 				<size width="48" height="25"/>
-				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 				<text fontsize="12" color="textdark" align="center" weight=""
 				action="get_text '`setting equalizerHighFrequency & param_multiply 0.001` kHz'" important="true"
 				rightclick = "set '@$high_freq_var' 0.75 & setting 'equalizerHighFrequency' 8500"/>
@@ -791,14 +791,14 @@
 			</textzone>
 			<visual x="+0" y="+0">
 				<size width="52" height="177"/>
-				<off color="faderbackground" shape="square" border="bordercolor" border_size="1" radius="5" />
+				<off color="faderbackground" shape="square" border="bordercolor" border_size="1" radius="4" />
 			</visual>
 			<panel class="pitch_lines" x="+11" y="+21"/>
 			<slider action="filter" orientation="vertical" dblclick="filter 50%" frommiddle="true">
 			<pos x="+26-3" y="+7"/>
 				<size width="6" height="177-14"/>
-				<off height="-14" color="faderinoff" shape="square" border="bordercolor2" border_size="1" radius="3"/>
-				<on height="-14" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
+				<off height="-14" color="faderinoff" shape="square" border="bordercolor2" border_size="1" radius="4"/>
+				<on height="-14" color="faderin" shape="square" border="darker" border_size="1" radius="4"/>
 				<mouserect x="-20" y="+0" width="40" height="177-14"/>
 				<fader>
 					<size width="40" height="21"/>
@@ -867,14 +867,14 @@
 			<visual>
 				<pos x="+0" y="+0"/>
 				<size width="46" height="160"/>
-				<off color="faderbackground" shape="square" border="bordercolor" radius="5" border_size="1"/>
+				<off color="faderbackground" shape="square" border="bordercolor" radius="4" border_size="1"/>
 			</visual>
 			<panel class="master_fader_lines" x="+8" y="+20"/>
 			<slider action="master_volume" rightclick="temporary" orientation="vertical">
 				<pos x="+23-3" y="+3"/>
 				<size width="6" height="160-6"/>
-				<off height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
-				<on height="-21" color="colormaster1" shape="square" border="darker" border_size="1" radius="3"/>
+				<off height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="4"/>
+				<on height="-21" color="colormaster1" shape="square" border="darker" border_size="1" radius="4"/>
 				<mouserect x="-20" y="+0" width="40" height="120"/>
 				<fader>
 					<size width="40" height="21"/>
@@ -888,14 +888,14 @@
 			<visual>
 				<pos x="+0" y="+0"/>
 				<size width="46" height="160"/>
-				<off color="faderbackground" shape="square" border="bordercolor" radius="5" border_size="1"/>
+				<off color="faderbackground" shape="square" border="bordercolor" radius="4" border_size="1"/>
 			</visual>
 			<panel class="master_fader_lines" x="+8" y="+20"/>
 			<slider action="headphone_volume" dblclick="headphone_volume 100%" rightclick="headphone_volume 100% ? headphone_volume 0% : headphone_volume 100%" disabled="not get_hasheadphones" orientation="vertical" >
 				<pos x="+23-3" y="+3"/>
 				<size width="6" height="160-6"/>
-				<off height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
-				<on height="-21" color="colormaster1" shape="square" border="darker" border_size="1" radius="3"/>
+				<off height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="4"/>
+				<on height="-21" color="colormaster1" shape="square" border="darker" border_size="1" radius="4"/>
 				<mouserect x="-20" y="+0" width="40" height="120"/>
 				<fader>
 					<size width="40" height="21"/>
@@ -909,14 +909,14 @@
 			<visual>
 				<pos x="+0" y="+0"/>
 				<size width="46" height="160"/>
-				<off color="faderbackground" shape="square" border="bordercolor" radius="5" border_size="1"/>
+				<off color="faderbackground" shape="square" border="bordercolor" radius="4" border_size="1"/>
 			</visual>
 			<panel class="master_fader_lines" x="+8" y="+20"/>
 			<slider action="headphone_mix" dblclick="headphone_mix 100%" rightclick="headphone_mix 100% ? headphone_mix 0% : headphone_mix 100%" disabled="not get_hasheadphones" orientation="vertical" >
 				<pos x="+23-3" y="+3"/>
 				<size width="6" height="160-6"/>
-				<off height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="3"/>
-				<on height="-21" color="colormaster1" shape="square" border="darker" border_size="1" radius="3"/>
+				<off height="-21" color="faderin" shape="square" border="darker" border_size="1" radius="4"/>
+				<on height="-21" color="colormaster1" shape="square" border="darker" border_size="1" radius="4"/>
 				<mouserect x="-20" y="+0" width="40" height="120"/>
 				<fader>
 					<size width="40" height="21"/>
@@ -946,8 +946,8 @@
 		<define class="fxdrop" placeholders="action1,action2,action3,textaction" >
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
 				<size width="145" height="25"/>
-				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
-				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
+				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="4" border_size="1" />
+				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="4" border_size="1" />
 				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="145-25" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
 			<button x="+145-25" y="+1" action="[ACTION2]" novisibility="[ACTION1]">
@@ -964,8 +964,8 @@
 			<line color="darker" x="+145-25" y="+0" width="1" height="25" visibility="[ACTION1]"/>
 			<button class="" x="+145" y="+0" action="[ACTION3]">
 				<size  width="30" height="25" />
-				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
-				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
+				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="4" border_size="1" />
+				<on color="buttonon1" color2="buttonon2" gradient="horizontal" shape="square" border="bordercolor" radius="4" border_size="1" />
 				<tooltip>Open Effects GUI</tooltip>
 				<icon  x="145" y="370" width="30" height="20">
 					<over x="118" y="370" width="30" height="20" dx="+5"/>
@@ -980,8 +980,8 @@
 		<define class="vfxdrop" placeholders="action1,action2,textaction,width=+113,textwidth=135-40">
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
 				<size width="[WIDTH]" height="25"/>
-				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
-				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
+				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="4" border_size="1" />
+				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="4" border_size="1" />
 				<text color="textoff2" colorover="textover" colorselected="texton" dx="10" width="[TEXTWIDTH]" fontsize="14" align="left"  action="[TEXTACTION]" important="true"/>
 			</button>
 			<group x="[WIDTH]">
@@ -1002,8 +1002,8 @@
 		<define class="masterfxdrop" placeholders="action1,action2,action3, textaction">
 			<button x="+0" y="+0" action="[ACTION1]" rightclick="temporary" scroll="[ACTION2]">
 				<size width="155" height="25"/>
-				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
-				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
+				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="4" border_size="1" />
+				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="4" border_size="1" />
 				<text color="textoff2" colorover="textover" colorselected="texton" dx="6" width="150-30-6" fontsize="14" align="left" action="[TEXTACTION]" important="true"/>
 			</button>
 
@@ -1023,8 +1023,8 @@
 
 			<button class="" x="+155-2" y="+0" action="[ACTION3]">
 				<size  width="32" height="25" />
-				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="5" border_size="1" />
-				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="5" border_size="1" />
+				<off color="dropdown" shape="square" highlight="darker" highlight_size="1" border="bordercolor" radius="4" border_size="1" />
+				<on color="colorvideo1" color2="colorvideo2" gradient="horizontal" shape="square" border="bordercolor" radius="4" border_size="1" />
 				<tooltip>Open Effects GUI</tooltip>
 				<icon  x="145" y="370" width="30" height="20">
 					<over x="118" y="370" width="30" height="20" dx="+5"/>
@@ -1142,7 +1142,7 @@
 			<visual>
 				<pos x="+19+87" y="+26+87"/>
 				<size width="10" height="10"/>
-				<off color="#ffffff" color2="#2d3031" gradient="vertical" shape="circle" border="bordercolor" border_size="1" radius="5"/>
+				<off color="#ffffff" color2="#2d3031" gradient="vertical" shape="circle" border="bordercolor" border_size="1" radius="4"/>
 			</visual>
 			<!-- center shine -->
 			<visual>
@@ -1488,7 +1488,7 @@ ________________________________________________________________________________
 
   <button x="100" y="105" width="200" height="40" action="show_window 'single_output_warning' off">
 		<text color="#FFFFFF" align="center" text="Close Window" size="32"/>
-    <off      color="#777777" color2="#666666" radius="6"/>
+    <off      color="#777777" color2="#666666" radius="4"/>
     <over     color="#136b87" color2="#555555"/>
     <selected color="#444444" color2="#333333"/>
   </button>
@@ -1573,7 +1573,7 @@ ________________________________________________________________________________
 		<pos x="+600-25" y="+3"/>
 		<size width="20" height="20"/>
 		<visual>
-			<off shape="square" color="#888888" border_size="1" border="#666666" radius="3"/>
+			<off shape="square" color="#888888" border_size="1" border="#666666" radius="4"/>
 		</visual>
 		<icon sysicon="close" color="textoff3" colorover="white" width="22" height="22"/>
 		<over color="#3b4242"/>
@@ -1681,8 +1681,8 @@ ________________________________________________________________________________
 		<tooltip> Auto display waveform of currently playing deck</tooltip>
 		<pos  x="+540" y="+10"/>
 		<size width="30" height="20"/>
-		<off color="#2b2c2f" radius="3" />
-		<on color="#3A7576" color2="#324949" radius="3" />
+		<off color="#2b2c2f" radius="4" />
+		<on color="#3A7576" color2="#324949" radius="4" />
 		<text text="🔁" color="#A6A6A6" colorover="white" width="75" height="25" align="center"/>
 	</button>
 
@@ -2024,9 +2024,9 @@ ________________________________________________________________________________
 		<button action="settings">
 			<pos x="+0" y="+0"/>
 			<size width="50" height="50"/>
-			<off border_size="1" border="bordercolor" color="topmenu" radius="5"/>
-			<over border_size="1" border="bordercolor" color="background2" radius="5"/>
-			<selected border_size="1" border="bordercolor" color="background2" radius="5"/>
+			<off border_size="1" border="bordercolor" color="topmenu" radius="4"/>
+			<over border_size="1" border="bordercolor" color="background2" radius="4"/>
+			<selected border_size="1" border="bordercolor" color="background2" radius="4"/>
 			<icon sysicon="settings" color="textoff3" colorselected="texton" colorover="texton" width="32" height="32"/>
 		</button>
 	</group>
@@ -2218,7 +2218,7 @@ ________________________________________________________________________________
 			<menu tooltip="Open new window panel.">
 				<pos x="+0" y="+0"/>
 				<size width="100" height="22"/>
-				<text dx="10" width="90" weight="bold" fontsize="14" weight="" color="textoff3" colorover="textover" align="left" 
+				<text dx="10" width="90" weight="bold" fontsize="14" color="textoff3" colorover="textover" align="left" 
 						text="LAYOUT" localize="true" important="true"/>
 				<!-- Color Scheme -->
 				<pos x="+0" y="+0"/>
@@ -2574,15 +2574,15 @@ ________________________________________________________________________________
 			<textzone group="horizontal" visibility="not loaded">
 				<pos x="+5" y="+0"/>
 				<size width="625-[AREAWIDTH]-10+20" height="32"/>
-				<text fontsize="20" color="textdark" weight="" action="get_title" important="true"/>
+				<text fontsize="18" color="textdark" weight="" action="get_title" important="true"/>
 			</textzone>
 			<textzone group="horizontal" scroll="no" click="scroll" visibility="loaded">
 				<pos x="+5" y="+0"/>
 				<size width="625-[AREAWIDTH]-10+20" height="32"/>
-				<text fontsize="20" color="title" weight="bold" action="get_title_before_remix" important="true"/>
-				<text fontsize="20" color="textdark" action="get_artist_title_separator" important="true"/>
-				<text fontsize="20" color="artist" weight="" action="get_artist_before_feat" important="true"/>
-				<text fontsize="20" color="feat" weight="" action="get_featuring_after_artist" important="true"/>
+				<text fontsize="18" color="title" weight="bold" action="get_title_before_remix" important="true"/>
+				<text fontsize="18" color="textdark" action="get_artist_title_separator" important="true"/>
+				<text fontsize="18" color="artist" weight="" action="get_artist_before_feat" important="true"/>
+				<text fontsize="18" color="feat" weight="" action="get_featuring_after_artist" important="true"/>
 			</textzone>
 			<line x="+0" y="+32" width="625-[AREAWIDTH]+20" height="1" color="deckinfolines"/>
 		</group>
@@ -2613,7 +2613,7 @@ ________________________________________________________________________________
 				<icon width="20" height="20" color="textdark" align="left" sysicon="arrowright" important="true"/>
 			</button>
 			<button visibility="display_time 'elapsed'">
-				<pos x="+2" y="+20"/>
+				<pos x="+4" y="+20"/>
 				<size width="16" height="28"/>
 				<icon width="20" height="20" color="textdark" align="left" sysicon="arrowleft" important="true"/>
 			</button>
@@ -2644,24 +2644,24 @@ ________________________________________________________________________________
 			<size width="625" height="110"/>
 			<off color="display" shape="square" border_size="1" border="bordercolor"/>
 		</visual>
-		<group name="title_area" x="+[AREAWIDTH]-15" y="+0" width="625-150" height="40">
-			<textzone group="horizontal" align="right" visibility="not loaded">
+		<group name="title_area" x="+[AREAWIDTH]-5" y="+0" width="625-140" height="40">
+			<textzone group="horizontal" visibility="not loaded">
 				<pos x="+5" y="+0"/>
-				<size width="625-[AREAWIDTH]-10" height="40"/>
-				<text fontsize="20" color="textdark" weight="" action="get_title" important="true"/>
+				<size width="625-[AREAWIDTH]-10+20" height="40"/>
+				<text fontsize="18" color="textdark" weight="" action="get_title" important="true"/>
 			</textzone>
-			<textzone group="horizontal" scroll="no" click="scroll" align="right" visibility="loaded">
+			<textzone group="horizontal" scroll="no" click="scroll" visibility="loaded">
 				<pos x="+5" y="+0"/>
-				<size width="625-[AREAWIDTH]-10" height="32"/>
-				<text fontsize="20" color="title" weight="bold" action="get_title_before_remix" important="true"/>
-				<text fontsize="20" color="textdark" action="get_artist_title_separator" important="true"/>
-				<text fontsize="20" color="artist" weight="" action="get_artist_before_feat" important="true"/>
-				<text fontsize="20" color="feat" weight="" action="get_featuring_after_artist" important="true"/>
+				<size width="625-[AREAWIDTH]-10+20" height="32"/>
+				<text fontsize="18" color="title" weight="bold" action="get_title_before_remix" important="true"/>
+				<text fontsize="18" color="textdark" action="get_artist_title_separator" important="true"/>
+				<text fontsize="18" color="artist" weight="" action="get_artist_before_feat" important="true"/>
+				<text fontsize="18" color="feat" weight="" action="get_featuring_after_artist" important="true"/>
 			</textzone>
-			<line x="+0" y="+32" width="625-[AREAWIDTH]" height="1" color="deckinfolines"/>
+			<line x="+0" y="+32" width="625-[AREAWIDTH]+20" height="1" color="deckinfolines"/>
 		</group>
-		<group name="songpos_area" x="+[AREAWIDTH]-10" y="+32+1" width="625-120" height="25">
-			<songpos class="songpos" width="625-[AREAWIDTH]-2"/>
+		<group name="songpos_area" x="+[AREAWIDTH]-10" y="+32+1" width="625-120" height="40">
+			<songpos class="songpos" width="625-[AREAWIDTH]-2+20"/>
 		</group>
 		<group name="bpm_area" x="+8" y="+0" width="100" height="60">
 			<line x="+[AREAWIDTH]-20" y="+0" width="1" height="110" color="deckinfolines"/>
@@ -2681,14 +2681,14 @@ ________________________________________________________________________________
 		</group>
 		<group name="time_area" x="-5" y="+32" width="140" height="38">
 		  	<line x="+0" y="+0" width="[AREAWIDTH]" height="1" color="deckinfolines"/>
-		  	<group name="decktimers" x="+[AREAWIDTH]-65-16-4">
+		  	<group name="decktimers" x="+[AREAWIDTH]-65-16-24">
 				<button visibility="display_time 'remain'">
-					<pos x="+60" y="+20"/>
+					<pos x="+70" y="+20"/>
 					<size width="16" height="28"/>
 					<icon width="20" height="20" color="textdark" align="right" sysicon="arrowright" important="true"/>
 				</button>
 				<button visibility="display_time 'elapsed'">
-					<pos x="+58" y="+20"/>
+					<pos x="+70" y="+20"/>
 					<size width="16" height="28"/>
 					<icon width="20" height="20" color="textdark" align="right" sysicon="arrowleft" important="true"/>
 				</button>
@@ -2799,7 +2799,7 @@ ________________________________________________________________________________
 				<button>
 					<pos x="+0" y="+184"/>
 					<size width="52" height="25"/>
-					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 					<text fontsize="12" color="textdark" align="center" weight="" format="%Ppitch%" important="true"/>
 				</button>
 				<button class="pitchreset_button" x="-18" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
@@ -2828,7 +2828,7 @@ ________________________________________________________________________________
 			</tooltip>
 		</button>
 
-		<button class="button_main" width="46" height="25" x="+0" y="+185" radius="5"
+		<button class="button_main" width="46" height="25" x="+0" y="+185" radius="4"
 		action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
 		<tooltip>Deck 1 prefade listen. Headphones will come through deck when turned on.</tooltip>
 	</button>
@@ -2837,7 +2837,7 @@ ________________________________________________________________________________
 		<group name="play_button_positions" x="+385" y="+396">
 				<button class="button_main"
 					x="+0" y="+0" width="64" height="35"
-					text="ADD" textsize="16"
+					text="ADD" textsize="14"
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0"
 					rightclick= "playlist_load 'append' & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
 			<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
@@ -2846,9 +2846,9 @@ ________________________________________________________________________________
 			<visual>
 				<pos  x="+0" y="+0"/>
 				<size width="64" height="35"/>
-				<off color="#555555" radius="6"/>
+				<off color="#555555" radius="4"/>
 			</visual>
-			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="14" color="#50C878" align="center" weight="bold"/>
 			</group>
 			<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
 					action="var_equal '$removeDoublePlaySafety' 1 ? play_pause : 
@@ -2859,7 +2859,7 @@ ________________________________________________________________________________
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
-			<button class="button_main" text="AUTO" width="64" height="35" x="+158" y="+0" textsize = "16"
+			<button class="button_main" text="AUTO" width="64" height="35" x="+158" y="+0" textsize = "14"
 					action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
 							automix_dualdeck ? (
 								deck 2 play ? (deck 1 unload & deck 2 automix_load & automix on) :
@@ -2875,7 +2875,7 @@ ________________________________________________________________________________
 			</button>
 			<!-- _________ROW 2 ______________ -->
 
-			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+45" textsize = "16"
+			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+45" textsize = "14"
 				action="
 				set 'fadeIndicator' 1 & 
 					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
@@ -2899,7 +2899,7 @@ ________________________________________________________________________________
 				<!--  show_window 'single_deck_automix_warning': -->
 
 
-			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+45" textsize = "16"
+			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+45" textsize = "14"
 			action="
 				(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
 				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
@@ -2929,7 +2929,7 @@ ________________________________________________________________________________
 			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
 			
 			</button>
-			<button class="button_main" width="35" height="35" x="+187" y="+45" textsize = "16"
+			<button class="button_main" width="35" height="35" x="+187" y="+45" textsize = "14"
 			action="cycle '@$fadeLength' 4" 
 			textaction="var_equal '@$fadeLength' 0 ? get_text '3s' : 
 														var_equal '@$fadeLength' 1 ? get_text '5s' : 
@@ -3047,7 +3047,7 @@ ________________________________________________________________________________
 		<group name="play_button_positions" x="+385" y="+150">
 				<button class="button_main"
 					x="+0" y="+0" width="64" height="35"
-					text="ADD" textsize="16"
+					text="ADD" textsize="14"
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
 					rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
 								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
@@ -3057,9 +3057,9 @@ ________________________________________________________________________________
 			<visual>
 				<pos  x="+0" y="+0"/>
 				<size width="64" height="35"/>
-				<off color="#555555" radius="6"/>
+				<off color="#555555" radius="4"/>
 			</visual>
-			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
+			<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="14" color="#50C878" align="center" weight="bold"/>
 			</group>
 			<button class="button_main" x="+80" y="+0" width="64" height="35" sysicon="play_button" iconsize="40"
 					action="var_equal '$removeDoublePlaySafety' 1 ? play_pause : 
@@ -3069,7 +3069,7 @@ ________________________________________________________________________________
 							deck 2 play ? show_window 'single_output_warning' : deck 1 play_pause"/>
 
 
-			<button class="button_main" text="AUTO" width="64" height="35" x="+158" y="+0" textsize = "16"
+			<button class="button_main" text="AUTO" width="64" height="35" x="+158" y="+0" textsize = "14"
 					action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
 							automix_dualdeck ? (
 								deck 2 play ? (deck 1 unload & deck 2 automix_load & automix on) :
@@ -3085,7 +3085,7 @@ ________________________________________________________________________________
 			</button>
 			<!-- _________ROW 2 ______________ -->
 
-			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+50" textsize = "16"
+			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+50" textsize = "14"
 				action="
 				set 'fadeIndicator' 1 & 
 					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
@@ -3109,7 +3109,7 @@ ________________________________________________________________________________
 				<!--  show_window 'single_deck_automix_warning': -->
 
 
-			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+50" textsize = "16"
+			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+50" textsize = "14"
 			action="
 				(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
 				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
@@ -3139,7 +3139,7 @@ ________________________________________________________________________________
 			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
 			
 			</button>
-			<button class="button_main" width="35" height="35" x="+187" y="+50" textsize = "16"
+			<button class="button_main" width="35" height="35" x="+187" y="+50" textsize = "14"
 			action="cycle '@$fadeLength' 4" 
 			textaction="var_equal '@$fadeLength' 0 ? get_text '3s' : 
 														var_equal '@$fadeLength' 1 ? get_text '5s' : 
@@ -3267,7 +3267,7 @@ ________________________________________________________________________________
 						</tooltip>
 					</button>
 
-					<button class="button_main" width="46" height="25" x="+0" y="+185" radius="5"
+					<button class="button_main" width="46" height="25" x="+0" y="+185" radius="4"
 					action="deck 2 pfl on ? deck 2 pfl off : deck 2 pfl on & deck 1 pfl off" query="deck 2 pfl on">
 					<tooltip>Deck 2 Prefade listen. Headphones will come through deck when turned on.</tooltip>
 				</button>
@@ -3280,7 +3280,7 @@ ________________________________________________________________________________
 				<button>
 					<pos x="+0" y="+184"/>
 					<size width="52" height="25"/>
-					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="5" />
+					<off color="dropdown" shape="square" border="bordercolor" border_size="1" radius="4" />
 					<text fontsize="12" color="textdark" align="center" weight="" format="%Ppitch%" important="true"/>
 				</button>
 				<button class="pitchreset_button" sysicon="arrowleft" x="+52+2" y="+80" action="pitch_reset" dblclick="pitch 100%" query="pitch_reset ? blink : off"/>
@@ -3324,7 +3324,7 @@ ________________________________________________________________________________
 		<group name="play_button_positions" x="+155" y="+396">
 				<button class="button_main"
 							x="+0" y="+0" width="64" height="35"
-							text="ADD" textsize="16"
+							text="ADD" textsize="14"
 							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
 							rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
 								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
@@ -3334,7 +3334,7 @@ ________________________________________________________________________________
 				<visual>
 					<pos  x="+0" y="+0"/>
 					<size width="64" height="40"/>
-					<off color="#555555" radius="6"/>
+					<off color="#555555" radius="4"/>
 				</visual>
 				<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 				</group>
@@ -3362,7 +3362,7 @@ ________________________________________________________________________________
 			</button>
 				<!-- _________ROW 2 ______________ -->
 
-			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+45" textsize="16"
+			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+45" textsize="14"
 				action="
 					set 'fadeIndicator' 1 & 
 					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
@@ -3374,7 +3374,7 @@ ________________________________________________________________________________
 				<tooltip>Fade out song. Uses set fade duration.</tooltip>
 			</button>
 
-			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+45" textsize = "16"
+			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+45" textsize = "14"
 			action="
 			(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
 				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
@@ -3399,7 +3399,7 @@ ________________________________________________________________________________
 			) : nothing" query="var_equal '$fadeIndicator2' 1">
 			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas.</tooltip>
 			</button>
-						<button class="button_main" width="35" height="35" x="+188" y="+45" textsize = "16"
+						<button class="button_main" width="35" height="35" x="+188" y="+45" textsize = "14"
 			action="cycle '@$fadeLength' 4" 
 			textaction="var_equal '@$fadeLength' 0 ? get_text '3s' : 
 														var_equal '@$fadeLength' 1 ? get_text '5s' : 
@@ -3513,7 +3513,7 @@ ________________________________________________________________________________
 				<visual>
 					<pos  x="+0" y="+0"/>
 					<size width="64" height="40"/>
-					<off color="#555555" radius="6"/>
+					<off color="#555555" radius="4"/>
 				</visual>
 				<textzone x="+0" y="+0" width="64" height="35" text="ADDED" size="16" color="#50C878" align="center" weight="bold"/>
 				</group>
@@ -3524,7 +3524,7 @@ ________________________________________________________________________________
 								deck 1 level 0 ? deck 2 play_pause:
 								deck 1 play ? show_window 'single_output_warning' : deck 2 play_pause"/>
 
-			<button class="button_main" text="AUTO" width="64" height="35" x="+158" y="+0" textsize = "16"
+			<button class="button_main" text="AUTO" width="64" height="35" x="+158" y="+0" textsize = "14"
 				action="deck 1 automix ? deck 1 automix off : deck 2 automix ? deck 2 automix off :
 						automix_dualdeck ? (
 							deck 1 play ? (deck 2 unload & deck 1 automix_load & automix on) :
@@ -3541,7 +3541,7 @@ ________________________________________________________________________________
 			</button>
 				<!-- _________ROW 2 ______________ -->
 
-			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+50" textsize="16"
+			<button class="button_main" text="FADE" width="64" height="35" x="+0" y="+50" textsize="14"
 				action="
 					set 'fadeIndicator' 1 & 
 					(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
@@ -3553,7 +3553,7 @@ ________________________________________________________________________________
 				<tooltip>Fade out song. Uses set fade duration.</tooltip>
 			</button>
 
-			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+50" textsize = "16"
+			<button class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+50" textsize = "14"
 			action="
 			(var_equal '@$fadeLength' 0 ? set 'fadeVal' 25 : 
 				 var_equal '@$fadeLength' 1 ? set 'fadeVal' 50 : 
