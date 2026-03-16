@@ -2497,8 +2497,7 @@ ________________________________________________________________________________
 				action= "var_equal '$songCounterRunning' 1 ?
 					set '$songCounterRunning' 0 & set '$tandaCounter' 0 & repeat_stop 'tandaPosCounter' :
 					set '$songCounterRunning' 1 & set '$tandaCounter' 0 &
-					set '$curPos' `get_automix_position` &
-					set '$curAutomix' `automix` &
+					set '$lastSongPath' `deck master get_filepath` &
 					repeat_start_instant 'tandaPosCounter' 1000ms &
 						set '$isCortina' 0 &
 						(
@@ -2520,18 +2519,15 @@ ________________________________________________________________________________
 						) &
 						(var '$isCortina' ? (set '$tandaLength' 1 & set '$tandaCounter' 0) :
 							(var_smaller '$tandaLength' 2 ? set '$tandaLength' 3 : nothing)) &
-						(automix ? (param_add `get_var $curPos & param_cast & param_invert` `get_automix_position` & param_equal 0 ? set '$bumpCounter' 0 : set '$bumpCounter' 1) :
-						(deck master load_pulse_active 250ms ? set '$bumpCounter' 1 : set '$bumpCounter' 0)) &
+						(get_var '$lastSongPath' & param_equal `deck master get_filepath` ?
+							set '$bumpCounter' 0 :
+							(set '$bumpCounter' 1 & set '$lastSongPath' `deck master get_filepath`)) &
 						(
 							not var '$bumpCounter' ? (var_not_equal '$tandaLength' 1 ? var_equal '$tandaCounter' 0 ? set '$tandaCounter' 1) : (
-								set '$curPos' `get_automix_position` &
-								(get_var '$curAutomix' & param_equal `automix` ?
-									(set '$tandaCounter' `get_var '$tandaCounter' & param_cast & param_add 1`) &
-									(set '$tandaLength' `get_var '$tandaLength' & param_cast`) &
-									(get_var '$tandaCounter' & param_cast 'integer' & param_greater
-									`get_var '$tandaLength' & param_cast 'integer'` ? set '$tandaCounter' 1 : nothing)
-									: set '$curAutomix' `automix`
-								)
+								(set '$tandaCounter' `get_var '$tandaCounter' & param_cast & param_add 1`) &
+								(set '$tandaLength' `get_var '$tandaLength' & param_cast`) &
+								(get_var '$tandaCounter' & param_cast 'integer' & param_greater
+								`get_var '$tandaLength' & param_cast 'integer'` ? set '$tandaCounter' 1 : nothing)
 							)
 						)
 				"
