@@ -1958,7 +1958,7 @@ ________________________________________________________________________________
 			<menu tooltip="Set Automix Type.">
 				<pos x="+0" y="+0"/>
 				<size width="120" height="30"/>
-				<text dx="10" width="90" fontsize="14" weight="bold" color="textoff3" colorover="textover" align="left" 
+				<text dx="10" width="90" fontsize="12" weight="bold" color="textoff3" colorover="textover" align="left" 
 						localize="true" important="true"
 						action="setting 'automixMode' 'no mix' ? get_text 'NO MIX' : 
 						setting 'automixMode' 'skip silence' ? get_text 'SILENCE' :
@@ -1987,7 +1987,7 @@ ________________________________________________________________________________
 			<menu tooltip="Set gap length between songs.\nNot applicable for 'No Mix'">
 				<pos x="+0" y="+0"/>
 				<size width="120" height="30"/>
-				<text dx="10" width="90" fontsize="14" weight="bold" color="textoff3" colorover="textover" align="left" 
+				<text dx="10" width="90" fontsize="12" weight="bold" color="textoff3" colorover="textover" align="left" 
 						action="param_equal `setting 'fadeLength'` 0 ? get_text 'GAP – 0s' : get_text 'GAP – `setting fadeLength & param_multiply -1`s'" localize="true" important="true"/>
 				<icon dx="45" dy="-1" sysicon="chevrondown" height="17" width="17" color="textdark" colorover="textover" colordown="texton"/>
 				<item text="NO GAP" localize="true" action="setting 'fadeLength' 0" check="param_equal `setting 'fadeLength'` 0"/>
@@ -2076,7 +2076,7 @@ ________________________________________________________________________________
 						<text fontsize="14" color="textdarker" align="center" text="SAFETY" localize="true"/>
 					</textzone>
 					<button class="button_master" text="🎵🎵"  query="var_equal '$removeDoublePlaySafety' 1"
-					textsize="14" x="+6" y="+30" height="25" width="40"
+					textsize="13" x="+6" y="+30" height="25" width="40"
 						action="toggle '$removeDoublePlaySafety''">
 						<tooltip>Toggle dual-deck safety.\nSafety prevents both decks from playing to main.</tooltip>
 					</button>
@@ -2218,7 +2218,7 @@ ________________________________________________________________________________
 			<menu tooltip="Open new window panel.">
 				<pos x="+0" y="+0"/>
 				<size width="100" height="22"/>
-				<text dx="10" width="90" weight="bold" fontsize="14" color="textoff3" colorover="textover" align="left" 
+				<text dx="10" width="90" weight="bold" fontsize="12" color="textoff3" colorover="textover" align="left" 
 						text="LAYOUT" localize="true" important="true"/>
 				<!-- Color Scheme -->
 				<pos x="+0" y="+0"/>
