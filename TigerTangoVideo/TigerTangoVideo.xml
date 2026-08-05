@@ -35,7 +35,7 @@
 <!-- Panel to show the artist, title, and album art of next track -->
 	<group name="nexttrack" x="+1920-350" y="+375"
 			visibility="automix ? (var_equal '@$hideNextTrack' 0)">
-			<cover source="automix 1" visibility="var_equal '@$hideAlbumArt' 0">
+			<cover source="automix 1" visibility="var_equal '@$albumArtSize' 2 ? false : true">
 				<pos x="+0" y="+0"/>
 				<size width="200" height="200"/>
 			</cover>
@@ -58,19 +58,19 @@
 
 	<group name="masterdeck" x="+150" y="+40">
 		<deck deck="master">
-			<!-- Album art display. Show if hideAlbumArt is not true.
+			<!-- Album art display. albumArtSize: 0 = large, 1 = small, 2 = none.
 			 	 If lyrics are active and there are lyrics (comments not blank)
 				 Then show for 10 seconds and then hide) -->
 			<cover x="+710-400" y="+20" width="700" height="600"
-				visibility="var_equal '@$hideAlbumArt'  1 ? false :
-							var_equal '@$smallAlbumArt' 1 ? false :
+				visibility="var_equal '@$albumArtSize' 1 ? false :
+							var_equal '@$albumArtSize' 2 ? false :
 								(var_equal '@$showLyrics' 0 ? true :
 									get_comment & param_equal '' ? true :
 									load_pulse_active 10000ms)"/>
 				<!-- Small cover -->
 				<cover x="+710-200" y="+300" width="300" height="300"
-					visibility="var_equal '@$hideAlbumArt'  1 ? false :
-					var_equal '@$smallAlbumArt' 0 ? false :
+					visibility="var_equal '@$albumArtSize' 0 ? false :
+					var_equal '@$albumArtSize' 2 ? false :
 					(var_equal '@$showLyrics' 0 ? true :
 					get_comment & param_equal '' ? true :
 					load_pulse_active 10000ms)"/>
@@ -146,9 +146,23 @@
 										var_equal '$tandaLength' 1 ? get_text 'CORTINA' :
 									(
 									var_equal '@$hideGenre' 1 ? (get_text '`get_var $tandaCounter`/`get_var $tandaLength`') :
-									get_text '`get_genre & param_uppercase` `get_var $tandaCounter`/`get_var $tandaLength`')
+									get_text '`get_genre & param_uppercase` – `get_var $tandaCounter`/`get_var $tandaLength`')
 									)"/>
-
+					<!-- Recording year, appended to the genre line as " – YYYY".
+						 Returns '' when showYear is off, the track has no year, or the
+						 track is a cortina. The conditions live in the action rather
+						 than a visibility attribute, which is ignored on a text
+						 fragment inside a textzone.
+						 The dash is dropped when the genre line itself is blank -->
+					<text fontsize="56" color="orangetext" weight="bold"
+							action="var_equal '@$showYear' 0 ? '' :
+									get_year & param_equal '' ? '' :
+									var_equal '$songCounterRunning' 0 ?
+										(var_equal '@$hideGenre' 1 ? get_text '`get_year`' :
+										 get_genre & param_equal '' ? get_text '`get_year`' :
+										 get_text ' – `get_year`') :
+									var_equal '$tandaLength' 1 ? '' :
+									get_text ' – `get_year`'"/>
 				</textzone>
 				<!-- Track artist -->
 				<textzone group="horizontal" align="center" attachX="both" scroll="yes">
@@ -184,9 +198,23 @@
 										var_equal '$tandaLength' 1 ? get_text 'CORTINA' :
 									(
 									var_equal '@$hideGenre' 1 ? (get_text '`get_var $tandaCounter`/`get_var $tandaLength`') :
-									get_text '`get_genre & param_uppercase` `get_var $tandaCounter`/`get_var $tandaLength`')
+									get_text '`get_genre & param_uppercase` – `get_var $tandaCounter`/`get_var $tandaLength`')
 									)"/>
-
+					<!-- Recording year, appended to the genre line as " – YYYY".
+						 Returns '' when showYear is off, the track has no year, or the
+						 track is a cortina. The conditions live in the action rather
+						 than a visibility attribute, which is ignored on a text
+						 fragment inside a textzone.
+						 The dash is dropped when the genre line itself is blank -->
+					<text fontsize="56+56+12" color="orangetext" weight="bold"
+							action="var_equal '@$showYear' 0 ? '' :
+									get_year & param_equal '' ? '' :
+									var_equal '$songCounterRunning' 0 ?
+										(var_equal '@$hideGenre' 1 ? get_text '`get_year`' :
+										 get_genre & param_equal '' ? get_text '`get_year`' :
+										 get_text ' – `get_year`') :
+									var_equal '$tandaLength' 1 ? '' :
+									get_text ' – `get_year`'"/>
 				</textzone>
 				<!-- Track artist -->
 				<textzone group="horizontal" align="center" attachX="both" scroll="yes">

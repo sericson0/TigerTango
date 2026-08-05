@@ -1312,10 +1312,22 @@ ________________________________________________________________________________
 
 		<group name="tigerTango video option buttons row 1" x="+10" y="+60">
 
-		<button class="button_master" x="+0" y="+0" action="toggle '@$hideAlbumArt'"
-				textsize="14" height="30" width="110" text="SHOW ART"
-				query="var_equal '@$hideAlbumArt' 0 ? true : false" >
-			<tooltip>Display album art on video.</tooltip>
+		<!-- Album art: 0 = LARGE (default), 1 = SMALL, 2 = NONE. Lit for LARGE or SMALL.
+			 Values are ordered so an unset variable defaults to LARGE, so the click
+			 order is spelled out rather than using cycle: NONE -> SMALL -> LARGE -->
+		<button class="button_master" x="+0" y="+0"
+				action="var_equal '@$albumArtSize' 2 ? set '@$albumArtSize' 1 :
+						var_equal '@$albumArtSize' 1 ? set '@$albumArtSize' 0 :
+													   set '@$albumArtSize' 2"
+				rightclick="var_equal '@$albumArtSize' 2 ? set '@$albumArtSize' 0 :
+							var_equal '@$albumArtSize' 0 ? set '@$albumArtSize' 1 :
+														   set '@$albumArtSize' 2"
+				textsize="14" height="30" width="110"
+				textaction="var_equal '@$albumArtSize' 1 ? get_text 'SMALL' :
+							var_equal '@$albumArtSize' 2 ? get_text 'NONE' :
+														   get_text 'LARGE'"
+				query="var_equal '@$albumArtSize' 2 ? false : true" >
+			<tooltip>Album art on video.\nNONE, SMALL or LARGE.</tooltip>
 		</button>
 		<button class="button_master" x="+125" y="+0" action="toggle '@$showLyrics'"
 				 textsize="14" height="30" width="110" text="SHOW LYRICS">
@@ -1332,7 +1344,7 @@ ________________________________________________________________________________
 		<group name = "video_name_text_row2>" x="0" y="+0">
 			<textzone x="+0" y="+0">
 				<size width="110" height="14"/>
-				<text fontsize="14" align="center" color="textdarker" text="ART SIZE" localize="true"/>
+				<text fontsize="14" align="center" color="textdarker" text="REC YEAR" localize="true"/>
 			</textzone>
 			<textzone x="+120" y="+0">
 				<size width="120" height="14"/>
@@ -1345,11 +1357,10 @@ ________________________________________________________________________________
 		</group>
 
 		<group name="button_second_row" x="+0" y="+20">
-		<button class="button_master" x="+0" y="+0" action="toggle '@$smallAlbumArt'"
-				textsize="14" height="30" width="110"
-				textaction="var_equal '@$smallAlbumArt' 1 ? get_text 'SMALL' : get_text 'LARGE'"
-				query="false" >
-			<tooltip>Album art display size.</tooltip>
+		<button class="button_master" x="+0" y="+0" action="toggle '@$showYear'"
+				textsize="14" height="30" width="110" text="SHOW YEAR"
+				query="var_equal '@$showYear' 1 ? true : false" >
+			<tooltip>Display recording year on video.\nOnly shown when the track has a year.</tooltip>
 		</button>
 		<button class="button_master" x="+125" y="+0" action="cycle '@$lyricsFont' 4" query="false"
 				rightclick="var '@$lyricsFont' 0 ? set '@$lyricsFont' 3 : 
