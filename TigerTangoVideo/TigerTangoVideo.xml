@@ -39,6 +39,12 @@
 				<pos x="+0" y="+0"/>
 				<size width="200" height="200"/>
 			</cover>
+			<!-- Opaque backing keeps the next-track text readable over video/images. -->
+			<visual name="next_track_text_background">
+				<pos x="-10" y="+210"/>
+				<size width="340" height="170"/>
+				<off color="background" shape="square"/>
+			</visual>
 			<textzone>
 				<pos x="+0" y="+220"/>
 				<size width="320" height="40"/>
@@ -131,6 +137,12 @@
 		</group>
 
 			<group name="Normal Text Size" visibility="var_equal '@$largeTitleText' 0">
+				<!-- Back the whole text block; keep the optional waveform above it. -->
+				<visual name="normal_track_text_background">
+					<pos x="-85" y="+740"/>
+					<size width="1440" height="260"/>
+					<off color="background" shape="square"/>
+				</visual>
 				<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center"
 							visibility="var_equal '@$hideWaveForm' 0">
 					<pos x="+0" y="+724" width="1920-500" height="300"/>
@@ -182,6 +194,11 @@
 			</group>
 		<!-- LARGE TEXT -->
 			<group name="Large Text Size" visibility="var_equal '@$largeTitleText' 1">
+				<visual name="large_track_text_background">
+					<pos x="-135" y="+590"/>
+					<size width="1540" height="430"/>
+					<off color="background" shape="square"/>
+				</visual>
 
 			<blockwave deck="master" blocksize="3" zoom="2" color="#B64A12" center="center" 
 						visibility="var_equal '@$hideWaveForm' 0">
@@ -219,7 +236,7 @@
 				<!-- Track artist -->
 				<textzone group="horizontal" align="center" attachX="both" scroll="yes">
 					<pos x="-50" y="+125"/>
-					<size width="1920-300" height="160"/>
+					<size width="1920-400" height="160"/>
 					<text fontsize="56+56+12" color="darktext" weight="bold" action="get_artist_before_feat & param_uppercase"/>
 					<text fontsize="56+56+12" color="darktext" weight="regular" action="get_featuring_after_artist & param_uppercase"/>
 				</textzone>
