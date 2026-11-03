@@ -144,13 +144,11 @@
 <multibutton id="tt_auto_2" visibility="false">
  <choice name="Toggle Auto, preserving the saved occurrence and checking earlier duplicates." selected="yes" action="var_greater '$ttFadeDeck' 0 ? nothing : var_equal '$ttResumeChecking' 1 ? nothing : deck 1 automix ? (multibutton 'tt_save_auto_position') : deck 2 automix ? (multibutton 'tt_save_auto_position') : var_equal '$ttResumeSaved' 1 ? ((deck 1 play ? set '$ttResumeCandidatePath' `deck 1 get_filepath` : set '$ttResumeCandidatePath' `deck 2 get_filepath`) &amp; (param_equal `get_var '$ttResumeCandidatePath'` `get_var '$ttResumePath'` ? (browser_window 'automix' &amp; browser_scroll 'top' &amp; get_var '$ttResumePos' &amp; param_add -1 &amp; param_cast 'integer' &amp; browser_scroll &amp; (param_equal `get_browsed_song 'fullpath'` `get_var '$ttResumePath'` ? (set '$ttResumeCount' `file_count 'automix'` &amp; set '$ttResumeNextTitle' '' &amp; (var_equal '$ttResumePos' `get_var '$ttResumeCount'` ? nothing : (browser_scroll +1 &amp; set '$ttResumeNextTitle' `get_browsed_song 'title'` &amp; browser_scroll -1)) &amp; set '$ttResumeChecking' 1 &amp; set '$ttResumeStage' 1 &amp; set '$ttResumeWarning' 0 &amp; set '$ttResumeRemoveError' 0 &amp; set '$ttResumeFirst' 0 &amp; set '$ttResumeScanRow' 1 &amp; browser_window 'automix' &amp; browser_scroll 'top' &amp; set '$ttResumeAnchorPath' `get_browsed_song 'fullpath'` &amp; repeat_start_instant 'ttResumeScan' 10ms `get_var '$ttResumePos'` &amp; (multibutton 'tt_scan_tick_2')) : (multibutton 'tt_resume_auto_2'))) : (multibutton 'tt_resume_auto_2'))) : (multibutton 'tt_start_auto_2')"/>
 </multibutton>
-<!-- Play or pause with deck safety, fade cancellation and Auto handoff. -->
 <multibutton id="tt_play_1" visibility="false">
- <choice name="Play or pause with deck safety, fade cancellation and Auto handoff." selected="yes" action="var_greater '$ttFadeDeck' 0 ? (multibutton 'tt_cancel_fade' &amp; set '$ttPlayPausedDeck' 1 &amp; deck 1 pause) : var_equal '$ttResumeChecking' 1 ? (deck 1 play ? (multibutton 'tt_cancel_check' &amp; set '$ttPlayPausedDeck' 1 &amp; deck 1 pause) : nothing) : (set '$ttPlayAllowed' 0 &amp; (deck 1 play ? (set '$ttPlayPausedDeck' 1 &amp; deck 1 pause) : var_equal '$removeDoublePlaySafety' 1 ? set '$ttPlayAllowed' 1 : deck 1 level 0 ? set '$ttPlayAllowed' 1 : deck 2 level 0 ? set '$ttPlayAllowed' 1 : deck 2 play ? show_window 'single_output_warning' : set '$ttPlayAllowed' 1) &amp; (var_equal '$ttPlayAllowed' 1 ? ((deck 2 play ? deck 1 play_pause : (set '$ttPlayAuto' 0 &amp; (deck 1 automix ? set '$ttPlayAuto' 1 : deck 2 automix ? set '$ttPlayAuto' 1 : nothing) &amp; (deck 1 loaded ? (var_equal '$ttPlayAuto' 1 ? (set '$ttPlayHandoff' 0 &amp; (param_equal `deck 1 get_filepath` `get_automix_song fullpath 0` ? (var_equal '$ttPlayPausedDeck' 2 ? set '$ttPlayHandoff' 1 : nothing) : set '$ttPlayHandoff' 1) &amp; (var_equal '$ttPlayHandoff' 1 ? (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1` ? (set '$ttResumePos' `get_automix_position &amp; param_add 1 &amp; param_cast integer` &amp; set '$ttResumePath' `deck 1 get_filepath` &amp; set '$ttResumeTitle' `deck 1 get_title` &amp; set '$ttResumeSaved' 1 &amp; set '$ttResumeWarning' 0 &amp; automix off &amp; deck 1 play &amp; (multibutton 'tt_auto_1')) : (repeat_stop 'ttResumeScan' &amp; repeat_stop 'ttResumeVerify' &amp; set '$ttResumeChecking' 0 &amp; set '$ttResumeStage' 0 &amp; show_window 'ttResumeProgress' off &amp; set '$ttResumeSaved' 0 &amp; set '$ttResumeWarning' 0 &amp; show_window 'ttResumeWarning' off &amp; automix off &amp; deck 1 automix_load &amp; deck 1 automix on &amp; deck 1 play)) : deck 1 play)) : deck 1 play) : deck 1 play_pause))) &amp; set '$ttPlayPausedDeck' 0) : nothing))"/>
+ <choice name="Play or pause." selected="yes" action="var_greater '$ttFadeDeck' 0 ? (multibutton 'tt_cancel_fade' &amp; set '$ttPlayPausedDeck' 1 &amp; deck 1 pause) : var_equal '$ttResumeChecking' 1 ? (deck 1 play ? (multibutton 'tt_cancel_check' &amp; set '$ttPlayPausedDeck' 1 &amp; deck 1 pause) : nothing) : (set '$ttPlayAllowed' 0 &amp; (deck 1 play ? (set '$ttPlayPausedDeck' 1 &amp; deck 1 pause) : var_equal '$removeDoublePlaySafety' 1 ? set '$ttPlayAllowed' 1 : deck 1 level 0 ? set '$ttPlayAllowed' 1 : deck 2 level 0 ? set '$ttPlayAllowed' 1 : deck 2 play ? show_window 'single_output_warning' : set '$ttPlayAllowed' 1) &amp; (var_equal '$ttPlayAllowed' 1 ? ((deck 2 play ? deck 1 play_pause : (set '$ttPlayAuto' 0 &amp; (deck 1 automix ? set '$ttPlayAuto' 1 : deck 2 automix ? set '$ttPlayAuto' 1 : nothing) &amp; (deck 1 loaded ? (var_equal '$ttPlayAuto' 1 ? (set '$ttPlayHandoff' 0 &amp; (param_equal `deck 1 get_filepath` `get_automix_song fullpath 0` ? (var_equal '$ttPlayPausedDeck' 2 ? set '$ttPlayHandoff' 1 : nothing) : set '$ttPlayHandoff' 1) &amp; (var_equal '$ttPlayHandoff' 1 ? (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1` ? (set '$ttResumePos' `get_automix_position &amp; param_add 1 &amp; param_cast integer` &amp; set '$ttResumePath' `deck 1 get_filepath` &amp; set '$ttResumeTitle' `deck 1 get_title` &amp; set '$ttResumeSaved' 1 &amp; set '$ttResumeWarning' 0 &amp; automix off &amp; deck 1 play &amp; (multibutton 'tt_auto_1')) : (repeat_stop 'ttResumeScan' &amp; repeat_stop 'ttResumeVerify' &amp; set '$ttResumeChecking' 0 &amp; set '$ttResumeStage' 0 &amp; show_window 'ttResumeProgress' off &amp; set '$ttResumeSaved' 0 &amp; set '$ttResumeWarning' 0 &amp; show_window 'ttResumeWarning' off &amp; automix off &amp; deck 1 automix_load &amp; deck 1 automix on &amp; deck 1 play)) : deck 1 play)) : deck 1 play) : deck 1 play_pause))) &amp; set '$ttPlayPausedDeck' 0) : nothing))"/>
 </multibutton>
-<!-- Play or pause with deck safety, fade cancellation and Auto handoff. -->
 <multibutton id="tt_play_2" visibility="false">
- <choice name="Play or pause with deck safety, fade cancellation and Auto handoff." selected="yes" action="var_greater '$ttFadeDeck' 0 ? (multibutton 'tt_cancel_fade' &amp; set '$ttPlayPausedDeck' 2 &amp; deck 2 pause) : var_equal '$ttResumeChecking' 1 ? (deck 2 play ? (multibutton 'tt_cancel_check' &amp; set '$ttPlayPausedDeck' 2 &amp; deck 2 pause) : nothing) : (set '$ttPlayAllowed' 0 &amp; (deck 2 play ? (set '$ttPlayPausedDeck' 2 &amp; deck 2 pause) : var_equal '$removeDoublePlaySafety' 1 ? set '$ttPlayAllowed' 1 : deck 2 level 0 ? set '$ttPlayAllowed' 1 : deck 1 level 0 ? set '$ttPlayAllowed' 1 : deck 1 play ? show_window 'single_output_warning' : set '$ttPlayAllowed' 1) &amp; (var_equal '$ttPlayAllowed' 1 ? ((deck 1 play ? deck 2 play_pause : (set '$ttPlayAuto' 0 &amp; (deck 1 automix ? set '$ttPlayAuto' 1 : deck 2 automix ? set '$ttPlayAuto' 1 : nothing) &amp; (deck 2 loaded ? (var_equal '$ttPlayAuto' 1 ? (set '$ttPlayHandoff' 0 &amp; (param_equal `deck 2 get_filepath` `get_automix_song fullpath 0` ? (var_equal '$ttPlayPausedDeck' 1 ? set '$ttPlayHandoff' 1 : nothing) : set '$ttPlayHandoff' 1) &amp; (var_equal '$ttPlayHandoff' 1 ? (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1` ? (set '$ttResumePos' `get_automix_position &amp; param_add 1 &amp; param_cast integer` &amp; set '$ttResumePath' `deck 2 get_filepath` &amp; set '$ttResumeTitle' `deck 2 get_title` &amp; set '$ttResumeSaved' 1 &amp; set '$ttResumeWarning' 0 &amp; automix off &amp; deck 2 play &amp; (multibutton 'tt_auto_2')) : (repeat_stop 'ttResumeScan' &amp; repeat_stop 'ttResumeVerify' &amp; set '$ttResumeChecking' 0 &amp; set '$ttResumeStage' 0 &amp; show_window 'ttResumeProgress' off &amp; set '$ttResumeSaved' 0 &amp; set '$ttResumeWarning' 0 &amp; show_window 'ttResumeWarning' off &amp; automix off &amp; deck 2 automix_load &amp; deck 2 automix on &amp; deck 2 play)) : deck 2 play)) : deck 2 play) : deck 2 play_pause))) &amp; set '$ttPlayPausedDeck' 0) : nothing))"/>
+ <choice name="Play or pause." selected="yes" action="var_greater '$ttFadeDeck' 0 ? (multibutton 'tt_cancel_fade' &amp; set '$ttPlayPausedDeck' 2 &amp; deck 2 pause) : var_equal '$ttResumeChecking' 1 ? (deck 2 play ? (multibutton 'tt_cancel_check' &amp; set '$ttPlayPausedDeck' 2 &amp; deck 2 pause) : nothing) : (set '$ttPlayAllowed' 0 &amp; (deck 2 play ? (set '$ttPlayPausedDeck' 2 &amp; deck 2 pause) : var_equal '$removeDoublePlaySafety' 1 ? set '$ttPlayAllowed' 1 : deck 2 level 0 ? set '$ttPlayAllowed' 1 : deck 1 level 0 ? set '$ttPlayAllowed' 1 : deck 1 play ? show_window 'single_output_warning' : set '$ttPlayAllowed' 1) &amp; (var_equal '$ttPlayAllowed' 1 ? ((deck 1 play ? deck 2 play_pause : (set '$ttPlayAuto' 0 &amp; (deck 1 automix ? set '$ttPlayAuto' 1 : deck 2 automix ? set '$ttPlayAuto' 1 : nothing) &amp; (deck 2 loaded ? (var_equal '$ttPlayAuto' 1 ? (set '$ttPlayHandoff' 0 &amp; (param_equal `deck 2 get_filepath` `get_automix_song fullpath 0` ? (var_equal '$ttPlayPausedDeck' 1 ? set '$ttPlayHandoff' 1 : nothing) : set '$ttPlayHandoff' 1) &amp; (var_equal '$ttPlayHandoff' 1 ? (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1` ? (set '$ttResumePos' `get_automix_position &amp; param_add 1 &amp; param_cast integer` &amp; set '$ttResumePath' `deck 2 get_filepath` &amp; set '$ttResumeTitle' `deck 2 get_title` &amp; set '$ttResumeSaved' 1 &amp; set '$ttResumeWarning' 0 &amp; automix off &amp; deck 2 play &amp; (multibutton 'tt_auto_2')) : (repeat_stop 'ttResumeScan' &amp; repeat_stop 'ttResumeVerify' &amp; set '$ttResumeChecking' 0 &amp; set '$ttResumeStage' 0 &amp; show_window 'ttResumeProgress' off &amp; set '$ttResumeSaved' 0 &amp; set '$ttResumeWarning' 0 &amp; show_window 'ttResumeWarning' off &amp; automix off &amp; deck 2 automix_load &amp; deck 2 automix on &amp; deck 2 play)) : deck 2 play)) : deck 2 play) : deck 2 play_pause))) &amp; set '$ttPlayPausedDeck' 0) : nothing))"/>
 </multibutton>
 <!-- Validate and advance one saved-row selection step. -->
 <multibutton id="tt_highlight_saved_tick" visibility="false">
@@ -188,16 +186,23 @@
 <!-- Guard only a saved occurrence that would rematch an earlier copy of the same file. -->
 <define class="tt_auto_left">
  <button class="button_main" x="+0" y="+0" width="64" height="35" text="AUTO" textsize="14" query="deck 1 automix ? true : deck 2 automix ? true : false" action="multibutton 'tt_auto_1'">
- <tooltip>Toggle Auto. Turning off remembers this playlist occurrence. If an earlier duplicate makes resuming ambiguous, the song plays with Auto off and its row is highlighted. Choose an action in the popup. Preferences: Menu / Auto duplicates.</tooltip>
+ <tooltip>Toggle Auto mix</tooltip>
  </button>
 </define>
 <define class="tt_auto_right">
  <button class="button_main" x="+0" y="+0" width="64" height="35" text="AUTO" textsize="14" query="deck 1 automix ? true : deck 2 automix ? true : false" action="multibutton 'tt_auto_2'">
- <tooltip>Toggle Auto. Turning off remembers this playlist occurrence. If an earlier duplicate makes resuming ambiguous, the song plays with Auto off and its row is highlighted. Choose an action in the popup. Preferences: Menu / Auto duplicates.</tooltip>
+ <tooltip>Toggle Auto mix</tooltip>
  </button>
 </define>
-<define class="tt_play_left"><button class="button_main" x="+0" y="+0" width="64" height="35" sysicon="play_button" iconsize="40" query="deck 1 play" action="multibutton 'tt_play_1'"><tooltip>Play or pause. With Auto enabled and the other deck paused, starting a different track makes Auto follow this deck. An earlier duplicate keeps the song playing with Auto off and highlights its row for review.</tooltip></button></define>
-<define class="tt_play_right"><button class="button_main" x="+0" y="+0" width="64" height="35" sysicon="play_button" iconsize="40" query="deck 2 play" action="multibutton 'tt_play_2'"><tooltip>Play or pause. With Auto enabled and the other deck paused, starting a different track makes Auto follow this deck. An earlier duplicate keeps the song playing with Auto off and highlights its row for review.</tooltip></button></define>
+<define class="tt_play_left">
+<button class="button_main" x="+0" y="+0" width="64" height="35" 
+		sysicon="play_button" iconsize="40" query="deck 1 play" action="multibutton 
+		'tt_play_1'"><tooltip>Play or pause.</tooltip>
+</button></define>
+<define class="tt_play_right">
+<button class="button_main" x="+0" y="+0" width="64" height="35" sysicon="play_button" 
+iconsize="40" query="deck 2 play" action="multibutton 'tt_play_2'">
+<tooltip>Play or pause.</tooltip></button></define>
 
 
 <group name="colorscheme">
@@ -843,7 +848,7 @@
 				setting 'equalizerLowFrequency' `setting 'equalizerLowFrequency' & param_add 1` & 
 				set '@$low_freq_var' `get_var '@$low_freq_var' & param_add 0.00625`: repeat_stop 'eqLowDown' "
 				x="+26" y="+86" width="22" height="23" text="+">
-				<tooltip>Increment Low Frequency Center.\nUse knob for large adjustments and\nbuttons for fine tuning</tooltip>
+				<tooltip>Increase low frequency center.\nKnob: coarse. Buttons: fine.</tooltip>
 			</button>
 		</define>
 
@@ -875,7 +880,7 @@
 				setting 'equalizerLowFrequency' `setting 'equalizerLowFrequency' & param_add 1` & 
 				set '@$low_freq_var' `get_var '@$low_freq_var' & param_add 0.00625`: repeat_stop 'eqLowDown' "
 				x="+26" y="+79" width="22" height="17" text="+">
-				<tooltip>Increment Low Frequency Center.\nUse knob for large adjustments and\nbuttons for fine tuning</tooltip>
+				<tooltip>Increase low frequency center.\nKnob: coarse. Buttons: fine.</tooltip>
 			</button>
 		</define>
 
@@ -971,7 +976,7 @@
 				<text fontsize="12" color="textdark" align="center" weight=""
 				action="get_text '`setting equalizerHighFrequency & param_multiply 0.001` kHz'" important="true"
 				rightclick = "set '@$high_freq_var' 0.75 & setting 'equalizerHighFrequency' 8500"/>
-				<tooltip>High frequency center </tooltip>
+				<tooltip>High frequency center</tooltip>
 			</button>
 			<button class="button_main" 
 				action="down ? repeat_start_instant 'eqHighDown' 200ms & 
@@ -1010,7 +1015,7 @@
 				<text fontsize="12" color="textdark" align="center" weight=""
 				action="get_text '`setting equalizerHighFrequency & param_multiply 0.001` kHz'" important="true"
 				rightclick = "set '@$high_freq_var' 0.75 & setting 'equalizerHighFrequency' 8500"/>
-				<tooltip>High frequency center </tooltip>
+				<tooltip>High frequency center</tooltip>
 			</button>
 			<button class="button_main" 
 				action="down ? repeat_start_instant 'eqHighDown' 200ms & 
@@ -1534,7 +1539,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="VIDEO OPTIONS" />
  </textzone>
  <button x="588" y="16" width="32" height="32" text="" textsize="17" action="show_window 'VideoOptionsWindow' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="624" y="688" width="16" height="16" />
  <group name="tt_video_section_80" x="+20" y="+80">
@@ -1596,7 +1601,7 @@ ________________________________________________________________________________
    <text fontsize="18" color="#FFFFFF" align="left" valign="center" text="REC YEAR" />
   </textzone>
   <button class="button_main" x="+20" y="+156" action="toggle '@$showYear'" textsize="16" height="42" width="180" text="SHOW YEAR" query="var_equal '@$showYear' 1 ? true : false" oncolor="colormaster1">
-   <tooltip>Display the recording year on video,\nnext to the genre.\nOnly shown when the track has a year.</tooltip>
+   <tooltip>Show recording year beside genre on video.\nRequires a track year.</tooltip>
   </button>
   <textzone x="+210" y="+128" width="180" height="24">
    <text fontsize="18" color="#FFFFFF" align="left" valign="center" text="LYRICS SIZE" />
@@ -1640,7 +1645,7 @@ ________________________________________________________________________________
    <text fontsize="18" color="#FFFFFF" align="left" valign="center" text="CORTINA" />
   </textzone>
   <button class="button_main" x="+20" y="+76" action="toggle '@$cortinaCheck'" textsize="16" height="42" width="180" text="GENRE CHECK" oncolor="colormaster1">
-   <tooltip>If on,  will mark as cortina if genre includes the word\n "Cortina". Otherwise a cortina is any track with genre not\ncontaining "Tango", "Vals", "Milonga" or "Alternative"</tooltip>
+   <tooltip>On: detect cortinas by the Cortina genre.\nOff: any genre without Tango, Vals,\nMilonga or Alternative counts as a cortina.</tooltip>
   </button>
   <textzone x="+210" y="+46" width="180" height="24">
    <text fontsize="18" color="#FFFFFF" align="left" valign="center" text="TANGO TANDA" />
@@ -1656,7 +1661,7 @@ ________________________________________________________________________________
   </button>
  </group>
  <button class="button_main" x="20" y="232" visibility="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on" query="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? off : on" textsize="20" height="452" width="600" action="config 'interface'" textaction="setting 'videoSkin' & param_lowercase & param_contains 'tigertangovideo' ? '' :        get_text '⚠️ TIGER TANGO VIDEO NOT ACTIVE ⚠️\n\nLoad Video Skin from Video Overlay\n\n-&gt;Settings\n-&gt; Interface\n-&gt; Video Overlay\n-&gt; TigerTango Video' ">
-  <tooltip>Some video functionality only available with TigerTangoVideo Video Skin\nVideo skin can be loaded from settings--Interface--Video Overlay\nSearch for TigerTangoVideo.</tooltip>
+  <tooltip>Full video features need TigerTangoVideo.\nFind it in Settings / Interface / Video\nOverlay.</tooltip>
  </button>
 </window>
 
@@ -1669,7 +1674,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#E5AB61" align="left" valign="center" weight="bold" text="ONE DECK AT A TIME" />
  </textzone>
  <button x="568" y="16" width="32" height="32" text="" textsize="17" action="show_window 'single_output_warning' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="604" y="254" width="16" height="16" />
  <textzone x="20" y="80" width="580" height="80">
@@ -1686,7 +1691,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="DOCUMENTATION" />
  </textzone>
  <button x="588" y="16" width="32" height="32" text="" textsize="17" action="show_window 'documentation' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="624" y="334" width="16" height="16" />
  <textzone x="20" y="80" width="600" height="28">
@@ -1721,7 +1726,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="BROWSER" />
  </textzone>
  <button x="908" y="16" width="32" height="32" text="" textsize="17" action="show_window 'BrowserWindow' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="944" y="704" width="16" height="16" />
  <browser x="20" y="80" width="920" height="620">
@@ -1736,7 +1741,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="SEARCH" />
  </textzone>
  <button x="788" y="16" width="32" height="32" text="" textsize="17" action="show_window 'SearchWindow' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="824" y="604" width="16" height="16" />
  <browsertoolbartree resizeX="no" attachX="left" x="20" y="80" width="25" height="520">
@@ -1761,7 +1766,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="SIDEVIEW" />
  </textzone>
  <button x="488" y="16" width="32" height="32" text="" textsize="17" action="show_window 'SideviewWindow' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="524" y="764" width="16" height="16" />
  <sideview x="20" y="80" width="500" height="680">
@@ -1776,14 +1781,14 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="WAVEFORM" />
  </textzone>
  <button x="648" y="16" width="32" height="32" text="" textsize="17" action="show_window 'Waveform' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="684" y="414" width="16" height="16" />
  <button x="20" y="80" width="120" height="42" text="DECK" textsize="16" action="var_equal '$showWave2' 0 ? set '$showWave2' 1 : set '$showWave2' 0" query="var_equal '$showWave' 1" class="button_main">
-  <tooltip> Choose deck to display</tooltip>
+  <tooltip>Choose deck to display</tooltip>
  </button>
  <button x="160" y="80" width="120" height="42" text="AUTO FOLLOW" textsize="16" action="var_equal '$cycleWave' 0 ? set '$cycleWave' 1 : set '$cycleWave' 0" query="var_equal '$cycleWave' 1" class="button_main">
-  <tooltip> Auto display waveform of currently playing deck</tooltip>
+  <tooltip>Auto display waveform of currently playing\ndeck</tooltip>
  </button>
  <textzone x="20" y="140" group="horizontal" align="center" scroll="yes" width="660" height="30">
   <text fontsize="19" align="left" color="#FFFFFF" weight="bold" important="true" action="var_equal '$cycleWave' 0 ? (var_equal '$showWave2' 0 ? deck 1 get_title: deck 2 get_title) :    deck 1 play ? deck 1 get_title: deck 2 play ? deck 2 get_title :     (var_equal '$showWave2' 0 ? deck 1 get_title: deck 2 get_title)" localize="true" />
@@ -1836,7 +1841,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="SIDELIST" />
  </textzone>
  <button x="488" y="16" width="32" height="32" text="" textsize="17" action="show_window 'SidelistWindow' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="524" y="764" width="16" height="16" />
  <filelist source="sidelist" x="20" y="80" width="500" height="680">
@@ -1857,7 +1862,7 @@ ________________________________________________________________________________
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="TRACK INFO" />
  </textzone>
  <button x="488" y="16" width="32" height="32" text="" textsize="17" action="show_window 'BrowserInfoWindow' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="524" y="564" width="16" height="16" />
  <browserinfo attachX="both" attachY="both" x="20" y="80" width="500" height="480">
@@ -1970,12 +1975,12 @@ ________________________________________________________________________________
 			textsize="16" x="+43" y="+0" height="30" width="35"
 			query = 'false'
 			action="setting 'coverDownload' 'no' & setting 'recordWaitForSound' 'no' & record_config">
-		<tooltip>Make a recording.\nUseful for recording silence\nOr making dummy tracks to separate tandas.</tooltip>
+		<tooltip>Record audio or silence for tanda separators.</tooltip>
 		</button>
 		<button class="button_master" text="🎨"
 				textsize="16" x="+86" y="+0" height="30" width="35"
 				action = "quick_filter">
-		<tooltip>Color and filter options.\nUseful for setting colors by genre, feel, ect.</tooltip>
+		<tooltip>Track colors and filters.\nColor by genre or mood.</tooltip>
 		</button>
 		</group>
 		<!-- Second Row -->
@@ -1991,7 +1996,7 @@ ________________________________________________________________________________
 				query="var_equal '$allowPlaylistClear' 1"
 				action="var_equal '$allowPlaylistClear' 1 ? playlist_clear & set '$allowPlaylistClear' 0 : nothing"
 				rightclick="toggle '$allowPlaylistClear'">
-			<tooltip>Right click then left click to clear playlist.\nRight click toggles safety. Left click clears when safety is off.</tooltip>
+			<tooltip>Clear playlist: right click to unlock,\nthen left click to clear.</tooltip>
 			</button>
 
 			<button class="button_master" text="💾"
@@ -2072,7 +2077,7 @@ ________________________________________________________________________________
 			) &
 				(var_equal '$decksPaused' 1 ? (deck 1 pause & deck 2 pause) : nothing)"
 			>
-			<tooltip>Set 'Single' or 'Dual Deck' automix mode.\nUse the PLAY and LOAD safety controls to change protection.\nWARNING! There can be some unexpected behaviors when\n switching between 1 and 2 decks\n when there are duplicate songs in your automix.</tooltip>
+			<tooltip>Single or Dual Deck Auto.\nCheck duplicates before switching.\nProtection: PLAY / LOAD safety controls.</tooltip>
 		</button>
 				<!-- MONO STEREO BUTTON -->
 		<button class="button_master" x="+130+4" y="+73" width="125" height="30"
@@ -2138,13 +2143,13 @@ ________________________________________________________________________________
   <off shape="square" color="#244339" radius="4" border="bordercolor" border_size="1"/>
   <on shape="square" color="#86501D" radius="4" border="bordercolor" border_size="1"/>
   <text fontsize="14" color="#E8F4ED" colorselected="#FFFFFF" weight="bold" align="center" action="var_equal '$removeDoublePlaySafety' 1 ? get_text 'PLAY OFF' : get_text 'PLAY ON'"/>
-  <tooltip>Play safety prevents both decks from playing to main. Click to toggle. ON means protected; amber OFF means simultaneous playback is allowed.</tooltip>
+  <tooltip>Prevent both decks playing aloud together.\nClick to toggle protection.</tooltip>
  </button>
  <button x="+88" y="+29" width="78" height="26" query="var_equal '$deckSafetyOff' 1" action="toggle '$deckSafetyOff'">
   <off shape="square" color="#244339" radius="4" border="bordercolor" border_size="1"/>
   <on shape="square" color="#86501D" radius="4" border="bordercolor" border_size="1"/>
   <text fontsize="14" color="#E8F4ED" colorselected="#FFFFFF" weight="bold" align="center" action="var_equal '$deckSafetyOff' 1 ? get_text 'LOAD OFF' : get_text 'LOAD ON'"/>
-  <tooltip>Load safety blocks dropping tracks directly onto decks during Auto. Add tracks to the Auto list instead. Click to toggle. ON means protected; amber OFF allows deck loading.</tooltip>
+  <tooltip>Block deck loading during Auto.\nAdd tracks to the Auto list.\nClick to toggle; amber OFF allows loading.</tooltip>
  </button>
 </group>
 
@@ -2159,7 +2164,7 @@ ________________________________________________________________________________
 					<button class="button_master" text="⚠️"  query="var_equal '$ignoreDblClickInd' 1 ? false : not setting 'automixDoubleCLick' 'nothing' ? true: false"
 					textsize="14" x="+6" y="+30" height="25" width="24"
 						action="setting 'automixDoubleCLick' 'nothing'" rightclick="toggle '$ignoreDblClickInd'">
-						<tooltip>Recommended to set automixDoubleClick to 'nothing'. Click to change settings. Right click to toggle warning light.</tooltip>
+						<tooltip>Click: disable Auto-list double-click.\nRight click: toggle warning.</tooltip>
 					</button>
 				</panel>
 
@@ -2167,7 +2172,7 @@ ________________________________________________________________________________
 					<button class="button_master" text="⚠️" query="get_limiter & pulse 2000ms" 
 						action="master_volume -15%"
 					textsize="14" x="+33" y="+30" height="25" width="24">
-						<tooltip>HITTING LIMITER! Turn down master fader!\nClick to turn down master fader 15%.\nSuggest setting option 'zeroDB' to -3db to reduce chance of clipping.</tooltip>
+						<tooltip>Limiter active! Click: lower master 15%.\nSet zeroDB to -3 dB to reduce clipping.</tooltip>
 					</button>
 				</panel>
 				<panel name="automix_mode" visibility="setting 'automixMode' 'no mix' ? false :
@@ -2179,8 +2184,7 @@ ________________________________________________________________________________
 					query="true"
 					textsize="14" x="+60" y="+30" height="25" width="24"
 					action="setting 'automixMode' 'no mix'" rightclick="setting 'automixMode' 'skip silence'">
-					<tooltip>Setting Automix to 'Smart' or 'Remove Intro/Outro' will clip tracks.\nValid settings are 'no mix', 'skip silence', 'radio', 'full songs'\nClick to change settings to 'Back-to-Back' (use song ending silence).\nRight click to change settings to 'Skip Silence'
-					</tooltip>
+					<tooltip>Automix may clip track endings.\nClick: Back-to-Back.\nRight click: Skip Silence.</tooltip>
 				</button>
 				</panel>
 
@@ -2188,7 +2192,7 @@ ________________________________________________________________________________
 					<button class="button_master" text="⚠️" query="true"
 					textsize="14" x="+87" y="+30" height="25" width="24"
 						action="setting 'autoMixTempoMode' 'normal tempo' & setting 'automixSkipLength' 0 & setting 'automixMaxLength' 0">
-						<tooltip>Automix settings not configured properly.\nClick to set 'autoMixTempoMode' to 'normal tempo'\nand 'automixSkipLength' to 0.</tooltip>
+						<tooltip>Click: restore normal Auto tempo\nand set skip length to 0.</tooltip>
 					</button>
 				</panel>
 
@@ -2196,7 +2200,7 @@ ________________________________________________________________________________
 					<button class="button_master" text="⚠️" query="true"
 					textsize="14" x="+114" y="+30" height="25" width="24"
 						action="setting 'fadeLength' 0 & setting 'fadeLength' -3" rightclick="setting 'fadeLength' 0">
-						<tooltip>Automix 'fadeLength' setting is above 0\nThis will cut end of tracks\nClick to set to 3-second gap between songs.\nRight click to set to 0.</tooltip>
+						<tooltip>Auto fade may cut track endings.\nClick: 3-second gap. Right click: no gap.</tooltip>
 					</button>
 				</panel>
 
@@ -2204,7 +2208,7 @@ ________________________________________________________________________________
 					<button class="button_master" text="⚠️" query="true"
 					textsize="14" x="+141" y="+30" height="25" width="24"
 						action="crossfader_disable on & deck 1 fader_start off & deck 2 fader_start off">
-						<tooltip>Crossfader or Fader Start are enabled.\nCAN CAUSE ERRORS!\nClick to disable Crossfader and Fader Start.</tooltip>
+						<tooltip>Crossfader or Fader Start enabled.\nClick to disable both.</tooltip>
 					</button>
 				</panel>
 				<panel name="incorrect_loop_setting_warning" 
@@ -2215,7 +2219,7 @@ ________________________________________________________________________________
 						rightclick="toggle '$ignoreCueSettingsInd'"
 					textsize="14" x="+168" y="+30" height="25" width="24"
 						action="deck 1 setting 'smartLoop' off & deck 2 setting 'smartLoop' off">
-						<tooltip>Click to turn smartLoop off on both decks.\nKeeps loop boundaries at the saved cue positions.\nRight click to ignore warning.</tooltip>
+						<tooltip>Click: disable Smart Loop on both decks.\nKeep exact cue positions.\nRight click: ignore warning.</tooltip>
 					</button>
 				</panel>
 					<panel name="auto_match_configuration_warning" 
@@ -2232,7 +2236,7 @@ ________________________________________________________________________________
 					<button class="button_master" text="⚠️" query="true"
 					textsize="14" x="+222" y="+30" height="25" width="24"
 						action="setting 'resetGainOnLoad'">
-						<tooltip>resetGainOnLoad turned off which can cause volume issues.\nClick to turn on resetGainOnLoad.</tooltip>
+						<tooltip>Gain reset is off; volume may vary.\nClick to enable resetGainOnLoad.</tooltip>
 					</button>
 					</panel>
 					<panel name="auto_gain_warning" visibility="setting 'autoGain' 'no' ? true : setting 'autoGain' 'remember' ? true : false"> 
@@ -2241,7 +2245,7 @@ ________________________________________________________________________________
 						action="setting 'autoGain' 'auto'"
 						rightclick="toggle '@$hideAutoGainWarning'"
 						query="var_equal '@$hideAutoGainWarning' 1">
-						<tooltip>AutoGain set to 'no' or 'remember'.\nClick to set to recommended 'auto'\nRight click to ignore warning.</tooltip>
+						<tooltip>Click: set AutoGain to Auto.\nRight click: ignore warning.</tooltip>
 					</button>
 					</panel>
 				</panel>
@@ -2503,14 +2507,14 @@ ________________________________________________________________________________
 				visibility="not video ? true : not var '$largeVideo' ? true : false"
 				dblclick="video & set '$largeVideo' 1">
 				<size width="106" height="85"/>
-				<tooltip>Display video.\nWhen active, right click to toggle large video preview.</tooltip>
+				<tooltip>Display video.\nWhen active, right click to toggle large video\npreview.</tooltip>
 			</button>
 			<button x="+0" y="-30"
 			action="video"
 			rightclick="toggle '$largeVideo'"
 			visibility="video && var '$largeVideo'">
 			<size width="315" height="185"/>
-			<tooltip>Display video.\nWhen active, right click to toggle large video preview.</tooltip>
+			<tooltip>Display video.\nWhen active, right click to toggle large video\npreview.</tooltip>
 			</button>
 		</group>
 
@@ -2525,7 +2529,7 @@ ________________________________________________________________________________
 			<button class="button_master" x="+58" y="+0" width="52" height="25" action = "toggle '@$showLyrics'"
 				rightclick="deck master edit_comment" textcolor="textdark"
 					textsize="14" text="♫ ✎">
-			<tooltip>Show lyrics.\nRight click to edit lyrics of currently playing song\nNote: You can edit song lyrics by clicking the\ncomment section in the 'Info' panel.</tooltip>
+			<tooltip>Show lyrics from Comments.\nRight click to edit the playing song.</tooltip>
 			</button>
 
 			<!-- When new song start playing, if song counger is running, then do the following:
@@ -2779,7 +2783,7 @@ ________________________________________________________________________________
 				<size width="28" height="28"/>
 				<background color="#000000"/>
 				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
-				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\nUse LOAD in the Safety section to change protection.</tooltip>
+				<tooltip>Deck loading blocked during Auto.\nAdd tracks to the Auto list.\nProtection: LOAD in Safety.</tooltip>
 			</button>
 			</group>
 
@@ -2799,19 +2803,18 @@ ________________________________________________________________________________
  <textzone x="+190" y="+6" width="120" height="21" visibility="((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 1 get_filepath` `get_automix_song fullpath 0`) : (deck 1 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 1 automix) ? (false) : (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))"><text fontsize="16" weight="bold" color="tt_status_text" align="right" action="(var_equal '$ttResumeChecking' 1) ? (get_text 'CHECKING') : ((((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 1 get_filepath` `get_automix_song fullpath 0`) : (deck 1 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 1 automix) ? (false) : (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))) ? (get_text 'AUTO ON') : (get_text 'MANUAL'))"/></textzone>
  <textzone x="+190" y="+6" width="120" height="21" visibility="(((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 1 get_filepath` `get_automix_song fullpath 0`) : (deck 1 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 1 automix) ? (false) : (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))) ? (false) : (true)"><text fontsize="16" weight="bold" color="texton" align="right" action="(var_equal '$ttResumeChecking' 1) ? (get_text 'CHECKING') : ((((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 1 get_filepath` `get_automix_song fullpath 0`) : (deck 1 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 1 automix) ? (false) : (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))) ? (get_text 'AUTO ON') : (get_text 'MANUAL'))"/></textzone>
 
- <button x="+157" y="+4" width="26" height="24" visibility="var_equal '$ttResumeChecking' 1 ? true : var_equal '$ttResumeWarning' 3" action="multibutton 'tt_show_queue_status'"><text fontsize="18" color="#E5AB61" weight="bold" text="!!!"/><tooltip>Click to review a duplicate warning or view and cancel the current check. Pause remains available while checking.</tooltip></button>
+ <button x="+157" y="+4" width="26" height="24" visibility="var_equal '$ttResumeChecking' 1 ? true : var_equal '$ttResumeWarning' 3" action="multibutton 'tt_show_queue_status'"><text fontsize="18" color="#E5AB61" weight="bold" text="!!!"/><tooltip>Click: queue warnings or check progress.\nPause cancels the check.</tooltip></button>
  <textzone x="+10" y="+30" width="300" height="24" scroll="no" click="scroll"><text fontsize="18" color="texton" action="(deck 1 loaded) ? (deck 1 get_title) : (get_text 'No song loaded')"/></textzone>
  <textzone x="+10" y="+58" width="300" height="24" group="horizontal" scroll="no" click="scroll" visibility="(deck 1 is_audible) ? (true) : (((deck 1 level 0%) ? (deck 1 pfl) : ((automix_dualdeck) ? (false) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? (deck 1 automix ? false : true) : (deck 2 is_audible)))) ? (false) : (((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 1 automix) ? (false) : (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false)) ? (false) : ((deck 1 loaded) ? ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 1 get_filepath` `get_automix_song fullpath 0`) : (deck 1 automix)) : (false)) : ((param_equal `deck 1 get_filepath` `get_var '$ttStatusCurrentPath'`) ? (true) : ((var_equal '$ttResumeSaved' 1) ? (param_equal `deck 1 get_filepath` `get_var '$ttResumePath'`) : (false)))) : (false))))">
   <text fontsize="18" color="texton" action="(deck 1 automix ? true : deck 2 automix ? true : false) ? (get_text 'Up next:  ') : (get_text 'Next:  ')"/>
   <text fontsize="18" color="texton" action="(deck 1 automix ? true : deck 2 automix ? true : false) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? (get_automix_song title 1) : ((playlist_repeat) ? (get_automix_song title) : (get_text 'End of Auto list'))) : ((param_equal `deck 1 get_filepath` `get_var '$ttStatusCurrentPath'`) ? (get_var '$ttStatusNextTitle') : (((var_equal '$ttResumeSaved' 1) ? (param_equal `deck 1 get_filepath` `get_var '$ttResumePath'`) : (false)) ? ((param_equal `get_var '$ttResumeNextTitle'` '') ? ((automix_dualdeck) ? ((deck 2 loaded) ? (deck 2 get_title) : (get_text 'No next song')) : (get_text 'No queued song')) : (get_var '$ttResumeNextTitle')) : ((automix_dualdeck) ? ((deck 2 loaded) ? (deck 2 get_title) : (get_text 'No next song')) : (get_text 'No queued song'))))"/>
-  <tooltip>When Auto is off, this is the last queued suggestion saved for the current song. It does not start automatically.</tooltip>
+  <tooltip>Next track when Auto is on</tooltip>
  </textzone>
  <textzone x="+10" y="+58" width="300" height="24" group="horizontal" scroll="no" click="scroll" visibility="(deck 1 is_audible) ? (false) : (((deck 1 level 0%) ? (deck 1 pfl) : ((automix_dualdeck) ? (false) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? (deck 1 automix ? false : true) : (deck 2 is_audible)))) ? (false) : (((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 1 automix) ? (false) : (param_equal `deck 1 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false)) ? (param_equal `get_automix_song fullpath 2` '' ? false : true) : (false)))">
   <text fontsize="18" color="texton" text="Following:  "/>
   <text fontsize="18" color="texton" action="get_automix_song title 2"/>
  </textzone>
- <button x="+190" y="+0" width="130" height="28" action="multibutton 'tt_show_queue_status'" ><tooltip>Auto on: this deck participates in Auto playback. Manual: this deck does not start automatically. Checking: click for progress or cancellation.
-Click to review an existing duplicate warning.</tooltip></button>
+ <button x="+190" y="+0" width="130" height="28" action="multibutton 'tt_show_queue_status'" ><tooltip>AUTO: automatic playback.\nMANUAL: start tracks yourself.\nClick: warnings or check progress.</tooltip></button>
 </group>
 		<group name="eq_pitch_volume" x="+5" y="+270">
 			<group name="effects" x="+15" y="+223">
@@ -2845,7 +2848,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 				<button class="button_master" text="⚠️" visibility="pitch 100% ? false : true" query="true"
 					textsize="14" x="+0" y="+209" height="25" width="52"
 					action="pitch_reset">
-					<tooltip>Pitch not set to normal. Click to reset pitch to 100%.</tooltip>
+					<tooltip>Click to restore normal playback speed.</tooltip>
 				</button>
 			</group>
 			<group name="volume_and_headphones" x="+292" y="+0">
@@ -2862,13 +2865,12 @@ Click to review an existing duplicate warning.</tooltip></button>
 			nothing :
 			deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
 			query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
-			<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
-			</tooltip>
+			<tooltip>Prelisten through configured headphones.\nClick again to reset track and volume.</tooltip>
 		</button>
 
 		<button class="button_main" width="46" height="25" x="+0" y="+185" radius="4"
 		action="deck 1 pfl on ? deck 1 pfl off : deck 1 pfl on & deck 2 pfl off" query="deck 1 pfl on">
-		<tooltip>Deck 1 prefade listen. Headphones will come through deck when turned on.</tooltip>
+		<tooltip>Deck 1 prelisten.\nWhen on, headphones use this deck.</tooltip>
 	</button>
 	</group>
 </group>
@@ -2878,7 +2880,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 					text="ADD" textsize="14"
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0"
 					rightclick= "playlist_load 'append' & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
-			<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
+			<tooltip>Add selected tracks to Auto.\nRight click: add folder or playlist.</tooltip>
 			</button>
 			<group visibility="var '$addMsg' 1" x="+0" y="+0">
 			<visual>
@@ -2897,7 +2899,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 			<button name="tt_fade_left" class="button_main" text="FADE" width="64" height="35" x="+0" y="+45" textsize = "14"
 				action="multibutton 'tt_fade_1'"
 				query="var_equal '$ttFadeDeck' 1 ? var_equal '$ttFadeAuto' 0 : false">
-			<tooltip>Fade out song. Uses set fade duration. Pause cancels the fade and pending transition.</tooltip>
+			<tooltip>Fade out using set duration.\nPause cancels.</tooltip>
 			</button>
 		<!-- Fade actions are generated by transport_actions.py. -->
 				<!--  show_window 'single_deck_automix_warning': -->
@@ -2908,7 +2910,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 			query="var_equal '$ttFadeDeck' 1 ? var_equal '$ttFadeAuto' 1 : false">
 
 
-			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas. Pause cancels the fade and pending transition.</tooltip>
+			<tooltip>Fade, then play next Auto track.\nUses set duration and a 2-second gap.\nPause cancels.</tooltip>
 			
 			</button>
 			<button class="button_main" width="35" height="35" x="+187" y="+45" textsize = "14"
@@ -2917,7 +2919,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 														var_equal '@$fadeLength' 1 ? get_text '5s' : 
 														var_equal '@$fadeLength' 2 ? get_text '7s' : 
 														get_text '9s'" >
-			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds.</tooltip>
 			</button>
 			
 			<!-- _________ROW 3 ______________ -->
@@ -2947,7 +2949,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 				action="multibutton 'tt_loop_1'"
 					textsize="14" textaction="loop ? get_text 'LOOP' : deck 1 hot_cue 1 ? deck 1 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
 					rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 1 loop">
-			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
+			<tooltip>Loop between two saved hot cues.\nClick again or right click to exit.</tooltip>
 			</button>
 
 		</group>
@@ -2994,8 +2996,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 			nothing :
 			deck 1 level 0% & deck 1 pfl on & deck 2 pfl off & deck 1 play"
 			query="deck 1 level & param_equal 0% && deck 1 play && deck 1 pfl on">
-			<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
-			</tooltip>
+			<tooltip>Prelisten through configured headphones.\nClick again to reset track and volume.</tooltip>
 		</button>
 
 	</group>
@@ -3009,7 +3010,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 			action="nothing"
 			rightclick="toggle '$deckSafetyOff'" x="+570" y="+290" 
 			width="40" height="30" textsize="22" text="⊘">
-			<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\nRight click to disable load safety.</tooltip>
+			<tooltip>Deck loading blocked during Auto.\nAdd tracks to the Auto list.\nRight click: disable load safety.</tooltip>
 		</button>
 		<group name="play_button_positions" x="+385" y="+150">
 				<button class="button_main"
@@ -3018,7 +3019,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 					action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
 					rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
 								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
-			<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
+			<tooltip>Add selected tracks to Auto.\nRight click: add folder or playlist.</tooltip>
 			</button>
 			<group visibility="var '$addMsg' 1" x="+0" y="+0">
 			<visual>
@@ -3037,7 +3038,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 			<button name="tt_fade_left" class="button_main" text="FADE" width="64" height="35" x="+0" y="+50" textsize = "14"
 				action="multibutton 'tt_fade_1'"
 				query="var_equal '$ttFadeDeck' 1 ? var_equal '$ttFadeAuto' 0 : false">
-			<tooltip>Fade out song. Uses set fade duration. Pause cancels the fade and pending transition.</tooltip>
+			<tooltip>Fade out using set duration.\nPause cancels.</tooltip>
 			</button>
 		<!-- Fade actions are generated by transport_actions.py. -->
 				<!--  show_window 'single_deck_automix_warning': -->
@@ -3048,7 +3049,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 			query="var_equal '$ttFadeDeck' 1 ? var_equal '$ttFadeAuto' 1 : false">
 
 
-			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas. Pause cancels the fade and pending transition.</tooltip>
+			<tooltip>Fade, then play next Auto track.\nUses set duration and a 2-second gap.\nPause cancels.</tooltip>
 			
 			</button>
 			<button class="button_main" width="35" height="35" x="+187" y="+50" textsize = "14"
@@ -3057,7 +3058,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 														var_equal '@$fadeLength' 1 ? get_text '5s' : 
 														var_equal '@$fadeLength' 2 ? get_text '7s' : 
 														get_text '9s'" >
-			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds.</tooltip>
 			</button>
 			
 			<!-- _________ROW 3 ______________ -->
@@ -3087,7 +3088,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 				action="multibutton 'tt_loop_1'"
 					textsize="14" textaction="loop ? get_text 'LOOP' : deck 1 hot_cue 1 ? deck 1 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
 					rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 1 loop">
-			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
+			<tooltip>Loop between two saved hot cues.\nClick again or right click to exit.</tooltip>
 			</button>
 
 		</group>
@@ -3122,7 +3123,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 				<size width="28" height="28"/>
 				<background color="#000000"/>
 				<text fontsize="28" color="buttonon1" align="center" weight="bold" text="⊘" localize="true"/>
-				<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\nUse LOAD in the Safety section to change protection.</tooltip>
+				<tooltip>Deck loading blocked during Auto.\nAdd tracks to the Auto list.\nProtection: LOAD in Safety.</tooltip>
 			</button>
 			</group>
 
@@ -3141,19 +3142,18 @@ Click to review an existing duplicate warning.</tooltip></button>
  <textzone x="+190" y="+6" width="120" height="21" visibility="((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 2 get_filepath` `get_automix_song fullpath 0`) : (deck 2 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 2 automix) ? (false) : (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))"><text fontsize="16" weight="bold" color="tt_status_text" align="right" action="(var_equal '$ttResumeChecking' 1) ? (get_text 'CHECKING') : ((((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 2 get_filepath` `get_automix_song fullpath 0`) : (deck 2 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 2 automix) ? (false) : (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))) ? (get_text 'AUTO ON') : (get_text 'MANUAL'))"/></textzone>
  <textzone x="+190" y="+6" width="120" height="21" visibility="(((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 2 get_filepath` `get_automix_song fullpath 0`) : (deck 2 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 2 automix) ? (false) : (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))) ? (false) : (true)"><text fontsize="16" weight="bold" color="texton" align="right" action="(var_equal '$ttResumeChecking' 1) ? (get_text 'CHECKING') : ((((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 2 get_filepath` `get_automix_song fullpath 0`) : (deck 2 automix)) : (false)) ? (true) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 2 automix) ? (false) : (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false))) ? (get_text 'AUTO ON') : (get_text 'MANUAL'))"/></textzone>
 
- <button x="+157" y="+4" width="26" height="24" visibility="var_equal '$ttResumeChecking' 1 ? true : var_equal '$ttResumeWarning' 3" action="multibutton 'tt_show_queue_status'"><text fontsize="18" color="#E5AB61" weight="bold" text="!!!"/><tooltip>Click to review a duplicate warning or view and cancel the current check. Pause remains available while checking.</tooltip></button>
+ <button x="+157" y="+4" width="26" height="24" visibility="var_equal '$ttResumeChecking' 1 ? true : var_equal '$ttResumeWarning' 3" action="multibutton 'tt_show_queue_status'"><text fontsize="18" color="#E5AB61" weight="bold" text="!!!"/><tooltip>Click: queue warnings or check progress.\nPause cancels the check.</tooltip></button>
  <textzone x="+10" y="+30" width="300" height="24" scroll="no" click="scroll"><text fontsize="18" color="texton" action="(deck 2 loaded) ? (deck 2 get_title) : (get_text 'No song loaded')"/></textzone>
  <textzone x="+10" y="+58" width="300" height="24" group="horizontal" scroll="no" click="scroll" visibility="(deck 2 is_audible) ? (true) : (((deck 2 level 0%) ? (deck 2 pfl) : ((automix_dualdeck) ? (false) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? (deck 2 automix ? false : true) : (deck 1 is_audible)))) ? (false) : (((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 2 automix) ? (false) : (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false)) ? (false) : ((deck 2 loaded) ? ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? (param_equal `deck 2 get_filepath` `get_automix_song fullpath 0`) : (deck 2 automix)) : (false)) : ((param_equal `deck 2 get_filepath` `get_var '$ttStatusCurrentPath'`) ? (true) : ((var_equal '$ttResumeSaved' 1) ? (param_equal `deck 2 get_filepath` `get_var '$ttResumePath'`) : (false)))) : (false))))">
   <text fontsize="18" color="texton" action="(deck 1 automix ? true : deck 2 automix ? true : false) ? (get_text 'Up next:  ') : (get_text 'Next:  ')"/>
   <text fontsize="18" color="texton" action="(deck 1 automix ? true : deck 2 automix ? true : false) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? (get_automix_song title 1) : ((playlist_repeat) ? (get_automix_song title) : (get_text 'End of Auto list'))) : ((param_equal `deck 2 get_filepath` `get_var '$ttStatusCurrentPath'`) ? (get_var '$ttStatusNextTitle') : (((var_equal '$ttResumeSaved' 1) ? (param_equal `deck 2 get_filepath` `get_var '$ttResumePath'`) : (false)) ? ((param_equal `get_var '$ttResumeNextTitle'` '') ? ((automix_dualdeck) ? ((deck 1 loaded) ? (deck 1 get_title) : (get_text 'No next song')) : (get_text 'No queued song')) : (get_var '$ttResumeNextTitle')) : ((automix_dualdeck) ? ((deck 1 loaded) ? (deck 1 get_title) : (get_text 'No next song')) : (get_text 'No queued song'))))"/>
-  <tooltip>When Auto is off, this is the last queued suggestion saved for the current song. It does not start automatically.</tooltip>
+  <tooltip>Next track when Auto is on</tooltip>
  </textzone>
  <textzone x="+10" y="+58" width="300" height="24" group="horizontal" scroll="no" click="scroll" visibility="(deck 2 is_audible) ? (false) : (((deck 2 level 0%) ? (deck 2 pfl) : ((automix_dualdeck) ? (false) : ((deck 1 automix ? true : deck 2 automix ? true : false) ? (deck 2 automix ? false : true) : (deck 1 is_audible)))) ? (false) : (((deck 1 automix ? true : deck 2 automix ? true : false) ? ((automix_dualdeck) ? ((param_equal `get_automix_song fullpath 1` '' ? false : true) ? ((deck 2 automix) ? (false) : (param_equal `deck 2 get_filepath` `get_automix_song fullpath 1`)) : (false)) : (false)) : (false)) ? (param_equal `get_automix_song fullpath 2` '' ? false : true) : (false)))">
   <text fontsize="18" color="texton" text="Following:  "/>
   <text fontsize="18" color="texton" action="get_automix_song title 2"/>
  </textzone>
- <button x="+190" y="+0" width="130" height="28" action="multibutton 'tt_show_queue_status'" ><tooltip>Auto on: this deck participates in Auto playback. Manual: this deck does not start automatically. Checking: click for progress or cancellation.
-Click to review an existing duplicate warning.</tooltip></button>
+ <button x="+190" y="+0" width="130" height="28" action="multibutton 'tt_show_queue_status'" ><tooltip>AUTO: automatic playback.\nMANUAL: start tracks yourself.\nClick: warnings or check progress.</tooltip></button>
 </group>
 
 
@@ -3171,13 +3171,12 @@ Click to review an existing duplicate warning.</tooltip></button>
 						nothing :
 						deck 2 level 0% & deck 2 pfl on & deck 1 pfl off & deck 2 play"
 						query="deck 2 level & param_equal 0% && deck 2 play && deck 2 pfl on">
-						<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
-						</tooltip>
+						<tooltip>Prelisten through configured headphones.\nClick again to reset track and volume.</tooltip>
 					</button>
 
 					<button class="button_main" width="46" height="25" x="+0" y="+185" radius="4"
 					action="deck 2 pfl on ? deck 2 pfl off : deck 2 pfl on & deck 1 pfl off" query="deck 2 pfl on">
-					<tooltip>Deck 2 Prefade listen. Headphones will come through deck when turned on.</tooltip>
+					<tooltip>Deck 2 prelisten.\nWhen on, headphones use this deck.</tooltip>
 				</button>
 			</group>
 			<group name="pitch" x="+60" y="+0">
@@ -3196,7 +3195,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 				<button class="button_master" text="⚠️" visibility="pitch 100% ? false : true" query="true"
 					textsize="14" x="+0" y="+209" height="25" width="52"
 					action="pitch_reset">
-					<tooltip>Pitch not set to normal. Click to reset pitch to 100%.</tooltip>
+					<tooltip>Click to restore normal playback speed.</tooltip>
 				</button>
 			</group>
 
@@ -3224,7 +3223,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
 							rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
 								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
-					<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
+					<tooltip>Add selected tracks to Auto.\nRight click: add folder or playlist.</tooltip>
 					</button>
 				<group visibility="var '$addMsg' 1" x="+0" y="+0">
 				<visual>
@@ -3242,12 +3241,12 @@ Click to review an existing duplicate warning.</tooltip></button>
 			<button name="tt_fade_right" class="button_main" text="FADE" width="64" height="35" x="+0" y="+45" textsize="14"
 				action="multibutton 'tt_fade_2'"
 				query="var_equal '$ttFadeDeck' 2 ? var_equal '$ttFadeAuto' 0 : false" >
-				<tooltip>Fade out song. Uses set fade duration. Pause cancels the fade and pending transition.</tooltip>
+				<tooltip>Fade out using set duration.\nPause cancels.</tooltip>
 			</button>
 
 			<button name="tt_auto_fade_right" class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+45" textsize = "14"
 			action="multibutton 'tt_auto_fade_2'" query="var_equal '$ttFadeDeck' 2 ? var_equal '$ttFadeAuto' 1 : false">
-			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas. Pause cancels the fade and pending transition.</tooltip>
+			<tooltip>Fade, then play next Auto track.\nUses set duration and a 2-second gap.\nPause cancels.</tooltip>
 			</button>
 						<button class="button_main" width="35" height="35" x="+188" y="+45" textsize = "14"
 			action="cycle '@$fadeLength' 4" 
@@ -3255,7 +3254,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 														var_equal '@$fadeLength' 1 ? get_text '5s' : 
 														var_equal '@$fadeLength' 2 ? get_text '7s' : 
 														get_text '9s'" >
-			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds.</tooltip>
 			</button>
 			<!-- _________ROW 3 ______________ -->
 			<!-- Add 2 cue slots -->
@@ -3283,7 +3282,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 					 action="multibutton 'tt_loop_2'"
 						 textsize="14" textaction="loop ? get_text 'LOOP' : deck 2 hot_cue 1 ? deck 2 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
 						 rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 2 loop">
-			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
+			<tooltip>Loop between two saved hot cues.\nClick again or right click to exit.</tooltip>
 			</button>
 
 	</group>
@@ -3316,8 +3315,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 						nothing :
 						deck 2 level 0% & deck 2 pfl on & deck 1 pfl off & deck 2 play"
 						query="deck 2 level & param_equal 0% && deck 2 play && deck 2 pfl on">
-						<tooltip>Listen to track through headphones.\nPress again to reset track and volume.\nNote: you must set up headphones in audio options.
-						</tooltip>
+						<tooltip>Prelisten through configured headphones.\nClick again to reset track and volume.</tooltip>
 					</button>
 			</group>
 			<group name="pitch" x="+60" y="+0">
@@ -3346,7 +3344,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 							action="playlist_add & set '$addMsg' 1 & repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0 "
 							rightclick= "playlist_load 'append' & set '$addMsg' 1 & 
 								repeat_start 'hideAddMsg' 1000ms 1 & set '$addMsg' 0">
-					<tooltip>Add selected track(s) to the end of Automix.\nRightclick to add selected folder or playlist.</tooltip>
+					<tooltip>Add selected tracks to Auto.\nRight click: add folder or playlist.</tooltip>
 					</button>
 				<group visibility="var '$addMsg' 1" x="+0" y="+0">
 				<visual>
@@ -3364,12 +3362,12 @@ Click to review an existing duplicate warning.</tooltip></button>
 			<button name="tt_fade_right" class="button_main" text="FADE" width="64" height="35" x="+0" y="+50" textsize="14"
 				action="multibutton 'tt_fade_2'"
 				query="var_equal '$ttFadeDeck' 2 ? var_equal '$ttFadeAuto' 0 : false" >
-				<tooltip>Fade out song. Uses set fade duration. Pause cancels the fade and pending transition.</tooltip>
+				<tooltip>Fade out using set duration.\nPause cancels.</tooltip>
 			</button>
 
 			<button name="tt_auto_fade_right" class="button_main" text="AUTO FADE" width="100" height="35" x="+80" y="+50" textsize = "14"
 			action="multibutton 'tt_auto_fade_2'" query="var_equal '$ttFadeDeck' 2 ? var_equal '$ttFadeAuto' 1 : false">
-			<tooltip>Fade song and play next song in automix.\n(Uses set fade duration. 2 second silence)\nUseful for fading cortinas. Pause cancels the fade and pending transition.</tooltip>
+			<tooltip>Fade, then play next Auto track.\nUses set duration and a 2-second gap.\nPause cancels.</tooltip>
 			</button>
 			<button class="button_main" width="35" height="35" x="+188" y="+50" textsize = "16"
 			action="cycle '@$fadeLength' 4" 
@@ -3377,7 +3375,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 														var_equal '@$fadeLength' 1 ? get_text '5s' : 
 														var_equal '@$fadeLength' 2 ? get_text '7s' : 
 														get_text '9s'" >
-			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds. </tooltip>
+			<tooltip>Set fade duration. 3, 5, 7, or 9 seconds.</tooltip>
 			</button>
 			<!-- _________ROW 3 ______________ -->
 			<!-- Add 2 cue slots -->
@@ -3405,7 +3403,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 					 action="multibutton 'tt_loop_2'"
 						 textsize="14" textaction="loop ? get_text 'LOOP' : deck 2 hot_cue 1 ? deck 2 hot_cue 2 ? get_text 'LOOP' : nothing : nothing"
 						 rightclick="loop_exit & loop_in_clear & loop_out_clear" query="deck 2 loop">
-			<tooltip>Set loop between hot cues.\nonly active when both hot cues are set.\nClick again or right click to disable.</tooltip>
+			<tooltip>Loop between two saved hot cues.\nClick again or right click to exit.</tooltip>
 			</button>
 
 		<panel class="fxdrop"  x="+0" y="+145" action1="effect_active 1" action2="effect_select 1" action3="effect_show_gui 1" textaction="get_effect_name 1 &amp; param_uppercase"/>
@@ -3417,7 +3415,7 @@ Click to review an existing duplicate warning.</tooltip></button>
 			action="nothing"
 			rightclick="toggle '$deckSafetyOff'" x="+185" y="+145" 
 			width="40" height="30" textsize="22" text="⊘">
-			<tooltip>Dropzone deactivated when automix is on.\nAdd track to automix list instead of directly to deck.\nRight click to disable load safety.</tooltip>
+			<tooltip>Deck loading blocked during Auto.\nAdd tracks to the Auto list.\nRight click: disable load safety.</tooltip>
 		</button>
 	</group>
 
@@ -3516,7 +3514,7 @@ Click to review an existing duplicate warning.</tooltip></button>
   <text fontsize="26" color="#E5AB61" align="left" valign="center" weight="bold" action="var_equal '$ttResumeRemoveError' 1 ? get_text 'AUTO OFF - REVIEW LIST' : get_text 'AUTO OFF - EARLIER DUPLICATE'" />
  </textzone>
  <button x="788" y="16" width="32" height="32" text="" textsize="17" action="show_window 'ttResumeWarning' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="824" y="536" width="16" height="16" />
  <textzone x="20" y="80" width="800" height="34" scroll="yes" click="scroll">
@@ -3539,10 +3537,10 @@ Click to review an existing duplicate warning.</tooltip></button>
   <text fontsize="19" color="#FFFFFF" align="left" valign="center" multiline="yes" action="var_equal '$ttResumeRemoveError' 1 ? get_text 'The list or deck changed during checking.\nReview the queue before trying Auto again.' : get_text 'Auto would resume from an earlier copy of this file.\nChoose how to continue from the saved row.'" />
  </textzone>
  <button class="button_main" x="20" y="330" width="310" height="42" text="KEEP AUTO OFF" textsize="17" query="false" action="multibutton 'tt_duplicate_choice_1'">
-  <tooltip>Close this popup and keep playing the current song with Auto off. The Auto list and saved position are kept.</tooltip>
+  <tooltip>Keep playing with Auto off.\nQueue and saved position stay unchanged.</tooltip>
  </button>
  <button class="button_main" x="20" y="410" width="310" height="42" text="REMOVE EARLIER DUPLICATES" textsize="14" query="false" action="multibutton 'tt_duplicate_choice_4'">
-  <tooltip>Remove earlier Auto-list entries of this exact file, then start Auto from the retained row. Later repeats and music files are kept.</tooltip>
+  <tooltip>Remove earlier copies, then start Auto.\nLater repeats and music files are kept.</tooltip>
  </button>
  <button class="button_main" x="20" y="492" width="32" height="32" textaction="var_equal '$ttResumeRemember' 1 ? get_text 'X' : get_text ''" textsize="20" query="var_equal '$ttResumeRemember' 1" action="toggle '$ttResumeRemember'" />
  <textzone x="350" y="324" width="470" height="58">
@@ -3563,7 +3561,7 @@ Click to review an existing duplicate warning.</tooltip></button>
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="CHECKING AUTO LIST" />
  </textzone>
  <button x="588" y="16" width="32" height="32" text="" textsize="17" action="show_window 'ttResumeProgress' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="624" y="294" width="16" height="16" />
  <textzone x="20" y="80" width="600" height="32">
@@ -3584,7 +3582,7 @@ Click to review an existing duplicate warning.</tooltip></button>
   <text fontsize="26" color="#FFFFFF" align="left" valign="center" weight="bold" text="DONATE" />
  </textzone>
  <button x="608" y="16" width="32" height="32" text="" textsize="17" action="show_window 'donate' off" query="false" sysicon="close" iconsize="22" textcolor="texton" class="button_main" name="tt_popup_close">
-  <tooltip>Close popup without changing playback or settings.</tooltip>
+  <tooltip>Close window</tooltip>
  </button>
  <resizezone name="tt_popup_resize" x="644" y="394" width="16" height="16" />
  <textzone x="20" y="80" width="620" height="52">
